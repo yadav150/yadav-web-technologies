@@ -1,29 +1,24 @@
 /* ============================================================
    PRICING PAGE – Yadav Web Technologies
-   (Only for pricing.html)
    ============================================================ */
 
-/* Pricing grid */
 .pricing-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
 }
 
-/* Pricing card */
 .pricing-card {
     background: var(--color-bg-alt);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 24px 20px;
+    padding: 28px 24px;
     text-align: center;
     transition: border-color var(--transition), transform var(--transition);
 }
 .pricing-card:hover {
     transform: translateY(-4px);
 }
-
-/* Featured card */
 .pricing-card.featured {
     border-color: var(--color-secondary);
     border-width: 2px;
@@ -41,8 +36,6 @@
     padding: 2px 16px;
     border-radius: 0 0 var(--radius) var(--radius);
 }
-
-/* Plan details */
 .pricing-card .plan-name {
     font-size: 1.2rem;
     font-weight: 600;
@@ -64,8 +57,6 @@
     color: var(--color-text-muted);
     margin-bottom: 16px;
 }
-
-/* Features list */
 .pricing-card .features {
     list-style: none;
     padding: 0;
@@ -83,13 +74,10 @@
 .pricing-card .features li svg {
     flex-shrink: 0;
 }
-
-/* Button inside card */
 .pricing-card .btn {
     width: 100%;
 }
 
-/* FAQ */
 .faq-list {
     margin-top: 16px;
 }
@@ -109,9 +97,9 @@
     font-size: 0.9rem;
     color: var(--color-text-muted);
     margin-top: 4px;
+    text-align: justify;
 }
 
-/* Responsive */
 @media (min-width: 640px) {
     .pricing-grid {
         grid-template-columns: 1fr 1fr;

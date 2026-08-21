@@ -142,17 +142,14 @@
             html.classList.remove('dark-mode');
             localStorage.setItem('ywt-theme', 'light');
         }
-        // Update toggle button icon/text if needed (optional)
+        // Update toggle button icon/text
         updateToggleButton(theme);
     };
 
     const updateToggleButton = function(theme) {
         if (!themeToggle) return;
-        // We can update inner HTML or just rely on CSS for icon.
-        // For simplicity, we'll set a data attribute or change text.
         if (theme === 'dark') {
             themeToggle.setAttribute('aria-label', 'Switch to light mode');
-            // Optionally update inner SVG if we use inline icons
         } else {
             themeToggle.setAttribute('aria-label', 'Switch to dark mode');
         }
@@ -174,11 +171,10 @@
         });
     }
 
-    // Listen for system theme changes (optional)
+    // Listen for system theme changes (only if user hasn't manually set a preference)
     if (window.matchMedia) {
         const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)');
         darkModeMedia.addEventListener('change', function(e) {
-            // Only change if user hasn't manually set a preference
             if (!localStorage.getItem('ywt-theme')) {
                 const newTheme = e.matches ? 'dark' : 'light';
                 setTheme(newTheme);

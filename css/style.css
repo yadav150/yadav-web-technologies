@@ -256,6 +256,8 @@ header {
 
     gap: 10px;
 
+   font-size: 18px;
+
     font-weight: 700;
 
     color: var(--text);
@@ -356,6 +358,20 @@ html.dark .brand-mark {
     height: 1.5px;
 
     background: var(--primary);
+
+}
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        padding: 12px 20px 22px;
+        box-sizing: border-box;
+    }
+
+    .nav-cta {
+        margin-top: 6px;
+        margin-bottom: 4px;
+    }
 
 }
 

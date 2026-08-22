@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,133 +10,165 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Website Development Pricing | Web Apps & Custom Software | Yadav Web Technologies
-    </title>
-
     <meta
         name="description"
-        content="Explore requirement-based pricing for business websites, custom web applications, management software, school ERP systems, portfolio websites and other digital solutions from Yadav Web Technologies.">
+        content="View service pricing for websites, ERP systems, organization management software, custom web tools, authentication solutions, bug fixing and maintenance by Yadav Web Technologies.">
 
     <meta
         name="keywords"
-        content="website development pricing Assam, custom website cost, business website pricing, web application development cost, custom software pricing, school ERP development cost, management software pricing, portfolio website cost, web development quote Assam, website development quotation, custom digital solution pricing">
+        content="Yadav Web Technologies pricing, website pricing, ERP pricing, web development price, custom software pricing">
 
     <meta
         name="author"
         content="Yadav Web Technologies">
 
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-    <meta
-        name="theme-color"
-        content="#ffffff">
-
-    <link
-        rel="canonical"
-        href="https://yadav150.github.io/yadav-web-technologies/pricing.html">
-
-
-    <!-- =================================================
-         OPEN GRAPH
-    ================================================== -->
-
-    <meta
-        property="og:type"
-        content="website">
-
-    <meta
-        property="og:title"
-        content="Website Development Pricing | Yadav Web Technologies">
-
-    <meta
-        property="og:description"
-        content="Requirement-based pricing for websites, web applications, management software, ERP systems and custom digital solutions.">
-
-    <meta
-        property="og:url"
-        content="https://yadav150.github.io/yadav-web-technologies/pricing.html">
-
-    <meta
-        property="og:site_name"
-        content="Yadav Web Technologies">
-
-    <meta
-        property="og:image"
-        content="https://yadav150.github.io/yadav-web-technologies/projects/bew.webp">
-
-    <meta
-        property="og:image:alt"
-        content="Yadav Web Technologies business website project">
-
-
-    <!-- =================================================
-         TWITTER / X
-    ================================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image">
-
-    <meta
-        name="twitter:title"
-        content="Website Development Pricing | Yadav Web Technologies">
-
-    <meta
-        name="twitter:description"
-        content="Discuss pricing for business websites, web applications, ERP systems and custom software solutions.">
-
-    <meta
-        name="twitter:image"
-        content="https://yadav150.github.io/yadav-web-technologies/projects/bew.webp">
-
-
-    <!-- =================================================
-         GLOBAL CSS
-    ================================================== -->
+    <title>
+        Pricing | Yadav Web Technologies
+    </title>
 
     <link
         rel="stylesheet"
         href="css/style.css">
 
 
-    <!-- =================================================
-         ORGANIZATION STRUCTURED DATA
-    ================================================== -->
+    <style>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://yadav150.github.io/yadav-web-technologies/#organization",
-        "name": "Yadav Web Technologies",
-        "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "description": "Web development, web applications, custom software and practical digital solutions."
-    }
-    </script>
+        /* =================================================
+           PRICING PAGE
+        ================================================= */
 
-
-    <!-- =================================================
-         PRICING PAGE STRUCTURED DATA
-    ================================================== -->
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": "https://yadav150.github.io/yadav-web-technologies/pricing.html#webpage",
-        "url": "https://yadav150.github.io/yadav-web-technologies/pricing.html",
-        "name": "Website Development Pricing | Yadav Web Technologies",
-        "description": "Requirement-based pricing information for websites, web applications, management software, ERP systems and digital solutions.",
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "Yadav Web Technologies",
-            "url": "https://yadav150.github.io/yadav-web-technologies/"
+        .pricing-page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 35px;
         }
-    }
-    </script>
+
+
+        .pricing-card {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+
+        .pricing-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 15px;
+        }
+
+
+        .pricing-card h3 {
+            margin: 0;
+            line-height: 1.35;
+        }
+
+
+        .pricing-price {
+            white-space: nowrap;
+            color: var(--primary);
+            font-size: 27px;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+
+        .pricing-card > p {
+            margin: 0 0 17px;
+        }
+
+
+        .pricing-features {
+            margin: 0 0 24px;
+            padding-left: 20px;
+        }
+
+
+        .pricing-features li {
+            margin-bottom: 9px;
+            color: var(--text-muted);
+        }
+
+
+        .pricing-features li:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .pricing-card .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+
+        .pricing-single {
+            grid-column: 1 / -1;
+        }
+
+
+        .pricing-note {
+            margin-top: 30px;
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--section-soft);
+        }
+
+
+        .pricing-note h3 {
+            margin: 0 0 10px;
+        }
+
+
+        .pricing-note p {
+            margin: 0 0 12px;
+        }
+
+
+        .pricing-note p:last-of-type {
+            margin-bottom: 20px;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .pricing-page-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-single {
+                grid-column: auto;
+            }
+
+        }
+
+
+        @media (max-width: 520px) {
+
+            .pricing-card {
+                padding: 22px;
+            }
+
+            .pricing-card-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .pricing-price {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -151,10 +184,10 @@
 
     <nav class="nav container">
 
+
         <a
             href="index.html"
-            class="brand"
-            aria-label="Yadav Web Technologies Home">
+            class="brand">
 
             <span class="brand-mark">
                 Y
@@ -185,8 +218,7 @@
 
             <a
                 href="pricing.html"
-                class="active"
-                aria-current="page">
+                class="active">
 
                 Pricing
 
@@ -280,13 +312,6 @@
 
 
 <!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
      PAGE HERO
 ===================================================== -->
 
@@ -304,14 +329,14 @@
 
 
         <h1>
-            Website & Software Development Pricing
+            Simple, Requirement-Based Pricing
         </h1>
 
 
         <p>
-            Pricing is based on the actual project scope,
-            functionality, design requirements, integrations
-            and level of customization required.
+            These prices are category-based starting prices.
+            Final pricing depends on the actual project scope,
+            complexity, features and technical requirements.
         </p>
 
     </div>
@@ -321,8 +346,10 @@
 
 
 <!-- =====================================================
-     PRICING INTRODUCTION
+     PRICING
 ===================================================== -->
+
+<main>
 
 <section class="section">
 
@@ -332,50 +359,642 @@
         <div class="section-heading">
 
             <div class="section-label">
-                Requirement-Based Pricing
+                Service Pricing
             </div>
 
 
             <h2>
-                Every project is priced according to what it needs.
+                Pricing categories for common project types.
             </h2>
 
 
             <p>
-                A simple informational website and a custom
-                management application require very different
-                amounts of design, development, testing and
-                maintenance work. For that reason, pricing is
-                discussed according to the actual requirement.
+                The final quotation is discussed after the
+                actual project requirements are understood.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="pricing-page-grid">
 
 
-            <!-- WEBSITE -->
+            <!-- =================================================
+                 BUSINESS WEBSITE
+            ================================================= -->
 
-            <article class="card">
+            <article class="pricing-card">
 
-                <h3>
-                    Business Website
-                </h3>
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Business Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹3,999
+                    </div>
+
+                </div>
 
 
                 <p>
-                    Suitable for businesses, organizations,
-                    professionals and service providers that
-                    need a responsive online presence.
+                    Professional website for businesses,
+                    service providers and similar requirements.
                 </p>
 
 
+                <ul class="pricing-features">
+
+                    <li>
+                        Responsive layout
+                    </li>
+
+                    <li>
+                        Business-focused sections
+                    </li>
+
+                    <li>
+                        Service and information pages
+                    </li>
+
+                    <li>
+                        Contact/enquiry section
+                    </li>
+
+                    <li>
+                        Requirement-based customization
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PERSONAL / PROFESSIONAL WEBSITE
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Personal / Professional Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹4,999
+                    </div>
+
+                </div>
+
+
                 <p>
-                    Scope can include page structure,
-                    responsive design, service presentation,
-                    project sections, contact information and
-                    enquiry functionality.
+                    Professional multi-section website for
+                    individuals, professionals and personal brands.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Responsive design
+                    </li>
+
+                    <li>
+                        Professional presentation
+                    </li>
+
+                    <li>
+                        Profile, services or project sections
+                    </li>
+
+                    <li>
+                        Contact section
+                    </li>
+
+                    <li>
+                        Requirement-based structure
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SCHOOL ERP
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        School Management ERP
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹11,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    School management solution for common
+                    academic and administrative operations.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Student management
+                    </li>
+
+                    <li>
+                        Teacher management
+                    </li>
+
+                    <li>
+                        Admission management
+                    </li>
+
+                    <li>
+                        ID card and admit card generation
+                    </li>
+
+                    <li>
+                        Fee and salary management
+                    </li>
+
+                    <li>
+                        Receipts
+                    </li>
+
+                    <li>
+                        Attendance management
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 ORGANIZATION MANAGEMENT
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Organization Management Website / Software
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹8,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Organization-focused system for managing
+                    members, applications, records and
+                    administrative information.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Membership management
+                    </li>
+
+                    <li>
+                        Application records
+                    </li>
+
+                    <li>
+                        Member information
+                    </li>
+
+                    <li>
+                        Administrative interface
+                    </li>
+
+                    <li>
+                        Requirement-based structure
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 COMPLETE BACKEND WORKFLOW
+            ================================================= -->
+
+            <article class="pricing-card pricing-single">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Organization Management Software
+                        with Complete Backend Workflow
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹19,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Complete organization management system
+                    including backend processing and
+                    requirement-based workflows.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Membership applications
+                    </li>
+
+                    <li>
+                        Member records
+                    </li>
+
+                    <li>
+                        Backend database
+                    </li>
+
+                    <li>
+                        Application approval workflow
+                    </li>
+
+                    <li>
+                        Administrative processing
+                    </li>
+
+                    <li>
+                        Requirement-based workflow functionality
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-primary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PERSONAL PORTFOLIO
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Personal Portfolio Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Compact professional portfolio website
+                    for presenting your profile and work.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        3 pages included
+                    </li>
+
+                    <li>
+                        Responsive design
+                    </li>
+
+                    <li>
+                        Project showcase
+                    </li>
+
+                    <li>
+                        Professional profile presentation
+                    </li>
+
+                    <li>
+                        Additional page: ₹299 per page
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 CUSTOM WEB TOOLS
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Custom Web Tools
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹1,299
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Browser-based utility tools developed
+                    according to specific requirements.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Up to 7 tools
+                    </li>
+
+                    <li>
+                        Requirement-based functionality
+                    </li>
+
+                    <li>
+                        Browser-based operation
+                    </li>
+
+                    <li>
+                        Custom interface
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 AUTHENTICATION
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Custom Authentication Setup / Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹6,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Authentication-focused website or setup
+                    for projects requiring user accounts
+                    and access management.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        User registration
+                    </li>
+
+                    <li>
+                        Login functionality
+                    </li>
+
+                    <li>
+                        Account access
+                    </li>
+
+                    <li>
+                        Authentication setup
+                    </li>
+
+                    <li>
+                        Requirement-based implementation
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 BUG FIX
+            ================================================= -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        HTML / CSS / JavaScript Bug or Syntax Fix
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Starting price for fixing HTML, CSS or
+                    JavaScript errors and related website issues.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        ₹999 per fix starting price
+                    </li>
+
+                    <li>
+                        Complexity-based assessment
+                    </li>
+
+                    <li>
+                        Issue reviewed before acceptance
+                    </li>
+
+                    <li>
+                        Final charge communicated beforehand
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Issue
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 MAINTENANCE
+            ================================================= -->
+
+            <article class="pricing-card pricing-single">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Website Maintenance
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹299
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Basic maintenance support for updating
+                    existing website content.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Content updates only
+                    </li>
+
+                    <li>
+                        Text corrections
+                    </li>
+
+                    <li>
+                        Existing image replacement
+                    </li>
+
+                    <li>
+                        Minor existing-content changes
+                    </li>
+
+                </ul>
+
+
+                <p>
+                    This does not include new pages, new sections,
+                    new features, new functionality or major design
+                    changes.
                 </p>
 
 
@@ -383,75 +1002,7 @@
                     href="appointment.html"
                     class="btn btn-secondary">
 
-                    Discuss Website
-
-                </a>
-
-            </article>
-
-
-            <!-- WEB APP -->
-
-            <article class="card">
-
-                <h3>
-                    Custom Web Application
-                </h3>
-
-
-                <p>
-                    Suitable for projects requiring user
-                    authentication, dashboards, records,
-                    workflows, data handling or custom
-                    application logic.
-                </p>
-
-
-                <p>
-                    Pricing depends on the number of modules,
-                    users, workflow complexity and integrations.
-                </p>
-
-
-                <a
-                    href="appointment.html"
-                    class="btn btn-secondary">
-
-                    Discuss Application
-
-                </a>
-
-            </article>
-
-
-            <!-- SOFTWARE -->
-
-            <article class="card">
-
-                <h3>
-                    Custom Management Software
-                </h3>
-
-
-                <p>
-                    Suitable for organizations requiring
-                    membership systems, approval workflows,
-                    record management or specialized
-                    administrative software.
-                </p>
-
-
-                <p>
-                    Final cost depends on the required modules,
-                    data structure, roles and operational workflow.
-                </p>
-
-
-                <a
-                    href="appointment.html"
-                    class="btn btn-secondary">
-
-                    Discuss Software
+                    Request Maintenance
 
                 </a>
 
@@ -460,461 +1011,65 @@
 
         </div>
 
-    </div>
-
-</section>
 
 
+        <!-- =================================================
+             NOTICE
+        ================================================= -->
 
-<!-- =====================================================
-     SERVICE-BASED PRICING FACTORS
-===================================================== -->
-
-<section class="section section-soft">
-
-    <div class="container">
-
-
-        <div class="section-heading">
+        <div class="pricing-note">
 
             <div class="section-label">
-                What Affects Pricing
+                Important Pricing Information
             </div>
 
 
-            <h2>
-                Project scope determines the final development cost.
-            </h2>
+            <h3>
+                Pricing shown here is category-based only.
+            </h3>
 
 
             <p>
-                The following factors can significantly change
-                the amount of work required for a project.
+                The listed prices are starting/category prices
+                and should not be treated as automatically fixed
+                for every project.
             </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <h3>
-                    Number of Pages
-                </h3>
-
-                <p>
-                    More pages and content structures generally
-                    require additional design and implementation.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Functionality
-                </h3>
-
-                <p>
-                    Login systems, dashboards, forms, workflows,
-                    search, filters and application logic affect
-                    development scope.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Database & Data Management
-                </h3>
-
-                <p>
-                    Projects requiring structured records,
-                    permissions and data operations involve
-                    additional implementation.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Integrations
-                </h3>
-
-                <p>
-                    Firebase, APIs, authentication services,
-                    third-party platforms and other integrations
-                    can affect development complexity.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Design Requirements
-                </h3>
-
-                <p>
-                    Custom interface design, responsive behaviour,
-                    reusable components and specialized layouts
-                    can change project scope.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Ongoing Requirements
-                </h3>
-
-                <p>
-                    Future updates, additional modules,
-                    maintenance and feature expansion can
-                    be discussed separately according to need.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SOLUTION CATEGORIES
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Typical Project Categories
-            </div>
-
-
-            <h2>
-                Different solutions require different scopes.
-            </h2>
 
 
             <p>
-                These are examples of project categories that can
-                be discussed for requirement-based development.
+                Final pricing may vary according to the project's
+                actual scope, complexity, features, pages,
+                integrations, backend requirements, workflows
+                and other project-specific factors.
             </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <h3>
-                    School Management ERP
-                </h3>
-
-                <p>
-                    Student and teacher records, admissions,
-                    attendance, fees, salaries, receipts and
-                    related school administration workflows.
-                </p>
-
-                <a
-                    href="https://deverp00.github.io/eduerp/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    View ERP Project
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
-
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-
-                    </svg>
-
-                </a>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Membership Management
-                </h3>
-
-                <p>
-                    Membership applications, member records,
-                    approval processes and organization-specific
-                    administrative workflows.
-                </p>
-
-                <a
-                    href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    View Project
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
-
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-
-                    </svg>
-
-                </a>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Authentication Systems
-                </h3>
-
-                <p>
-                    Registration, login, account access and
-                    authentication workflows for web applications.
-                </p>
-
-                <a
-                    href="https://yadav150.github.io/authp/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    View Project
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
-
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-
-                    </svg>
-
-                </a>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRICING PROCESS
-===================================================== -->
-
-<section class="section section-soft">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Getting a Quote
-            </div>
-
-
-            <h2>
-                A straightforward requirement-based process.
-            </h2>
 
 
             <p>
-                The project is first understood, then the scope
-                is discussed before pricing is finalized.
+                A final quotation is discussed after the
+                requirements are understood.
             </p>
 
-        </div>
 
+            <a
+                href="services.html"
+                class="btn btn-secondary">
 
-        <div class="grid">
+                View Detailed Services
 
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
-            <article class="card">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
 
-                <h3>
-                    01. Share Your Requirement
-                </h3>
+                </svg>
 
-                <p>
-                    Tell us what you want to build, who will use it
-                    and what the main purpose of the project is.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    02. Discuss Scope
-                </h3>
-
-                <p>
-                    Features, pages, workflows, integrations and
-                    other required components are discussed.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    03. Review the Development Scope
-                </h3>
-
-                <p>
-                    Once the requirements are understood, the
-                    project can be evaluated for its development
-                    complexity and expected work.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    04. Finalize the Project
-                </h3>
-
-                <p>
-                    The agreed requirements and development
-                    arrangement form the basis for the project.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FAQ-LIKE INFORMATION
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Pricing Information
-            </div>
-
-
-            <h2>
-                Questions about project pricing?
-            </h2>
-
-
-            <p>
-                Some common pricing considerations are answered
-                below.
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <h3>
-                    Is there one fixed price for every website?
-                </h3>
-
-                <p>
-                    No. Requirements, number of pages, design
-                    complexity and functionality vary between
-                    projects.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Can a project be customized?
-                </h3>
-
-                <p>
-                    Yes. The structure and functionality can be
-                    planned around the actual requirements of
-                    the project.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Can additional features be discussed later?
-                </h3>
-
-                <p>
-                    Yes. Additional functionality can be reviewed
-                    separately according to project scope and
-                    future requirements.
-                </p>
-
-            </article>
-
+            </a>
 
         </div>
 
@@ -928,28 +1083,26 @@
      CTA
 ===================================================== -->
 
-<section class="section cta-section">
+<section class="section">
 
     <div class="container">
 
-
         <div class="cta-box">
 
-
             <div class="section-label">
-                Request a Project Discussion
+                Start a Project
             </div>
 
 
             <h2>
-                Get a requirement-based development discussion.
+                Need a custom quotation?
             </h2>
 
 
             <p>
-                Tell us about your website, web application,
-                ERP, management software or custom digital
-                solution requirement.
+                Send your requirements and discuss the
+                exact scope, features and applicable pricing
+                for your project.
             </p>
 
 
@@ -963,21 +1116,14 @@
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2">
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
                     <path d="M5 12h14"></path>
                     <path d="m13 6 6 6-6 6"></path>
 
                 </svg>
-
-            </a>
-
-
-            <a
-                href="contact.html"
-                class="btn btn-secondary">
-
-                Contact Us
 
             </a>
 
@@ -999,7 +1145,6 @@
 <footer>
 
     <div class="container">
-
 
         <div class="footer-grid">
 
@@ -1028,6 +1173,7 @@
                 </p>
 
             </div>
+
 
 
             <div>
@@ -1070,6 +1216,7 @@
                 </div>
 
             </div>
+
 
 
             <div>
@@ -1145,6 +1292,7 @@
         stroke-linejoin="round">
 
         <path d="M12 19V5"></path>
+
         <path d="m6 11 6-6 6 6"></path>
 
     </svg>
@@ -1153,17 +1301,12 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script src="js/menu.js"></script>
-
 <script src="js/theme.js"></script>
-
 <script src="js/go-top.js"></script>
 
 
 </body>
 
 </html>
+```

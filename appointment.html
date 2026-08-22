@@ -1062,6 +1062,69 @@
     src="js/appointment.js">
 </script>
 
+    <!-- =====================================================
+     SUCCESS MESSAGE
+===================================================== -->
+
+<div
+    class="success-overlay"
+    id="successOverlay"
+    hidden>
+
+    <div
+        class="success-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="successTitle">
+
+        <div class="success-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9">
+                </circle>
+
+                <path d="m8 12 2.5 2.5L16 9"></path>
+
+            </svg>
+
+        </div>
+
+
+        <h3 id="successTitle">
+            Appointment Submitted
+        </h3>
+
+
+        <p>
+            Your appointment request has been submitted
+            successfully. We will review your request and
+            contact you regarding the appointment.
+        </p>
+
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            id="successClose">
+
+            Done
+
+        </button>
+
+    </div>
+
+</div>
+
 
 </body>
 

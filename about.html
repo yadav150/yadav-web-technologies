@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,97 +12,150 @@
 
     <meta
         name="description"
-        content="Learn about Yadav Web Technologies, a web development service focused on practical websites, custom web applications, authentication systems, organization management software, school ERP solutions, business websites and digital tools.">
+        content="Learn about Yadav Web Technologies, our development approach, services and focus on practical websites, web applications and digital solutions.">
 
     <meta
         name="keywords"
-        content="Yadav Web Technologies, web developer Assam, custom web development Assam, practical web applications, organization management software, membership management system, school ERP development, authentication system developer, business website development, web tools developer, responsive website developer">
+        content="Yadav Web Technologies, about, web developer, web development, web applications, ERP, custom software">
 
     <meta
         name="author"
         content="Yadav Web Technologies">
 
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-    <link
-        rel="canonical"
-        href="https://yadav150.github.io/yadav-web-technologies/about.html">
-
-    <meta
-        property="og:type"
-        content="website">
-
-    <meta
-        property="og:title"
-        content="About Yadav Web Technologies | Web Development & Digital Solutions">
-
-    <meta
-        property="og:description"
-        content="Learn about Yadav Web Technologies and its approach to practical websites, web applications, management systems, ERP solutions and custom digital tools.">
-
-    <meta
-        property="og:url"
-        content="https://yadav150.github.io/yadav-web-technologies/about.html">
-
-    <meta
-        property="og:site_name"
-        content="Yadav Web Technologies">
-
-    <meta
-        name="twitter:card"
-        content="summary">
-
-    <meta
-        name="twitter:title"
-        content="About Yadav Web Technologies">
-
-    <meta
-        name="twitter:description"
-        content="Explore the development approach, capabilities and digital solutions offered by Yadav Web Technologies.">
-
     <title>
-        About Yadav Web Technologies | Web Development & Digital Solutions
+        About | Yadav Web Technologies
     </title>
-
-    <!-- =================================================
-         STRUCTURED DATA
-    ================================================= -->
-
-    <script type="application/ld+json">
-
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Yadav Web Technologies",
-        "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "description": "Web development and digital solutions including websites, web applications, authentication systems, management software, ERP solutions and web tools.",
-        "sameAs": []
-    }
-
-    </script>
-
-    <script type="application/ld+json">
-
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "About Yadav Web Technologies",
-        "url": "https://yadav150.github.io/yadav-web-technologies/about.html",
-        "description": "About Yadav Web Technologies and its approach to practical web development and custom digital solutions.",
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "Yadav Web Technologies",
-            "url": "https://yadav150.github.io/yadav-web-technologies/"
-        }
-    }
-
-    </script>
 
     <link
         rel="stylesheet"
         href="css/style.css">
+
+
+    <style>
+
+        /* =================================================
+           ABOUT PAGE
+        ================================================= */
+
+        .about-intro-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+            gap: 35px;
+            align-items: start;
+        }
+
+        .about-intro-content h2 {
+            margin: 0 0 15px;
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1.2;
+        }
+
+        .about-intro-content p {
+            margin: 0 0 16px;
+        }
+
+        .about-highlight {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-highlight h3 {
+            margin: 0 0 10px;
+        }
+
+        .about-highlight p {
+            margin: 0;
+        }
+
+        .about-values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .about-value-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-value-card h3 {
+            margin: 0 0 9px;
+        }
+
+        .about-value-card p {
+            margin: 0;
+        }
+
+        .about-service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .about-service-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 21px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .about-service-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--primary);
+        }
+
+        .about-service-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .about-service-item h3 {
+            margin: 0 0 5px;
+        }
+
+        .about-service-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 950px) {
+
+            .about-intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .about-values-grid,
+            .about-service-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -117,10 +171,10 @@
 
     <nav class="nav container">
 
+
         <a
             href="index.html"
-            class="brand"
-            aria-label="Yadav Web Technologies Home">
+            class="brand">
 
             <span class="brand-mark">
                 Y
@@ -155,8 +209,7 @@
 
             <a
                 href="about.html"
-                class="active"
-                aria-current="page">
+                class="active">
 
                 About
 
@@ -178,6 +231,7 @@
 
 
         <div class="mobile-actions">
+
 
             <button
                 type="button"
@@ -202,13 +256,10 @@
 
                     <path d="M12 2v2"></path>
                     <path d="M12 20v2"></path>
-
                     <path d="m4.93 4.93 1.41 1.41"></path>
                     <path d="m17.66 17.66 1.41 1.41"></path>
-
                     <path d="M2 12h2"></path>
                     <path d="M20 12h2"></path>
-
                     <path d="m6.34 17.66-1.41 1.41"></path>
                     <path d="m19.07 4.93-1.41 1.41"></path>
 
@@ -248,13 +299,6 @@
 
 
 <!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
      PAGE HERO
 ===================================================== -->
 
@@ -272,15 +316,14 @@
 
 
         <h1>
-            Building Practical Digital Solutions for Real Requirements
+            Practical digital solutions built around real requirements.
         </h1>
 
 
         <p>
-            Yadav Web Technologies focuses on practical,
-            responsive and purpose-driven websites, web
-            applications, management systems and digital tools
-            designed around actual user and business requirements.
+            We focus on creating professional websites,
+            web applications, management systems and
+            custom digital tools designed for practical use.
         </p>
 
     </div>
@@ -290,83 +333,77 @@
 
 
 <!-- =====================================================
-     ABOUT
+     INTRODUCTION
 ===================================================== -->
+
+<main>
 
 <section class="section">
 
     <div class="container">
 
-        <div class="section-heading">
 
-            <div class="section-label">
-                Who We Are
+        <div class="about-intro-grid">
+
+
+            <div class="about-intro-content">
+
+                <div class="section-label">
+                    Who We Are
+                </div>
+
+
+                <h2>
+                    Technology should solve a real problem.
+                </h2>
+
+
+                <p>
+                    Yadav Web Technologies develops digital
+                    solutions based on the actual purpose of a
+                    project rather than forcing every requirement
+                    into a fixed template.
+                </p>
+
+
+                <p>
+                    Our work covers professional websites,
+                    web applications, management software,
+                    ERP solutions, authentication systems and
+                    browser-based tools.
+                </p>
+
+
+                <p>
+                    We aim to keep the development approach
+                    practical, understandable and focused on
+                    the features that are genuinely needed.
+                </p>
+
             </div>
 
-            <h2>
-                Technology built around the purpose of the project.
-            </h2>
 
-            <p>
-                Yadav Web Technologies develops websites and
-                browser-based software with an emphasis on
-                usability, responsive design, organized interfaces
-                and practical functionality.
-            </p>
+            <div class="about-highlight">
 
-        </div>
+                <div class="section-label">
+                    Our Focus
+                </div>
 
-
-        <div class="grid">
-
-
-            <article class="card">
 
                 <h3>
-                    Practical Development
+                    Useful, structured and scalable solutions.
                 </h3>
 
-                <p>
-                    Projects are developed according to their
-                    intended purpose rather than using a
-                    one-size-fits-all approach. The structure,
-                    interface and functionality are planned
-                    around the actual requirements.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Web Applications
-                </h3>
 
                 <p>
-                    Development work includes authentication
-                    systems, management applications, membership
-                    workflows, school ERP concepts, browser-based
-                    tools and other custom web solutions.
+                    From a simple professional website to a
+                    database-driven management system, the
+                    development approach is adapted to the
+                    project's scope, users, workflow and
+                    technical requirements.
                 </p>
 
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Responsive Experiences
-                </h3>
-
-                <p>
-                    Interfaces are designed to remain usable across
-                    desktop computers, tablets and mobile devices,
-                    with layouts that adapt to different screen
-                    sizes.
-                </p>
-
-            </article>
+            </div>
 
 
         </div>
@@ -378,122 +415,125 @@
 
 
 <!-- =====================================================
-     CAPABILITIES
+     VALUES
 ===================================================== -->
 
 <section class="section section-soft">
 
     <div class="container">
 
+
         <div class="section-heading">
 
             <div class="section-label">
-                Development Capabilities
+                Our Approach
             </div>
 
+
             <h2>
-                Areas of web development and software work.
+                What guides our work.
             </h2>
 
+
             <p>
-                The development portfolio covers several types of
-                practical web projects and custom digital systems.
+                Every project is approached with the same
+                focus on clarity, practical functionality
+                and a dependable user experience.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="about-values-grid">
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    Website Development
+                    Requirement First
                 </h3>
 
                 <p>
-                    Responsive websites for businesses,
-                    organizations, professionals and personal
-                    portfolios with structured content and
-                    user-focused navigation.
+                    We begin by understanding what the project
+                    needs to achieve, who will use it and which
+                    features are actually required.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    Authentication Systems
+                    Practical Design
                 </h3>
 
                 <p>
-                    Registration, login, account management and
-                    user-access workflows for web applications
-                    requiring structured authentication.
+                    Interfaces are kept professional and
+                    straightforward so that users can focus
+                    on the work instead of unnecessary
+                    visual complexity.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    Management Software
+                    Functional Development
                 </h3>
 
                 <p>
-                    Custom management systems for organizations,
-                    membership records, applications, approvals
-                    and administrative workflows.
+                    Websites and applications are built around
+                    real functionality, including forms,
+                    databases, authentication and workflows
+                    where required.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    School ERP Solutions
+                    Responsive Experience
                 </h3>
 
                 <p>
-                    School management concepts covering student
-                    records, teacher information, admissions,
-                    attendance, fees, salaries, receipts and
-                    related administrative operations.
+                    The interface is designed to remain usable
+                    across desktops, tablets and mobile
+                    devices.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    Browser-Based Web Tools
+                    Clear Scope
                 </h3>
 
                 <p>
-                    Lightweight online utilities designed to
-                    perform useful digital tasks directly through
-                    a web browser without unnecessary complexity.
+                    Project scope, features and requirements
+                    are discussed clearly so that expectations
+                    remain practical from the beginning.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="about-value-card">
 
                 <h3>
-                    Custom Digital Solutions
+                    Long-Term Usability
                 </h3>
 
                 <p>
-                    Project-specific solutions can be structured
-                    around the required workflow, information,
-                    users and functionality instead of forcing
-                    requirements into a fixed template.
+                    The aim is to create solutions that remain
+                    useful after delivery and can be maintained
+                    or extended when additional requirements arise.
                 </p>
 
             </article>
@@ -508,216 +548,309 @@
 
 
 <!-- =====================================================
-     DEVELOPMENT APPROACH
+     WHAT WE DO
 ===================================================== -->
 
 <section class="section">
 
     <div class="container">
 
+
         <div class="section-heading">
 
             <div class="section-label">
-                Development Approach
+                What We Do
             </div>
 
+
             <h2>
-                From requirement to usable digital product.
+                Our core development services.
             </h2>
 
+
             <p>
-                A project is considered from its requirements,
-                users, content, functionality and expected
-                experience before the final structure is prepared.
+                We provide different types of digital
+                solutions depending on the needs of the
+                individual project.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="about-service-grid">
 
 
-            <article class="card">
+            <!-- WEBSITE -->
 
-                <h3>
-                    01. Understand
-                </h3>
+            <article class="about-service-item">
 
-                <p>
-                    Identify the purpose of the website or
-                    application, its target users and the main
-                    functions required.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    02. Structure
-                </h3>
-
-                <p>
-                    Organize pages, navigation, content,
-                    workflows and interface components into a
-                    practical structure.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    03. Develop
-                </h3>
-
-                <p>
-                    Build the required interface and functionality
-                    with attention to responsive behaviour,
-                    usability and maintainability.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
-
-<section class="section section-soft">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Selected Work
-            </div>
-
-            <h2>
-                Explore the projects developed by Yadav Web Technologies.
-            </h2>
-
-            <p>
-                View examples of authentication systems, web tools,
-                organization software, school ERP development,
-                business websites and portfolio solutions.
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <h3>
-                    Yadav Authentication Project
-                </h3>
-
-                <p>
-                    Authentication and account-management project
-                    designed around registration, login and user
-                    access workflows.
-                </p>
-
-                <a
-                    href="projects.html"
-                    class="text-link">
-
-                    View Projects
+                <div class="about-service-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
+                        <rect
+                            x="3"
+                            y="4"
+                            width="18"
+                            height="15"
+                            rx="2">
+                        </rect>
+
+                        <path d="M3 9h18"></path>
 
                     </svg>
 
-                </a>
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Website Development
+                    </h3>
+
+                    <p>
+                        Business, enterprise, organization,
+                        professional and portfolio websites.
+                    </p>
+
+                </div>
 
             </article>
 
 
-            <article class="card">
 
-                <h3>
-                    Yadav Web Tools
-                </h3>
+            <!-- APPLICATION -->
 
-                <p>
-                    Browser-based utilities created for practical
-                    everyday digital tasks and lightweight online
-                    workflows.
-                </p>
+            <article class="about-service-item">
 
-                <a
-                    href="projects.html"
-                    class="text-link">
-
-                    View Projects
+                <div class="about-service-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6-6"></path>
+                        <rect
+                            x="4"
+                            y="3"
+                            width="16"
+                            height="18"
+                            rx="2">
+                        </rect>
+
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h8"></path>
+                        <path d="M8 16h5"></path>
 
                     </svg>
 
-                </a>
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Web Applications
+                    </h3>
+
+                    <p>
+                        Custom applications with databases,
+                        authentication, dashboards and
+                        user-specific functionality.
+                    </p>
+
+                </div>
 
             </article>
 
 
-            <article class="card">
 
-                <h3>
-                    Organization Membership Management
-                </h3>
+            <!-- ERP -->
 
-                <p>
-                    A management application concept for
-                    membership applications, member records and
-                    administrative approval workflows.
-                </p>
+            <article class="about-service-item">
 
-                <a
-                    href="projects.html"
-                    class="text-link">
-
-                    View Projects
+                <div class="about-service-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
+                        <path d="M4 5h16v14H4z"></path>
+                        <path d="M8 9h8"></path>
+                        <path d="M8 13h8"></path>
+                        <path d="M8 17h5"></path>
 
                     </svg>
 
-                </a>
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        ERP & Management Systems
+                    </h3>
+
+                    <p>
+                        School ERP, membership systems and
+                        organization management software.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- WEB TOOLS -->
+
+            <article class="about-service-item">
+
+                <div class="about-service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9">
+                        </circle>
+
+                        <path d="M8 12h8"></path>
+                        <path d="M12 8v8"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Custom Web Tools
+                    </h3>
+
+                    <p>
+                        Browser-based utilities and
+                        purpose-built tools for specific
+                        digital tasks.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- AUTHENTICATION -->
+
+            <article class="about-service-item">
+
+                <div class="about-service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <rect
+                            x="5"
+                            y="10"
+                            width="14"
+                            height="10"
+                            rx="2">
+                        </rect>
+
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+
+                        <circle
+                            cx="12"
+                            cy="15"
+                            r="1">
+                        </circle>
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Authentication Solutions
+                    </h3>
+
+                    <p>
+                        Registration, login and account
+                        access systems according to
+                        project requirements.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- MAINTENANCE -->
+
+            <article class="about-service-item">
+
+                <div class="about-service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path d="M12 3v18"></path>
+
+                        <path d="M5 8h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h9"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Maintenance & Fixes
+                    </h3>
+
+                    <p>
+                        Content maintenance and selected
+                        HTML, CSS or JavaScript issue fixes
+                        according to the applicable service scope.
+                    </p>
+
+                </div>
 
             </article>
 
@@ -734,25 +867,29 @@
      CTA
 ===================================================== -->
 
-<section class="section cta-section">
+<section class="section">
 
     <div class="container">
 
         <div class="cta-box">
 
+
             <div class="section-label">
-                Start a Project
+                Work With Us
             </div>
 
+
             <h2>
-                Have a website or software requirement?
+                Have a project in mind?
             </h2>
 
+
             <p>
-                Share your requirements and discuss the suitable
-                website, web application or custom digital
-                solution for your project.
+                Share your requirements and discuss the
+                suitable website, application or digital
+                solution for your needs.
             </p>
+
 
             <a
                 href="appointment.html"
@@ -770,14 +907,6 @@
                     <path d="m13 6 6 6-6 6"></path>
 
                 </svg>
-
-            </a>
-
-            <a
-                href="contact.html"
-                class="btn btn-secondary">
-
-                Contact Us
 
             </a>
 
@@ -829,11 +958,13 @@
             </div>
 
 
+
             <div>
 
                 <h4>
                     Quick Links
                 </h4>
+
 
                 <div class="footer-links">
 
@@ -841,8 +972,12 @@
                         Home
                     </a>
 
-                    <a href="about.html">
+                    <a
+                        href="about.html"
+                        class="active">
+
                         About
+
                     </a>
 
                     <a href="services.html">
@@ -866,11 +1001,13 @@
             </div>
 
 
+
             <div>
 
                 <h4>
                     Information
                 </h4>
+
 
                 <div class="footer-links">
 
@@ -892,6 +1029,10 @@
 
                     <a href="disclaimer.html">
                         Disclaimer
+                    </a>
+
+                    <a href="admin/index.html">
+                        Admin Panel
                     </a>
 
                 </div>
@@ -934,7 +1075,8 @@
         stroke-linejoin="round">
 
         <path d="M12 19V5"></path>
-        <path d="m6 11 6-6 6 6"></path>
+
+        <path d="m6 11 6 6-6-6"></path>
 
     </svg>
 
@@ -942,17 +1084,12 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script src="js/menu.js"></script>
-
 <script src="js/theme.js"></script>
-
 <script src="js/go-top.js"></script>
 
 
 </body>
 
 </html>
+```

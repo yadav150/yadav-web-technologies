@@ -1,843 +1,1909 @@
-<!DOCTYPE html>
-<html lang="en">
+```javascript
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-<head>
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
-    <meta charset="UTF-8">
+import {
+    getDatabase,
+    ref,
+    onValue,
+    update,
+    remove
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Yadav Web Technologies Admin Dashboard">
+// =====================================================
+// ADMIN UID
+// =====================================================
 
-    <meta
-        name="robots"
-        content="noindex,nofollow">
+const ADMIN_UID =
+    "REPLACE_WITH_YOUR_ADMIN_UID";
 
-    <title>
-        Admin Dashboard | Yadav Web Technologies
-    </title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css">
+// =====================================================
+// FIREBASE CONFIG
+// =====================================================
 
-    <style>
+const firebaseConfig = {
 
-        body {
-            background: var(--surface-soft, #f7f8fa);
-        }
+    apiKey:
+        "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",
 
-        .admin-header {
-            border-bottom: 1px solid #dfe3e8;
-            background: var(--surface, #fff);
-        }
+    authDomain:
+        "auth-project-by-yadav.firebaseapp.com",
 
-        .admin-nav {
-            min-height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
+    projectId:
+        "auth-project-by-yadav",
 
-        .admin-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: inherit;
-            font-weight: 600;
-        }
+    storageBucket:
+        "auth-project-by-yadav.firebasestorage.app",
 
-        .admin-brand .brand-mark {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 5px;
-        }
+    messagingSenderId:
+        "351339588417",
 
-        .admin-nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    appId:
+        "1:351339588417:web:ab20ea055457d03370cfc0",
 
-        .admin-user {
-            font-size: 13px;
-            opacity: .7;
-        }
+    measurementId:
+        "G-NR5Z7R2P19"
 
-        .admin-logout,
-        .view-button,
-        .danger-button,
-        .share-button {
-            border: 1px solid #cfd5da;
-            background: transparent;
-            color: inherit;
-            padding: 9px 13px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+};
 
-        .share-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
 
-        .share-button svg {
-            width: 17px;
-            height: 17px;
-        }
+// =====================================================
+// INITIALIZE
+// =====================================================
 
-        .danger-button {
-            border-color: #c9bcbc;
-        }
+const app =
+    initializeApp(firebaseConfig);
 
-        .admin-main {
-            padding: 40px 0 70px;
-        }
+const auth =
+    getAuth(app);
 
-        .admin-title {
-            margin-bottom: 28px;
-        }
+const database =
+    getDatabase(app);
 
-        .admin-title h1 {
-            margin: 0 0 8px;
-        }
 
-        .admin-title p {
-            margin: 0;
-        }
+// =====================================================
+// ELEMENTS
+// =====================================================
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+const loginScreen =
+    document.getElementById("loginScreen");
 
-        .stat-card {
-            padding: 20px;
-            border: 1px solid #dfe3e8;
-            border-radius: 6px;
-            background: var(--surface, #fff);
-        }
+const dashboard =
+    document.getElementById("dashboard");
 
-        .stat-card span {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 8px;
-            opacity: .7;
-        }
+const loginForm =
+    document.getElementById("loginForm");
 
-        .stat-card strong {
-            font-size: 25px;
-        }
+const loginError =
+    document.getElementById("loginError");
 
-        .admin-panel {
-            border: 1px solid #dfe3e8;
-            border-radius: 6px;
-            background: var(--surface, #fff);
-            overflow: hidden;
-        }
+const logoutButton =
+    document.getElementById("logoutButton");
 
-        .panel-head {
-            padding: 20px;
-            border-bottom: 1px solid #e2e6ea;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+const adminUser =
+    document.getElementById("adminUser");
 
-        .panel-head h2 {
-            margin: 0;
-        }
+const appointmentsList =
+    document.getElementById("appointmentsList");
 
-        .appointment-controls {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+const searchInput =
+    document.getElementById("searchInput");
 
-        .appointment-controls input,
-        .appointment-controls select {
-            min-height: 40px;
-            padding: 8px 11px;
-            border: 1px solid #cfd5da;
-            border-radius: 5px;
-            background: transparent;
-            color: inherit;
-        }
+const statusFilter =
+    document.getElementById("statusFilter");
 
-        .appointments-list {
-            display: grid;
-        }
+const detailView =
+    document.getElementById("detailView");
 
-        .appointment-row {
-            display: grid;
-            grid-template-columns: 1.2fr 1.4fr .9fr .8fr auto;
-            gap: 18px;
-            align-items: center;
-            padding: 18px 20px;
-            border-bottom: 1px solid #e6e9ec;
-        }
+const detailTopGrid =
+    document.getElementById("detailTopGrid");
 
-        .appointment-row:last-child {
-            border-bottom: 0;
-        }
+const detailMessageBox =
+    document.getElementById("detailMessageBox");
 
-        .appointment-client strong,
-        .appointment-service strong {
-            display: block;
-            margin-bottom: 4px;
-        }
+const detailActions =
+    document.getElementById("detailActions");
 
-        .appointment-client span,
-        .appointment-service span,
-        .appointment-date span {
-            display: block;
-            font-size: 13px;
-            opacity: .7;
-        }
+const closeDetail =
+    document.getElementById("closeDetail");
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 9px;
-            border: 1px solid #d5dae0;
-            border-radius: 4px;
-            font-size: 12px;
-            text-transform: capitalize;
-        }
+const refreshButton =
+    document.getElementById("refreshButton");
 
-        .empty-state {
-            padding: 50px 20px;
-            text-align: center;
-        }
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
 
-        .empty-state h3 {
-            margin-bottom: 8px;
-        }
+const adminSidebar =
+    document.getElementById("adminSidebar");
 
-        .detail-view {
-            display: none;
-            margin-top: 30px;
-            border: 1px solid #dfe3e8;
-            border-radius: 6px;
-            background: var(--surface, #fff);
-        }
+const appointmentsNav =
+    document.getElementById("appointmentsNav");
 
-        .detail-view.active {
-            display: block;
-        }
+const dashboardNav =
+    document.getElementById("dashboardNav");
 
-        .detail-head {
-            padding: 20px;
-            border-bottom: 1px solid #e2e6ea;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+const shareCardRender =
+    document.getElementById("shareCardRender");
 
-        .detail-head h2 {
-            margin: 0;
-        }
+const shareCardSubtitle =
+    document.getElementById("shareCardSubtitle");
 
-        .detail-body {
-            padding: 25px;
-        }
+const shareCardGrid =
+    document.getElementById("shareCardGrid");
 
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+const adminToast =
+    document.getElementById("adminToast");
 
-        .detail-item {
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e6e9ec;
-        }
+const toastTitle =
+    document.getElementById("toastTitle");
 
-        .detail-item.full {
-            grid-column: 1 / -1;
-        }
+const toastMessage =
+    document.getElementById("toastMessage");
 
-        .detail-item label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: .04em;
-            opacity: .6;
-        }
 
-        .detail-item p {
-            margin: 0;
-            line-height: 1.6;
-            word-break: break-word;
-        }
+// =====================================================
+// STATE
+// =====================================================
 
-        .detail-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e6ea;
-        }
+let appointments = {};
 
-        .detail-actions select {
-            min-height: 40px;
-            padding: 8px 11px;
-            border: 1px solid #cfd5da;
-            border-radius: 5px;
-            background: transparent;
-            color: inherit;
-        }
+let selectedAppointmentId = null;
 
-        .login-screen {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-        }
+let unsubscribeAppointments = null;
 
-        .login-box {
-            width: 100%;
-            max-width: 410px;
-            padding: 32px;
-            border: 1px solid #dfe3e8;
-            border-radius: 6px;
-            background: var(--surface, #fff);
-        }
 
-        .login-brand {
-            margin-bottom: 25px;
-        }
+// =====================================================
+// AUTH STATE
+// =====================================================
 
-        .login-brand .admin-brand {
-            margin-bottom: 15px;
-        }
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-        .login-box h1 {
-            margin-bottom: 8px;
-        }
+        if (!user) {
 
-        .login-box p {
-            margin-bottom: 22px;
-        }
+            showLogin();
 
-        .login-form {
-            display: grid;
-            gap: 15px;
-        }
+            return;
 
-        .login-form label {
-            font-size: 14px;
-            font-weight: 600;
         }
 
-        .login-form input {
-            width: 100%;
-            min-height: 44px;
-            padding: 10px 12px;
-            border: 1px solid #cfd5da;
-            border-radius: 5px;
-            background: transparent;
-            color: inherit;
-        }
 
-        .login-error {
-            min-height: 20px;
-            margin: 0;
-            font-size: 13px;
-        }
+        /*
+         * Only the explicitly configured UID
+         * can enter the dashboard.
+         */
 
-        #dashboard {
-            display: none;
-        }
+        if (
+            user.uid !==
+            ADMIN_UID
+        ) {
 
-        /* Share generation area */
-        .share-card-render {
-            position: fixed;
-            left: -100000px;
-            top: 0;
-            width: 1080px;
-            min-height: 1350px;
-            padding: 70px;
-            box-sizing: border-box;
-            background: #ffffff;
-            color: #16181b;
-            font-family: Arial, Helvetica, sans-serif;
-            z-index: -1;
-        }
+            await signOut(auth);
 
-        .share-card-top {
-            border-bottom: 2px solid #dedede;
-            padding-bottom: 28px;
-            margin-bottom: 40px;
-        }
+            showLoginError(
+                "This account is not authorized to access the admin dashboard."
+            );
 
-        .share-card-brand {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
+            return;
 
-        .share-card-title {
-            font-size: 46px;
-            font-weight: 700;
-            margin-bottom: 12px;
         }
 
-        .share-card-subtitle {
-            font-size: 22px;
-            color: #666;
-        }
 
-        .share-card-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
+        showDashboard(user);
 
-        .share-card-field {
-            border: 1px solid #dedede;
-            padding: 22px;
-            border-radius: 6px;
-        }
+        loadAppointments();
 
-        .share-card-field.full {
-            grid-column: 1 / -1;
-        }
+    }
+);
 
-        .share-card-label {
-            display: block;
-            font-size: 15px;
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            margin-bottom: 10px;
-        }
 
-        .share-card-value {
-            font-size: 23px;
-            line-height: 1.5;
-            word-break: break-word;
-        }
+// =====================================================
+// LOGIN
+// =====================================================
 
-        .share-card-footer {
-            margin-top: 55px;
-            padding-top: 25px;
-            border-top: 2px solid #dedede;
-            font-size: 17px;
-            color: #666;
-        }
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            clearLoginError();
+
+
+            const email =
+                document
+                    .getElementById("loginEmail")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("loginPassword")
+                    .value;
+
+
+            try {
+
+                const result =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                if (
+                    result.user.uid !==
+                    ADMIN_UID
+                ) {
+
+                    await signOut(auth);
+
+                    showLoginError(
+                        "This account is not authorized to access the admin dashboard."
+                    );
+
+                }
+
+            } catch (error) {
 
-        @media (max-width: 950px) {
+                console.error(
+                    "Login error:",
+                    error
+                );
 
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+                showLoginError(
+                    "Invalid login details or access denied."
+                );
 
-            .appointment-row {
-                grid-template-columns: 1fr 1fr;
             }
 
         }
+    );
 
-        @media (max-width: 650px) {
+}
 
-            .admin-main {
-                padding-top: 28px;
-            }
 
-            .admin-user {
-                display: none;
-            }
+// =====================================================
+// LOGOUT
+// =====================================================
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+if (logoutButton) {
 
-            .appointment-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
+    logoutButton.addEventListener(
+        "click",
+        async () => {
 
-            .detail-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detail-item.full {
-                grid-column: auto;
-            }
+            await signOut(auth);
 
         }
+    );
 
-    </style>
-
-</head>
-
-
-<body>
+}
 
 
-<section
-    class="login-screen"
-    id="loginScreen">
+// =====================================================
+// LOAD APPOINTMENTS
+// =====================================================
 
-    <div class="login-box">
+function loadAppointments() {
 
-        <div class="login-brand">
+    if (unsubscribeAppointments) {
 
-            <a
-                href="../index.html"
-                class="admin-brand">
+        unsubscribeAppointments();
 
-                <span class="brand-mark">
-                    Y
-                </span>
+    }
 
-                <span>
-                    Yadav Web Technologies
-                </span>
 
-            </a>
+    const appointmentsRef =
+        ref(
+            database,
+            "appointments"
+        );
 
-            <div class="section-label">
-                Administration
-            </div>
+
+    unsubscribeAppointments =
+        onValue(
+            appointmentsRef,
+            (snapshot) => {
+
+                appointments =
+                    snapshot.val() || {};
+
+                renderAppointments();
+
+                updateStatistics();
+
+
+                if (
+                    selectedAppointmentId &&
+                    appointments[
+                        selectedAppointmentId
+                    ]
+                ) {
+
+                    showAppointmentDetails(
+                        selectedAppointmentId
+                    );
+
+                }
+
+            },
+            (error) => {
+
+                console.error(
+                    "Database error:",
+                    error
+                );
+
+
+                appointmentsList.innerHTML =
+                    createEmptyState(
+                        "Unable to load appointments",
+                        "Please check the Firebase database permissions."
+                    );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// RENDER APPOINTMENTS
+// =====================================================
+
+function renderAppointments() {
+
+    const search =
+        searchInput?.value
+            .trim()
+            .toLowerCase() || "";
+
+
+    const filter =
+        statusFilter?.value || "all";
+
+
+    const entries =
+        Object.entries(
+            appointments
+        )
+        .filter(
+            ([, item]) => {
+
+                const searchable = [
+
+                    item.name,
+                    item.email,
+                    item.phone,
+                    item.service,
+                    item.message,
+                    item.date
+
+                ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+                const searchMatch =
+                    !search ||
+                    searchable.includes(search);
+
+
+                const statusMatch =
+                    filter === "all" ||
+                    item.status === filter;
+
+
+                return (
+                    searchMatch &&
+                    statusMatch
+                );
+
+            }
+        )
+        .sort(
+            ([, a], [, b]) => {
+
+                return (
+                    new Date(
+                        b.createdAt || 0
+                    ) -
+                    new Date(
+                        a.createdAt || 0
+                    )
+                );
+
+            }
+        );
+
+
+    if (!entries.length) {
+
+        appointmentsList.innerHTML =
+            createEmptyState(
+                "No appointments found",
+                "New appointment requests will appear here."
+            );
+
+        return;
+
+    }
+
+
+    appointmentsList.innerHTML =
+        entries
+            .map(
+                ([id, item]) => {
+
+                    const status =
+                        item.status ||
+                        "new";
+
+
+                    return `
+
+                        <article
+                            class="appointment-row">
+
+                            <div
+                                class="appointment-client">
+
+                                <strong>
+                                    ${escapeHtml(
+                                        item.name ||
+                                        "Unknown Client"
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        item.email ||
+                                        "No email"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="appointment-service">
+
+                                <strong>
+                                    ${escapeHtml(
+                                        item.service ||
+                                        "Not specified"
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        item.phone ||
+                                        "No phone"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="appointment-date">
+
+                                <strong>
+                                    ${formatDate(
+                                        item.date
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        item.time ||
+                                        "No time"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span
+                                    class="
+                                        status-badge
+                                        status-${escapeHtml(status)}
+                                    ">
+
+                                    ${escapeHtml(status)}
+
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <button
+                                    type="button"
+                                    class="view-button"
+                                    data-view-id="${escapeHtml(id)}">
+
+                                    Open
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+
+    document
+        .querySelectorAll(
+            "[data-view-id]"
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        showAppointmentDetails(
+                            button.dataset.viewId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// DETAIL VIEW
+// =====================================================
+
+function showAppointmentDetails(id) {
+
+    const item =
+        appointments[id];
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    selectedAppointmentId =
+        id;
+
+
+    detailTopGrid.innerHTML = `
+
+        <div class="detail-summary">
+
+            ${detailItem(
+                "Client Name",
+                item.name || "Not provided"
+            )}
+
+            ${detailItem(
+                "Service",
+                item.service || "Not provided"
+            )}
+
+            ${detailItem(
+                "Email",
+                item.email || "Not provided"
+            )}
+
+            ${detailItem(
+                "Phone",
+                item.phone || "Not provided"
+            )}
+
+            ${detailItem(
+                "Appointment Date",
+                formatDate(item.date)
+            )}
+
+            ${detailItem(
+                "Appointment Time",
+                item.time || "Not provided"
+            )}
+
+            ${detailItem(
+                "Current Status",
+                item.status || "new"
+            )}
+
+            ${detailItem(
+                "Submitted",
+                formatCreatedAt(item.createdAt)
+            )}
 
         </div>
 
 
-        <h1>
-            Admin Login
-        </h1>
+        <aside class="detail-status-card">
+
+            <span class="detail-status-card-label">
+                Update Appointment
+            </span>
 
 
-        <p>
-            Sign in to access appointment management.
-        </p>
+            <select
+                id="detailStatus">
 
+                <option
+                    value="new"
+                    ${item.status === "new" ? "selected" : ""}>
 
-        <form
-            class="login-form"
-            id="loginForm">
+                    New
 
-            <div>
+                </option>
 
-                <label for="loginEmail">
-                    Email Address
-                </label>
+                <option
+                    value="contacted"
+                    ${item.status === "contacted" ? "selected" : ""}>
 
-                <input
-                    type="email"
-                    id="loginEmail"
-                    autocomplete="email"
-                    required>
+                    Contacted
 
-            </div>
+                </option>
 
+                <option
+                    value="confirmed"
+                    ${item.status === "confirmed" ? "selected" : ""}>
 
-            <div>
+                    Confirmed
 
-                <label for="loginPassword">
-                    Password
-                </label>
+                </option>
 
-                <input
-                    type="password"
-                    id="loginPassword"
-                    autocomplete="current-password"
-                    required>
+                <option
+                    value="completed"
+                    ${item.status === "completed" ? "selected" : ""}>
 
-            </div>
+                    Completed
+
+                </option>
+
+            </select>
 
 
             <button
-                type="submit"
-                class="btn btn-primary">
+                type="button"
+                class="detail-primary-button status-action"
+                id="saveStatus">
 
-                Sign In
+                Update Status
 
             </button>
 
+        </aside>
 
-            <p
-                class="login-error"
-                id="loginError"
-                aria-live="polite">
-            </p>
-
-        </form>
-
-    </div>
-
-</section>
+    `;
 
 
+    detailMessageBox.innerHTML = `
 
-<div id="dashboard">
+        <div class="detail-message-head">
 
-
-<header class="admin-header">
-
-    <div class="container">
-
-        <div class="admin-nav">
-
-            <a
-                href="../index.html"
-                class="admin-brand">
-
-                <span class="brand-mark">
-                    Y
-                </span>
-
-                <span>
-                    Yadav Web Technologies
-                </span>
-
-            </a>
-
-
-            <div class="admin-nav-right">
-
-                <span
-                    class="admin-user"
-                    id="adminUser">
-                </span>
-
-
-                <button
-                    type="button"
-                    class="admin-logout"
-                    id="logoutButton">
-
-                    Logout
-
-                </button>
-
-            </div>
+            <strong>
+                Project Requirement
+            </strong>
 
         </div>
 
-    </div>
 
-</header>
+        <div class="detail-message-content">
+
+            ${escapeHtml(
+                item.message ||
+                "No message provided."
+            )}
+
+        </div>
+
+    `;
 
 
+    detailActions.innerHTML = `
 
-<main class="admin-main">
+        <button
+            type="button"
+            class="share-button"
+            id="shareAppointment">
 
-    <div class="container">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <circle
+                    cx="18"
+                    cy="5"
+                    r="3">
+                </circle>
+
+                <circle
+                    cx="6"
+                    cy="12"
+                    r="3">
+                </circle>
+
+                <circle
+                    cx="18"
+                    cy="19"
+                    r="3">
+                </circle>
+
+                <path d="m8.6 13.5 6.8 4"></path>
+
+                <path d="m15.4 6.5-6.8 4"></path>
+
+            </svg>
+
+            Share Appointment
+
+        </button>
 
 
-        <div class="admin-title">
+        <button
+            type="button"
+            class="danger-button"
+            id="deleteAppointment">
 
-            <div class="section-label">
-                Administration
-            </div>
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round">
 
-            <h1>
-                Appointment Dashboard
-            </h1>
+                <path d="M4 7h16"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M6 7l1 14h10l1-14"></path>
+                <path d="M9 7V4h6v3"></path>
+
+            </svg>
+
+            Delete Appointment
+
+        </button>
+
+    `;
+
+
+    detailView.classList.add(
+        "active"
+    );
+
+
+    detailView.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+
+    document
+        .getElementById("saveStatus")
+        .addEventListener(
+            "click",
+            () => {
+
+                updateAppointmentStatus(
+                    id
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("shareAppointment")
+        .addEventListener(
+            "click",
+            () => {
+
+                shareAppointmentImage(
+                    item
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("deleteAppointment")
+        .addEventListener(
+            "click",
+            () => {
+
+                deleteAppointment(
+                    id
+                );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// DETAIL ITEM
+// =====================================================
+
+function detailItem(
+    label,
+    value
+) {
+
+    return `
+
+        <div class="detail-item">
+
+            <label>
+                ${escapeHtml(label)}
+            </label>
 
             <p>
-                Manage client appointment requests and project enquiries.
+                ${escapeHtml(value)}
             </p>
 
         </div>
 
+    `;
+
+}
 
 
-        <div class="stats-grid">
+// =====================================================
+// UPDATE STATUS
+// =====================================================
 
-            <div class="stat-card">
-                <span>Total</span>
-                <strong id="totalCount">0</strong>
-            </div>
+async function updateAppointmentStatus(id) {
 
-            <div class="stat-card">
-                <span>New</span>
-                <strong id="newCount">0</strong>
-            </div>
-
-            <div class="stat-card">
-                <span>Contacted</span>
-                <strong id="contactedCount">0</strong>
-            </div>
-
-            <div class="stat-card">
-                <span>Confirmed</span>
-                <strong id="confirmedCount">0</strong>
-            </div>
-
-            <div class="stat-card">
-                <span>Completed</span>
-                <strong id="completedCount">0</strong>
-            </div>
-
-        </div>
+    const statusElement =
+        document.getElementById(
+            "detailStatus"
+        );
 
 
+    if (!statusElement) {
 
-        <section class="admin-panel">
+        return;
 
-            <div class="panel-head">
-
-                <h2>
-                    Appointments
-                </h2>
+    }
 
 
-                <div class="appointment-controls">
-
-                    <input
-                        type="search"
-                        id="searchInput"
-                        placeholder="Search appointments..."
-                        aria-label="Search appointments">
+    const button =
+        document.getElementById(
+            "saveStatus"
+        );
 
 
-                    <select
-                        id="statusFilter"
-                        aria-label="Filter appointments">
+    if (button) {
 
-                        <option value="all">
-                            All Status
-                        </option>
+        button.disabled = true;
 
-                        <option value="new">
-                            New
-                        </option>
+        button.textContent =
+            "Updating...";
 
-                        <option value="contacted">
-                            Contacted
-                        </option>
-
-                        <option value="confirmed">
-                            Confirmed
-                        </option>
-
-                        <option value="completed">
-                            Completed
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
+    }
 
 
-            <div
-                class="appointments-list"
-                id="appointmentsList">
-            </div>
+    try {
 
-        </section>
-
-
-
-        <section
-            class="detail-view"
-            id="detailView">
-
-            <div class="detail-head">
-
-                <h2>
-                    Appointment Details
-                </h2>
+        await update(
+            ref(
+                database,
+                `appointments/${id}`
+            ),
+            {
+                status:
+                    statusElement.value
+            }
+        );
 
 
-                <button
-                    type="button"
-                    class="view-button"
-                    id="closeDetail">
-
-                    Back to Appointments
-
-                </button>
-
-            </div>
+        showToast(
+            "Status updated",
+            "Appointment status has been updated.",
+            "success"
+        );
 
 
-            <div
-                class="detail-body"
-                id="detailBody">
-            </div>
+    } catch (error) {
 
-        </section>
-
-    </div>
-
-</main>
-
-</div>
+        console.error(
+            "Status update error:",
+            error
+        );
 
 
+        showToast(
+            "Update failed",
+            "Unable to update the appointment status.",
+            "error"
+        );
 
-<!-- Hidden image-generation template -->
+    } finally {
 
-<div
-    class="share-card-render"
-    id="shareCardRender">
+        if (button) {
 
-    <div class="share-card-top">
+            button.disabled = false;
 
-        <div class="share-card-brand">
-            Yadav Web Technologies
-        </div>
+            button.textContent =
+                "Update Status";
 
-        <div class="share-card-title">
-            Appointment Details
-        </div>
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// DELETE APPOINTMENT
+// =====================================================
+
+async function deleteAppointment(id) {
+
+    const confirmed =
+        window.confirm(
+            "Delete this appointment permanently?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await remove(
+            ref(
+                database,
+                `appointments/${id}`
+            )
+        );
+
+
+        selectedAppointmentId =
+            null;
+
+
+        detailView.classList.remove(
+            "active"
+        );
+
+
+        showToast(
+            "Appointment deleted",
+            "The appointment has been removed.",
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Delete error:",
+            error
+        );
+
+
+        showToast(
+            "Delete failed",
+            "Unable to delete the appointment.",
+            "error"
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// SHARE APPOINTMENT IMAGE
+// =====================================================
+
+async function shareAppointmentImage(item) {
+
+    const button =
+        document.getElementById(
+            "shareAppointment"
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.dataset.originalText =
+            button.innerHTML;
+
+        button.textContent =
+            "Preparing...";
+
+    }
+
+
+    try {
+
+        buildShareCard(
+            item
+        );
+
+
+        const canvas =
+            await createCanvasFromCard();
+
+
+        const blob =
+            await canvasToBlob(
+                canvas
+            );
+
+
+        const file =
+            new File(
+                [blob],
+                "appointment-details.png",
+                {
+                    type: "image/png"
+                }
+            );
+
+
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files: [file]
+            })
+        ) {
+
+            await navigator.share({
+
+                title:
+                    "Appointment Details",
+
+                text:
+                    "Yadav Web Technologies - Appointment Details",
+
+                files: [file]
+
+            });
+
+
+            showToast(
+                "Share ready",
+                "Appointment image shared successfully.",
+                "success"
+            );
+
+        } else {
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const anchor =
+                document.createElement(
+                    "a"
+                );
+
+
+            anchor.href =
+                url;
+
+
+            anchor.download =
+                "appointment-details.png";
+
+
+            document.body.appendChild(
+                anchor
+            );
+
+
+            anchor.click();
+
+
+            anchor.remove();
+
+
+            URL.revokeObjectURL(
+                url
+            );
+
+
+            showToast(
+                "Image generated",
+                "The appointment image was downloaded because file sharing is not supported by this browser.",
+                "success"
+            );
+
+        }
+
+    } catch (error) {
+
+        if (
+            error?.name !==
+            "AbortError"
+        ) {
+
+            console.error(
+                "Share error:",
+                error
+            );
+
+
+            showToast(
+                "Share failed",
+                "Unable to generate the appointment image.",
+                "error"
+            );
+
+        }
+
+    } finally {
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerHTML =
+                button.dataset.originalText ||
+                "Share Appointment";
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// BUILD SHARE CARD
+// =====================================================
+
+function buildShareCard(item) {
+
+    shareCardSubtitle.textContent =
+        `${formatDate(item.date)} · ${item.time || "Time not specified"}`;
+
+
+    shareCardGrid.innerHTML = `
+
+        ${shareField(
+            "Client",
+            item.name ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Service",
+            item.service ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Email",
+            item.email ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Phone",
+            item.phone ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Appointment Date",
+            formatDate(item.date)
+        )}
+
+        ${shareField(
+            "Appointment Time",
+            item.time ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Status",
+            item.status ||
+            "new"
+        )}
+
+        ${shareField(
+            "Submitted",
+            formatCreatedAt(item.createdAt)
+        )}
+
+        ${shareField(
+            "Project Requirement",
+            item.message ||
+            "No message provided.",
+            true
+        )}
+
+    `;
+
+}
+
+
+function shareField(
+    label,
+    value,
+    full = false
+) {
+
+    return `
 
         <div
-            class="share-card-subtitle"
-            id="shareCardSubtitle">
+            class="
+                share-card-field
+                ${full ? "full" : ""}
+            ">
+
+            <span
+                class="share-card-label">
+
+                ${escapeHtml(label)}
+
+            </span>
+
+
+            <div
+                class="share-card-value">
+
+                ${escapeHtml(value)}
+
+            </div>
+
         </div>
 
-    </div>
+    `;
+
+}
 
 
-    <div
-        class="share-card-grid"
-        id="shareCardGrid">
-    </div>
+// =====================================================
+// HTML2CANVAS
+// =====================================================
+
+async function createCanvasFromCard() {
+
+    if (
+        typeof window.html2canvas ===
+        "undefined"
+    ) {
+
+        await loadHtml2Canvas();
+
+    }
 
 
-    <div class="share-card-footer">
+    return await window.html2canvas(
+        shareCardRender,
+        {
+            backgroundColor:
+                "#ffffff",
 
-        Yadav Web Technologies · Appointment Management
+            scale:
+                2,
 
-    </div>
+            useCORS:
+                true,
 
-</div>
+            logging:
+                false
+        }
+    );
+
+}
 
 
+function loadHtml2Canvas() {
 
-<script
-    type="module"
-    src="admin.js">
-</script>
+    return new Promise(
+        (resolve, reject) => {
+
+            const script =
+                document.createElement(
+                    "script"
+                );
 
 
-</body>
+            script.src =
+                "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
 
-</html>
+
+            script.onload =
+                () => resolve();
+
+
+            script.onerror =
+                () => reject(
+                    new Error(
+                        "Unable to load image generation library."
+                    )
+                );
+
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+function canvasToBlob(canvas) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            canvas.toBlob(
+                (blob) => {
+
+                    if (blob) {
+
+                        resolve(blob);
+
+                    } else {
+
+                        reject(
+                            new Error(
+                                "Unable to create image."
+                            )
+                        );
+
+                    }
+
+                },
+                "image/png",
+                1
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// SEARCH / FILTER
+// =====================================================
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        renderAppointments
+    );
+
+}
+
+
+if (statusFilter) {
+
+    statusFilter.addEventListener(
+        "change",
+        renderAppointments
+    );
+
+}
+
+
+// =====================================================
+// REFRESH
+// =====================================================
+
+if (refreshButton) {
+
+    refreshButton.addEventListener(
+        "click",
+        () => {
+
+            renderAppointments();
+
+            updateStatistics();
+
+            showToast(
+                "Dashboard refreshed",
+                "The latest Firebase data is displayed.",
+                "success"
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// CLOSE DETAIL
+// =====================================================
+
+if (closeDetail) {
+
+    closeDetail.addEventListener(
+        "click",
+        () => {
+
+            selectedAppointmentId =
+                null;
+
+
+            detailView.classList.remove(
+                "active"
+            );
+
+
+            document
+                .getElementById(
+                    "appointmentsPanel"
+                )
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// MOBILE SIDEBAR
+// =====================================================
+
+if (mobileMenuButton) {
+
+    mobileMenuButton.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.toggle(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+if (appointmentsNav) {
+
+    appointmentsNav.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+if (dashboardNav) {
+
+    dashboardNav.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// STATISTICS
+// =====================================================
+
+function updateStatistics() {
+
+    const values =
+        Object.values(
+            appointments
+        );
+
+
+    setCount(
+        "totalCount",
+        values.length
+    );
+
+
+    setCount(
+        "newCount",
+        values.filter(
+            item =>
+                item.status === "new"
+        ).length
+    );
+
+
+    setCount(
+        "contactedCount",
+        values.filter(
+            item =>
+                item.status === "contacted"
+        ).length
+    );
+
+
+    setCount(
+        "confirmedCount",
+        values.filter(
+            item =>
+                item.status === "confirmed"
+        ).length
+    );
+
+
+    setCount(
+        "completedCount",
+        values.filter(
+            item =>
+                item.status === "completed"
+        ).length
+    );
+
+}
+
+
+function setCount(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+// =====================================================
+// UI
+// =====================================================
+
+function showLogin() {
+
+    loginScreen.style.display =
+        "flex";
+
+    dashboard.style.display =
+        "none";
+
+}
+
+
+function showDashboard(user) {
+
+    loginScreen.style.display =
+        "none";
+
+    dashboard.style.display =
+        "grid";
+
+
+    if (adminUser) {
+
+        adminUser.textContent =
+            user.email || "";
+
+    }
+
+}
+
+
+function showLoginError(message) {
+
+    loginError.textContent =
+        message;
+
+}
+
+
+function clearLoginError() {
+
+    loginError.textContent =
+        "";
+
+}
+
+
+// =====================================================
+// TOAST
+// =====================================================
+
+let toastTimer = null;
+
+
+function showToast(
+    title,
+    message,
+    type = "success"
+) {
+
+    if (
+        !adminToast ||
+        !toastTitle ||
+        !toastMessage
+    ) {
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTitle.textContent =
+        title;
+
+
+    toastMessage.textContent =
+        message;
+
+
+    adminToast.className =
+        `admin-toast ${type}`;
+
+
+    requestAnimationFrame(
+        () => {
+
+            adminToast.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                adminToast.classList.remove(
+                    "show"
+                );
+
+            },
+            3500
+        );
+
+}
+
+
+// =====================================================
+// HELPERS
+// =====================================================
+
+function createEmptyState(
+    title,
+    message
+) {
+
+    return `
+
+        <div class="empty-state">
+
+            <div class="empty-state-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8">
+
+                    <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="16"
+                        rx="2">
+                    </rect>
+
+                    <path d="M8 9h8"></path>
+                    <path d="M8 13h5"></path>
+
+                </svg>
+
+            </div>
+
+
+            <h3>
+                ${escapeHtml(title)}
+            </h3>
+
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+function formatDate(
+    value
+) {
+
+    if (!value) {
+
+        return "Not specified";
+
+    }
+
+
+    const date =
+        new Date(
+            `${value}T00:00:00`
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return escapeHtml(
+            value
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+function formatCreatedAt(
+    value
+) {
+
+    if (!value) {
+
+        return "Not available";
+
+    }
+
+
+    const date =
+        new Date(
+            value
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "Not available";
+
+    }
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+```

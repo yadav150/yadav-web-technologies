@@ -11,11 +11,11 @@
 
     <meta
         name="description"
-        content="Book an appointment with Yadav Web Technologies to discuss your website, web application, ERP, software or custom digital solution.">
+        content="Book an appointment with Yadav Web Technologies to discuss your website, web application, ERP, business software or custom digital solution.">
 
     <meta
         name="keywords"
-        content="Yadav Web Technologies, appointment, web development, website development, software development, ERP">
+        content="Yadav Web Technologies, web development appointment, website development, web application, ERP">
 
     <meta
         name="author"
@@ -25,9 +25,216 @@
         Appointment | Yadav Web Technologies
     </title>
 
+
     <link
         rel="stylesheet"
         href="css/style.css">
+
+
+    <!-- =================================================
+         APPOINTMENT PAGE SPECIFIC STYLES
+    ================================================== -->
+
+    <style>
+
+        .appointment-section {
+            padding: 70px 0;
+        }
+
+
+        .appointment-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap: 35px;
+            align-items: start;
+        }
+
+
+        .appointment-info,
+        .appointment-form-box {
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+            background: var(--surface, #ffffff);
+        }
+
+
+        .appointment-info {
+            padding: 30px;
+        }
+
+
+        .appointment-info h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+
+        .appointment-info > p {
+            margin-bottom: 25px;
+        }
+
+
+        .appointment-points {
+            display: grid;
+            gap: 16px;
+        }
+
+
+        .appointment-point {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+        }
+
+
+        .appointment-point-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d9dee3;
+            border-radius: 5px;
+        }
+
+
+        .appointment-point-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+
+        .appointment-point strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+
+        .appointment-point span {
+            display: block;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+
+        .appointment-form-box {
+            padding: 30px;
+        }
+
+
+        .appointment-form-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+
+        .appointment-form-box > p {
+            margin-bottom: 25px;
+        }
+
+
+        .appointment-form {
+            display: grid;
+            gap: 18px;
+        }
+
+
+        .appointment-form .form-group {
+            margin: 0;
+        }
+
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        .appointment-form input,
+        .appointment-form select,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid #cfd5da;
+            border-radius: 5px;
+            background: transparent;
+            color: inherit;
+            outline: none;
+        }
+
+
+        .appointment-form input:focus,
+        .appointment-form select:focus,
+        .appointment-form textarea:focus {
+            border-color: currentColor;
+        }
+
+
+        .appointment-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+
+        .appointment-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+
+        .appointment-submit {
+            margin-top: 5px;
+        }
+
+
+        .appointment-message {
+            min-height: 20px;
+            margin: 0;
+            font-size: 14px;
+        }
+
+
+        .appointment-note {
+            margin-top: 18px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .appointment-layout {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 520px) {
+
+            .appointment-section {
+                padding: 50px 0;
+            }
+
+
+            .appointment-info,
+            .appointment-form-box {
+                padding: 22px;
+            }
+
+
+            .appointment-form-row {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -44,8 +251,6 @@
     <nav class="nav container">
 
 
-        <!-- BRAND -->
-
         <a
             href="index.html"
             class="brand">
@@ -60,8 +265,6 @@
 
         </a>
 
-
-        <!-- NAVIGATION -->
 
         <div
             class="nav-links"
@@ -97,8 +300,6 @@
 
         </div>
 
-
-        <!-- MOBILE ACTIONS -->
 
         <div class="mobile-actions">
 
@@ -176,13 +377,6 @@
 
 
 <!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
      PAGE HERO
 ===================================================== -->
 
@@ -194,20 +388,19 @@
 
             <span></span>
 
-            Project Discussion
+            Start a Project
 
         </div>
 
 
         <h1>
-            Let's Discuss Your Project
+            Book an Appointment
         </h1>
 
 
         <p>
-            Tell us about your requirement, and we will
-            review the details to understand the suitable
-            development approach for your project.
+            Tell us about your requirement and choose a
+            suitable date and time to discuss your project.
         </p>
 
     </div>
@@ -217,37 +410,220 @@
 
 
 <!-- =====================================================
-     APPOINTMENT SECTION
+     APPOINTMENT
 ===================================================== -->
 
-<section class="section">
+<main>
+
+<section class="appointment-section">
 
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="appointment-layout">
 
-            <div class="section-label">
-                Book an Appointment
+
+            <!-- =================================================
+                 INFORMATION
+            ================================================== -->
+
+            <div class="appointment-info">
+
+
+                <div class="section-label">
+                    Project Discussion
+                </div>
+
+
+                <h3>
+                    Let's understand your requirement.
+                </h3>
+
+
+                <p>
+                    Whether you need a business website,
+                    web application, ERP system, custom
+                    software or another digital solution,
+                    share the basic details with us.
+                </p>
+
+
+                <div class="appointment-points">
+
+
+                    <!-- POINT 1 -->
+
+                    <div class="appointment-point">
+
+                        <div class="appointment-point-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9">
+                                </circle>
+
+                                <path d="M12 7v5l3 2"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Requirement Discussion
+                            </strong>
+
+                            <span>
+                                Explain what you want to build
+                                and how you want it to work.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- POINT 2 -->
+
+                    <div class="appointment-point">
+
+                        <div class="appointment-point-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <path d="M4 5h16"></path>
+
+                                <path d="M4 12h16"></path>
+
+                                <path d="M4 19h10"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Project Scope
+                            </strong>
+
+                            <span>
+                                We discuss features, complexity,
+                                integrations and requirements.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- POINT 3 -->
+
+                    <div class="appointment-point">
+
+                        <div class="appointment-point-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <path d="M4 4h16v16H4z"></path>
+
+                                <path d="M8 8h8"></path>
+
+                                <path d="M8 12h5"></path>
+
+                                <path d="M8 16h7"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Requirement-Based Pricing
+                            </strong>
+
+                            <span>
+                                Final pricing is discussed after
+                                understanding the project scope.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- POINT 4 -->
+
+                    <div class="appointment-point">
+
+                        <div class="appointment-point-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <path d="M12 3v18"></path>
+
+                                <path d="M5 8h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h9"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                No Fixed Package Requirement
+                            </strong>
+
+                            <span>
+                                Services can be adapted according
+                                to the actual needs of your project.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
             </div>
 
-
-            <h2>
-                Tell us what you want to build.
-            </h2>
-
-
-            <p>
-                Provide the basic project details below.
-                More information helps us understand your
-                requirements before the discussion.
-            </p>
-
-        </div>
-
-
-
-        <div class="appointment-layout">
 
 
             <!-- =================================================
@@ -257,9 +633,26 @@
             <div class="appointment-form-box">
 
 
+                <div class="section-label">
+                    Appointment Request
+                </div>
+
+
+                <h3>
+                    Submit your details
+                </h3>
+
+
+                <p>
+                    We will review your request and use the
+                    provided contact information for project
+                    communication.
+                </p>
+
+
                 <form
-                    id="appointmentForm"
-                    novalidate>
+                    class="appointment-form"
+                    id="appointmentForm">
 
 
                     <!-- NAME -->
@@ -274,7 +667,6 @@
                             type="text"
                             id="name"
                             name="name"
-                            placeholder="Enter your full name"
                             autocomplete="name"
                             required>
 
@@ -282,41 +674,42 @@
 
 
 
-                    <!-- EMAIL -->
+                    <!-- EMAIL / PHONE -->
 
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email address"
-                            autocomplete="email"
-                            required>
-
-                    </div>
+                    <div class="appointment-form-row">
 
 
+                        <div class="form-group">
 
-                    <!-- PHONE -->
+                            <label for="email">
+                                Email Address
+                            </label>
 
-                    <div class="form-group">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                required>
 
-                        <label for="phone">
-                            Phone Number
-                        </label>
+                        </div>
 
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Enter your phone number"
-                            autocomplete="tel"
-                            required>
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                autocomplete="tel"
+                                required>
+
+                        </div>
+
 
                     </div>
 
@@ -345,10 +738,10 @@
                             </option>
 
                             <option value="Business Website">
-                                Business Website
+                                Business / Enterprise Website
                             </option>
 
-                            <option value="Personal Portfolio Website">
+                            <option value="Personal Portfolio">
                                 Personal Portfolio Website
                             </option>
 
@@ -356,7 +749,7 @@
                                 School Management ERP
                             </option>
 
-                            <option value="Organization Management Website / Software">
+                            <option value="Organization Management">
                                 Organization Management Website / Software
                             </option>
 
@@ -364,20 +757,16 @@
                                 Custom Web Tools
                             </option>
 
-                            <option value="Custom Authentication Setup / Website">
+                            <option value="Authentication Setup">
                                 Custom Authentication Setup / Website
                             </option>
 
-                            <option value="Bug / Error Fix">
-                                Bug / Error Fix
+                            <option value="Bug Fixing">
+                                HTML / CSS / JavaScript Bug Fixing
                             </option>
 
-                            <option value="Maintenance">
-                                Maintenance
-                            </option>
-
-                            <option value="Other Custom Requirement">
-                                Other Custom Requirement
+                            <option value="Other">
+                                Other / Custom Requirement
                             </option>
 
                         </select>
@@ -386,77 +775,57 @@
 
 
 
-                    <!-- DATE -->
+                    <!-- DATE / TIME -->
 
-                    <div class="form-group">
+                    <div class="appointment-form-row">
 
-                        <label for="date">
-                            Preferred Date
-                        </label>
 
-                        <input
-                            type="date"
-                            id="date"
-                            name="date"
-                            required>
+                        <div class="form-group">
+
+                            <label for="date">
+                                Preferred Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="time">
+                                Preferred Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="time"
+                                name="time"
+                                required>
+
+                        </div>
+
 
                     </div>
 
 
 
-                    <!-- TIME -->
-
-                    <div class="form-group">
-
-                        <label for="time">
-                            Preferred Time
-                        </label>
-
-                        <select
-                            id="time"
-                            name="time"
-                            required>
-
-                            <option
-                                value=""
-                                selected
-                                disabled>
-
-                                Select preferred time
-
-                            </option>
-
-                            <option value="Morning">
-                                Morning
-                            </option>
-
-                            <option value="Afternoon">
-                                Afternoon
-                            </option>
-
-                            <option value="Evening">
-                                Evening
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-
-                    <!-- PROJECT DETAILS -->
+                    <!-- MESSAGE -->
 
                     <div class="form-group">
 
                         <label for="message">
-                            Project Details
+                            Project Requirement
                         </label>
 
                         <textarea
                             id="message"
                             name="message"
-                            rows="7"
-                            placeholder="Describe your project, required features, number of pages, users, workflow or any other requirements."
+                            placeholder="Briefly describe what you want to build..."
                             required>
                         </textarea>
 
@@ -468,123 +837,9 @@
 
                     <button
                         type="submit"
-                        class="btn btn-primary"
-                        id="appointmentSubmit">
+                        class="btn btn-primary appointment-submit">
 
-                        Submit Appointment
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-
-                            <path d="M5 12h14"></path>
-
-                            <path d="m13 6 6 6-6 6"></path>
-
-                        </svg>
-
-                    </button>
-
-
-                    <!-- STATUS MESSAGE -->
-
-                    <div
-                        id="appointmentStatus"
-                        class="form-status"
-                        role="status"
-                        aria-live="polite">
-                    </div>
-
-
-                </form>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 INFORMATION
-            ================================================== -->
-
-            <aside class="appointment-info">
-
-
-                <div class="info-card">
-
-                    <div class="section-label">
-                        What Happens Next
-                    </div>
-
-
-                    <h3>
-                        After you submit
-                    </h3>
-
-
-                    <p>
-                        Your appointment request will be
-                        recorded for review. We will check
-                        your requirements and contact you
-                        using the details provided.
-                    </p>
-
-                </div>
-
-
-
-                <div class="info-card">
-
-                    <div class="section-label">
-                        Before You Submit
-                    </div>
-
-
-                    <h3>
-                        Provide clear requirements
-                    </h3>
-
-
-                    <p>
-                        Mention the type of website or
-                        software, important features,
-                        number of users, workflow and any
-                        specific functionality you need.
-                    </p>
-
-                </div>
-
-
-
-                <div class="info-card">
-
-                    <div class="section-label">
-                        Project Pricing
-                    </div>
-
-
-                    <h3>
-                        Requirement based pricing
-                    </h3>
-
-
-                    <p>
-                        Project pricing depends on scope,
-                        complexity, features and technical
-                        requirements. A final quotation is
-                        provided after understanding the
-                        project.
-                    </p>
-
-
-                    <a
-                        href="pricing.html"
-                        class="text-link">
-
-                        View Pricing
+                        Submit Appointment Request
 
                         <svg
                             viewBox="0 0 24 24"
@@ -598,74 +853,36 @@
 
                         </svg>
 
-                    </a>
-
-                </div>
+                    </button>
 
 
-            </aside>
-
-        </div>
-
-    </div>
-
-</section>
+                    <p
+                        class="appointment-message"
+                        id="appointmentMessage"
+                        aria-live="polite">
+                    </p>
 
 
+                </form>
 
-<!-- =====================================================
-     CTA
-===================================================== -->
 
-<section class="section cta-section">
+                <p class="appointment-note">
 
-    <div class="container">
+                    By submitting this form, you agree that
+                    the information provided may be used to
+                    contact you regarding your appointment
+                    and project enquiry.
 
-        <div class="cta-box">
+                </p>
 
-            <div class="section-label">
-                Need Help?
             </div>
 
 
-            <h2>
-                Prefer to contact us directly?
-            </h2>
-
-
-            <p>
-                You can also contact Yadav Web Technologies
-                directly if you would like to discuss your
-                requirement before submitting an appointment.
-            </p>
-
-
-            <a
-                href="contact.html"
-                class="btn btn-secondary">
-
-                Contact Us
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
-
-                    <path d="M5 12h14"></path>
-
-                    <path d="m13 6 6 6-6 6"></path>
-
-                </svg>
-
-            </a>
-
         </div>
 
     </div>
 
 </section>
-
 
 </main>
 
@@ -681,8 +898,6 @@
 
         <div class="footer-grid">
 
-
-            <!-- BRAND -->
 
             <div class="footer-brand">
 
@@ -710,9 +925,6 @@
             </div>
 
 
-
-            <!-- QUICK LINKS -->
-
             <div>
 
                 <h4>
@@ -738,6 +950,10 @@
                         Projects
                     </a>
 
+                    <a href="pricing.html">
+                        Pricing
+                    </a>
+
                     <a href="appointment.html">
                         Appointment
                     </a>
@@ -746,9 +962,6 @@
 
             </div>
 
-
-
-            <!-- INFORMATION -->
 
             <div>
 
@@ -761,10 +974,6 @@
 
                     <a href="contact.html">
                         Contact Us
-                    </a>
-
-                    <a href="pricing.html">
-                        Pricing
                     </a>
 
                     <a href="terms.html">
@@ -836,11 +1045,17 @@
      EXTERNAL JAVASCRIPT
 ===================================================== -->
 
-<script src="js/theme.js"></script>
+<script
+    src="js/theme.js">
+</script>
 
-<script src="js/menu.js"></script>
+<script
+    src="js/menu.js">
+</script>
 
-<script src="js/go-top.js"></script>
+<script
+    src="js/go-top.js">
+</script>
 
 <script
     type="module"

@@ -9,167 +9,391 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Web Development & Custom Software Solutions | Yadav Web Technologies
-    </title>
-
     <meta
         name="description"
-        content="Yadav Web Technologies builds responsive business websites, custom web applications, management software, school ERP systems, authentication solutions and browser-based digital tools for practical project requirements.">
+        content="Yadav Web Technologies provides professional websites, web applications, management systems, ERP solutions, custom web tools and digital solutions based on real project requirements.">
 
     <meta
         name="keywords"
-        content="responsive business website development, custom web application development, custom software developer Assam, small business website development, school ERP development, membership management software, Firebase authentication development, custom web tools, enterprise website development, professional portfolio website development, management software development, workflow management software, website developer Assam">
+        content="Yadav Web Technologies, web development, website development, web applications, school ERP, management software, custom web tools">
 
     <meta
         name="author"
         content="Yadav Web Technologies">
 
     <meta
-        name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-    <meta
         name="theme-color"
-        content="#ffffff">
+        content="#1f5ed8">
 
-    <link
-        rel="canonical"
-        href="https://yadav150.github.io/yadav-web-technologies/">
-
-
-    <!-- =================================================
-         OPEN GRAPH
-    ================================================== -->
-
-    <meta
-        property="og:type"
-        content="website">
-
-    <meta
-        property="og:title"
-        content="Yadav Web Technologies | Web Development & Custom Software">
-
-    <meta
-        property="og:description"
-        content="Responsive websites, custom web applications, management software, school ERP systems, authentication solutions and practical digital tools.">
-
-    <meta
-        property="og:url"
-        content="https://yadav150.github.io/yadav-web-technologies/">
-
-    <meta
-        property="og:site_name"
-        content="Yadav Web Technologies">
-
-    <meta
-        property="og:image"
-        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
-
-    <meta
-        property="og:image:alt"
-        content="Yadav Web Technologies authentication project">
-
-
-    <!-- =================================================
-         TWITTER / X
-    ================================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image">
-
-    <meta
-        name="twitter:title"
-        content="Yadav Web Technologies | Web Development & Custom Software">
-
-    <meta
-        name="twitter:description"
-        content="Websites, web applications, ERP systems, management software, authentication systems and custom digital solutions.">
-
-    <meta
-        name="twitter:image"
-        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
-
-
-    <!-- =================================================
-         GLOBAL CSS
-    ================================================== -->
+    <title>
+        Yadav Web Technologies | Websites, Web Applications & Digital Solutions
+    </title>
 
     <link
         rel="stylesheet"
         href="css/style.css">
 
+    <style>
 
-    <!-- =================================================
-         ORGANIZATION STRUCTURED DATA
-    ================================================== -->
+        /* =================================================
+           HOME PAGE
+        ================================================= */
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://yadav150.github.io/yadav-web-technologies/#organization",
-        "name": "Yadav Web Technologies",
-        "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "logo": "https://yadav150.github.io/yadav-web-technologies/projects/yap.webp",
-        "description": "Yadav Web Technologies develops responsive websites, custom web applications, management software, school ERP systems, authentication solutions and practical digital tools.",
-        "knowsAbout": [
-            "Responsive website development",
-            "Business website development",
-            "Custom web application development",
-            "Custom software development",
-            "School management ERP development",
-            "Membership management software",
-            "Firebase authentication development",
-            "Web-based management systems",
-            "Workflow management software",
-            "Custom browser-based tools",
-            "Enterprise website development",
-            "Professional portfolio website development"
-        ]
-    }
-    </script>
-
-
-    <!-- =================================================
-         WEBSITE STRUCTURED DATA
-    ================================================== -->
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://yadav150.github.io/yadav-web-technologies/#website",
-        "name": "Yadav Web Technologies",
-        "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "publisher": {
-            "@id": "https://yadav150.github.io/yadav-web-technologies/#organization"
+        .hero-section {
+            padding: 95px 0 85px;
+            border-bottom: 1px solid var(--border);
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--surface),
+                    var(--section-soft)
+                );
         }
-    }
-    </script>
 
-
-    <!-- =================================================
-         WEBPAGE STRUCTURED DATA
-    ================================================== -->
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": "https://yadav150.github.io/yadav-web-technologies/#webpage",
-        "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "name": "Web Development & Custom Software Solutions | Yadav Web Technologies",
-        "description": "Responsive business websites, custom web applications, management software, school ERP systems, authentication solutions and browser-based digital tools.",
-        "isPartOf": {
-            "@id": "https://yadav150.github.io/yadav-web-technologies/#website"
-        },
-        "about": {
-            "@id": "https://yadav150.github.io/yadav-web-technologies/#organization"
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+            gap: 55px;
+            align-items: center;
         }
-    }
-    </script>
+
+        .hero-content h1 {
+            margin: 0 0 20px;
+            max-width: 780px;
+            font-size: clamp(38px, 5.4vw, 62px);
+            line-height: 1.05;
+            letter-spacing: -1.8px;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content > p {
+            max-width: 700px;
+            margin: 0 0 28px;
+            font-size: 17px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 32px;
+            max-width: 720px;
+        }
+
+        .hero-meta-item {
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background: var(--surface);
+        }
+
+        .hero-meta-item strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 16px;
+        }
+
+        .hero-meta-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .hero-visual {
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-visual-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-visual-title {
+            font-weight: 700;
+        }
+
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .hero-status span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .hero-feature-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .hero-feature {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+        }
+
+        .hero-feature-icon {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--primary);
+        }
+
+        .hero-feature-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-feature strong {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 14px;
+        }
+
+        .hero-feature span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        /* =================================================
+           SERVICES PREVIEW
+        ================================================= */
+
+        .services-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .service-preview-card {
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-preview-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--primary);
+        }
+
+        .service-preview-icon svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .service-preview-card h3 {
+            margin: 0 0 9px;
+        }
+
+        .service-preview-card p {
+            margin: 0 0 18px;
+        }
+
+        /* =================================================
+           PROCESS
+        ================================================= */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .process-number {
+            margin-bottom: 17px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+        }
+
+        .process-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .process-card p {
+            margin: 0;
+        }
+
+        /* =================================================
+           FEATURED PROJECTS
+        ================================================= */
+
+        .featured-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .featured-project-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .featured-project-image {
+            width: 100%;
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .featured-project-image img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .featured-project-content {
+            padding: 22px;
+        }
+
+        .featured-project-content h3 {
+            margin: 0 0 9px;
+        }
+
+        .featured-project-content p {
+            margin: 0 0 16px;
+        }
+
+        /* =================================================
+           CTA
+        ================================================= */
+
+        .home-cta {
+            padding-bottom: 90px;
+        }
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 1050px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .hero-visual {
+                max-width: 760px;
+            }
+
+            .services-preview-grid,
+            .featured-projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 760px) {
+
+            .hero-section {
+                padding: 65px 0 55px;
+            }
+
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .services-preview-grid,
+            .featured-projects-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                padding: 21px;
+            }
+
+            .featured-project-image {
+                height: 190px;
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .hero-content h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -186,12 +410,9 @@
     <nav class="nav container">
 
 
-        <!-- BRAND -->
-
         <a
             href="index.html"
-            class="brand"
-            aria-label="Yadav Web Technologies Home">
+            class="brand">
 
             <span class="brand-mark">
                 Y
@@ -203,8 +424,6 @@
 
         </a>
 
-
-        <!-- NAVIGATION -->
 
         <div
             class="nav-links"
@@ -218,31 +437,25 @@
 
             </a>
 
-
             <a href="services.html">
                 Services
             </a>
-
 
             <a href="projects.html">
                 Projects
             </a>
 
-
             <a href="pricing.html">
                 Pricing
             </a>
-
 
             <a href="about.html">
                 About
             </a>
 
-
             <a href="contact.html">
                 Contact
             </a>
-
 
             <a
                 href="appointment.html"
@@ -255,12 +468,8 @@
         </div>
 
 
-        <!-- MOBILE ACTIONS -->
-
         <div class="mobile-actions">
 
-
-            <!-- THEME -->
 
             <button
                 type="button"
@@ -285,13 +494,10 @@
 
                     <path d="M12 2v2"></path>
                     <path d="M12 20v2"></path>
-
                     <path d="m4.93 4.93 1.41 1.41"></path>
                     <path d="m17.66 17.66 1.41 1.41"></path>
-
                     <path d="M2 12h2"></path>
                     <path d="M20 12h2"></path>
-
                     <path d="m6.34 17.66-1.41 1.41"></path>
                     <path d="m19.07 4.93-1.41 1.41"></path>
 
@@ -299,8 +505,6 @@
 
             </button>
 
-
-            <!-- MENU -->
 
             <button
                 type="button"
@@ -333,351 +537,425 @@
 
 
 <!-- =====================================================
-     MAIN
+     HERO
 ===================================================== -->
 
 <main>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="page-hero">
+<section class="hero-section">
 
     <div class="container">
 
+        <div class="hero-grid">
 
-        <div class="eyebrow">
 
-            <span></span>
+            <div class="hero-content">
 
-            Yadav Web Technologies
 
-        </div>
+                <div class="eyebrow">
 
+                    <span></span>
 
-        <h1>
-            Web Development & Custom Software Solutions
-        </h1>
-
-
-        <p>
-            Responsive business websites, custom web applications,
-            management software, school ERP systems, authentication
-            solutions and practical browser-based digital tools
-            developed around real project requirements.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     INTRODUCTION
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Digital Development
-            </div>
-
-
-            <h2>
-                Websites and software designed for practical use.
-            </h2>
-
-
-            <p>
-                Yadav Web Technologies develops digital solutions
-                for businesses, organizations, professionals and
-                projects that need more than a basic static webpage.
-                Our work includes responsive business websites,
-                professional portfolios, custom web applications,
-                authentication systems, management platforms,
-                school ERP solutions and specialized browser-based
-                utilities.
-            </p>
-
-        </div>
-
-
-        <div class="home-service-grid">
-
-
-            <article class="card">
-
-                <h3>
-                    Responsive Business Website Development
-                </h3>
-
-
-                <p>
-                    Professional business and organization websites
-                    with responsive layouts, structured content,
-                    service presentation and project-specific pages.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Custom Web Application Development
-                </h3>
-
-
-                <p>
-                    Browser-based applications for authentication,
-                    user accounts, dashboards, data handling and
-                    requirement-specific workflows.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Custom Management Software
-                </h3>
-
-
-                <p>
-                    Management solutions for memberships, records,
-                    applications, approvals, organizational workflows
-                    and administrative operations.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SPECIALIZED SOLUTIONS
-===================================================== -->
-
-<section class="section section-soft">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Specialized Solutions
-            </div>
-
-
-            <h2>
-                Digital systems for specific operational needs.
-            </h2>
-
-
-            <p>
-                Different requirements call for different types of
-                software. Our development work covers several
-                specialized solution areas.
-            </p>
-
-        </div>
-
-
-        <div class="home-service-grid">
-
-
-            <article class="card">
-
-                <h3>
-                    School Management ERP Development
-                </h3>
-
-
-                <p>
-                    School administration software covering student
-                    and teacher records, admissions, fees, salaries,
-                    receipts, attendance and related workflows.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Membership Management Software
-                </h3>
-
-
-                <p>
-                    Organization-focused membership systems for
-                    applications, member records and approval
-                    workflows.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Firebase Authentication Solutions
-                </h3>
-
-
-                <p>
-                    Web authentication solutions for registration,
-                    login, account access and Firebase-powered
-                    application workflows.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Custom Browser-Based Web Tools
-                </h3>
-
-
-                <p>
-                    Focused online tools for calculations,
-                    conversions, processing tasks and other
-                    requirement-specific utilities.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Enterprise Website Development
-                </h3>
-
-
-                <p>
-                    Structured websites for organizations,
-                    enterprises and service providers requiring
-                    a professional and scalable online presence.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <h3>
-                    Professional Portfolio Website Development
-                </h3>
-
-
-                <p>
-                    Personal portfolio websites for showcasing
-                    professional profiles, skills, projects,
-                    experience and contact information.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SELECTED PROJECTS
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="section-label">
-                Selected Projects
-            </div>
-
-
-            <h2>
-                See examples of our development work.
-            </h2>
-
-
-            <p>
-                Explore authentication systems, web tools,
-                organization software, school ERP projects,
-                business websites and portfolio development.
-            </p>
-
-        </div>
-
-
-        <div class="home-project-grid">
-
-
-            <!-- PROJECT 1 -->
-
-            <article class="card home-project-card">
-
-
-                <div class="home-project-image">
-
-                    <img
-                        src="projects/yap.webp"
-                        alt="Yadav Authentication Project web application"
-                        loading="lazy">
+                    Web Development & Digital Solutions
 
                 </div>
 
 
-                <h3>
-                    Yadav Authentication Project
-                </h3>
+                <h1>
+
+                    Building practical
+                    <span>
+                        websites, applications
+                    </span>
+                    and digital systems.
+
+                </h1>
 
 
                 <p>
-                    A web authentication project focused on
-                    registration, login and account management.
+                    Yadav Web Technologies develops
+                    professional websites, custom web
+                    applications, management systems,
+                    ERP solutions and browser-based tools
+                    around real project requirements.
                 </p>
 
 
-                <a
-                    href="https://yadav150.github.io/authp/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
+                <div class="hero-actions">
 
-                    View Project
+                    <a
+                        href="appointment.html"
+                        class="btn btn-primary">
+
+                        Start a Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+
+                    <a
+                        href="projects.html"
+                        class="btn btn-secondary">
+
+                        View Projects
+
+                    </a>
+
+                </div>
+
+
+                <div class="hero-meta">
+
+                    <div class="hero-meta-item">
+
+                        <strong>
+                            Websites
+                        </strong>
+
+                        <span>
+                            Business & enterprise solutions
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-meta-item">
+
+                        <strong>
+                            Web Applications
+                        </strong>
+
+                        <span>
+                            Custom workflows & systems
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-meta-item">
+
+                        <strong>
+                            Digital Tools
+                        </strong>
+
+                        <span>
+                            Browser-based utility solutions
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="hero-visual">
+
+
+                <div class="hero-visual-top">
+
+                    <div class="hero-visual-title">
+                        What We Build
+                    </div>
+
+
+                    <div class="hero-status">
+
+                        <span></span>
+
+                        Requirement based
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature-list">
+
+
+                    <!-- FEATURE 1 -->
+
+                    <div class="hero-feature">
+
+                        <div class="hero-feature-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8">
+
+                                <rect
+                                    x="3"
+                                    y="4"
+                                    width="18"
+                                    height="14"
+                                    rx="2">
+                                </rect>
+
+                                <path d="M8 21h8"></path>
+                                <path d="M12 18v3"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Professional Websites
+                            </strong>
+
+                            <span>
+                                Websites for businesses,
+                                organizations and professional
+                                requirements.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FEATURE 2 -->
+
+                    <div class="hero-feature">
+
+                        <div class="hero-feature-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8">
+
+                                <rect
+                                    x="4"
+                                    y="3"
+                                    width="16"
+                                    height="18"
+                                    rx="2">
+                                </rect>
+
+                                <path d="M8 8h8"></path>
+                                <path d="M8 12h8"></path>
+                                <path d="M8 16h5"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Management Systems
+                            </strong>
+
+                            <span>
+                                Membership, administrative and
+                                workflow-based applications.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FEATURE 3 -->
+
+                    <div class="hero-feature">
+
+                        <div class="hero-feature-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8">
+
+                                <path d="M4 5h16v14H4z"></path>
+                                <path d="M8 9h8"></path>
+                                <path d="M8 13h5"></path>
+                                <path d="M8 17h7"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                ERP Solutions
+                            </strong>
+
+                            <span>
+                                School and operational management
+                                systems based on required modules.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FEATURE 4 -->
+
+                    <div class="hero-feature">
+
+                        <div class="hero-feature-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8">
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9">
+                                </circle>
+
+                                <path d="M8 12h8"></path>
+                                <path d="M12 8v8"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Custom Solutions
+                            </strong>
+
+                            <span>
+                                Web tools, authentication systems
+                                and other purpose-built digital
+                                solutions.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Services
+            </div>
+
+
+            <h2>
+                Solutions built around your actual requirement.
+            </h2>
+
+
+            <p>
+                From professional websites to custom management
+                software, each solution is planned around its
+                intended use, users and required functionality.
+            </p>
+
+        </div>
+
+
+        <div class="services-preview-grid">
+
+
+            <!-- WEBSITE -->
+
+            <article class="service-preview-card">
+
+                <div class="service-preview-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-width="1.8">
+
+                        <rect
+                            x="3"
+                            y="4"
+                            width="18"
+                            height="15"
+                            rx="2">
+                        </rect>
+
+                        <path d="M3 9h18"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3>
+                    Website Development
+                </h3>
+
+
+                <p>
+                    Business, enterprise, organization,
+                    personal and portfolio websites with
+                    responsive implementation.
+                </p>
+
+
+                <a
+                    href="services.html"
+                    class="text-link">
+
+                    Explore Service
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
@@ -690,47 +968,58 @@
 
 
 
-            <!-- PROJECT 2 -->
+            <!-- WEB APPLICATION -->
 
-            <article class="card home-project-card">
+            <article class="service-preview-card">
 
-
-                <div class="home-project-image">
-
-                    <img
-                        src="projects/ywt.webp"
-                        alt="Yadav Web Tools browser utility project"
-                        loading="lazy">
-
-                </div>
-
-
-                <h3>
-                    Yadav Web Tools
-                </h3>
-
-
-                <p>
-                    Browser-based utility tools designed to
-                    perform useful everyday digital tasks.
-                </p>
-
-
-                <a
-                    href="https://yadav150.github.io/dav/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    View Project
+                <div class="service-preview-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-width="1.8">
+
+                        <rect
+                            x="4"
+                            y="3"
+                            width="16"
+                            height="18"
+                            rx="2">
+                        </rect>
+
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h5"></path>
+                        <path d="M8 16h7"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3>
+                    Web Applications
+                </h3>
+
+
+                <p>
+                    Custom applications with authentication,
+                    database integration, dashboards,
+                    user roles and workflow functionality.
+                </p>
+
+
+                <a
+                    href="services.html"
+                    class="text-link">
+
+                    Explore Service
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
@@ -743,47 +1032,52 @@
 
 
 
-            <!-- PROJECT 3 -->
+            <!-- ERP -->
 
-            <article class="card home-project-card">
+            <article class="service-preview-card">
 
-
-                <div class="home-project-image">
-
-                    <img
-                        src="projects/org.webp"
-                        alt="Organization Membership Management Software"
-                        loading="lazy">
-
-                </div>
-
-
-                <h3>
-                    Organization Membership Management
-                </h3>
-
-
-                <p>
-                    A practical organization management project
-                    supporting membership and approval workflows.
-                </p>
-
-
-                <a
-                    href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
-                    class="text-link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    View Project
+                <div class="service-preview-icon">
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-width="1.8">
+
+                        <path d="M4 5h16v14H4z"></path>
+
+                        <path d="M8 9h8"></path>
+                        <path d="M8 13h8"></path>
+                        <path d="M8 17h5"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3>
+                    ERP & Management Systems
+                </h3>
+
+
+                <p>
+                    School ERP, membership management and
+                    organization software for structured
+                    administrative operations.
+                </p>
+
+
+                <a
+                    href="services.html"
+                    class="text-link">
+
+                    Explore Service
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
@@ -799,10 +1093,336 @@
 
 
         <div
-            style="
-                margin-top: 30px;
-                text-align: center;
-            ">
+            style="margin-top:25px;">
+
+            <a
+                href="services.html"
+                class="btn btn-secondary">
+
+                View All Services
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROCESS
+===================================================== -->
+
+<section class="section section-soft">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Our Approach
+            </div>
+
+
+            <h2>
+                A straightforward development process.
+            </h2>
+
+
+            <p>
+                We keep the process focused on understanding
+                the requirement first and building the right
+                solution around it.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+            <article class="process-card">
+
+                <div class="process-number">
+                    STEP 01
+                </div>
+
+                <h3>
+                    Requirement
+                </h3>
+
+                <p>
+                    Understand the project, users,
+                    pages, modules and required features.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <div class="process-number">
+                    STEP 02
+                </div>
+
+                <h3>
+                    Scope
+                </h3>
+
+                <p>
+                    Define the practical scope, workflow,
+                    functionality and project direction.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <div class="process-number">
+                    STEP 03
+                </div>
+
+                <h3>
+                    Development
+                </h3>
+
+                <p>
+                    Build the agreed website, application
+                    or system according to the scope.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <div class="process-number">
+                    STEP 04
+                </div>
+
+                <h3>
+                    Delivery
+                </h3>
+
+                <p>
+                    Review, handover and provide the
+                    relevant guidance based on the project.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURED PROJECTS
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Selected Projects
+            </div>
+
+
+            <h2>
+                A look at some of our work.
+            </h2>
+
+
+            <p>
+                Explore practical websites, tools and
+                software systems developed for different
+                requirements.
+            </p>
+
+        </div>
+
+
+        <div class="featured-projects-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="featured-project-card">
+
+                <a
+                    href="projects.html"
+                    class="featured-project-image">
+
+                    <img
+                        src="https://yadav150.github.io/yadav-web-technologies/images/project-1.jpg"
+                        alt="Yadav Authentication Project"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="featured-project-content">
+
+                    <h3>
+                        Yadav Authentication Project
+                    </h3>
+
+
+                    <p>
+                        Authentication, registration and account
+                        management solution.
+                    </p>
+
+
+                    <a
+                        href="projects.html"
+                        class="text-link">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="featured-project-card">
+
+                <a
+                    href="projects.html"
+                    class="featured-project-image">
+
+                    <img
+                        src="https://yadav150.github.io/yadav-web-technologies/images/org.webp"
+                        alt="Organization Membership Management Software"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="featured-project-content">
+
+                    <h3>
+                        Organization Membership Management Software
+                    </h3>
+
+
+                    <p>
+                        Membership applications, records and
+                        approval workflow management.
+                    </p>
+
+
+                    <a
+                        href="projects.html"
+                        class="text-link">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="featured-project-card">
+
+                <a
+                    href="projects.html"
+                    class="featured-project-image">
+
+                    <img
+                        src="https://yadav150.github.io/yadav-web-technologies/images/project-4.jpg"
+                        alt="School Management ERP"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="featured-project-content">
+
+                    <h3>
+                        School Management ERP
+                    </h3>
+
+
+                    <p>
+                        Student, teacher, admission, fees,
+                        salary and attendance management.
+                    </p>
+
+
+                    <a
+                        href="projects.html"
+                        class="text-link">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <div
+            style="margin-top:25px;">
 
             <a
                 href="projects.html"
@@ -821,7 +1441,7 @@
 
 
 <!-- =====================================================
-     DEVELOPMENT APPROACH
+     PRICING PREVIEW
 ===================================================== -->
 
 <section class="section section-soft">
@@ -832,69 +1452,148 @@
         <div class="section-heading">
 
             <div class="section-label">
-                Our Approach
+                Pricing
             </div>
 
 
             <h2>
-                Development based on the actual requirement.
+                Clear starting categories for different needs.
             </h2>
 
 
             <p>
-                We adapt the project structure, functionality
-                and development approach according to the
-                intended users and purpose of the solution.
+                Pricing depends on project scope, complexity,
+                features and requirements. Visit the pricing
+                page for current category-level prices.
             </p>
 
         </div>
 
 
-        <div class="home-service-grid">
+        <div class="values-grid">
 
 
-            <article class="card">
+            <article class="value-card">
+
+                <div class="value-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <path d="M12 3v18"></path>
+
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+
+                    </svg>
+
+                </div>
+
 
                 <h3>
-                    Requirement-Focused Planning
+                    Websites
                 </h3>
 
+
                 <p>
-                    Pages, features and workflows are planned
-                    around the actual goals of the project.
+                    Starting categories for business,
+                    professional and portfolio websites.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="value-card">
+
+                <div class="value-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <rect
+                            x="4"
+                            y="3"
+                            width="16"
+                            height="18"
+                            rx="2">
+                        </rect>
+
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h8"></path>
+                        <path d="M8 16h5"></path>
+
+                    </svg>
+
+                </div>
+
 
                 <h3>
-                    Responsive User Experience
+                    Applications
                 </h3>
 
+
                 <p>
-                    Interfaces are designed to remain useful
-                    across mobile, tablet and desktop screens.
+                    Requirement-based pricing for
+                    custom applications and management systems.
                 </p>
 
             </article>
 
 
-            <article class="card">
+            <article class="value-card">
+
+                <div class="value-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9">
+                        </circle>
+
+                        <path d="M8 12h8"></path>
+
+                    </svg>
+
+                </div>
+
 
                 <h3>
-                    Practical Functionality
+                    Custom Solutions
                 </h3>
 
+
                 <p>
-                    The focus remains on useful features,
-                    understandable workflows and practical
-                    day-to-day operation.
+                    Purpose-built tools, authentication setups
+                    and other custom digital requirements.
                 </p>
 
             </article>
 
+
+        </div>
+
+
+        <div
+            style="margin-top:25px;">
+
+            <a
+                href="pricing.html"
+                class="btn btn-secondary">
+
+                View Pricing
+
+            </a>
 
         </div>
 
@@ -905,31 +1604,30 @@
 
 
 <!-- =====================================================
-     CTA
+     FINAL CTA
 ===================================================== -->
 
-<section class="section cta-section">
+<section class="section home-cta">
 
     <div class="container">
-
 
         <div class="cta-box">
 
 
             <div class="section-label">
-                Start a Project
+                Start Your Project
             </div>
 
 
             <h2>
-                Looking for a custom web solution?
+                Have a project in mind?
             </h2>
 
 
             <p>
-                Tell us whether you need a business website,
-                web application, management system, school ERP,
-                authentication solution or custom browser tool.
+                Share your requirements and discuss the
+                suitable website, application or digital
+                solution for your needs.
             </p>
 
 
@@ -954,15 +1652,6 @@
 
             </a>
 
-
-            <a
-                href="services.html"
-                class="btn btn-secondary">
-
-                Explore Services
-
-            </a>
-
         </div>
 
     </div>
@@ -982,11 +1671,8 @@
 
     <div class="container">
 
-
         <div class="footer-grid">
 
-
-            <!-- BRAND -->
 
             <div class="footer-brand">
 
@@ -1014,8 +1700,6 @@
             </div>
 
 
-
-            <!-- QUICK LINKS -->
 
             <div>
 
@@ -1059,8 +1743,6 @@
             </div>
 
 
-
-            <!-- INFORMATION -->
 
             <div>
 
@@ -1145,7 +1827,7 @@
 
 
 <!-- =====================================================
-     JAVASCRIPT
+     EXTERNAL JAVASCRIPT
 ===================================================== -->
 
 <script src="js/menu.js"></script>

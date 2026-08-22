@@ -1,273 +1,1065 @@
+PRICING
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pricing – Yadav Web Technologies</title>
-    <meta name="description" content="Affordable pricing plans for web development, software solutions, and digital management systems." />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/pricing.css" />
-    <link rel="icon" href="assets/favicon.ico" />
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Pricing for websites, web applications, ERP systems, organization management software, web tools and custom digital solutions by Yadav Web Technologies.">
+
+    <meta
+        name="keywords"
+        content="Yadav Web Technologies pricing, website pricing, ERP pricing, web development price, custom software pricing">
+
+    <meta
+        name="author"
+        content="Yadav Web Technologies">
+
+    <title>
+        Pricing | Yadav Web Technologies
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+        <style>
+
+/* =====================================================
+   PRICING PAGE
+===================================================== */
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(21, 94, 239, 0.35);
+}
+
+.pricing-card-header {
+    margin-bottom: 14px;
+}
+
+.pricing-price {
+    margin: 2px 0 15px;
+    color: var(--primary);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.pricing-card > p {
+    flex: 1;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+.pricing-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.pricing-notice {
+    margin-top: 35px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.pricing-notice h3 {
+    margin-bottom: 10px;
+}
+
+.pricing-notice p {
+    margin-bottom: 12px;
+}
+
+.pricing-notice .btn {
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .pricing-card {
+        padding: 22px;
+    }
+
+    .pricing-price {
+        margin-top: 0;
+    }
+
+    .pricing-notice {
+        margin-top: 25px;
+        padding: 22px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="site-header" role="banner">
-        <div class="header-inner">
-            <a href="index.html" class="logo" style="font-size:1.6rem; gap:12px;">
-                <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M16 18L8 30M16 18L24 30M16 18V6" stroke="var(--color-secondary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Yadav<span class="highlight">Web</span></span>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="nav container">
+
+
+        <a
+            href="index.html"
+            class="brand">
+
+            <span class="brand-mark">
+                Y
+            </span>
+
+            <span>
+                Yadav Web Technologies
+            </span>
+
+        </a>
+
+
+        <div
+            class="nav-links"
+            id="navLinks">
+
+            <a href="index.html">
+                Home
             </a>
 
-            <div style="display:flex;align-items:center;gap:10px;">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                </button>
-                <button class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="projects.html">
+                Projects
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a
+                href="appointment.html"
+                class="nav-cta">
+
+                Appointment
+
+            </a>
+
         </div>
 
-        <nav id="primary-nav" class="primary-nav" role="navigation" aria-label="Primary navigation">
-            <ul class="nav-list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="pricing.html" aria-current="page">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- ===== MAIN ===== -->
-    <main id="main-content">
+        <div class="mobile-actions">
 
-        <!-- ===== HERO ===== -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title">Simple, <span class="highlight">Affordable</span> Pricing</h1>
-                        <p class="hero-tagline">Choose the plan that fits your needs</p>
-                        <p class="hero-description">
-                            We believe modern technology should be powerful, affordable, accessible, and easy to use. 
-                            Our pricing is designed to fit every budget.
-                        </p>
-                    </div>
-                    <div class="hero-image-wrapper">
-                        <img src="assets/hero/logo.jpg" alt="Yadav Web Technologies Pricing" class="hero-image" />
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ===== PRICING GRID ===== -->
-        <section class="section">
-            <div class="section-title-bar">
-                <h2>Choose Your Plan</h2>
-            </div>
-            <div class="section-body accent-border">
-                <div class="content-box">
-                    <div class="pricing-grid">
-                        <!-- Basic -->
-                        <div class="pricing-card reveal">
-                            <div class="plan-name">Basic</div>
-                            <div class="price">₹999 <span>/ project</span></div>
-                            <div class="plan-desc">Perfect for simple websites and basic digital needs.</div>
-                            <ul class="features">
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Static Website (Up to 5 pages)
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Responsive Design
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Contact Form
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Basic SEO Setup
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    1 Month Support
-                                </li>
-                            </ul>
-                            <a href="contact.html" class="btn">Get Started</a>
-                        </div>
+            <!-- THEME -->
 
-                        <!-- Professional (Featured) -->
-                        <div class="pricing-card featured reveal">
-                            <span class="badge">Popular</span>
-                            <div class="plan-name">Professional</div>
-                            <div class="price">₹2,499 <span>/ project</span></div>
-                            <div class="plan-desc">Ideal for businesses and organizations.</div>
-                            <ul class="features">
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Dynamic Website (Up to 15 pages)
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Responsive &amp; Modern Design
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Contact Form with Backend
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Membership / Registration System
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Basic Authentication
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    3 Months Support
-                                </li>
-                            </ul>
-                            <a href="contact.html" class="btn">Get Started</a>
-                        </div>
+            <button
+                type="button"
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark mode">
 
-                        <!-- Enterprise -->
-                        <div class="pricing-card reveal">
-                            <div class="plan-name">Enterprise</div>
-                            <div class="price">Custom <span>/ project</span></div>
-                            <div class="plan-desc">Full-scale solutions for large organizations.</div>
-                            <ul class="features">
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Custom Web Application
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    School ERP / Management System
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Role-Based Authentication
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    QR-Based Certificate &amp; Verification
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    Backend Integration
-                                </li>
-                                <li>
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    6 Months Support
-                                </li>
-                            </ul>
-                            <a href="contact.html" class="btn">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <svg
+                    id="themeIcon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
-        <!-- ===== FAQ ===== -->
-        <section class="section">
-            <div class="section-title-bar">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            <div class="section-body">
-                <div class="content-box">
-                    <div class="faq-list">
-                        <div class="faq-item reveal">
-                            <div class="question">What is included in the Basic plan?</div>
-                            <div class="answer">A static website with up to 5 pages, responsive design, contact form, basic SEO setup, and 1 month of support.</div>
-                        </div>
-                        <div class="faq-item reveal">
-                            <div class="question">Can I upgrade my plan later?</div>
-                            <div class="answer">Yes, you can upgrade to Professional or Enterprise at any time. We'll adjust your project scope accordingly.</div>
-                        </div>
-                        <div class="faq-item reveal">
-                            <div class="question">Do you offer custom solutions?</div>
-                            <div class="answer">Absolutely! The Enterprise plan is fully custom. Contact us with your requirements and we'll provide a tailored quote.</div>
-                        </div>
-                        <div class="faq-item reveal">
-                            <div class="question">How long does a project take?</div>
-                            <div class="answer">Timelines vary based on complexity. Basic websites typically take 7-14 days, while Enterprise solutions may take 4-8 weeks. We'll provide a clear timeline before starting.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4">
+                    </circle>
 
-    </main>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-inner">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <p class="footer-copy">&copy; 2026 Yadav Web Technologies. All rights reserved.</p>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+
+                </svg>
+
+            </button>
+
+
+            <!-- MENU -->
+
+            <button
+                type="button"
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round">
+
+                    <path d="M4 6h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 18h16"></path>
+
+                </svg>
+
+            </button>
+
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+
+        <div class="eyebrow">
+
+            <span></span>
+
+            Project Pricing
+
+        </div>
+
+
+        <h1>
+            Pricing Based on Your Requirements
+        </h1>
+
+
+        <p>
+            Our pricing provides starting categories for
+            different types of digital solutions. Final
+            pricing may vary depending on project scope,
+            complexity, features and requirements.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRICING
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Pricing Categories
+            </div>
+
+
+            <h2>
+                Choose the solution that fits your project.
+            </h2>
+
+
+            <p>
+                These prices are intended as category-level
+                starting points. Detailed requirements are
+                discussed before a project is accepted.
+            </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+
+            <!-- BUSINESS WEBSITE -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Website
+                    </div>
+
+                    <h3>
+                        Business / Enterprise Website
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹3,999
+                </div>
+
+
+                <p>
+                    Professional websites for businesses,
+                    enterprises, organizations and service
+                    providers.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROFESSIONAL WEBSITE -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Website
+                    </div>
+
+                    <h3>
+                        Professional / Personal Website
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹4,999
+                </div>
+
+
+                <p>
+                    Professional personal or profile-focused
+                    websites designed around your requirements.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- ERP -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Management System
+                    </div>
+
+                    <h3>
+                        School Management ERP
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹11,999
+                </div>
+
+
+                <p>
+                    Student and teacher management, admission,
+                    ID cards, admit cards, fee and salary
+                    management, receipts, attendance and
+                    related school operations.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- ORGANIZATION MANAGEMENT -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Management System
+                    </div>
+
+                    <h3>
+                        Organization Management Website / Software
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹8,999
+                </div>
+
+
+                <p>
+                    Organization-focused websites and software
+                    for records, applications, members and
+                    management requirements.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- ORGANIZATION COMPLETE WORKFLOW -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Advanced System
+                    </div>
+
+                    <h3>
+                        Organization Management with Complete Backend Workflow
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹19,999
+                </div>
+
+
+                <p>
+                    Organization management system with complete
+                    backend functionality and requirement-based
+                    application and approval workflows.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PORTFOLIO -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Portfolio
+                    </div>
+
+                    <h3>
+                        Personal Portfolio Website
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹999
+                </div>
+
+
+                <p>
+                    Up to 3 pages included. Additional pages
+                    can be added at ₹299 per page.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- WEB TOOLS -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Web Tools
+                    </div>
+
+                    <h3>
+                        Custom Web Tools
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹1,299
+                </div>
+
+
+                <p>
+                    Up to 7 browser-based utility tools based
+                    on your specified requirements.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- AUTHENTICATION -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Authentication
+                    </div>
+
+                    <h3>
+                        Custom Authentication Setup / Website
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹6,999
+                </div>
+
+
+                <p>
+                    Custom authentication setup or authentication-
+                    focused website based on the project
+                    requirements.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- BUG FIX -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Technical Support
+                    </div>
+
+                    <h3>
+                        HTML / CSS / JavaScript Error Fix
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹999
+                </div>
+
+
+                <p>
+                    Per fix. Final pricing depends on the
+                    complexity and nature of the issue and
+                    will be determined before accepting the task.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Task
+
+                </a>
+
+            </article>
+
+
+
+            <!-- MAINTENANCE -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <div class="section-label">
+                        Maintenance
+                    </div>
+
+                    <h3>
+                        Website Maintenance
+                    </h3>
+
+                </div>
+
+
+                <div class="pricing-price">
+                    ₹299
+                </div>
+
+
+                <p>
+                    Per maintenance request for content updates
+                    only. No new pages, elements, features or
+                    additional functionality are included.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Request Maintenance
+
+                </a>
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRICING NOTICE
+        ================================================== -->
+
+        <div class="pricing-notice">
+
+            <div class="section-label">
+                Important Information
+            </div>
+
+
+            <h3>
+                Pricing Categories Only
+            </h3>
+
+
+            <p>
+                The prices shown above are category-level
+                starting indications and are not a complete
+                list of included features. The final project
+                scope, features, integrations, complexity and
+                requirements determine the applicable price.
+            </p>
+
+
+            <p>
+                For a detailed explanation of the services
+                and available features, please visit our
+                Services page.
+            </p>
+
+
+            <a
+                href="services.html"
+                class="btn btn-secondary">
+
+                View Service Details
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M5 12h14"></path>
+
+                    <path d="m13 6 6 6-6 6"></path>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="section cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+
+            <div class="section-label">
+                Start a Project
+            </div>
+
+
+            <h2>
+                Need a custom quotation?
+            </h2>
+
+
+            <p>
+                Tell us about your project and requirements.
+                We will discuss the scope before providing
+                the applicable project pricing.
+            </p>
+
+
+            <a
+                href="appointment.html"
+                class="btn btn-primary">
+
+                Discuss Your Project
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M5 12h14"></path>
+
+                    <path d="m13 6 6 6-6 6"></path>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand">
+
+                    <span class="brand-mark">
+                        Y
+                    </span>
+
+                    <span>
+                        Yadav Web Technologies
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Professional websites, web applications
+                    and custom digital solutions based on
+                    real project requirements.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Quick Links
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="services.html">
+                        Services
+                    </a>
+
+                    <a href="projects.html">
+                        Projects
+                    </a>
+
+                    <a href="pricing.html">
+                        Pricing
+                    </a>
+
+                    <a href="appointment.html">
+                        Appointment
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Information
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                    <a href="terms.html">
+                        Terms &amp; Conditions
+                    </a>
+
+                    <a href="client-terms.html">
+                        Client Terms
+                    </a>
+
+                    <a href="privacy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="disclaimer.html">
+                        Disclaimer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Yadav Web Technologies.
+            All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     GO TO TOP
+===================================================== -->
+
+<button
+    class="go-top"
+    id="goTop"
+    type="button"
+    aria-label="Go to top">
+
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <path d="M12 19V5"></path>
+
+        <path d="m6 11 6-6 6 6"></path>
+
+    </svg>
+
+</button>
+
+
+
+<!-- =====================================================
+     EXTERNAL JAVASCRIPT
+===================================================== -->
+
+<script src="js/menu.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/go-top.js"></script>
+
+
 </body>
+
 </html>

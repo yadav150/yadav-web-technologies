@@ -23,7 +23,7 @@ import {
 // =====================================================
 
 const ADMIN_UID =
-    "REPLACE_WITH_YOUR_ADMIN_UID";
+    "WnECxfnldyb76ajAYBjFbNFA7qz2";
 
 
 // =====================================================

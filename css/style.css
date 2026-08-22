@@ -381,6 +381,11 @@ html.dark .brand-mark {
 
 @media (max-width: 850px) {
 
+    header,
+    .nav {
+        overflow: visible;
+    }
+
     .mobile-actions {
         display: flex;
     }
@@ -398,12 +403,16 @@ html.dark .brand-mark {
 
         gap: 0;
 
-        padding: 12px 20px 18px;
+        padding: 12px 20px 28px;
 
         background: var(--surface);
 
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
+
+        box-sizing: border-box;
+
+        overflow: visible;
 
         z-index: 1000;
     }
@@ -421,8 +430,12 @@ html.dark .brand-mark {
     }
 
     .nav-cta {
-        margin-top: 6px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+
         text-align: center;
+
+        box-sizing: border-box;
     }
 
 }

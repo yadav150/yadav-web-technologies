@@ -10,8 +10,12 @@
         content="width=device-width, initial-scale=1.0">
 
     <meta
+        name="description"
+        content="Yadav Web Technologies Admin Dashboard">
+
+    <meta
         name="robots"
-        content="noindex, nofollow">
+        content="noindex,nofollow">
 
     <title>
         Admin Dashboard | Yadav Web Technologies
@@ -19,7 +23,393 @@
 
     <link
         rel="stylesheet"
-        href="admin.css">
+        href="../css/style.css">
+
+    <style>
+
+        body {
+            background: var(--surface-soft, #f7f8fa);
+        }
+
+        .admin-header {
+            border-bottom: 1px solid #dfe3e8;
+            background: var(--surface, #ffffff);
+        }
+
+        .admin-nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .admin-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+        }
+
+        .admin-brand .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 5px;
+        }
+
+        .admin-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-user {
+            font-size: 13px;
+            opacity: .75;
+        }
+
+        .admin-logout {
+            border: 1px solid #d4d9de;
+            background: transparent;
+            color: inherit;
+            padding: 9px 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .admin-main {
+            padding: 40px 0 70px;
+        }
+
+        .admin-title {
+            margin-bottom: 28px;
+        }
+
+        .admin-title h1 {
+            margin: 0 0 8px;
+        }
+
+        .admin-title p {
+            margin: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            padding: 20px;
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+            background: var(--surface, #ffffff);
+        }
+
+        .stat-card span {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 8px;
+            opacity: .7;
+        }
+
+        .stat-card strong {
+            font-size: 25px;
+        }
+
+        .admin-panel {
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+            background: var(--surface, #ffffff);
+            overflow: hidden;
+        }
+
+        .panel-head {
+            padding: 20px;
+            border-bottom: 1px solid #e2e6ea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .panel-head h2 {
+            margin: 0;
+        }
+
+        .appointment-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .appointment-controls input,
+        .appointment-controls select {
+            min-height: 40px;
+            padding: 8px 11px;
+            border: 1px solid #cfd5da;
+            border-radius: 5px;
+            background: transparent;
+            color: inherit;
+        }
+
+        .appointments-list {
+            display: grid;
+        }
+
+        .appointment-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr .9fr .8fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 18px 20px;
+            border-bottom: 1px solid #e6e9ec;
+        }
+
+        .appointment-row:last-child {
+            border-bottom: 0;
+        }
+
+        .appointment-client strong,
+        .appointment-service strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .appointment-client span,
+        .appointment-service span,
+        .appointment-date span {
+            display: block;
+            font-size: 13px;
+            opacity: .7;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 9px;
+            border: 1px solid #d5dae0;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: capitalize;
+        }
+
+        .view-button {
+            border: 1px solid #cfd5da;
+            background: transparent;
+            color: inherit;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .empty-state {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 8px;
+        }
+
+        .detail-view {
+            display: none;
+            margin-top: 30px;
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+            background: var(--surface, #ffffff);
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .detail-head {
+            padding: 20px;
+            border-bottom: 1px solid #e2e6ea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .detail-head h2 {
+            margin: 0;
+        }
+
+        .detail-body {
+            padding: 25px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-item {
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e6e9ec;
+        }
+
+        .detail-item.full {
+            grid-column: 1 / -1;
+        }
+
+        .detail-item label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            opacity: .6;
+        }
+
+        .detail-item p {
+            margin: 0;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e6ea;
+        }
+
+        .detail-actions select {
+            min-height: 40px;
+            padding: 8px 11px;
+            border: 1px solid #cfd5da;
+            border-radius: 5px;
+            background: transparent;
+            color: inherit;
+        }
+
+        .danger-button {
+            border: 1px solid #c9bcbc;
+            background: transparent;
+            color: inherit;
+            padding: 9px 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 410px;
+            padding: 32px;
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+            background: var(--surface, #ffffff);
+        }
+
+        .login-brand {
+            margin-bottom: 25px;
+        }
+
+        .login-brand .admin-brand {
+            margin-bottom: 15px;
+        }
+
+        .login-box h1 {
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            margin-bottom: 22px;
+        }
+
+        .login-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .login-form label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .login-form input {
+            width: 100%;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid #cfd5da;
+            border-radius: 5px;
+            background: transparent;
+            color: inherit;
+        }
+
+        .login-error {
+            min-height: 20px;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        @media (max-width: 950px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .appointment-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .admin-main {
+                padding-top: 28px;
+            }
+
+            .admin-user {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .appointment-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-item.full {
+                grid-column: auto;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -32,72 +422,73 @@
 ===================================================== -->
 
 <section
-    class="admin-login"
-    id="loginSection">
+    class="login-screen"
+    id="loginScreen">
 
     <div class="login-box">
 
-        <div class="admin-brand">
+        <div class="login-brand">
 
-            <span class="brand-mark">
-                Y
-            </span>
+            <a
+                href="../index.html"
+                class="admin-brand">
 
-            <div>
-
-                <strong>
-                    Yadav Web Technologies
-                </strong>
-
-                <span>
-                    Admin Dashboard
+                <span class="brand-mark">
+                    Y
                 </span>
 
+                <span>
+                    Yadav Web Technologies
+                </span>
+
+            </a>
+
+
+            <div class="section-label">
+                Administration
             </div>
 
         </div>
 
 
-        <div class="login-heading">
-
-            <h1>
-                Admin Login
-            </h1>
-
-            <p>
-                Sign in to manage appointments and enquiries.
-            </p>
-
-        </div>
+        <h1>
+            Admin Login
+        </h1>
 
 
-        <form id="loginForm">
+        <p>
+            Sign in to access appointment management.
+        </p>
 
 
-            <div class="form-group">
+        <form
+            class="login-form"
+            id="loginForm">
 
-                <label for="adminEmail">
-                    Email
+            <div>
+
+                <label for="loginEmail">
+                    Email Address
                 </label>
 
                 <input
                     type="email"
-                    id="adminEmail"
+                    id="loginEmail"
                     autocomplete="email"
                     required>
 
             </div>
 
 
-            <div class="form-group">
+            <div>
 
-                <label for="adminPassword">
+                <label for="loginPassword">
                     Password
                 </label>
 
                 <input
                     type="password"
-                    id="adminPassword"
+                    id="loginPassword"
                     autocomplete="current-password"
                     required>
 
@@ -106,7 +497,7 @@
 
             <button
                 type="submit"
-                class="admin-btn">
+                class="btn btn-primary">
 
                 Sign In
 
@@ -114,8 +505,9 @@
 
 
             <p
-                class="form-message"
-                id="loginMessage">
+                class="login-error"
+                id="loginError"
+                aria-live="polite">
             </p>
 
         </form>
@@ -130,53 +522,88 @@
      DASHBOARD
 ===================================================== -->
 
-<section
-    class="dashboard"
-    id="dashboardSection"
-    hidden>
+<div id="dashboard">
 
 
-    <!-- HEADER -->
+<header class="admin-header">
 
-    <header class="dashboard-header">
+    <div class="container">
 
-        <div>
+        <div class="admin-nav">
 
-            <span class="dashboard-label">
-                Yadav Web Technologies
-            </span>
 
-            <h1>
-                Admin Dashboard
-            </h1>
+            <a
+                href="../index.html"
+                class="admin-brand">
+
+                <span class="brand-mark">
+                    Y
+                </span>
+
+                <span>
+                    Yadav Web Technologies
+                </span>
+
+            </a>
+
+
+            <div class="admin-nav-right">
+
+                <span
+                    class="admin-user"
+                    id="adminUser">
+                </span>
+
+
+                <button
+                    type="button"
+                    class="admin-logout"
+                    id="logoutButton">
+
+                    Logout
+
+                </button>
+
+            </div>
 
         </div>
 
+    </div>
 
-        <button
-            type="button"
-            class="logout-btn"
-            id="logoutBtn">
-
-            Logout
-
-        </button>
-
-    </header>
+</header>
 
 
 
-    <main class="dashboard-main">
+<main class="admin-main">
+
+    <div class="container">
+
+
+        <div class="admin-title">
+
+            <div class="section-label">
+                Administration
+            </div>
+
+            <h1>
+                Appointment Dashboard
+            </h1>
+
+            <p>
+                Manage client appointment requests and project enquiries.
+            </p>
+
+        </div>
+
 
 
         <!-- =================================================
              STATISTICS
         ================================================== -->
 
-        <section class="stats-grid">
+        <div class="stats-grid">
 
-
-            <article class="stat-card">
+            <div class="stat-card">
 
                 <span>
                     Total
@@ -186,10 +613,10 @@
                     0
                 </strong>
 
-            </article>
+            </div>
 
 
-            <article class="stat-card">
+            <div class="stat-card">
 
                 <span>
                     New
@@ -199,10 +626,10 @@
                     0
                 </strong>
 
-            </article>
+            </div>
 
 
-            <article class="stat-card">
+            <div class="stat-card">
 
                 <span>
                     Contacted
@@ -212,10 +639,10 @@
                     0
                 </strong>
 
-            </article>
+            </div>
 
 
-            <article class="stat-card">
+            <div class="stat-card">
 
                 <span>
                     Confirmed
@@ -225,10 +652,10 @@
                     0
                 </strong>
 
-            </article>
+            </div>
 
 
-            <article class="stat-card">
+            <div class="stat-card">
 
                 <span>
                     Completed
@@ -238,10 +665,9 @@
                     0
                 </strong>
 
-            </article>
+            </div>
 
-
-        </section>
+        </div>
 
 
 
@@ -249,152 +675,104 @@
              APPOINTMENTS
         ================================================== -->
 
-        <section class="appointments-section">
+        <section class="admin-panel">
+
+            <div class="panel-head">
+
+                <h2>
+                    Appointments
+                </h2>
 
 
-            <div class="section-header">
+                <div class="appointment-controls">
 
-                <div>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search appointments..."
+                        aria-label="Search appointments">
 
-                    <span class="dashboard-label">
-                        Client Requests
-                    </span>
 
-                    <h2>
-                        Appointments
-                    </h2>
+                    <select
+                        id="statusFilter"
+                        aria-label="Filter appointments">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="new">
+                            New
+                        </option>
+
+                        <option value="contacted">
+                            Contacted
+                        </option>
+
+                        <option value="confirmed">
+                            Confirmed
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                    </select>
 
                 </div>
+
+            </div>
+
+
+            <div
+                class="appointments-list"
+                id="appointmentsList">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DETAIL VIEW
+        ================================================== -->
+
+        <section
+            class="detail-view"
+            id="detailView">
+
+            <div class="detail-head">
+
+                <h2>
+                    Appointment Details
+                </h2>
 
 
                 <button
                     type="button"
-                    class="refresh-btn"
-                    id="refreshBtn">
+                    class="view-button"
+                    id="closeDetail">
 
-                    Refresh
+                    Back to Appointments
 
                 </button>
 
             </div>
 
 
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Client
-                            </th>
-
-                            <th>
-                                Service
-                            </th>
-
-                            <th>
-                                Date
-                            </th>
-
-                            <th>
-                                Time
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Action
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="appointmentsBody">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
             <div
-                class="empty-state"
-                id="emptyState"
-                hidden>
-
-                No appointments found.
+                class="detail-body"
+                id="detailBody">
 
             </div>
-
 
         </section>
 
 
-    </main>
-
-</section>
-
-
-
-<!-- =====================================================
-     APPOINTMENT MODAL
-===================================================== -->
-
-<div
-    class="modal"
-    id="appointmentModal"
-    hidden>
-
-    <div class="modal-box">
-
-
-        <div class="modal-header">
-
-            <h2>
-                Appointment Details
-            </h2>
-
-            <button
-                type="button"
-                class="close-btn"
-                id="closeModal">
-
-                ×
-
-            </button>
-
-        </div>
-
-
-        <div
-            class="appointment-details"
-            id="appointmentDetails">
-        </div>
-
-
-        <div class="modal-actions">
-
-            <button
-                type="button"
-                class="delete-btn"
-                id="deleteAppointment">
-
-                Delete Appointment
-
-            </button>
-
-        </div>
-
-
     </div>
+
+</main>
 
 </div>
 
@@ -404,6 +782,7 @@
     type="module"
     src="admin.js">
 </script>
+
 
 </body>
 

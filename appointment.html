@@ -14,10 +14,6 @@
         content="Book an appointment with Yadav Web Technologies to discuss your website, web application, ERP, business software or custom digital solution.">
 
     <meta
-        name="keywords"
-        content="Yadav Web Technologies, web development appointment, website development, web application, ERP">
-
-    <meta
         name="author"
         content="Yadav Web Technologies">
 
@@ -31,61 +27,47 @@
         href="css/style.css">
 
 
-    <!-- =================================================
-         APPOINTMENT PAGE SPECIFIC STYLES
-    ================================================== -->
-
     <style>
 
         .appointment-section {
             padding: 70px 0;
         }
 
-
         .appointment-layout {
             display: grid;
-            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            grid-template-columns: .8fr 1.2fr;
             gap: 35px;
             align-items: start;
         }
-
 
         .appointment-info,
         .appointment-form-box {
             border: 1px solid #dfe3e8;
             border-radius: 6px;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
         }
-
 
         .appointment-info {
             padding: 30px;
         }
 
-
-        .appointment-info h3 {
+        .appointment-info h3,
+        .appointment-form-box h3 {
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-
-
-        .appointment-info > p {
-            margin-bottom: 25px;
-        }
-
 
         .appointment-points {
             display: grid;
-            gap: 16px;
+            gap: 17px;
+            margin-top: 25px;
         }
-
 
         .appointment-point {
             display: flex;
             gap: 13px;
             align-items: flex-start;
         }
-
 
         .appointment-point-icon {
             width: 38px;
@@ -98,18 +80,15 @@
             border-radius: 5px;
         }
 
-
         .appointment-point-icon svg {
             width: 19px;
             height: 19px;
         }
 
-
         .appointment-point strong {
             display: block;
             margin-bottom: 4px;
         }
-
 
         .appointment-point span {
             display: block;
@@ -117,41 +96,22 @@
             line-height: 1.55;
         }
 
-
         .appointment-form-box {
             padding: 30px;
         }
 
-
-        .appointment-form-box h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-        }
-
-
-        .appointment-form-box > p {
-            margin-bottom: 25px;
-        }
-
-
         .appointment-form {
             display: grid;
             gap: 18px;
+            margin-top: 25px;
         }
-
-
-        .appointment-form .form-group {
-            margin: 0;
-        }
-
 
         .appointment-form label {
             display: block;
             margin-bottom: 7px;
-            font-weight: 600;
             font-size: 14px;
+            font-weight: 600;
         }
-
 
         .appointment-form input,
         .appointment-form select,
@@ -165,19 +125,10 @@
             outline: none;
         }
 
-
-        .appointment-form input:focus,
-        .appointment-form select:focus,
-        .appointment-form textarea:focus {
-            border-color: currentColor;
-        }
-
-
         .appointment-form textarea {
-            min-height: 130px;
+            min-height: 135px;
             resize: vertical;
         }
-
 
         .appointment-form-row {
             display: grid;
@@ -185,78 +136,67 @@
             gap: 18px;
         }
 
-
-        .appointment-submit {
-            margin-top: 5px;
-        }
-
-
         .appointment-message {
             min-height: 20px;
             margin: 0;
             font-size: 14px;
         }
 
-
         .appointment-note {
             margin-top: 18px;
             font-size: 13px;
             line-height: 1.6;
         }
+
         .success-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.45);
-}
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, .45);
+        }
 
-.success-overlay[hidden] {
-    display: none;
-}
+        .success-overlay[hidden] {
+            display: none;
+        }
 
-.success-box {
-    width: 100%;
-    max-width: 430px;
-    padding: 32px;
-    text-align: center;
-    background: var(--surface, #ffffff);
-    border: 1px solid #dfe3e8;
-    border-radius: 6px;
-}
+        .success-box {
+            width: 100%;
+            max-width: 430px;
+            padding: 32px;
+            text-align: center;
+            background: var(--surface, #fff);
+            border: 1px solid #dfe3e8;
+            border-radius: 6px;
+        }
 
-.success-icon {
-    width: 54px;
-    height: 54px;
-    margin: 0 auto 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cfd5da;
-    border-radius: 50%;
-}
+        .success-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cfd5da;
+            border-radius: 50%;
+        }
 
-.success-icon svg {
-    width: 27px;
-    height: 27px;
-}
+        .success-icon svg {
+            width: 27px;
+            height: 27px;
+        }
 
-.success-box h3 {
-    margin: 0 0 10px;
-}
+        .success-box h3 {
+            margin: 0 0 10px;
+        }
 
-.success-box p {
-    margin: 0 0 24px;
-    line-height: 1.6;
-}
-
-.success-box .btn {
-    min-width: 100px;
-}
-
+        .success-box p {
+            margin: 0 0 24px;
+            line-height: 1.6;
+        }
 
         @media (max-width: 800px) {
 
@@ -266,23 +206,15 @@
 
         }
 
-
         @media (max-width: 520px) {
 
-            .appointment-section {
-                padding: 50px 0;
+            .appointment-form-row {
+                grid-template-columns: 1fr;
             }
-
 
             .appointment-info,
             .appointment-form-box {
                 padding: 22px;
-            }
-
-
-            .appointment-form-row {
-                grid-template-columns: 1fr;
-                gap: 18px;
             }
 
         }
@@ -295,14 +227,9 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header>
 
     <nav class="nav container">
-
 
         <a
             href="index.html"
@@ -356,9 +283,6 @@
 
         <div class="mobile-actions">
 
-
-            <!-- THEME -->
-
             <button
                 type="button"
                 class="theme-toggle"
@@ -382,13 +306,10 @@
 
                     <path d="M12 2v2"></path>
                     <path d="M12 20v2"></path>
-
                     <path d="m4.93 4.93 1.41 1.41"></path>
                     <path d="m17.66 17.66 1.41 1.41"></path>
-
                     <path d="M2 12h2"></path>
                     <path d="M20 12h2"></path>
-
                     <path d="m6.34 17.66-1.41 1.41"></path>
                     <path d="m19.07 4.93-1.41 1.41"></path>
 
@@ -396,8 +317,6 @@
 
             </button>
 
-
-            <!-- MENU -->
 
             <button
                 type="button"
@@ -428,11 +347,6 @@
 </header>
 
 
-
-<!-- =====================================================
-     PAGE HERO
-===================================================== -->
-
 <section class="page-hero">
 
     <div class="container">
@@ -445,15 +359,13 @@
 
         </div>
 
-
         <h1>
             Book an Appointment
         </h1>
 
-
         <p>
-            Tell us about your requirement and choose a
-            suitable date and time to discuss your project.
+            Tell us about your requirement and choose
+            a suitable date and time to discuss your project.
         </p>
 
     </div>
@@ -461,37 +373,24 @@
 </section>
 
 
-
-<!-- =====================================================
-     APPOINTMENT
-===================================================== -->
-
 <main>
 
 <section class="appointment-section">
 
     <div class="container">
 
-
         <div class="appointment-layout">
 
 
-            <!-- =================================================
-                 INFORMATION
-            ================================================== -->
-
             <div class="appointment-info">
-
 
                 <div class="section-label">
                     Project Discussion
                 </div>
 
-
                 <h3>
                     Let's understand your requirement.
                 </h3>
-
 
                 <p>
                     Whether you need a business website,
@@ -503,9 +402,6 @@
 
                 <div class="appointment-points">
 
-
-                    <!-- POINT 1 -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -514,9 +410,7 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <circle
                                     cx="12"
@@ -529,7 +423,6 @@
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -547,9 +440,6 @@
                     </div>
 
 
-
-                    <!-- POINT 2 -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -558,20 +448,15 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <path d="M4 5h16"></path>
-
                                 <path d="M4 12h16"></path>
-
                                 <path d="M4 19h10"></path>
 
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -589,9 +474,6 @@
                     </div>
 
 
-
-                    <!-- POINT 3 -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -600,22 +482,16 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <path d="M4 4h16v16H4z"></path>
-
                                 <path d="M8 8h8"></path>
-
                                 <path d="M8 12h5"></path>
-
                                 <path d="M8 16h7"></path>
 
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -633,9 +509,6 @@
                     </div>
 
 
-
-                    <!-- POINT 4 -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -644,23 +517,19 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <path d="M12 3v18"></path>
-
                                 <path d="M5 8h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h9"></path>
 
                             </svg>
 
                         </div>
 
-
                         <div>
 
                             <strong>
-                                No Fixed Package Requirement
+                                Flexible Requirements
                             </strong>
 
                             <span>
@@ -672,29 +541,21 @@
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
 
-            <!-- =================================================
-                 FORM
-            ================================================== -->
-
             <div class="appointment-form-box">
-
 
                 <div class="section-label">
                     Appointment Request
                 </div>
 
-
                 <h3>
                     Submit your details
                 </h3>
-
 
                 <p>
                     We will review your request and use the
@@ -708,9 +569,7 @@
                     id="appointmentForm">
 
 
-                    <!-- NAME -->
-
-                    <div class="form-group">
+                    <div>
 
                         <label for="name">
                             Full Name
@@ -726,13 +585,9 @@
                     </div>
 
 
-
-                    <!-- EMAIL / PHONE -->
-
                     <div class="appointment-form-row">
 
-
-                        <div class="form-group">
+                        <div>
 
                             <label for="email">
                                 Email Address
@@ -748,7 +603,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div>
 
                             <label for="phone">
                                 Phone Number
@@ -763,14 +618,10 @@
 
                         </div>
 
-
                     </div>
 
 
-
-                    <!-- SERVICE -->
-
-                    <div class="form-group">
+                    <div>
 
                         <label for="service">
                             Required Service
@@ -783,8 +634,8 @@
 
                             <option
                                 value=""
-                                selected
-                                disabled>
+                                disabled
+                                selected>
 
                                 Select a service
 
@@ -827,13 +678,9 @@
                     </div>
 
 
-
-                    <!-- DATE / TIME -->
-
                     <div class="appointment-form-row">
 
-
-                        <div class="form-group">
+                        <div>
 
                             <label for="date">
                                 Preferred Date
@@ -848,7 +695,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div>
 
                             <label for="time">
                                 Preferred Time
@@ -862,14 +709,10 @@
 
                         </div>
 
-
                     </div>
 
 
-
-                    <!-- MESSAGE -->
-
-                    <div class="form-group">
+                    <div>
 
                         <label for="message">
                             Project Requirement
@@ -879,18 +722,14 @@
                             id="message"
                             name="message"
                             placeholder="Briefly describe what you want to build..."
-                            required>
-                        </textarea>
+                            required></textarea>
 
                     </div>
 
 
-
-                    <!-- SUBMIT -->
-
                     <button
                         type="submit"
-                        class="btn btn-primary appointment-submit">
+                        class="btn btn-primary">
 
                         Submit Appointment Request
 
@@ -901,7 +740,6 @@
                             stroke-width="2">
 
                             <path d="M5 12h14"></path>
-
                             <path d="m13 6 6 6-6 6"></path>
 
                         </svg>
@@ -914,7 +752,6 @@
                         id="appointmentMessage"
                         aria-live="polite">
                     </p>
-
 
                 </form>
 
@@ -930,7 +767,6 @@
 
             </div>
 
-
         </div>
 
     </div>
@@ -941,16 +777,11 @@
 
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
 
     <div class="container">
 
         <div class="footer-grid">
-
 
             <div class="footer-brand">
 
@@ -968,7 +799,6 @@
 
                 </a>
 
-
                 <p>
                     Professional websites, web applications
                     and custom digital solutions based on
@@ -983,7 +813,6 @@
                 <h4>
                     Quick Links
                 </h4>
-
 
                 <div class="footer-links">
 
@@ -1022,7 +851,6 @@
                     Information
                 </h4>
 
-
                 <div class="footer-links">
 
                     <a href="contact.html">
@@ -1049,7 +877,6 @@
 
             </div>
 
-
         </div>
 
 
@@ -1067,55 +894,6 @@
 
 
 <!-- =====================================================
-     GO TO TOP
-===================================================== -->
-
-<button
-    class="go-top"
-    id="goTop"
-    type="button"
-    aria-label="Go to top">
-
-    <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round">
-
-        <path d="M12 19V5"></path>
-
-        <path d="m6 11 6-6 6 6"></path>
-
-    </svg>
-
-</button>
-
-
-
-<!-- =====================================================
-     EXTERNAL JAVASCRIPT
-===================================================== -->
-
-<script
-    src="js/theme.js">
-</script>
-
-<script
-    src="js/menu.js">
-</script>
-
-<script
-    src="js/go-top.js">
-</script>
-
-<script
-    type="module"
-    src="js/appointment.js">
-</script>
-
-    <!-- =====================================================
      SUCCESS MESSAGE
 ===================================================== -->
 
@@ -1136,9 +914,7 @@
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
+                stroke-width="2">
 
                 <circle
                     cx="12"
@@ -1177,6 +953,38 @@
     </div>
 
 </div>
+
+
+
+<button
+    class="go-top"
+    id="goTop"
+    type="button"
+    aria-label="Go to top">
+
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+
+        <path d="M12 19V5"></path>
+        <path d="m6 11 6-6 6 6"></path>
+
+    </svg>
+
+</button>
+
+
+
+<script src="js/theme.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/go-top.js"></script>
+
+<script
+    type="module"
+    src="js/appointment.js">
+</script>
 
 
 </body>

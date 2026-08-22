@@ -21,13 +21,15 @@ import {
 // =====================================================
 // ADMIN UID
 // =====================================================
+// IMPORTANT:
+// Replace ONLY this UID with your Firebase Auth UID.
 
 const ADMIN_UID =
     "WnECxfnldyb76ajAYBjFbNFA7qz2";
 
 
 // =====================================================
-// FIREBASE
+// FIREBASE CONFIG
 // =====================================================
 
 const firebaseConfig = {
@@ -55,6 +57,10 @@ const firebaseConfig = {
 
 };
 
+
+// =====================================================
+// INITIALIZE FIREBASE
+// =====================================================
 
 const app =
     initializeApp(firebaseConfig);
@@ -100,11 +106,32 @@ const statusFilter =
 const detailView =
     document.getElementById("detailView");
 
-const detailBody =
-    document.getElementById("detailBody");
+const detailTopGrid =
+    document.getElementById("detailTopGrid");
+
+const detailMessageBox =
+    document.getElementById("detailMessageBox");
+
+const detailActions =
+    document.getElementById("detailActions");
 
 const closeDetail =
     document.getElementById("closeDetail");
+
+const refreshButton =
+    document.getElementById("refreshButton");
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+const adminSidebar =
+    document.getElementById("adminSidebar");
+
+const appointmentsNav =
+    document.getElementById("appointmentsNav");
+
+const dashboardNav =
+    document.getElementById("dashboardNav");
 
 const shareCardRender =
     document.getElementById("shareCardRender");
@@ -115,6 +142,15 @@ const shareCardSubtitle =
 const shareCardGrid =
     document.getElementById("shareCardGrid");
 
+const adminToast =
+    document.getElementById("adminToast");
+
+const toastTitle =
+    document.getElementById("toastTitle");
+
+const toastMessage =
+    document.getElementById("toastMessage");
+
 
 // =====================================================
 // STATE
@@ -124,9 +160,13 @@ let appointments = {};
 
 let selectedAppointmentId = null;
 
+let unsubscribeAppointments = null;
+
+let toastTimer = null;
+
 
 // =====================================================
-// AUTH
+// AUTH STATE
 // =====================================================
 
 onAuthStateChanged(
@@ -141,6 +181,9 @@ onAuthStateChanged(
 
         }
 
+
+        // Only the configured Firebase UID
+        // can access the admin dashboard.
 
         if (user.uid !== ADMIN_UID) {
 
@@ -175,6 +218,8 @@ if (loginForm) {
 
             event.preventDefault();
 
+            clearLoginError();
+
 
             const email =
                 document
@@ -187,9 +232,6 @@ if (loginForm) {
                 document
                     .getElementById("loginPassword")
                     .value;
-
-
-            clearLoginError();
 
 
             try {
@@ -218,6 +260,7 @@ if (loginForm) {
             } catch (error) {
 
                 console.error(
+                    "Login error:",
                     error
                 );
 
@@ -257,6 +300,13 @@ if (logoutButton) {
 
 function loadAppointments() {
 
+    if (unsubscribeAppointments) {
+
+        unsubscribeAppointments();
+
+    }
+
+
     const appointmentsRef =
         ref(
             database,
@@ -264,54 +314,50 @@ function loadAppointments() {
         );
 
 
-    onValue(
-        appointmentsRef,
-        (snapshot) => {
+    unsubscribeAppointments =
+        onValue(
+            appointmentsRef,
+            (snapshot) => {
 
-            appointments =
-                snapshot.val() || {};
+                appointments =
+                    snapshot.val() || {};
 
-            renderAppointments();
+                renderAppointments();
 
-            updateStatistics();
+                updateStatistics();
 
 
-            if (
-                selectedAppointmentId &&
-                appointments[
-                    selectedAppointmentId
-                ]
-            ) {
+                if (
+                    selectedAppointmentId &&
+                    appointments[
+                        selectedAppointmentId
+                    ]
+                ) {
 
-                showAppointmentDetails(
-                    selectedAppointmentId
+                    showAppointmentDetails(
+                        selectedAppointmentId,
+                        false
+                    );
+
+                }
+
+            },
+            (error) => {
+
+                console.error(
+                    "Database error:",
+                    error
                 );
 
+
+                appointmentsList.innerHTML =
+                    createEmptyState(
+                        "Unable to load appointments",
+                        "Please check the Firebase database permissions."
+                    );
+
             }
-
-        },
-        (error) => {
-
-            console.error(
-                error
-            );
-
-            appointmentsList.innerHTML = `
-                <div class="empty-state">
-
-                    <h3>
-                        Unable to load appointments
-                    </h3>
-
-                    <p>
-                        Please check your Firebase database permissions.
-                    </p>
-
-                </div>
-            `;
-
-        }
-    );
+        );
 
 }
 
@@ -345,7 +391,9 @@ function renderAppointments() {
                     item.email,
                     item.phone,
                     item.service,
-                    item.message
+                    item.message,
+                    item.date,
+                    item.time
 
                 ]
                     .join(" ")
@@ -387,19 +435,11 @@ function renderAppointments() {
 
     if (!entries.length) {
 
-        appointmentsList.innerHTML = `
-            <div class="empty-state">
-
-                <h3>
-                    No appointments found
-                </h3>
-
-                <p>
-                    New appointment requests will appear here.
-                </p>
-
-            </div>
-        `;
+        appointmentsList.innerHTML =
+            createEmptyState(
+                "No appointments found",
+                "New appointment requests will appear here."
+            );
 
         return;
 
@@ -409,109 +449,116 @@ function renderAppointments() {
     appointmentsList.innerHTML =
         entries
             .map(
-                ([id, item]) => `
+                ([id, item]) => {
 
-                    <article
-                        class="appointment-row">
-
-                        <div
-                            class="appointment-client">
-
-                            <strong>
-                                ${escapeHtml(
-                                    item.name ||
-                                    "Unknown Client"
-                                )}
-                            </strong>
-
-                            <span>
-                                ${escapeHtml(
-                                    item.email ||
-                                    ""
-                                )}
-                            </span>
-
-                        </div>
+                    const status =
+                        item.status ||
+                        "new";
 
 
-                        <div
-                            class="appointment-service">
+                    return `
 
-                            <strong>
-                                ${escapeHtml(
-                                    item.service ||
-                                    "Not specified"
-                                )}
-                            </strong>
+                        <article
+                            class="appointment-row">
 
-                            <span>
-                                ${escapeHtml(
-                                    item.phone ||
-                                    ""
-                                )}
-                            </span>
+                            <div
+                                class="appointment-client">
 
-                        </div>
+                                <strong>
+                                    ${escapeHtml(
+                                        item.name ||
+                                        "Unknown Client"
+                                    )}
+                                </strong>
 
+                                <span>
+                                    ${escapeHtml(
+                                        item.email ||
+                                        "No email"
+                                    )}
+                                </span>
 
-                        <div
-                            class="appointment-date">
-
-                            <strong>
-                                ${formatDate(
-                                    item.date
-                                )}
-                            </strong>
-
-                            <span>
-                                ${escapeHtml(
-                                    item.time ||
-                                    ""
-                                )}
-                            </span>
-
-                        </div>
+                            </div>
 
 
-                        <div>
+                            <div
+                                class="appointment-service">
 
-                            <span
-                                class="status-badge">
+                                <strong>
+                                    ${escapeHtml(
+                                        item.service ||
+                                        "Not specified"
+                                    )}
+                                </strong>
 
-                                ${escapeHtml(
-                                    item.status ||
-                                    "new"
-                                )}
+                                <span>
+                                    ${escapeHtml(
+                                        item.phone ||
+                                        "No phone"
+                                    )}
+                                </span>
 
-                            </span>
-
-                        </div>
+                            </div>
 
 
-                        <div>
+                            <div
+                                class="appointment-date">
 
-                            <button
-                                type="button"
-                                class="view-button"
-                                data-view-id="${id}">
+                                <strong>
+                                    ${formatDate(
+                                        item.date
+                                    )}
+                                </strong>
 
-                                View Project
+                                <span>
+                                    ${escapeHtml(
+                                        item.time ||
+                                        "No time"
+                                    )}
+                                </span>
 
-                            </button>
+                            </div>
 
-                        </div>
 
-                    </article>
+                            <div>
 
-                `
+                                <span
+                                    class="
+                                        status-badge
+                                        status-${escapeHtml(status)}
+                                    ">
+
+                                    ${escapeHtml(status)}
+
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <button
+                                    type="button"
+                                    class="view-button"
+                                    data-view-id="${escapeHtml(id)}">
+
+                                    Open
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }
             )
             .join("");
 
 
     document
-        .querySelectorAll(
-            "[data-view-id]"
-        )
+        .querySelectorAll("[data-view-id]")
         .forEach(
             (button) => {
 
@@ -533,17 +580,22 @@ function renderAppointments() {
 
 
 // =====================================================
-// DETAILS
+// DETAIL VIEW
 // =====================================================
 
-function showAppointmentDetails(id) {
+function showAppointmentDetails(
+    id,
+    scrollToDetail = true
+) {
 
     const item =
         appointments[id];
 
 
     if (!item) {
+
         return;
+
     }
 
 
@@ -551,180 +603,89 @@ function showAppointmentDetails(id) {
         id;
 
 
-    detailBody.innerHTML = `
-
-        <div class="detail-grid">
-
-            <div class="detail-item">
-
-                <label>
-                    Client Name
-                </label>
-
-                <p>
-                    ${escapeHtml(
-                        item.name ||
-                        "Not provided"
-                    )}
-                </p>
-
-            </div>
+    const currentStatus =
+        item.status ||
+        "new";
 
 
-            <div class="detail-item">
+    detailTopGrid.innerHTML = `
 
-                <label>
-                    Service
-                </label>
+        <div class="detail-summary">
 
-                <p>
-                    ${escapeHtml(
-                        item.service ||
-                        "Not provided"
-                    )}
-                </p>
+            ${detailItem(
+                "Client Name",
+                item.name || "Not provided"
+            )}
 
-            </div>
+            ${detailItem(
+                "Service",
+                item.service || "Not provided"
+            )}
 
+            ${detailItem(
+                "Email",
+                item.email || "Not provided"
+            )}
 
-            <div class="detail-item">
+            ${detailItem(
+                "Phone",
+                item.phone || "Not provided"
+            )}
 
-                <label>
-                    Email
-                </label>
+            ${detailItem(
+                "Appointment Date",
+                formatDate(item.date)
+            )}
 
-                <p>
-                    ${escapeHtml(
-                        item.email ||
-                        "Not provided"
-                    )}
-                </p>
+            ${detailItem(
+                "Appointment Time",
+                item.time || "Not provided"
+            )}
 
-            </div>
+            ${detailItem(
+                "Current Status",
+                currentStatus
+            )}
 
-
-            <div class="detail-item">
-
-                <label>
-                    Phone
-                </label>
-
-                <p>
-                    ${escapeHtml(
-                        item.phone ||
-                        "Not provided"
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <label>
-                    Appointment Date
-                </label>
-
-                <p>
-                    ${formatDate(
-                        item.date
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <label>
-                    Appointment Time
-                </label>
-
-                <p>
-                    ${escapeHtml(
-                        item.time ||
-                        "Not provided"
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <label>
-                    Current Status
-                </label>
-
-                <p>
-                    ${escapeHtml(
-                        item.status ||
-                        "new"
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <label>
-                    Submitted
-                </label>
-
-                <p>
-                    ${formatCreatedAt(
-                        item.createdAt
-                    )}
-                </p>
-
-            </div>
-
-
-            <div class="detail-item full">
-
-                <label>
-                    Project Requirement
-                </label>
-
-                <p>
-                    ${escapeHtml(
-                        item.message ||
-                        "No message provided."
-                    )}
-                </p>
-
-            </div>
+            ${detailItem(
+                "Submitted",
+                formatCreatedAt(item.createdAt)
+            )}
 
         </div>
 
 
-        <div class="detail-actions">
+        <aside class="detail-status-card">
+
+            <span class="detail-status-card-label">
+                Update Appointment
+            </span>
+
 
             <select
                 id="detailStatus">
 
                 <option
                     value="new"
-                    ${item.status === "new" ? "selected" : ""}>
+                    ${currentStatus === "new" ? "selected" : ""}>
                     New
                 </option>
 
                 <option
                     value="contacted"
-                    ${item.status === "contacted" ? "selected" : ""}>
+                    ${currentStatus === "contacted" ? "selected" : ""}>
                     Contacted
                 </option>
 
                 <option
                     value="confirmed"
-                    ${item.status === "confirmed" ? "selected" : ""}>
+                    ${currentStatus === "confirmed" ? "selected" : ""}>
                     Confirmed
                 </option>
 
                 <option
                     value="completed"
-                    ${item.status === "completed" ? "selected" : ""}>
+                    ${currentStatus === "completed" ? "selected" : ""}>
                     Completed
                 </option>
 
@@ -733,66 +694,109 @@ function showAppointmentDetails(id) {
 
             <button
                 type="button"
-                class="btn btn-primary"
+                class="detail-primary-button status-action"
                 id="saveStatus">
 
                 Update Status
 
             </button>
 
+        </aside>
 
-            <button
-                type="button"
-                class="share-button"
-                id="shareAppointment">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-
-                    <circle
-                        cx="18"
-                        cy="5"
-                        r="3">
-                    </circle>
-
-                    <circle
-                        cx="6"
-                        cy="12"
-                        r="3">
-                    </circle>
-
-                    <circle
-                        cx="18"
-                        cy="19"
-                        r="3">
-                    </circle>
-
-                    <path d="m8.6 13.5 6.8 4"></path>
-
-                    <path d="m15.4 6.5-6.8 4"></path>
-
-                </svg>
-
-                Share
-
-            </button>
+    `;
 
 
-            <button
-                type="button"
-                class="danger-button"
-                id="deleteAppointment">
+    detailMessageBox.innerHTML = `
 
-                Delete Appointment
+        <div class="detail-message-head">
 
-            </button>
+            <strong>
+                Project Requirement
+            </strong>
 
         </div>
+
+
+        <div class="detail-message-content">
+
+            ${escapeHtml(
+                item.message ||
+                "No message provided."
+            )}
+
+        </div>
+
+    `;
+
+
+    detailActions.innerHTML = `
+
+        <button
+            type="button"
+            class="share-button"
+            id="shareAppointment">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <circle
+                    cx="18"
+                    cy="5"
+                    r="3">
+                </circle>
+
+                <circle
+                    cx="6"
+                    cy="12"
+                    r="3">
+                </circle>
+
+                <circle
+                    cx="18"
+                    cy="19"
+                    r="3">
+                </circle>
+
+                <path d="m8.6 13.5 6.8 4"></path>
+
+                <path d="m15.4 6.5-6.8 4"></path>
+
+            </svg>
+
+            Share Appointment
+
+        </button>
+
+
+        <button
+            type="button"
+            class="danger-button"
+            id="deleteAppointment">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M4 7h16"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M6 7l1 14h10l1-14"></path>
+                <path d="M9 7V4h6v3"></path>
+
+            </svg>
+
+            Delete Appointment
+
+        </button>
 
     `;
 
@@ -800,12 +804,6 @@ function showAppointmentDetails(id) {
     detailView.classList.add(
         "active"
     );
-
-
-    detailView.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
 
 
     document
@@ -849,11 +847,205 @@ function showAppointmentDetails(id) {
             }
         );
 
+
+    if (scrollToDetail) {
+
+        detailView.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
 }
 
 
 // =====================================================
-// SHARE APPOINTMENT AS IMAGE
+// DETAIL ITEM
+// =====================================================
+
+function detailItem(
+    label,
+    value
+) {
+
+    return `
+
+        <div class="detail-item">
+
+            <label>
+                ${escapeHtml(label)}
+            </label>
+
+            <p>
+                ${escapeHtml(value)}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+// =====================================================
+// UPDATE STATUS
+// =====================================================
+
+async function updateAppointmentStatus(id) {
+
+    const statusElement =
+        document.getElementById(
+            "detailStatus"
+        );
+
+
+    if (!statusElement) {
+
+        return;
+
+    }
+
+
+    const newStatus =
+        statusElement.value;
+
+
+    const button =
+        document.getElementById(
+            "saveStatus"
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Updating...";
+
+    }
+
+
+    try {
+
+        await update(
+            ref(
+                database,
+                `appointments/${id}`
+            ),
+            {
+                status:
+                    newStatus
+            }
+        );
+
+
+        showToast(
+            "Status updated",
+            `Appointment marked as ${newStatus}.`,
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Status update error:",
+            error
+        );
+
+
+        showToast(
+            "Update failed",
+            "Unable to update the appointment status.",
+            "error"
+        );
+
+    } finally {
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.textContent =
+                "Update Status";
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// DELETE APPOINTMENT
+// =====================================================
+
+async function deleteAppointment(
+    id
+) {
+
+    const confirmed =
+        window.confirm(
+            "Delete this appointment permanently?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await remove(
+            ref(
+                database,
+                `appointments/${id}`
+            )
+        );
+
+
+        selectedAppointmentId =
+            null;
+
+
+        detailView.classList.remove(
+            "active"
+        );
+
+
+        showToast(
+            "Appointment deleted",
+            "The appointment has been removed.",
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Delete error:",
+            error
+        );
+
+
+        showToast(
+            "Delete failed",
+            "Unable to delete the appointment.",
+            "error"
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// SHARE APPOINTMENT IMAGE
 // =====================================================
 
 async function shareAppointmentImage(
@@ -906,10 +1098,6 @@ async function shareAppointmentImage(
             );
 
 
-        /*
-         * Native Android / mobile share sheet
-         */
-
         if (
             navigator.share &&
             navigator.canShare &&
@@ -926,18 +1114,19 @@ async function shareAppointmentImage(
                 text:
                     "Yadav Web Technologies - Appointment Details",
 
-                files: [file]
+                files:
+                    [file]
 
             });
 
-        }
 
-        /*
-         * Desktop / browsers without file sharing:
-         * download the generated image.
-         */
+            showToast(
+                "Share ready",
+                "The appointment image is ready to share.",
+                "success"
+            );
 
-        else {
+        } else {
 
             const url =
                 URL.createObjectURL(
@@ -957,9 +1146,11 @@ async function shareAppointmentImage(
             anchor.download =
                 "appointment-details.png";
 
+
             document.body.appendChild(
                 anchor
             );
+
 
             anchor.click();
 
@@ -971,18 +1162,15 @@ async function shareAppointmentImage(
             );
 
 
-            alert(
-                "The appointment image has been generated and downloaded."
+            showToast(
+                "Image generated",
+                "The appointment image was downloaded because file sharing is unavailable in this browser.",
+                "success"
             );
 
         }
 
     } catch (error) {
-
-        /*
-         * User closing the native share sheet
-         * is not an actual application error.
-         */
 
         if (
             error?.name !==
@@ -994,8 +1182,11 @@ async function shareAppointmentImage(
                 error
             );
 
-            alert(
-                "Unable to generate the appointment image."
+
+            showToast(
+                "Share failed",
+                "Unable to generate the appointment image.",
+                "error"
             );
 
         }
@@ -1008,7 +1199,7 @@ async function shareAppointmentImage(
 
             button.innerHTML =
                 button.dataset.originalText ||
-                "Share";
+                "Share Appointment";
 
         }
 
@@ -1021,19 +1212,9 @@ async function shareAppointmentImage(
 // BUILD SHARE CARD
 // =====================================================
 
-function buildShareCard(item) {
-
-    if (
-        !shareCardRender ||
-        !shareCardGrid
-    ) {
-
-        throw new Error(
-            "Share card template not found."
-        );
-
-    }
-
+function buildShareCard(
+    item
+) {
 
     shareCardSubtitle.textContent =
         `${formatDate(item.date)} · ${item.time || "Time not specified"}`;
@@ -1084,9 +1265,7 @@ function buildShareCard(item) {
 
         ${shareField(
             "Submitted",
-            formatCreatedAt(
-                item.createdAt
-            )
+            formatCreatedAt(item.createdAt)
         )}
 
         ${shareField(
@@ -1110,7 +1289,10 @@ function shareField(
     return `
 
         <div
-            class="share-card-field ${full ? "full" : ""}">
+            class="
+                share-card-field
+                ${full ? "full" : ""}
+            ">
 
             <span
                 class="share-card-label">
@@ -1118,6 +1300,7 @@ function shareField(
                 ${escapeHtml(label)}
 
             </span>
+
 
             <div
                 class="share-card-value">
@@ -1134,9 +1317,7 @@ function shareField(
 
 
 // =====================================================
-// HTML → CANVAS
-//
-// Uses html2canvas dynamically.
+// HTML2CANVAS
 // =====================================================
 
 async function createCanvasFromCard() {
@@ -1157,7 +1338,8 @@ async function createCanvasFromCard() {
             backgroundColor:
                 "#ffffff",
 
-            scale: 2,
+            scale:
+                2,
 
             useCORS:
                 true,
@@ -1169,10 +1351,6 @@ async function createCanvasFromCard() {
 
 }
 
-
-// =====================================================
-// LOAD HTML2CANVAS
-// =====================================================
 
 function loadHtml2Canvas() {
 
@@ -1211,11 +1389,9 @@ function loadHtml2Canvas() {
 }
 
 
-// =====================================================
-// CANVAS → BLOB
-// =====================================================
-
-function canvasToBlob(canvas) {
+function canvasToBlob(
+    canvas
+) {
 
     return new Promise(
         (resolve, reject) => {
@@ -1225,9 +1401,7 @@ function canvasToBlob(canvas) {
 
                     if (blob) {
 
-                        resolve(
-                            blob
-                        );
+                        resolve(blob);
 
                     } else {
 
@@ -1243,132 +1417,6 @@ function canvasToBlob(canvas) {
                 "image/png",
                 1
             );
-
-        }
-    );
-
-}
-
-
-// =====================================================
-// UPDATE STATUS
-// =====================================================
-
-async function updateAppointmentStatus(
-    id
-) {
-
-    const statusElement =
-        document.getElementById(
-            "detailStatus"
-        );
-
-
-    if (!statusElement) {
-        return;
-    }
-
-
-    try {
-
-        await update(
-            ref(
-                database,
-                `appointments/${id}`
-            ),
-            {
-                status:
-                    statusElement.value
-            }
-        );
-
-    } catch (error) {
-
-        console.error(
-            error
-        );
-
-        alert(
-            "Unable to update appointment status."
-        );
-
-    }
-
-}
-
-
-// =====================================================
-// DELETE
-// =====================================================
-
-async function deleteAppointment(
-    id
-) {
-
-    const confirmed =
-        window.confirm(
-            "Delete this appointment permanently?"
-        );
-
-
-    if (!confirmed) {
-        return;
-    }
-
-
-    try {
-
-        await remove(
-            ref(
-                database,
-                `appointments/${id}`
-            )
-        );
-
-
-        selectedAppointmentId =
-            null;
-
-        detailView.classList.remove(
-            "active"
-        );
-
-    } catch (error) {
-
-        console.error(
-            error
-        );
-
-        alert(
-            "Unable to delete the appointment."
-        );
-
-    }
-
-}
-
-
-// =====================================================
-// CLOSE DETAILS
-// =====================================================
-
-if (closeDetail) {
-
-    closeDetail.addEventListener(
-        "click",
-        () => {
-
-            selectedAppointmentId =
-                null;
-
-            detailView.classList.remove(
-                "active"
-            );
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
 
         }
     );
@@ -1395,6 +1443,118 @@ if (statusFilter) {
     statusFilter.addEventListener(
         "change",
         renderAppointments
+    );
+
+}
+
+
+// =====================================================
+// REFRESH
+// =====================================================
+
+if (refreshButton) {
+
+    refreshButton.addEventListener(
+        "click",
+        () => {
+
+            renderAppointments();
+
+            updateStatistics();
+
+            showToast(
+                "Dashboard refreshed",
+                "The current Firebase data has been refreshed.",
+                "success"
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// CLOSE DETAIL
+// =====================================================
+
+if (closeDetail) {
+
+    closeDetail.addEventListener(
+        "click",
+        () => {
+
+            selectedAppointmentId =
+                null;
+
+
+            detailView.classList.remove(
+                "active"
+            );
+
+
+            document
+                .getElementById(
+                    "appointmentsPanel"
+                )
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// SIDEBAR
+// =====================================================
+
+if (mobileMenuButton) {
+
+    mobileMenuButton.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.toggle(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+if (appointmentsNav) {
+
+    appointmentsNav.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+if (dashboardNav) {
+
+    dashboardNav.addEventListener(
+        "click",
+        () => {
+
+            adminSidebar.classList.remove(
+                "open"
+            );
+
+        }
     );
 
 }
@@ -1476,7 +1636,7 @@ function setCount(
 
 
 // =====================================================
-// LOGIN UI
+// LOGIN / DASHBOARD UI
 // =====================================================
 
 function showLogin() {
@@ -1498,7 +1658,7 @@ function showDashboard(
         "none";
 
     dashboard.style.display =
-        "block";
+        "grid";
 
 
     if (adminUser) {
@@ -1538,7 +1698,124 @@ function clearLoginError() {
 
 
 // =====================================================
-// HELPERS
+// TOAST
+// =====================================================
+
+function showToast(
+    title,
+    message,
+    type = "success"
+) {
+
+    if (
+        !adminToast ||
+        !toastTitle ||
+        !toastMessage
+    ) {
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTitle.textContent =
+        title;
+
+
+    toastMessage.textContent =
+        message;
+
+
+    adminToast.className =
+        `admin-toast ${type}`;
+
+
+    requestAnimationFrame(
+        () => {
+
+            adminToast.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                adminToast.classList.remove(
+                    "show"
+                );
+
+            },
+            3500
+        );
+
+}
+
+
+// =====================================================
+// EMPTY STATE
+// =====================================================
+
+function createEmptyState(
+    title,
+    message
+) {
+
+    return `
+
+        <div class="empty-state">
+
+            <div class="empty-state-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8">
+
+                    <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="16"
+                        rx="2">
+                    </rect>
+
+                    <path d="M8 9h8"></path>
+                    <path d="M8 13h5"></path>
+
+                </svg>
+
+            </div>
+
+
+            <h3>
+                ${escapeHtml(title)}
+            </h3>
+
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+// =====================================================
+// SECURITY-SAFE HTML ESCAPING
 // =====================================================
 
 function escapeHtml(
@@ -1571,6 +1848,10 @@ function escapeHtml(
 
 }
 
+
+// =====================================================
+// DATE FORMATTING
+// =====================================================
 
 function formatDate(
     value
@@ -1613,6 +1894,10 @@ function formatDate(
 
 }
 
+
+// =====================================================
+// CREATED AT FORMATTING
+// =====================================================
 
 function formatCreatedAt(
     value

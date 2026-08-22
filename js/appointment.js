@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
 import {
     getDatabase,
@@ -9,12 +11,13 @@ import {
 
 
 // =====================================================
-// FIREBASE CONFIGURATION
+// FIREBASE CONFIG
 // =====================================================
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",
+    apiKey:
+        "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",
 
     authDomain:
         "auth-project-by-yadav.firebaseapp.com",
@@ -41,110 +44,156 @@ const firebaseConfig = {
 // INITIALIZE FIREBASE
 // =====================================================
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+const database =
+    getDatabase(app);
+
+
+// =====================================================
+// ELEMENTS
+// =====================================================
+
+const appointmentForm =
+    document.getElementById("appointmentForm");
+
+const appointmentMessage =
+    document.getElementById("appointmentMessage");
+
+const successOverlay =
+    document.getElementById("successOverlay");
+
+const successClose =
+    document.getElementById("successClose");
+
+const submitButton =
+    appointmentForm?.querySelector(
+        'button[type="submit"]'
+    );
+
+
+// =====================================================
+// SUCCESS MESSAGE
+// =====================================================
+
+function showSuccessMessage() {
+
+    if (!successOverlay) {
+        return;
+    }
+
+    successOverlay.hidden = false;
+
+}
+
+
+function closeSuccessMessage() {
+
+    if (!successOverlay) {
+        return;
+    }
+
+    successOverlay.hidden = true;
+
+}
+
+
+// =====================================================
+// CLOSE SUCCESS MESSAGE
+// =====================================================
+
+if (successClose) {
+
+    successClose.addEventListener(
+        "click",
+        closeSuccessMessage
+    );
+
+}
+
+
+// Close when clicking outside the box
+
+if (successOverlay) {
+
+    successOverlay.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === successOverlay
+            ) {
+
+                closeSuccessMessage();
+
+            }
+
+        }
+    );
+
+}
+
+
+// Close with Escape key
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            successOverlay &&
+            !successOverlay.hidden
+        ) {
+
+            closeSuccessMessage();
+
+        }
+
+    }
+);
 
 
 // =====================================================
 // APPOINTMENT FORM
 // =====================================================
 
-const appointmentForm =
-    document.getElementById("appointmentForm");
-
-
-// Stop safely if form does not exist
-
-if (!appointmentForm) {
-
-    console.warn(
-        "Appointment form not found."
-    );
-
-}
-
-
-// =====================================================
-// SUBMIT APPOINTMENT
-// =====================================================
-
 if (appointmentForm) {
 
     appointmentForm.addEventListener(
         "submit",
-        async function (event) {
+        async (event) => {
 
             event.preventDefault();
 
 
-            // -----------------------------------------
-            // FORM ELEMENTS
-            // -----------------------------------------
+            // ---------------------------------------------
+            // CLEAR PREVIOUS MESSAGE
+            // ---------------------------------------------
 
-            const name =
-                document.getElementById("name");
+            if (appointmentMessage) {
 
-            const email =
-                document.getElementById("email");
-
-            const phone =
-                document.getElementById("phone");
-
-            const service =
-                document.getElementById("service");
-
-            const date =
-                document.getElementById("date");
-
-            const time =
-                document.getElementById("time");
-
-            const message =
-                document.getElementById("message");
-
-
-            // -----------------------------------------
-            // BASIC VALIDATION
-            // -----------------------------------------
-
-            if (
-                !name ||
-                !email ||
-                !phone ||
-                !service ||
-                !date ||
-                !time
-            ) {
-
-                console.error(
-                    "Required form fields are missing."
-                );
-
-                return;
+                appointmentMessage.textContent = "";
 
             }
 
 
-            // -----------------------------------------
-            // SUBMIT BUTTON
-            // -----------------------------------------
-
-            const submitButton =
-                appointmentForm.querySelector(
-                    'button[type="submit"]'
-                );
-
-
-            const originalButtonText =
-                submitButton
-                    ? submitButton.textContent
-                    : "";
-
+            // ---------------------------------------------
+            // DISABLE SUBMIT BUTTON
+            // ---------------------------------------------
 
             if (submitButton) {
 
                 submitButton.disabled = true;
+
+                submitButton.setAttribute(
+                    "aria-disabled",
+                    "true"
+                );
+
+                submitButton.dataset.originalText =
+                    submitButton.textContent.trim();
 
                 submitButton.textContent =
                     "Submitting...";
@@ -152,65 +201,110 @@ if (appointmentForm) {
             }
 
 
+            // ---------------------------------------------
+            // GET FORM VALUES
+            // ---------------------------------------------
+
+            const name =
+                document.getElementById("name")
+                    ?.value.trim();
+
+            const email =
+                document.getElementById("email")
+                    ?.value.trim();
+
+            const phone =
+                document.getElementById("phone")
+                    ?.value.trim();
+
+            const service =
+                document.getElementById("service")
+                    ?.value;
+
+            const date =
+                document.getElementById("date")
+                    ?.value;
+
+            const time =
+                document.getElementById("time")
+                    ?.value;
+
+            const message =
+                document.getElementById("message")
+                    ?.value.trim();
+
+
+            // ---------------------------------------------
+            // BASIC VALIDATION
+            // ---------------------------------------------
+
+            if (
+                !name ||
+                !email ||
+                !phone ||
+                !service ||
+                !date ||
+                !time ||
+                !message
+            ) {
+
+                showFormError(
+                    "Please complete all required fields."
+                );
+
+                restoreSubmitButton();
+
+                return;
+
+            }
+
+
+            // ---------------------------------------------
+            // CREATE DATABASE REFERENCE
+            // ---------------------------------------------
+
+            const appointmentRef =
+                push(
+                    ref(
+                        database,
+                        "appointments"
+                    )
+                );
+
+
+            // ---------------------------------------------
+            // APPOINTMENT DATA
+            // ---------------------------------------------
+
+            const appointmentData = {
+
+                name: name,
+
+                email: email,
+
+                phone: phone,
+
+                service: service,
+
+                date: date,
+
+                time: time,
+
+                message: message,
+
+                status: "new",
+
+                createdAt:
+                    new Date().toISOString()
+
+            };
+
+
+            // ---------------------------------------------
+            // SAVE TO FIREBASE
+            // ---------------------------------------------
+
             try {
-
-                // -------------------------------------
-                // CREATE NEW APPOINTMENT REFERENCE
-                // -------------------------------------
-
-                const appointmentRef =
-                    push(
-                        ref(
-                            database,
-                            "appointments"
-                        )
-                    );
-
-
-                // -------------------------------------
-                // APPOINTMENT DATA
-                // -------------------------------------
-
-                const appointmentData = {
-
-                    name:
-                        name.value.trim(),
-
-                    email:
-                        email.value.trim(),
-
-                    phone:
-                        phone.value.trim(),
-
-                    service:
-                        service.value.trim(),
-
-                    date:
-                        date.value,
-
-                    time:
-                        time.value,
-
-                    message:
-                        message
-                            ? message.value.trim()
-                            : "",
-
-                    status:
-                        "new",
-
-                    source:
-                        "website",
-
-                    createdAt:
-                        new Date().toISOString()
-
-                };
-
-
-                // -------------------------------------
-                // SAVE TO FIREBASE
-                // -------------------------------------
 
                 await set(
                     appointmentRef,
@@ -218,45 +312,91 @@ if (appointmentForm) {
                 );
 
 
-                // -------------------------------------
-                // SUCCESS
-                // -------------------------------------
-
-                alert(
-                    "Your appointment request has been submitted successfully."
-                );
-
+                // -----------------------------------------
+                // RESET FORM
+                // -----------------------------------------
 
                 appointmentForm.reset();
+
+
+                // -----------------------------------------
+                // CLEAR FORM ERROR
+                // -----------------------------------------
+
+                if (appointmentMessage) {
+
+                    appointmentMessage.textContent = "";
+
+                }
+
+
+                // -----------------------------------------
+                // SHOW CUSTOM SUCCESS
+                // -----------------------------------------
+
+                showSuccessMessage();
 
 
             } catch (error) {
 
                 console.error(
-                    "Appointment submission failed:",
+                    "Appointment submission error:",
                     error
                 );
 
 
-                alert(
+                showFormError(
                     "Unable to submit your appointment right now. Please try again."
                 );
 
-
             } finally {
 
-                if (submitButton) {
-
-                    submitButton.disabled = false;
-
-                    submitButton.textContent =
-                        originalButtonText;
-
-                }
+                restoreSubmitButton();
 
             }
 
         }
     );
+
+}
+
+
+// =====================================================
+// FORM ERROR
+// =====================================================
+
+function showFormError(message) {
+
+    if (!appointmentMessage) {
+        return;
+    }
+
+    appointmentMessage.textContent =
+        message;
+
+}
+
+
+// =====================================================
+// RESTORE SUBMIT BUTTON
+// =====================================================
+
+function restoreSubmitButton() {
+
+    if (!submitButton) {
+        return;
+    }
+
+
+    submitButton.disabled = false;
+
+    submitButton.removeAttribute(
+        "aria-disabled"
+    );
+
+
+    submitButton.textContent =
+        submitButton.dataset.originalText ||
+        "Submit Appointment Request";
 
 }

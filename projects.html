@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Pricing for websites, web applications, ERP systems, custom web tools and digital solutions by Yadav Web Technologies.">
+
+    <meta
+        name="keywords"
+        content="Yadav Web Technologies pricing, website price, ERP software price, web development pricing">
+
+    <meta
+        name="author"
+        content="Yadav Web Technologies">
+
+    <title>
+        Pricing | Yadav Web Technologies
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+    <style>
+
+        /* =================================================
+           PRICING PAGE
+        ================================================= */
+
+        .pricing-page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .pricing-card {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 28px;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .pricing-card h3 {
+            margin: 0;
+        }
+
+        .pricing-price {
+            font-size: 1.7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .pricing-card p {
+            margin-bottom: 18px;
+        }
+
+        .pricing-features {
+            margin: 0 0 24px;
+            padding-left: 20px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 9px;
+        }
+
+        .pricing-card .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .pricing-note {
+            margin-top: 30px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--section-soft);
+        }
+
+        .pricing-note h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .pricing-note p {
+            margin-bottom: 16px;
+        }
+
+        .pricing-note .btn {
+            margin-top: 5px;
+        }
+
+        .pricing-single {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 760px) {
+
+            .pricing-page-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-single {
+                grid-column: auto;
+            }
+
+            .pricing-card {
+                padding: 22px;
+            }
+
+            .pricing-card-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .pricing-price {
+                font-size: 1.5rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="nav container">
+
+
+        <a
+            href="index.html"
+            class="brand">
+
+            <span class="brand-mark">
+                Y
+            </span>
+
+            <span>
+                Yadav Web Technologies
+            </span>
+
+        </a>
+
+
+        <div
+            class="nav-links"
+            id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="projects.html">
+                Projects
+            </a>
+
+            <a
+                href="pricing.html"
+                class="active">
+
+                Pricing
+
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a
+                href="appointment.html"
+                class="nav-cta">
+
+                Appointment
+
+            </a>
+
+        </div>
+
+
+        <div class="mobile-actions">
+
+
+            <button
+                type="button"
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark mode">
+
+                <svg
+                    id="themeIcon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4">
+                    </circle>
+
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+
+                </svg>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round">
+
+                    <path d="M4 6h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 18h16"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <div class="eyebrow">
+
+            <span></span>
+
+            Project Pricing
+
+        </div>
+
+
+        <h1>
+            Simple, Requirement-Based Pricing
+        </h1>
+
+
+        <p>
+            Our pricing provides a starting point for common
+            services. Final pricing depends on the actual
+            requirements, scope, complexity and functionality
+            of each project.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRICING
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Service Pricing
+            </div>
+
+
+            <h2>
+                Choose the service that fits your requirement.
+            </h2>
+
+
+            <p>
+                The prices below are category-based starting
+                prices and may vary according to the project.
+            </p>
+
+        </div>
+
+
+
+        <div class="pricing-page-grid">
+
+
+            <!-- BUSINESS WEBSITE -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Business Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹3,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Professional website for businesses,
+                    organizations and service providers.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Responsive website
+                    </li>
+
+                    <li>
+                        Business-focused structure
+                    </li>
+
+                    <li>
+                        Requirement-based sections
+                    </li>
+
+                    <li>
+                        Mobile, tablet and desktop support
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PERSONAL / PROFESSIONAL WEBSITE -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Personal / Professional Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹4,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    A professional multi-section website
+                    designed around an individual's or
+                    professional's requirements.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Responsive design
+                    </li>
+
+                    <li>
+                        Professional presentation
+                    </li>
+
+                    <li>
+                        Requirement-based pages
+                    </li>
+
+                    <li>
+                        Contact and project sections
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- SCHOOL ERP -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        School Management ERP
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹11,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    School-focused management system for
+                    handling common academic and administrative
+                    operations.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Student and teacher management
+                    </li>
+
+                    <li>
+                        Admission management
+                    </li>
+
+                    <li>
+                        ID card and admit card generation
+                    </li>
+
+                    <li>
+                        Fee and salary management
+                    </li>
+
+                    <li>
+                        Fee and salary receipts
+                    </li>
+
+                    <li>
+                        Attendance management
+                    </li>
+
+                    <li>
+                        Dashboard and operational records
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- ORGANIZATION MANAGEMENT -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Organization Management Website / Software
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹8,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Organization-focused digital solution for
+                    managing members, applications, records
+                    and administrative information.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Membership management
+                    </li>
+
+                    <li>
+                        Application records
+                    </li>
+
+                    <li>
+                        Administrative interface
+                    </li>
+
+                    <li>
+                        Requirement-based structure
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- ORGANIZATION COMPLETE WORKFLOW -->
+
+            <article class="pricing-card pricing-single">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Organization Management Software
+                        with Complete Backend Workflow
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹19,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    A complete organization management solution
+                    with backend infrastructure and workflow-based
+                    processing.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Membership applications
+                    </li>
+
+                    <li>
+                        Member records
+                    </li>
+
+                    <li>
+                        Application approval workflow
+                    </li>
+
+                    <li>
+                        Backend database integration
+                    </li>
+
+                    <li>
+                        Administrative management
+                    </li>
+
+                    <li>
+                        Requirement-based workflow functionality
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-primary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PERSONAL PORTFOLIO -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Personal Portfolio Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    A simple professional portfolio website
+                    for presenting your profile, skills,
+                    projects and contact information.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        3 pages included
+                    </li>
+
+                    <li>
+                        Responsive design
+                    </li>
+
+                    <li>
+                        Professional project showcase
+                    </li>
+
+                    <li>
+                        Additional page: ₹299 per page
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CUSTOM WEB TOOLS -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Custom Web Tools
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹1,299
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Browser-based utility tools designed
+                    according to your specific requirements.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Up to 7 tools
+                    </li>
+
+                    <li>
+                        Requirement-based functionality
+                    </li>
+
+                    <li>
+                        Browser-based operation
+                    </li>
+
+                    <li>
+                        Custom tool structure
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- AUTHENTICATION -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Custom Authentication Setup / Website
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹6,999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Authentication-focused website or setup
+                    for projects requiring user accounts and
+                    access management.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        User registration
+                    </li>
+
+                    <li>
+                        Login functionality
+                    </li>
+
+                    <li>
+                        Account management
+                    </li>
+
+                    <li>
+                        Authentication setup
+                    </li>
+
+                    <li>
+                        Requirement-based implementation
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Project
+
+                </a>
+
+            </article>
+
+
+
+            <!-- BUG FIX -->
+
+            <article class="pricing-card">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        HTML / CSS / JS Bug or Syntax Fix
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹999
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Fixing HTML, CSS or JavaScript errors,
+                    syntax problems and related website issues.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Starting from ₹999 per fix
+                    </li>
+
+                    <li>
+                        Complexity-based assessment
+                    </li>
+
+                    <li>
+                        Issue reviewed before acceptance
+                    </li>
+
+                    <li>
+                        Final charge communicated beforehand
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Discuss Issue
+
+                </a>
+
+            </article>
+
+
+
+            <!-- MAINTENANCE -->
+
+            <article class="pricing-card pricing-single">
+
+                <div class="pricing-card-header">
+
+                    <h3>
+                        Website Maintenance
+                    </h3>
+
+                    <div class="pricing-price">
+                        ₹299
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Basic maintenance support for updating
+                    existing website content.
+                </p>
+
+
+                <ul class="pricing-features">
+
+                    <li>
+                        Content updates only
+                    </li>
+
+                    <li>
+                        Text updates
+                    </li>
+
+                    <li>
+                        Existing image replacement
+                    </li>
+
+                    <li>
+                        Minor existing-content changes
+                    </li>
+
+                </ul>
+
+
+                <p>
+                    Maintenance does not include new pages,
+                    new sections, new features, new functionality
+                    or major design changes.
+                </p>
+
+
+                <a
+                    href="appointment.html"
+                    class="btn btn-secondary">
+
+                    Request Maintenance
+
+                </a>
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRICING DISCLAIMER
+        ================================================= -->
+
+        <div class="pricing-note">
+
+            <h3>
+                Pricing Category Notice
+            </h3>
+
+
+            <p>
+                The pricing displayed on this page is
+                category-based only. Final pricing may vary
+                depending on project requirements, scope,
+                complexity, features, integrations, backend
+                requirements and other project-specific factors.
+            </p>
+
+
+            <p>
+                The listed prices should not be considered
+                automatically applicable to every project.
+                A final quotation will be provided after
+                understanding the actual requirement.
+            </p>
+
+
+            <a
+                href="services.html"
+                class="btn btn-secondary">
+
+                View Detailed Service Information
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M5 12h14"></path>
+
+                    <path d="m13 6 6 6-6 6"></path>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="section cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div class="section-label">
+                Start a Project
+            </div>
+
+
+            <h2>
+                Have a specific requirement?
+            </h2>
+
+
+            <p>
+                Tell us what you want to build. We will
+                understand your requirement and discuss
+                the appropriate solution and pricing.
+            </p>
+
+
+            <a
+                href="appointment.html"
+                class="btn btn-primary">
+
+                Book an Appointment
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M5 12h14"></path>
+
+                    <path d="m13 6 6 6-6 6"></path>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand">
+
+                    <span class="brand-mark">
+                        Y
+                    </span>
+
+                    <span>
+                        Yadav Web Technologies
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Professional websites, web applications
+                    and custom digital solutions based on
+                    real project requirements.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Quick Links
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="services.html">
+                        Services
+                    </a>
+
+                    <a href="projects.html">
+                        Projects
+                    </a>
+
+                    <a href="pricing.html">
+                        Pricing
+                    </a>
+
+                    <a href="appointment.html">
+                        Appointment
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Information
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                    <a href="terms.html">
+                        Terms &amp; Conditions
+                    </a>
+
+                    <a href="client-terms.html">
+                        Client Terms
+                    </a>
+
+                    <a href="privacy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="disclaimer.html">
+                        Disclaimer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Yadav Web Technologies.
+            All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     GO TO TOP
+===================================================== -->
+
+<button
+    class="go-top"
+    id="goTop"
+    type="button"
+    aria-label="Go to top">
+
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <path d="M12 19V5"></path>
+
+        <path d="m6 11 6-6 6 6"></path>
+
+    </svg>
+
+</button>
+
+
+
+<!-- =====================================================
+     EXTERNAL JAVASCRIPT
+===================================================== -->
+
+<script src="js/menu.js"></script>
+
+<script src="js/theme.js"></script>
+
+<script src="js/go-top.js"></script>
+
+
+</body>
+
+</html>

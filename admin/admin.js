@@ -19,7 +19,15 @@ import {
 
 
 // =====================================================
-// FIREBASE CONFIG
+// ADMIN UID
+// =====================================================
+
+const ADMIN_UID =
+    "WnECxfnldyb76ajAYBjFbNFA7qz2";
+
+
+// =====================================================
+// FIREBASE
 // =====================================================
 
 const firebaseConfig = {
@@ -48,10 +56,6 @@ const firebaseConfig = {
 };
 
 
-// =====================================================
-// INITIALIZE
-// =====================================================
-
 const app =
     initializeApp(firebaseConfig);
 
@@ -66,104 +70,50 @@ const database =
 // ELEMENTS
 // =====================================================
 
-const loginSection =
-    document.getElementById("loginSection");
+const loginScreen =
+    document.getElementById("loginScreen");
 
-const dashboardSection =
-    document.getElementById("dashboardSection");
+const dashboard =
+    document.getElementById("dashboard");
 
 const loginForm =
     document.getElementById("loginForm");
 
-const loginMessage =
-    document.getElementById("loginMessage");
+const loginError =
+    document.getElementById("loginError");
 
-const logoutBtn =
-    document.getElementById("logoutBtn");
+const logoutButton =
+    document.getElementById("logoutButton");
 
-const appointmentsBody =
-    document.getElementById("appointmentsBody");
+const adminUser =
+    document.getElementById("adminUser");
 
-const emptyState =
-    document.getElementById("emptyState");
+const appointmentsList =
+    document.getElementById("appointmentsList");
 
-const refreshBtn =
-    document.getElementById("refreshBtn");
+const searchInput =
+    document.getElementById("searchInput");
 
-const modal =
-    document.getElementById("appointmentModal");
+const statusFilter =
+    document.getElementById("statusFilter");
 
-const closeModal =
-    document.getElementById("closeModal");
+const detailView =
+    document.getElementById("detailView");
 
-const appointmentDetails =
-    document.getElementById("appointmentDetails");
+const detailBody =
+    document.getElementById("detailBody");
 
-const deleteAppointment =
-    document.getElementById("deleteAppointment");
+const closeDetail =
+    document.getElementById("closeDetail");
 
 
 // =====================================================
-// CURRENT APPOINTMENT
+// STATE
 // =====================================================
+
+let appointments = {};
 
 let selectedAppointmentId = null;
-
-let appointmentsData = {};
-
-
-// =====================================================
-// LOGIN
-// =====================================================
-
-loginForm.addEventListener(
-    "submit",
-    async (event) => {
-
-        event.preventDefault();
-
-
-        const email =
-            document.getElementById(
-                "adminEmail"
-            ).value.trim();
-
-
-        const password =
-            document.getElementById(
-                "adminPassword"
-            ).value;
-
-
-        loginMessage.textContent =
-            "Signing in...";
-
-
-        try {
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-            loginForm.reset();
-
-            loginMessage.textContent = "";
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            loginMessage.textContent =
-                "Invalid email or password.";
-
-        }
-
-    }
-);
 
 
 // =====================================================
@@ -172,48 +122,127 @@ loginForm.addEventListener(
 
 onAuthStateChanged(
     auth,
-    (user) => {
+    async (user) => {
 
-        if (user) {
+        if (!user) {
 
-            loginSection.hidden = true;
+            showLogin();
 
-            dashboardSection.hidden = false;
-
-            loadAppointments();
-
-        } else {
-
-            loginSection.hidden = false;
-
-            dashboardSection.hidden = true;
+            return;
 
         }
 
+
+        // ---------------------------------------------
+        // STRICT ADMIN UID CHECK
+        // ---------------------------------------------
+
+        if (user.uid !== ADMIN_UID) {
+
+            await signOut(auth);
+
+            showLoginError(
+                "This account is not authorized to access the admin dashboard."
+            );
+
+            return;
+
+        }
+
+
+        showDashboard(user);
+
+        loadAppointments();
+
     }
 );
+
+
+// =====================================================
+// LOGIN
+// =====================================================
+
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById(
+                    "loginEmail"
+                ).value.trim();
+
+            const password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
+
+
+            clearLoginError();
+
+
+            try {
+
+                const result =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                if (
+                    result.user.uid !==
+                    ADMIN_UID
+                ) {
+
+                    await signOut(auth);
+
+                    showLoginError(
+                        "This account is not authorized to access the admin dashboard."
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+                showLoginError(
+                    "Invalid login details or access denied."
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 // =====================================================
 // LOGOUT
 // =====================================================
 
-logoutBtn.addEventListener(
-    "click",
-    async () => {
+if (logoutButton) {
 
-        try {
+    logoutButton.addEventListener(
+        "click",
+        async () => {
 
             await signOut(auth);
 
-        } catch (error) {
-
-            console.error(error);
-
         }
+    );
 
-    }
-);
+}
 
 
 // =====================================================
@@ -233,10 +262,25 @@ function loadAppointments() {
         appointmentsRef,
         (snapshot) => {
 
-            appointmentsData =
+            appointments =
                 snapshot.val() || {};
 
             renderAppointments();
+
+            updateStatistics();
+
+            if (
+                selectedAppointmentId &&
+                appointments[
+                    selectedAppointmentId
+                ]
+            ) {
+
+                showAppointmentDetails(
+                    selectedAppointmentId
+                );
+
+            }
 
         },
         (error) => {
@@ -245,6 +289,13 @@ function loadAppointments() {
                 "Database error:",
                 error
             );
+
+            appointmentsList.innerHTML = `
+                <div class="empty-state">
+                    <h3>Unable to load appointments</h3>
+                    <p>Please check your Firebase database permissions.</p>
+                </div>
+            `;
 
         }
     );
@@ -258,142 +309,635 @@ function loadAppointments() {
 
 function renderAppointments() {
 
-    appointmentsBody.innerHTML = "";
+    const search =
+        searchInput?.value
+            .trim()
+            .toLowerCase() || "";
 
 
-    const appointments =
+    const filter =
+        statusFilter?.value || "all";
+
+
+    const entries =
         Object.entries(
-            appointmentsData
+            appointments
+        )
+        .filter(
+            ([id, item]) => {
+
+                const searchable = [
+
+                    item.name,
+                    item.email,
+                    item.phone,
+                    item.service,
+                    item.message
+
+                ]
+                .join(" ")
+                .toLowerCase();
+
+
+                const matchesSearch =
+                    !search ||
+                    searchable.includes(search);
+
+
+                const matchesStatus =
+                    filter === "all" ||
+                    item.status === filter;
+
+
+                return (
+                    matchesSearch &&
+                    matchesStatus
+                );
+
+            }
+        )
+        .sort(
+            ([, a], [, b]) => {
+
+                return (
+                    new Date(
+                        b.createdAt || 0
+                    ) -
+                    new Date(
+                        a.createdAt || 0
+                    )
+                );
+
+            }
         );
 
 
-    if (appointments.length === 0) {
+    if (!entries.length) {
 
-        emptyState.hidden = false;
+        appointmentsList.innerHTML = `
+            <div class="empty-state">
 
-        updateStatistics([]);
+                <h3>
+                    No appointments found
+                </h3>
+
+                <p>
+                    New appointment requests will appear here.
+                </p>
+
+            </div>
+        `;
 
         return;
 
     }
 
 
-    emptyState.hidden = true;
+    appointmentsList.innerHTML =
+        entries
+            .map(
+                ([id, item]) => {
+
+                    return `
+
+                        <article
+                            class="appointment-row">
+
+                            <div
+                                class="appointment-client">
+
+                                <strong>
+                                    ${escapeHtml(
+                                        item.name ||
+                                        "Unknown Client"
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        item.email ||
+                                        ""
+                                    )}
+                                </span>
+
+                            </div>
 
 
-    appointments.sort(
-        (a, b) => {
+                            <div
+                                class="appointment-service">
 
-            const first =
-                new Date(
-                    a[1].createdAt || 0
-                ).getTime();
+                                <strong>
+                                    ${escapeHtml(
+                                        item.service ||
+                                        "Not specified"
+                                    )}
+                                </strong>
 
-            const second =
-                new Date(
-                    b[1].createdAt || 0
-                ).getTime();
+                                <span>
+                                    ${escapeHtml(
+                                        item.phone ||
+                                        ""
+                                    )}
+                                </span>
 
-            return second - first;
-
-        }
-    );
-
-
-    appointments.forEach(
-        ([id, data]) => {
-
-            const row =
-                document.createElement("tr");
+                            </div>
 
 
-            row.innerHTML = `
+                            <div
+                                class="appointment-date">
 
-                <td>
+                                <strong>
+                                    ${formatDate(
+                                        item.date
+                                    )}
+                                </strong>
 
-                    <strong>
-                        ${escapeHTML(data.name || "—")}
-                    </strong>
+                                <span>
+                                    ${escapeHtml(
+                                        item.time ||
+                                        ""
+                                    )}
+                                </span>
 
-                    <small>
-                        ${escapeHTML(data.phone || "")}
-                    </small>
-
-                </td>
-
-
-                <td>
-                    ${escapeHTML(data.service || "—")}
-                </td>
-
-
-                <td>
-                    ${escapeHTML(data.date || "—")}
-                </td>
+                            </div>
 
 
-                <td>
-                    ${escapeHTML(data.time || "—")}
-                </td>
+                            <div>
+
+                                <span
+                                    class="status-badge">
+
+                                    ${escapeHtml(
+                                        item.status ||
+                                        "new"
+                                    )}
+
+                                </span>
+
+                            </div>
 
 
-                <td>
+                            <div>
 
-                    <select
-                        class="status-select"
-                        data-id="${id}">
+                                <button
+                                    type="button"
+                                    class="view-button"
+                                    data-view-id="${id}">
 
-                        <option value="new"
-                            ${data.status === "new" ? "selected" : ""}>
-                            New
-                        </option>
+                                    View Project
 
-                        <option value="contacted"
-                            ${data.status === "contacted" ? "selected" : ""}>
-                            Contacted
-                        </option>
+                                </button>
 
-                        <option value="confirmed"
-                            ${data.status === "confirmed" ? "selected" : ""}>
-                            Confirmed
-                        </option>
+                            </div>
 
-                        <option value="completed"
-                            ${data.status === "completed" ? "selected" : ""}>
-                            Completed
-                        </option>
+                        </article>
 
-                    </select>
+                    `;
 
-                </td>
+                }
+            )
+            .join("");
 
 
-                <td>
-
-                    <button
-                        type="button"
-                        class="view-btn"
-                        data-id="${id}">
-
-                        View
-
-                    </button>
-
-                </td>
-
-            `;
-
-
-            appointmentsBody.appendChild(row);
-
-        }
-    );
-
-
-    updateStatistics(
-        appointments.map(
-            item => item[1]
+    document
+        .querySelectorAll(
+            "[data-view-id]"
         )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        showAppointmentDetails(
+                            button.dataset.viewId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// APPOINTMENT DETAILS
+// =====================================================
+
+function showAppointmentDetails(id) {
+
+    const item =
+        appointments[id];
+
+
+    if (!item) {
+        return;
+    }
+
+
+    selectedAppointmentId =
+        id;
+
+
+    detailBody.innerHTML = `
+
+        <div class="detail-grid">
+
+            <div class="detail-item">
+
+                <label>
+                    Client Name
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.name ||
+                        "Not provided"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Service
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.service ||
+                        "Not provided"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Email
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.email ||
+                        "Not provided"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Phone
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.phone ||
+                        "Not provided"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Appointment Date
+                </label>
+
+                <p>
+                    ${formatDate(
+                        item.date
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Appointment Time
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.time ||
+                        "Not provided"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Current Status
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.status ||
+                        "new"
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Submitted
+                </label>
+
+                <p>
+                    ${formatCreatedAt(
+                        item.createdAt
+                    )}
+                </p>
+
+            </div>
+
+
+            <div class="detail-item full">
+
+                <label>
+                    Project Requirement
+                </label>
+
+                <p>
+                    ${escapeHtml(
+                        item.message ||
+                        "No message provided."
+                    )}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-actions">
+
+            <select
+                id="detailStatus">
+
+                <option
+                    value="new"
+                    ${item.status === "new" ? "selected" : ""}>
+
+                    New
+
+                </option>
+
+                <option
+                    value="contacted"
+                    ${item.status === "contacted" ? "selected" : ""}>
+
+                    Contacted
+
+                </option>
+
+                <option
+                    value="confirmed"
+                    ${item.status === "confirmed" ? "selected" : ""}>
+
+                    Confirmed
+
+                </option>
+
+                <option
+                    value="completed"
+                    ${item.status === "completed" ? "selected" : ""}>
+
+                    Completed
+
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="saveStatus">
+
+                Update Status
+
+            </button>
+
+
+            <button
+                type="button"
+                class="danger-button"
+                id="deleteAppointment">
+
+                Delete Appointment
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    detailView.classList.add(
+        "active"
+    );
+
+
+    detailView.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+
+    document
+        .getElementById("saveStatus")
+        .addEventListener(
+            "click",
+            () => {
+
+                updateAppointmentStatus(
+                    id
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("deleteAppointment")
+        .addEventListener(
+            "click",
+            () => {
+
+                deleteAppointment(
+                    id
+                );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// UPDATE STATUS
+// =====================================================
+
+async function updateAppointmentStatus(id) {
+
+    const statusElement =
+        document.getElementById(
+            "detailStatus"
+        );
+
+
+    if (!statusElement) {
+        return;
+    }
+
+
+    try {
+
+        await update(
+            ref(
+                database,
+                `appointments/${id}`
+            ),
+            {
+                status:
+                    statusElement.value
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Status update error:",
+            error
+        );
+
+        alert(
+            "Unable to update appointment status."
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// DELETE APPOINTMENT
+// =====================================================
+
+async function deleteAppointment(id) {
+
+    const confirmed =
+        window.confirm(
+            "Delete this appointment permanently?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        await remove(
+            ref(
+                database,
+                `appointments/${id}`
+            )
+        );
+
+
+        selectedAppointmentId =
+            null;
+
+        detailView.classList.remove(
+            "active"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Delete error:",
+            error
+        );
+
+        alert(
+            "Unable to delete the appointment."
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// CLOSE DETAIL
+// =====================================================
+
+if (closeDetail) {
+
+    closeDetail.addEventListener(
+        "click",
+        () => {
+
+            selectedAppointmentId =
+                null;
+
+            detailView.classList.remove(
+                "active"
+            );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// SEARCH / FILTER
+// =====================================================
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        renderAppointments
+    );
+
+}
+
+
+if (statusFilter) {
+
+    statusFilter.addEventListener(
+        "change",
+        renderAppointments
     );
 
 }
@@ -403,306 +947,212 @@ function renderAppointments() {
 // STATISTICS
 // =====================================================
 
-function updateStatistics(
-    appointments
-) {
+function updateStatistics() {
 
-    document.getElementById(
-        "totalCount"
-    ).textContent =
-        appointments.length;
+    const values =
+        Object.values(
+            appointments
+        );
 
 
-    document.getElementById(
-        "newCount"
-    ).textContent =
-        appointments.filter(
+    setCount(
+        "totalCount",
+        values.length
+    );
+
+
+    setCount(
+        "newCount",
+        values.filter(
             item => item.status === "new"
-        ).length;
+        ).length
+    );
 
 
-    document.getElementById(
-        "contactedCount"
-    ).textContent =
-        appointments.filter(
+    setCount(
+        "contactedCount",
+        values.filter(
             item => item.status === "contacted"
-        ).length;
+        ).length
+    );
 
 
-    document.getElementById(
-        "confirmedCount"
-    ).textContent =
-        appointments.filter(
+    setCount(
+        "confirmedCount",
+        values.filter(
             item => item.status === "confirmed"
-        ).length;
+        ).length
+    );
 
 
-    document.getElementById(
-        "completedCount"
-    ).textContent =
-        appointments.filter(
+    setCount(
+        "completedCount",
+        values.filter(
             item => item.status === "completed"
-        ).length;
+        ).length
+    );
+
+}
+
+
+function setCount(id, value) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
 
 }
 
 
 // =====================================================
-// STATUS CHANGE
+// LOGIN / DASHBOARD UI
 // =====================================================
 
-appointmentsBody.addEventListener(
-    "change",
-    async (event) => {
+function showLogin() {
 
-        if (
-            !event.target.classList.contains(
-                "status-select"
-            )
-        ) {
-            return;
-        }
+    loginScreen.style.display =
+        "flex";
+
+    dashboard.style.display =
+        "none";
+
+}
 
 
-        const id =
-            event.target.dataset.id;
+function showDashboard(user) {
+
+    loginScreen.style.display =
+        "none";
+
+    dashboard.style.display =
+        "block";
 
 
-        const status =
-            event.target.value;
+    if (adminUser) {
 
-
-        try {
-
-            await update(
-                ref(
-                    database,
-                    `appointments/${id}`
-                ),
-                {
-                    status: status
-                }
-            );
-
-        } catch (error) {
-
-            console.error(
-                "Status update failed:",
-                error
-            );
-
-        }
+        adminUser.textContent =
+            user.email || "";
 
     }
-);
+
+}
 
 
-// =====================================================
-// VIEW APPOINTMENT
-// =====================================================
+function showLoginError(message) {
 
-appointmentsBody.addEventListener(
-    "click",
-    (event) => {
+    if (loginError) {
 
-        if (
-            !event.target.classList.contains(
-                "view-btn"
-            )
-        ) {
-            return;
-        }
-
-
-        const id =
-            event.target.dataset.id;
-
-
-        const data =
-            appointmentsData[id];
-
-
-        if (!data) {
-            return;
-        }
-
-
-        selectedAppointmentId =
-            id;
-
-
-        appointmentDetails.innerHTML = `
-
-            <div class="detail-row">
-                <span>Client</span>
-                <strong>
-                    ${escapeHTML(data.name || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Email</span>
-                <strong>
-                    ${escapeHTML(data.email || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Phone</span>
-                <strong>
-                    ${escapeHTML(data.phone || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Service</span>
-                <strong>
-                    ${escapeHTML(data.service || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Date</span>
-                <strong>
-                    ${escapeHTML(data.date || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Time</span>
-                <strong>
-                    ${escapeHTML(data.time || "—")}
-                </strong>
-            </div>
-
-            <div class="detail-row detail-message">
-                <span>Message</span>
-                <p>
-                    ${escapeHTML(data.message || "No message provided.")}
-                </p>
-            </div>
-
-        `;
-
-
-        modal.hidden = false;
+        loginError.textContent =
+            message;
 
     }
-);
+
+}
 
 
-// =====================================================
-// CLOSE MODAL
-// =====================================================
+function clearLoginError() {
 
-closeModal.addEventListener(
-    "click",
-    () => {
+    if (loginError) {
 
-        modal.hidden = true;
+        loginError.textContent =
+            "";
 
     }
-);
 
-
-modal.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target === modal
-        ) {
-
-            modal.hidden = true;
-
-        }
-
-    }
-);
+}
 
 
 // =====================================================
-// DELETE
+// HELPERS
 // =====================================================
 
-deleteAppointment.addEventListener(
-    "click",
-    async () => {
+function escapeHtml(value) {
 
-        if (!selectedAppointmentId) {
-            return;
-        }
-
-
-        const confirmed =
-            confirm(
-                "Delete this appointment permanently?"
-            );
-
-
-        if (!confirmed) {
-            return;
-        }
-
-
-        try {
-
-            await remove(
-                ref(
-                    database,
-                    `appointments/${selectedAppointmentId}`
-                )
-            );
-
-
-            selectedAppointmentId =
-                null;
-
-            modal.hidden = true;
-
-
-        } catch (error) {
-
-            console.error(
-                "Delete failed:",
-                error
-            );
-
-            alert(
-                "Unable to delete the appointment."
-            );
-
-        }
-
-    }
-);
-
-
-// =====================================================
-// REFRESH
-// =====================================================
-
-refreshBtn.addEventListener(
-    "click",
-    () => {
-
-        renderAppointments();
-
-    }
-);
-
-
-// =====================================================
-// HTML ESCAPE
-// =====================================================
-
-function escapeHTML(value) {
-
-    return String(value)
+    return String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+
+}
+
+
+function formatDate(value) {
+
+    if (!value) {
+        return "Not specified";
+    }
+
+
+    const date =
+        new Date(
+            `${value}T00:00:00`
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return escapeHtml(
+            value
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+function formatCreatedAt(value) {
+
+    if (!value) {
+        return "Not available";
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "Not available";
+
+    }
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
 
 }

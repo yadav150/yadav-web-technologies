@@ -1,294 +1,1744 @@
+SERVICES 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio – Yadav Web Technologies</title>
-    <meta name="description" content="Explore our web development projects, tools, and software solutions." />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="assets/favicon.ico" />
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Yadav Web Technologies provides business websites, custom web applications, school management ERP, organization management software, database systems and custom digital solutions.">
+
+    <meta
+        name="keywords"
+        content="Yadav Web Technologies, web development, web applications, school management ERP, software development, custom software, business website">
+
+    <meta
+        name="author"
+        content="Yadav Web Technologies">
+
+    <title>
+        Services | Yadav Web Technologies
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+
+    <style>
+
+        /* =====================================================
+           SERVICES PAGE
+        ===================================================== */
+
+        .service-list {
+            margin-top: 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .service-list li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-list svg {
+            width: 18px;
+            min-width: 18px;
+            height: 18px;
+            margin-top: 3px;
+        }
+
+        .erp-section {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 32px;
+            background: var(--card-bg);
+        }
+
+        .erp-features {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px 24px;
+        }
+
+        .erp-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .erp-feature svg {
+            width: 18px;
+            min-width: 18px;
+            height: 18px;
+            margin-top: 3px;
+        }
+
+        @media (max-width: 900px) {
+
+            .erp-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .erp-section {
+                padding: 22px;
+            }
+
+            .erp-features {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="site-header" role="banner">
-        <div class="header-inner">
-            <a href="index.html" class="logo" style="font-size:1.6rem; gap:12px;">
-                <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M16 18L8 30M16 18L24 30M16 18V6" stroke="var(--color-secondary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Yadav<span class="highlight">Web</span></span>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="nav container">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="brand">
+
+            <span class="brand-mark">
+                Y
+            </span>
+
+            <span>
+                Yadav Web Technologies
+            </span>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="nav-links"
+            id="navLinks">
+
+            <a href="index.html">
+                Home
             </a>
 
-            <div style="display:flex;align-items:center;gap:10px;">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            <a
+                href="services.html"
+                class="active">
+
+                Services
+
+            </a>
+
+            <a href="projects.html">
+                Projects
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a
+                href="appointment.html"
+                class="nav-cta">
+
+                Appointment
+
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE ACTIONS -->
+
+        <div class="mobile-actions">
+
+
+            <!-- THEME -->
+
+            <button
+                type="button"
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark mode">
+
+                <svg
+                    id="themeIcon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4">
+                    </circle>
+
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+
+                </svg>
+
+            </button>
+
+
+            <!-- MENU -->
+
+            <button
+                type="button"
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round">
+
+                    <path d="M4 6h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 18h16"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+
+        <div class="eyebrow">
+
+            <span></span>
+
+            Our Services
+
+        </div>
+
+
+        <h1>
+            Digital Solutions Built Around Your Requirements
+        </h1>
+
+
+        <p>
+            From professional websites to custom web applications,
+            school management ERP systems and organization software,
+            we develop practical solutions based on the actual needs
+            of each project.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                What We Provide
+            </div>
+
+
+            <h2>
+                Development services for different requirements.
+            </h2>
+
+
+            <p>
+                Every project can be customized according to its
+                purpose, workflow, features and technical requirements.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <!-- =================================================
+                 01 BUSINESS WEBSITES
+            ================================================== -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <rect
+                            x="3"
+                            y="4"
+                            width="18"
+                            height="16"
+                            rx="2">
+                        </rect>
+
+                        <path d="M3 9h18"></path>
+
+                        <path d="M8 6.5h.01"></path>
+                        <path d="M11 6.5h.01"></path>
+
                     </svg>
-                </button>
-                <button class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
+
+                </div>
+
+
+                <div class="process-number">
+                    01 / WEBSITE
+                </div>
+
+
+                <h3>
+                    Business Website Development
+                </h3>
+
+
+                <p>
+                    Professional websites designed for businesses,
+                    organizations, enterprises, professionals and
+                    service providers.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Responsive website design
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Business and organization websites
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Portfolio and service websites
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Contact and enquiry functionality
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 02 WEB APPLICATIONS
+            ================================================== -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="3">
+                        </rect>
+
+                        <path d="M7 8h10"></path>
+                        <path d="M7 12h6"></path>
+                        <path d="M7 16h8"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    02 / APPLICATION
+                </div>
+
+
+                <h3>
+                    Custom Web Applications
+                </h3>
+
+
+                <p>
+                    Requirement-based applications for users,
+                    records, dashboards, workflows and
+                    organization-specific functionality.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        User registration and login
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Dashboards and admin panels
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Database-driven applications
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Custom workflows and records
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 03 ORGANIZATION SOFTWARE
+            ================================================== -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <path d="M4 21V5l8-3 8 3v16"></path>
+                        <path d="M9 21v-6h6v6"></path>
+                        <path d="M8 8h.01"></path>
+                        <path d="M12 8h.01"></path>
+                        <path d="M16 8h.01"></path>
+                        <path d="M8 11h.01"></path>
+                        <path d="M16 11h.01"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    03 / ORGANIZATION
+                </div>
+
+
+                <h3>
+                    Organization Management Software
+                </h3>
+
+
+                <p>
+                    Custom digital systems for organizations that
+                    require structured records, applications and
+                    approval workflows.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Membership applications
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Member records
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Application approval workflows
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Status and record management
+                    </li>
+
+                </ul>
+
+            </article>
+
+
         </div>
 
-        <nav id="primary-nav" class="primary-nav" role="navigation" aria-label="Primary navigation">
-            <ul class="nav-list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    </div>
 
-    <!-- ===== MAIN ===== -->
-    <main id="main-content">
+</section>
 
-        <!-- ===== HERO ===== -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title">Our <span class="highlight">Portfolio</span></h1>
-                        <p class="hero-tagline">Projects &amp; Experience</p>
-                        <p class="hero-description">
-                            We develop responsive, modern, clean, and professional websites designed 
-                            for different devices and real-world requirements.
-                        </p>
-                    </div>
-                    <div class="hero-image-wrapper">
-                        <img src="assets/hero/logo.jpg" alt="Yadav Web Technologies Portfolio" class="hero-image" />
-                    </div>
+
+
+<!-- =====================================================
+     SCHOOL MANAGEMENT ERP
+===================================================== -->
+
+<section class="section section-soft">
+
+    <div class="container">
+
+
+        <div class="erp-section">
+
+
+            <div class="section-label">
+                Featured Solution
+            </div>
+
+
+            <h2>
+                School Management ERP
+            </h2>
+
+
+            <p>
+                A centralized school management system designed
+                to help educational institutions manage students,
+                teachers, fees, salaries, attendance, examinations,
+                documents and day-to-day administrative operations.
+            </p>
+
+
+            <div class="erp-features">
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 20V5l8-3 8 3v15"></path>
+                        <path d="M8 9h8"></path>
+                        <path d="M8 13h8"></path>
+                    </svg>
+                    <span>Student Admission Management</span>
                 </div>
-            </div>
-        </section>
 
-        <!-- ===== PORTFOLIO GRID ===== -->
-        <section class="section">
-            <div class="section-title-bar">
-                <h2>Projects <span class="sub">Live &amp; In Development</span></h2>
-            </div>
-            <div class="section-body accent-border">
-                <div class="content-box">
-                    <div class="grid-3">
-                        <!-- Project 1: Portfolio Website -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <line x1="2" y1="12" x2="22" y2="12" />
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                </svg>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Portfolio Website</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">Personal portfolio of Yadav Subba – Web Developer, Mathematician, Teacher, Writer.</div>
-                                <a href="https://yadav150.github.io/y-p/index.html" target="_blank" rel="noopener" style="color:var(--color-secondary);font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">
-                                    View Project
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                        <polyline points="12 5 19 12 12 19" />
-                                    </svg>
-                                </a>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">HTML</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">CSS</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">JavaScript</span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Project 2: Yadav Web Tools -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                                </svg>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Yadav Web Tools</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">12+ free, client-side utility tools – Age Calculator, GST Calculator, QR Generator, and more.</div>
-                                <a href="https://yadav150.github.io/dav/index.html" target="_blank" rel="noopener" style="color:var(--color-secondary);font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">
-                                    View Project
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                        <polyline points="12 5 19 12 12 19" />
-                                    </svg>
-                                </a>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">Vanilla JS</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">CSS</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">HTML</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 3: Auth Software -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                </svg>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Yadav Auth Software</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">Secure, Firebase-powered authentication with Google Sign-In, password recovery, and protected dashboard.</div>
-                                <a href="https://yadav150.github.io/authp/index.html" target="_blank" rel="noopener" style="color:var(--color-secondary);font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">
-                                    View Project
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                        <polyline points="12 5 19 12 12 19" />
-                                    </svg>
-                                </a>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">Firebase</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">JavaScript</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">CSS</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: Enterprise Template -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <rect x="4" y="4" width="16" height="20" rx="2" />
-                                    <line x1="9" y1="8" x2="15" y2="8" />
-                                    <line x1="9" y1="12" x2="15" y2="12" />
-                                    <line x1="9" y1="16" x2="15" y2="16" />
-                                    <line x1="9" y1="20" x2="15" y2="20" />
-                                </svg>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Enterprise Website Template</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">Ready-to-go enterprise template with services, about, and CTA sections.</div>
-                                <a href="https://yadav150.github.io/ent-tem1/index.html" target="_blank" rel="noopener" style="color:var(--color-secondary);font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">
-                                    View Project
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                        <polyline points="12 5 19 12 12 19" />
-                                    </svg>
-                                </a>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">HTML</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">CSS</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">JavaScript</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 5: Organization with Membership -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                </svg>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Org &amp; Membership Management</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">Organizational website with membership management software for community organizations.</div>
-                                <a href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html" target="_blank" rel="noopener" style="color:var(--color-secondary);font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">
-                                    View Project
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                        <polyline points="12 5 19 12 12 19" />
-                                    </svg>
-                                </a>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">HTML</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">CSS</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">JavaScript</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 6: Job Portal (Experience) -->
-                        <div class="card reveal" style="padding:0;overflow:hidden;display:flex;flex-direction:column;border-color:var(--color-border);opacity:0.75;">
-                            <div style="height:140px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--color-border);position:relative;">
-                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                                </svg>
-                                <span style="position:absolute;bottom:10px;right:10px;background:#e67e22;color:#fff;font-size:0.65rem;font-weight:600;padding:2px 12px;border-radius:var(--radius);text-transform:uppercase;letter-spacing:0.5px;">Experience</span>
-                            </div>
-                            <div style="padding:16px 18px;flex:1;">
-                                <div style="font-weight:600;font-size:1rem;color:var(--color-text);margin-bottom:4px;">Skill2Job.site</div>
-                                <div style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:10px;">Job update portal – 2+ years of experience as Manager &amp; Lead Developer (2022–2024). Currently offline due to domain expiry.</div>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">Full-Stack</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">Management</span>
-                                    <span style="font-size:0.7rem;padding:2px 10px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);color:var(--color-text-muted);">Content</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+                        <path d="M8 7h8"></path>
+                        <path d="M8 11h8"></path>
+                    </svg>
+                    <span>Admission ID Generation</span>
                 </div>
-            </div>
-        </section>
 
-        <!-- ===== EXPERIENCE NOTES ===== -->
-        <section class="section">
-            <div class="section-title-bar">
-                <h2>Experience Highlights</h2>
-            </div>
-            <div class="section-body">
-                <div class="content-box">
-                    <div style="display:grid;grid-template-columns:1fr;gap:16px;">
-                        <div style="padding:16px;background:var(--color-bg);border-radius:var(--radius);border:1px solid var(--color-border);">
-                            <h4 style="color:var(--color-secondary);margin-bottom:4px;font-size:1rem;">Skill2Job.site</h4>
-                            <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">
-                                <strong>Role:</strong> Manager &amp; Lead Developer<br />
-                                <strong>Duration:</strong> 2022 – 2024 (2+ Years)<br />
-                                <strong>Experience:</strong> Handled everything from frontend design to backend logic, 
-                                content updates to user experience. Managed, maintained, and developed a job update portal 
-                                that connected people with opportunities.
-                            </p>
-                        </div>
-                        <div style="padding:16px;background:var(--color-bg);border-radius:var(--radius);border:1px solid var(--color-border);border-left:3px solid var(--color-secondary);">
-                            <p style="font-size:0.9rem;color:var(--color-text-muted);margin:0;">
-                                <strong style="color:var(--color-text);">Current Status:</strong> The website domain has expired 
-                                due to financial constraints, but will be renewed when possible. The work, however, continues.
-                            </p>
-                        </div>
-                    </div>
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                        <circle cx="8" cy="12" r="2"></circle>
+                        <path d="M13 10h5"></path>
+                        <path d="M13 14h4"></path>
+                    </svg>
+                    <span>Student ID Card Generation</span>
                 </div>
-            </div>
-        </section>
 
-    </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-inner">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="contact.html">Contact</a>
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M5 4h14v16H5z"></path>
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h8"></path>
+                        <path d="M8 16h5"></path>
+                    </svg>
+                    <span>Admit Card Generation</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 2v20"></path>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+                    </svg>
+                    <span>Fee Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+                        <path d="M8 7h8"></path>
+                        <path d="M8 11h6"></path>
+                        <path d="M8 15h8"></path>
+                    </svg>
+                    <span>Fee Receipt Generation</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 2v20"></path>
+                        <path d="M5 7h11a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h11"></path>
+                    </svg>
+                    <span>Salary Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M6 3h12v18H6z"></path>
+                        <path d="M9 7h6"></path>
+                        <path d="M9 11h6"></path>
+                        <path d="M9 15h4"></path>
+                    </svg>
+                    <span>Salary Receipt Generation</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+                        <path d="M8 2v4"></path>
+                        <path d="M16 2v4"></path>
+                        <path d="M3 9h18"></path>
+                        <path d="m8 14 2 2 5-5"></path>
+                    </svg>
+                    <span>Attendance Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21a8 8 0 0 1 16 0"></path>
+                    </svg>
+                    <span>Teacher & Staff Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h8"></path>
+                        <path d="M8 16h5"></path>
+                    </svg>
+                    <span>Student & Staff Records</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 5h16v14H4z"></path>
+                        <path d="M4 9h16"></path>
+                        <path d="M9 5v14"></path>
+                    </svg>
+                    <span>Class & Section Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h4"></path>
+                        <path d="M8 16h7"></path>
+                    </svg>
+                    <span>Examination Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M5 3h14v18H5z"></path>
+                        <path d="M8 7h8"></path>
+                        <path d="M8 11h8"></path>
+                        <path d="M8 15h5"></path>
+                    </svg>
+                    <span>Marks & Result Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M5 3h14v18H5z"></path>
+                        <path d="M8 7h8"></path>
+                        <path d="M8 11h5"></path>
+                        <path d="M8 15h8"></path>
+                    </svg>
+                    <span>Report Card Generation</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 5h16v14H4z"></path>
+                        <path d="m8 12 3 3 5-6"></path>
+                    </svg>
+                    <span>Student Promotion & Transfer</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M7 8h10"></path>
+                        <path d="M7 12h7"></path>
+                        <path d="M7 16h5"></path>
+                    </svg>
+                    <span>Notice & Announcement Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19V5"></path>
+                        <path d="M4 19h16"></path>
+                        <path d="m7 16 4-5 3 3 5-7"></path>
+                    </svg>
+                    <span>Dashboard & Statistics</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-4-4"></path>
+                    </svg>
+                    <span>Search & Record Management</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <path d="M6 3h12v18H6z"></path>
+                        <path d="M9 7h6"></path>
+                        <path d="M9 11h6"></path>
+                        <path d="M9 15h6"></path>
+                    </svg>
+                    <span>Printable Documents & Reports</span>
+                </div>
+
+
+                <div class="erp-feature">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M5 21a7 7 0 0 1 14 0"></path>
+                    </svg>
+                    <span>Admin & User Access Management</span>
+                </div>
+
             </div>
-            <p class="footer-copy">&copy; 2026 Yadav Web Technologies. All rights reserved.</p>
+
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OTHER SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="services-grid">
+
+
+            <!-- CUSTOM BUSINESS SYSTEMS -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h5"></path>
+                        <path d="M8 16h8"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    04 / BUSINESS SYSTEMS
+                </div>
+
+
+                <h3>
+                    Custom Business Management Systems
+                </h3>
+
+
+                <p>
+                    Internal digital systems developed around
+                    specific business processes and operational
+                    requirements.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Customer and member management
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Employee and staff records
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Approval and workflow systems
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Reports and dashboards
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- AUTHENTICATION -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <rect x="4" y="10" width="16" height="11" rx="2"></rect>
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                        <circle cx="12" cy="15" r="1"></circle>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    05 / AUTHENTICATION
+                </div>
+
+
+                <h3>
+                    Authentication & User Management
+                </h3>
+
+
+                <p>
+                    Secure account and user-management functionality
+                    for applications that require controlled access.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        User registration and login
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Google Sign-In
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Firebase Authentication
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Protected and role-based access
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- WEB TOOLS -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <path d="M4 5h16v14H4z"></path>
+                        <path d="M8 9h8"></path>
+                        <path d="M8 13h5"></path>
+                        <path d="M8 17h7"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    06 / WEB TOOLS
+                </div>
+
+
+                <h3>
+                    Web Tools & Utility Development
+                </h3>
+
+
+                <p>
+                    Lightweight browser-based tools designed
+                    to perform specific digital tasks efficiently.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Calculators and utility tools
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Data-processing tools
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Text and file utilities
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Custom JavaScript tools
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- BACKEND -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+                        <path d="M4 5v7c0 2 3.6 3 8 3s8-1 8-3V5"></path>
+                        <path d="M4 12v7c0 2 3.6 3 8 3s8-1 8-3v-7"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    07 / BACKEND
+                </div>
+
+
+                <h3>
+                    Backend & Database Integration
+                </h3>
+
+
+                <p>
+                    Backend and database functionality for applications
+                    that require structured data and user management.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Firebase integration
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Database setup
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Data storage and retrieval
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        API and authentication integration
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- DEPLOYMENT -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <path d="M12 3v12"></path>
+                        <path d="m7 10 5 5 5-5"></path>
+                        <path d="M4 20h16"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    08 / DEPLOYMENT
+                </div>
+
+
+                <h3>
+                    Website Deployment & Setup
+                </h3>
+
+
+                <p>
+                    Assistance with taking completed websites and
+                    applications from development to production.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Hosting setup
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Domain connection
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        GitHub Pages deployment
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Production testing
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- MAINTENANCE -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <path d="M12 3a9 9 0 1 0 9 9"></path>
+                        <path d="M12 7v5l3 2"></path>
+                        <path d="M17 3h4v4"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="process-number">
+                    09 / SUPPORT
+                </div>
+
+
+                <h3>
+                    Maintenance, Training & Support
+                </h3>
+
+
+                <p>
+                    Post-delivery technical assistance, maintenance
+                    and training to help clients manage their digital
+                    solution confidently.
+                </p>
+
+
+                <ul class="service-list">
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Bug fixing and technical assistance
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Minor updates and changes
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        Website/application maintenance
+                    </li>
+
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8">
+                            <path d="m5 12 4 4L19 6"></path>
+                        </svg>
+                        14 days free training after purchase
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRICING
+===================================================== -->
+
+<section class="section section-soft">
+
+    <div class="container">
+
+        <div class="pricing-box">
+
+
+            <div class="pricing-content">
+
+                <div class="section-label">
+                    Project Pricing
+                </div>
+
+
+                <h2>
+                    Every project is different.
+                </h2>
+
+
+                <p>
+                    We do not force projects into predefined packages.
+                    Pricing is based on requirements, scope, complexity,
+                    features, integrations and development needs.
+                </p>
+
+            </div>
+
+
+            <div class="pricing-points">
+
+
+                <div class="pricing-point">
+
+                    <div class="pricing-point-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8">
+
+                            <path d="M12 2v20"></path>
+
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Requirement Based
+                        </strong>
+
+                        <span>
+                            The fee depends on what needs to be built.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="pricing-point">
+
+                    <div class="pricing-point-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8">
+
+                            <path d="M4 4h16v16H4z"></path>
+                            <path d="M8 8h8"></path>
+                            <path d="M8 12h6"></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Scope Based
+                        </strong>
+
+                        <span>
+                            Features and project scope are considered.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="pricing-point">
+
+                    <div class="pricing-point-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8">
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="9">
+                            </circle>
+
+                            <path d="M12 7v5l3 2"></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Project Discussion
+                        </strong>
+
+                        <span>
+                            Final pricing is discussed after understanding the project.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="section cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+
+            <div class="section-label">
+                Start a Project
+            </div>
+
+
+            <h2>
+                Have a requirement?
+            </h2>
+
+
+            <p>
+                Tell us what you want to build and we can
+                discuss the suitable solution, scope and
+                development approach.
+            </p>
+
+
+            <a
+                href="appointment.html"
+                class="btn btn-primary">
+
+                Discuss Your Project
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand">
+
+                    <span class="brand-mark">
+                        Y
+                    </span>
+
+                    <span>
+                        Yadav Web Technologies
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Professional websites, web applications
+                    and custom digital solutions based on
+                    real project requirements.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Quick Links
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="services.html">
+                        Services
+                    </a>
+
+                    <a href="projects.html">
+                        Projects
+                    </a>
+
+                    <a href="appointment.html">
+                        Appointment
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Information
+                </h4>
+
+
+                <div class="footer-links">
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                    <a href="terms.html">
+                        Terms &amp; Conditions
+                    </a>
+
+                    <a href="client-terms.html">
+                        Client Terms
+                    </a>
+
+                    <a href="privacy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="disclaimer.html">
+                        Disclaimer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Yadav Web Technologies.
+            All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     GO TO TOP
+===================================================== -->
+
+<button
+    class="go-top"
+    id="goTop"
+    type="button"
+    aria-label="Go to top">
+
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <path d="M12 19V5"></path>
+
+        <path d="m6 11 6-6 6 6"></path>
+
+    </svg>
+
+</button>
+
+
+
+<!-- =====================================================
+     EXTERNAL JAVASCRIPT
+===================================================== -->
+
+<script src="js/theme.js"></script>
+
+<script src="js/menu.js"></script>
+
+<script src="js/go-top.js"></script>
+
+
 </body>
+
 </html>

@@ -15,11 +15,11 @@
 
     <meta
         name="description"
-        content="Yadav Web Technologies builds responsive business websites, custom web applications, management software, school ERP systems, authentication solutions and practical digital tools for clients in Assam and beyond.">
+        content="Yadav Web Technologies builds responsive business websites, custom web applications, management software, school ERP systems, authentication solutions and browser-based digital tools for practical project requirements.">
 
     <meta
         name="keywords"
-        content="responsive business website development, custom web application development, small business website developer Assam, custom management software developer, school ERP development, membership management software, Firebase web application development, authentication system development, custom web tools, enterprise website development, professional portfolio website development, website development Assam">
+        content="responsive business website development, custom web application development, custom software developer Assam, small business website development, school ERP development, membership management software, Firebase authentication development, custom web tools, enterprise website development, professional portfolio website development, management software development, workflow management software, website developer Assam">
 
     <meta
         name="author"
@@ -37,6 +37,7 @@
         rel="canonical"
         href="https://yadav150.github.io/yadav-web-technologies/">
 
+
     <!-- =================================================
          OPEN GRAPH
     ================================================== -->
@@ -51,7 +52,7 @@
 
     <meta
         property="og:description"
-        content="Responsive websites, custom web applications, management software, ERP systems and practical digital solutions.">
+        content="Responsive websites, custom web applications, management software, school ERP systems, authentication solutions and practical digital tools.">
 
     <meta
         property="og:url"
@@ -63,11 +64,12 @@
 
     <meta
         property="og:image"
-        content="https://yadav150.github.io/yadav-web-technologies/images/projects/yap.webp">
+        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
 
     <meta
         property="og:image:alt"
-        content="Yadav Web Technologies web development project">
+        content="Yadav Web Technologies authentication project">
+
 
     <!-- =================================================
          TWITTER / X
@@ -83,11 +85,16 @@
 
     <meta
         name="twitter:description"
-        content="Websites, web applications, ERP systems, management software and digital solutions.">
+        content="Websites, web applications, ERP systems, management software, authentication systems and custom digital solutions.">
 
     <meta
         name="twitter:image"
-        content="https://yadav150.github.io/yadav-web-technologies/images/projects/yap.webp">
+        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
+
+
+    <!-- =================================================
+         GLOBAL CSS
+    ================================================== -->
 
     <link
         rel="stylesheet"
@@ -105,21 +112,22 @@
         "@id": "https://yadav150.github.io/yadav-web-technologies/#organization",
         "name": "Yadav Web Technologies",
         "url": "https://yadav150.github.io/yadav-web-technologies/",
-        "logo": "https://yadav150.github.io/yadav-web-technologies/images/projects/yap.webp",
-        "description": "Yadav Web Technologies develops responsive websites, custom web applications, management software, ERP systems and digital solutions.",
+        "logo": "https://yadav150.github.io/yadav-web-technologies/projects/yap.webp",
+        "description": "Yadav Web Technologies develops responsive websites, custom web applications, management software, school ERP systems, authentication solutions and practical digital tools.",
         "knowsAbout": [
             "Responsive website development",
-            "Web application development",
-            "Custom software development",
-            "School management ERP",
-            "Membership management software",
-            "Firebase application development",
-            "Authentication systems",
             "Business website development",
-            "Custom web tools",
-            "Portfolio website development"
-        ],
-        "sameAs": []
+            "Custom web application development",
+            "Custom software development",
+            "School management ERP development",
+            "Membership management software",
+            "Firebase authentication development",
+            "Web-based management systems",
+            "Workflow management software",
+            "Custom browser-based tools",
+            "Enterprise website development",
+            "Professional portfolio website development"
+        ]
     }
     </script>
 
@@ -143,52 +151,23 @@
 
 
     <!-- =================================================
-         WEBSITE NAVIGATION STRUCTURED DATA
+         WEBPAGE STRUCTURED DATA
     ================================================== -->
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Yadav Web Technologies Main Pages",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "url": "https://yadav150.github.io/yadav-web-technologies/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Services",
-                "url": "https://yadav150.github.io/yadav-web-technologies/services.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Projects",
-                "url": "https://yadav150.github.io/yadav-web-technologies/projects.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "name": "Pricing",
-                "url": "https://yadav150.github.io/yadav-web-technologies/pricing.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 5,
-                "name": "About",
-                "url": "https://yadav150.github.io/yadav-web-technologies/about.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 6,
-                "name": "Contact",
-                "url": "https://yadav150.github.io/yadav-web-technologies/contact.html"
-            }
-        ]
+        "@type": "WebPage",
+        "@id": "https://yadav150.github.io/yadav-web-technologies/#webpage",
+        "url": "https://yadav150.github.io/yadav-web-technologies/",
+        "name": "Web Development & Custom Software Solutions | Yadav Web Technologies",
+        "description": "Responsive business websites, custom web applications, management software, school ERP systems, authentication solutions and browser-based digital tools.",
+        "isPartOf": {
+            "@id": "https://yadav150.github.io/yadav-web-technologies/#website"
+        },
+        "about": {
+            "@id": "https://yadav150.github.io/yadav-web-technologies/#organization"
+        }
     }
     </script>
 
@@ -207,6 +186,8 @@
     <nav class="nav container">
 
 
+        <!-- BRAND -->
+
         <a
             href="index.html"
             class="brand"
@@ -223,6 +204,8 @@
         </a>
 
 
+        <!-- NAVIGATION -->
+
         <div
             class="nav-links"
             id="navLinks">
@@ -230,28 +213,36 @@
             <a
                 href="index.html"
                 class="active">
+
                 Home
+
             </a>
+
 
             <a href="services.html">
                 Services
             </a>
 
+
             <a href="projects.html">
                 Projects
             </a>
+
 
             <a href="pricing.html">
                 Pricing
             </a>
 
+
             <a href="about.html">
                 About
             </a>
 
+
             <a href="contact.html">
                 Contact
             </a>
+
 
             <a
                 href="appointment.html"
@@ -264,8 +255,12 @@
         </div>
 
 
+        <!-- MOBILE ACTIONS -->
+
         <div class="mobile-actions">
 
+
+            <!-- THEME -->
 
             <button
                 type="button"
@@ -304,6 +299,8 @@
 
             </button>
 
+
+            <!-- MENU -->
 
             <button
                 type="button"
@@ -368,8 +365,8 @@
         <p>
             Responsive business websites, custom web applications,
             management software, school ERP systems, authentication
-            solutions and practical digital tools built around
-            real project requirements.
+            solutions and practical browser-based digital tools
+            developed around real project requirements.
         </p>
 
     </div>
@@ -403,19 +400,18 @@
                 Yadav Web Technologies develops digital solutions
                 for businesses, organizations, professionals and
                 projects that need more than a basic static webpage.
-                Our work ranges from responsive business websites
-                and professional portfolios to custom web applications,
-                authentication systems, management platforms and
-                workflow-based software.
+                Our work includes responsive business websites,
+                professional portfolios, custom web applications,
+                authentication systems, management platforms,
+                school ERP solutions and specialized browser-based
+                utilities.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="home-service-grid">
 
-
-            <!-- BUSINESS WEBSITE -->
 
             <article class="card">
 
@@ -423,17 +419,15 @@
                     Responsive Business Website Development
                 </h3>
 
+
                 <p>
-                    Professional websites for businesses,
-                    organizations and service providers that need
-                    a responsive online presence across mobile,
-                    tablet and desktop devices.
+                    Professional business and organization websites
+                    with responsive layouts, structured content,
+                    service presentation and project-specific pages.
                 </p>
 
             </article>
 
-
-            <!-- WEB APPLICATION -->
 
             <article class="card">
 
@@ -441,16 +435,15 @@
                     Custom Web Application Development
                 </h3>
 
+
                 <p>
                     Browser-based applications for authentication,
-                    user accounts, dashboards, data handling,
-                    custom workflows and practical operational use.
+                    user accounts, dashboards, data handling and
+                    requirement-specific workflows.
                 </p>
 
             </article>
 
-
-            <!-- MANAGEMENT SOFTWARE -->
 
             <article class="card">
 
@@ -458,14 +451,14 @@
                     Custom Management Software
                 </h3>
 
+
                 <p>
-                    Requirement-based systems for memberships,
-                    records, approvals, organization operations and
-                    other structured administrative workflows.
+                    Management solutions for memberships, records,
+                    applications, approvals, organizational workflows
+                    and administrative operations.
                 </p>
 
             </article>
-
 
         </div>
 
@@ -492,20 +485,20 @@
 
 
             <h2>
-                Development for specific operational requirements.
+                Digital systems for specific operational needs.
             </h2>
 
 
             <p>
-                Some projects require specialized functionality.
-                Our portfolio includes several types of practical
-                digital systems.
+                Different requirements call for different types of
+                software. Our development work covers several
+                specialized solution areas.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="home-service-grid">
 
 
             <article class="card">
@@ -514,11 +507,11 @@
                     School Management ERP Development
                 </h3>
 
+
                 <p>
-                    Management solutions covering student and teacher
-                    records, admissions, attendance, fee operations,
-                    salary records, receipts and related school
-                    administration workflows.
+                    School administration software covering student
+                    and teacher records, admissions, fees, salaries,
+                    receipts, attendance and related workflows.
                 </p>
 
             </article>
@@ -530,10 +523,11 @@
                     Membership Management Software
                 </h3>
 
+
                 <p>
-                    Organization-focused systems for membership
-                    applications, member records and application
-                    approval processes.
+                    Organization-focused membership systems for
+                    applications, member records and approval
+                    workflows.
                 </p>
 
             </article>
@@ -545,10 +539,11 @@
                     Firebase Authentication Solutions
                 </h3>
 
+
                 <p>
-                    Web authentication systems supporting user
-                    registration, login, account access and
-                    Firebase-based application workflows.
+                    Web authentication solutions for registration,
+                    login, account access and Firebase-powered
+                    application workflows.
                 </p>
 
             </article>
@@ -560,14 +555,46 @@
                     Custom Browser-Based Web Tools
                 </h3>
 
+
                 <p>
-                    Small and specialized online utilities designed
-                    around specific calculations, conversions,
-                    processing tasks or everyday digital needs.
+                    Focused online tools for calculations,
+                    conversions, processing tasks and other
+                    requirement-specific utilities.
                 </p>
 
             </article>
 
+
+            <article class="card">
+
+                <h3>
+                    Enterprise Website Development
+                </h3>
+
+
+                <p>
+                    Structured websites for organizations,
+                    enterprises and service providers requiring
+                    a professional and scalable online presence.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <h3>
+                    Professional Portfolio Website Development
+                </h3>
+
+
+                <p>
+                    Personal portfolio websites for showcasing
+                    professional profiles, skills, projects,
+                    experience and contact information.
+                </p>
+
+            </article>
 
         </div>
 
@@ -578,12 +605,13 @@
 
 
 <!-- =====================================================
-     PROJECTS
+     SELECTED PROJECTS
 ===================================================== -->
 
 <section class="section">
 
     <div class="container">
+
 
         <div class="section-heading">
 
@@ -591,9 +619,11 @@
                 Selected Projects
             </div>
 
+
             <h2>
                 See examples of our development work.
             </h2>
+
 
             <p>
                 Explore authentication systems, web tools,
@@ -603,117 +633,184 @@
 
         </div>
 
-        <div class="grid">
+
+        <div class="home-project-grid">
+
 
             <!-- PROJECT 1 -->
-            <article class="card">
 
-                <div class="project-image">
+            <article class="card home-project-card">
+
+
+                <div class="home-project-image">
+
                     <img
                         src="projects/yap.webp"
-                        alt="Yadav Authentication Project"
+                        alt="Yadav Authentication Project web application"
                         loading="lazy">
+
                 </div>
+
 
                 <h3>
                     Yadav Authentication Project
                 </h3>
+
 
                 <p>
                     A web authentication project focused on
                     registration, login and account management.
                 </p>
 
-                <a href="projects.html" class="text-link">
-                    View Projects
+
+                <a
+                    href="https://yadav150.github.io/authp/index.html"
+                    class="text-link"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    View Project
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
 
                     </svg>
+
                 </a>
 
             </article>
 
 
-            <!-- PROJECT 2 -->
-            <article class="card">
 
-                <div class="project-image">
+            <!-- PROJECT 2 -->
+
+            <article class="card home-project-card">
+
+
+                <div class="home-project-image">
+
                     <img
                         src="projects/ywt.webp"
-                        alt="Yadav Web Tools"
+                        alt="Yadav Web Tools browser utility project"
                         loading="lazy">
+
                 </div>
+
 
                 <h3>
                     Yadav Web Tools
                 </h3>
+
 
                 <p>
                     Browser-based utility tools designed to
                     perform useful everyday digital tasks.
                 </p>
 
-                <a href="projects.html" class="text-link">
-                    View Projects
+
+                <a
+                    href="https://yadav150.github.io/dav/index.html"
+                    class="text-link"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    View Project
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
 
                     </svg>
+
                 </a>
 
             </article>
 
 
-            <!-- PROJECT 3 -->
-            <article class="card">
 
-                <div class="project-image">
+            <!-- PROJECT 3 -->
+
+            <article class="card home-project-card">
+
+
+                <div class="home-project-image">
+
                     <img
                         src="projects/org.webp"
                         alt="Organization Membership Management Software"
                         loading="lazy">
+
                 </div>
+
 
                 <h3>
                     Organization Membership Management
                 </h3>
+
 
                 <p>
                     A practical organization management project
                     supporting membership and approval workflows.
                 </p>
 
-                <a href="projects.html" class="text-link">
-                    View Projects
+
+                <a
+                    href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
+                    class="text-link"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    View Project
 
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2">
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
                         <path d="M5 12h14"></path>
                         <path d="m13 6 6 6-6 6"></path>
 
                     </svg>
+
                 </a>
 
             </article>
+
+
+        </div>
+
+
+        <div
+            style="
+                margin-top: 30px;
+                text-align: center;
+            ">
+
+            <a
+                href="projects.html"
+                class="btn btn-secondary">
+
+                View All Projects
+
+            </a>
 
         </div>
 
@@ -724,7 +821,7 @@
 
 
 <!-- =====================================================
-     WHY
+     DEVELOPMENT APPROACH
 ===================================================== -->
 
 <section class="section section-soft">
@@ -745,15 +842,15 @@
 
 
             <p>
-                Instead of forcing every project into the same
-                template, the structure and functionality are
-                adapted to the intended purpose.
+                We adapt the project structure, functionality
+                and development approach according to the
+                intended users and purpose of the solution.
             </p>
 
         </div>
 
 
-        <div class="grid">
+        <div class="home-service-grid">
 
 
             <article class="card">
@@ -763,8 +860,8 @@
                 </h3>
 
                 <p>
-                    Pages, features and workflows are considered
-                    according to what the project actually needs.
+                    Pages, features and workflows are planned
+                    around the actual goals of the project.
                 </p>
 
             </article>
@@ -777,8 +874,8 @@
                 </h3>
 
                 <p>
-                    Interfaces are designed to remain useful across
-                    different screen sizes and devices.
+                    Interfaces are designed to remain useful
+                    across mobile, tablet and desktop screens.
                 </p>
 
             </article>
@@ -791,8 +888,9 @@
                 </h3>
 
                 <p>
-                    The focus is on useful, understandable features
-                    rather than unnecessary technical complexity.
+                    The focus remains on useful features,
+                    understandable workflows and practical
+                    day-to-day operation.
                 </p>
 
             </article>
@@ -830,9 +928,8 @@
 
             <p>
                 Tell us whether you need a business website,
-                web application, management system, ERP,
-                authentication solution or another custom
-                digital tool.
+                web application, management system, school ERP,
+                authentication solution or custom browser tool.
             </p>
 
 
@@ -889,6 +986,8 @@
         <div class="footer-grid">
 
 
+            <!-- BRAND -->
+
             <div class="footer-brand">
 
                 <a
@@ -915,6 +1014,8 @@
             </div>
 
 
+
+            <!-- QUICK LINKS -->
 
             <div>
 
@@ -959,6 +1060,8 @@
 
 
 
+            <!-- INFORMATION -->
+
             <div>
 
                 <h4>
@@ -986,6 +1089,10 @@
 
                     <a href="disclaimer.html">
                         Disclaimer
+                    </a>
+
+                    <a href="admin/index.html">
+                        Admin Panel
                     </a>
 
                 </div>
@@ -1028,6 +1135,7 @@
         stroke-linejoin="round">
 
         <path d="M12 19V5"></path>
+
         <path d="m6 11 6-6 6 6"></path>
 
     </svg>
@@ -1036,9 +1144,16 @@
 
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script src="js/menu.js"></script>
+
 <script src="js/theme.js"></script>
+
 <script src="js/go-top.js"></script>
+
 
 </body>
 

@@ -11,11 +11,11 @@
 
     <meta
         name="description"
-        content="Explore Yadav Web Technologies projects including authentication systems, web tools, organization membership management software, school ERP, business websites and professional portfolio websites.">
+        content="Explore web development projects by Yadav Web Technologies including authentication systems, browser-based web tools, organization membership management software, school ERP, business websites and professional portfolio websites.">
 
     <meta
         name="keywords"
-        content="Yadav Web Technologies projects, authentication system, web tools, membership management software, school ERP, business website, portfolio website, web development projects">
+        content="web development projects, custom web application projects, authentication system project, Firebase authentication project, browser-based web tools, membership management software, school ERP project, business website development project, enterprise website project, portfolio website development, web developer Assam">
 
     <meta
         name="author"
@@ -23,178 +23,261 @@
 
     <meta
         name="robots"
-        content="index, follow">
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <meta
+        name="theme-color"
+        content="#ffffff">
 
     <link
         rel="canonical"
         href="https://yadav150.github.io/yadav-web-technologies/projects.html">
 
-    <title>
-        Projects | Yadav Web Technologies
-    </title>
+
+    <!-- =================================================
+         OPEN GRAPH
+    ================================================== -->
+
+    <meta
+        property="og:type"
+        content="website">
+
+    <meta
+        property="og:title"
+        content="Web Development Projects | Yadav Web Technologies">
+
+    <meta
+        property="og:description"
+        content="Explore authentication systems, web tools, organization management software, school ERP, business websites and portfolio projects developed by Yadav Web Technologies.">
+
+    <meta
+        property="og:url"
+        content="https://yadav150.github.io/yadav-web-technologies/projects.html">
+
+    <meta
+        property="og:site_name"
+        content="Yadav Web Technologies">
+
+    <meta
+        property="og:image"
+        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
+
+    <meta
+        property="og:image:alt"
+        content="Yadav Web Technologies project showcase">
+
+
+    <!-- =================================================
+         TWITTER / X
+    ================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image">
+
+    <meta
+        name="twitter:title"
+        content="Web Development Projects | Yadav Web Technologies">
+
+    <meta
+        name="twitter:description"
+        content="Explore websites, web applications, management systems and digital tools developed by Yadav Web Technologies.">
+
+    <meta
+        name="twitter:image"
+        content="https://yadav150.github.io/yadav-web-technologies/projects/yap.webp">
+
+
+    <!-- =================================================
+         GLOBAL CSS
+    ================================================== -->
 
     <link
         rel="stylesheet"
         href="css/style.css">
 
+
+    <!-- =================================================
+         ORGANIZATION STRUCTURED DATA
+    ================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://yadav150.github.io/yadav-web-technologies/#organization",
+        "name": "Yadav Web Technologies",
+        "url": "https://yadav150.github.io/yadav-web-technologies/",
+        "description": "Web development, web applications, custom software and practical digital solutions."
+    }
+    </script>
+
+
+    <!-- =================================================
+         PROJECT LIST STRUCTURED DATA
+    ================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": "https://yadav150.github.io/yadav-web-technologies/projects.html#project-list",
+        "name": "Yadav Web Technologies Projects",
+        "url": "https://yadav150.github.io/yadav-web-technologies/projects.html",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Yadav Authentication Project",
+                "url": "https://yadav150.github.io/authp/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Yadav Web Tools",
+                "url": "https://yadav150.github.io/dav/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Organization Membership Management Software",
+                "url": "https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "School Management ERP",
+                "url": "https://deverp00.github.io/eduerp/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Business / Enterprise Websites",
+                "url": "https://yadav150.github.io/ent-tem1/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
+                "name": "Personal Portfolio Website",
+                "url": "https://yadav150.github.io/y-p/index.html"
+            }
+        ]
+    }
+    </script>
+
+
     <style>
 
-/* =================================================
-   PROJECT GRID
-================================================= */
+        /* =================================================
+           PROJECT GRID
+        ================================================== */
 
-.projects-page-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    margin-top: 35px;
-}
-
-
-/* =================================================
-   PROJECT CARD
-================================================= */
-
-.project-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-}
+        .projects-page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 35px;
+        }
 
 
-/* =================================================
-   PROJECT IMAGE
-================================================= */
-
-.project-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    overflow: hidden;
-
-    background: #f5f5f5;
-
-    line-height: 0;
-}
-
-.project-image img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    transition: transform 0.3s ease;
-}
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+        }
 
 
-/* =================================================
-   PROJECT CONTENT
-================================================= */
+        .project-image {
+            width: 100%;
+            height: 230px;
 
-.project-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.project-content p {
-    margin-bottom: 18px;
-}
+            overflow: hidden;
 
-.project-tags {
-    margin-bottom: 18px;
-}
+            background: #f5f5f5;
 
-.project-content .btn {
-    margin-top: auto;
-    align-self: flex-start;
-}
+            border-radius: 5px;
+
+            line-height: 0;
+        }
 
 
-/* =================================================
-   DESKTOP
-================================================= */
+        .project-image img {
+            display: block;
 
-@media (min-width: 1200px) {
+            width: 100%;
+            height: 100%;
 
-    .project-image {
-        aspect-ratio: 16 / 8.5;
-    }
+            max-width: 100%;
+            max-height: 100%;
 
-}
-
-
-/* =================================================
-   LARGE DESKTOP
-================================================= */
-
-@media (min-width: 1600px) {
-
-    .projects-page-grid {
-        gap: 28px;
-    }
-
-    .project-image {
-        aspect-ratio: 16 / 8;
-    }
-
-}
+            object-fit: contain;
+            object-position: center;
+        }
 
 
-/* =================================================
-   TABLET
-================================================= */
-
-@media (max-width: 900px) {
-
-    .projects-page-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-    }
-
-    .project-image {
-        aspect-ratio: 16 / 9;
-    }
-
-}
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
 
 
-/* =================================================
-   MOBILE
-================================================= */
+        .project-content p {
+            margin-bottom: 18px;
+        }
 
-@media (max-width: 760px) {
 
-    .projects-page-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
 
-    .project-image {
-        width: 100%;
-        aspect-ratio: 16 / 9;
+            gap: 7px;
 
-        overflow: hidden;
-    }
+            margin-bottom: 18px;
+        }
 
-    .project-image img {
-        width: 100%;
-        height: 100%;
 
-        object-fit: cover;
-        object-position: center;
-    }
+        .project-content .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
 
-}
+
+        @media (max-width: 1000px) {
+
+            .project-image {
+                height: 210px;
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .projects-page-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-image {
+                height: 190px;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .project-image {
+                height: 165px;
+            }
+
+        }
 
     </style>
 
@@ -212,9 +295,11 @@
 
     <nav class="nav container">
 
+
         <a
             href="index.html"
-            class="brand">
+            class="brand"
+            aria-label="Yadav Web Technologies Home">
 
             <span class="brand-mark">
                 Y
@@ -241,7 +326,8 @@
 
             <a
                 href="projects.html"
-                class="active">
+                class="active"
+                aria-current="page">
 
                 Projects
 
@@ -272,6 +358,7 @@
 
         <div class="mobile-actions">
 
+
             <button
                 type="button"
                 class="theme-toggle"
@@ -295,10 +382,13 @@
 
                     <path d="M12 2v2"></path>
                     <path d="M12 20v2"></path>
+
                     <path d="m4.93 4.93 1.41 1.41"></path>
                     <path d="m17.66 17.66 1.41 1.41"></path>
+
                     <path d="M2 12h2"></path>
                     <path d="M20 12h2"></path>
+
                     <path d="m6.34 17.66-1.41 1.41"></path>
                     <path d="m19.07 4.93-1.41 1.41"></path>
 
@@ -344,9 +434,14 @@
 <main>
 
 
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
 <section class="page-hero">
 
     <div class="container">
+
 
         <div class="eyebrow">
 
@@ -356,14 +451,16 @@
 
         </div>
 
+
         <h1>
-            Projects Built for Practical Use
+            Web Development Projects
         </h1>
 
+
         <p>
-            Explore websites, web applications, management
-            systems and digital tools developed around
-            specific project requirements.
+            Explore websites, web applications, management systems
+            and digital tools developed around practical project
+            requirements.
         </p>
 
     </div>
@@ -371,6 +468,10 @@
 </section>
 
 
+
+<!-- =====================================================
+     PROJECT SHOWCASE
+===================================================== -->
 
 <section class="section">
 
@@ -383,14 +484,17 @@
                 Project Showcase
             </div>
 
+
             <h2>
-                A selection of our work.
+                A selection of our development work.
             </h2>
 
+
             <p>
-                Each project is designed according to its
-                intended purpose, users and required
-                functionality.
+                Explore authentication systems, web tools,
+                organization management software, school ERP,
+                business websites and professional portfolio
+                development.
             </p>
 
         </div>
@@ -400,456 +504,589 @@
         <div class="projects-page-grid">
 
 
-<!-- =====================================================
-     PROJECT 1
-===================================================== -->
+            <!-- =================================================
+                 PROJECT 1
+            ================================================== -->
 
-<article class="project-card">
-
-    <a
-        href="https://yadav150.github.io/authp/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/yap.webp"
-            alt="Yadav Authentication Project"
-            loading="lazy">
-
-    </a>
+            <article class="card project-card">
 
 
-    <div class="project-content">
+                <a
+                    href="https://yadav150.github.io/authp/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Yadav Authentication Project">
 
-        <h3>
-            Yadav Authentication Project
-        </h3>
+                    <img
+                        src="projects/yap.webp"
+                        alt="Yadav Authentication Project web application"
+                        loading="lazy">
 
-        <p>
-            Authentication, registration and account
-            management system designed for secure
-            user access and account-related operations.
-        </p>
+                </a>
 
-        <div class="project-tags">
 
-            <span class="project-tag">
-                Authentication
-            </span>
+                <div class="project-content">
 
-            <span class="project-tag">
-                Firebase
-            </span>
 
-            <span class="project-tag">
-                User Management
-            </span>
+                    <h3>
+                        Yadav Authentication Project
+                    </h3>
+
+
+                    <p>
+                        Authentication, registration and account
+                        management system designed for secure user
+                        access and account-related operations.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            Authentication
+                        </span>
+
+                        <span class="project-tag">
+                            Firebase
+                        </span>
+
+                        <span class="project-tag">
+                            User Management
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://yadav150.github.io/authp/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 2
+            ================================================== -->
+
+            <article class="card project-card">
+
+
+                <a
+                    href="https://yadav150.github.io/dav/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Yadav Web Tools">
+
+                    <img
+                        src="projects/ywt.webp"
+                        alt="Yadav Web Tools browser utility project"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Yadav Web Tools
+                    </h3>
+
+
+                    <p>
+                        A collection of browser-based utility tools
+                        designed to perform useful everyday digital
+                        tasks directly from the web.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            Web Tools
+                        </span>
+
+                        <span class="project-tag">
+                            JavaScript
+                        </span>
+
+                        <span class="project-tag">
+                            Utilities
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://yadav150.github.io/dav/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 3
+            ================================================== -->
+
+            <article class="card project-card">
+
+
+                <a
+                    href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Organization Membership Management Software">
+
+                    <img
+                        src="projects/org.webp"
+                        alt="Organization Membership Management Software"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Organization Membership Management Software
+                    </h3>
+
+
+                    <p>
+                        Organization-focused software for membership
+                        applications, member records and application
+                        approval workflows.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            Management System
+                        </span>
+
+                        <span class="project-tag">
+                            Membership
+                        </span>
+
+                        <span class="project-tag">
+                            Workflow
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 4
+            ================================================== -->
+
+            <article class="card project-card">
+
+
+                <a
+                    href="https://deverp00.github.io/eduerp/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open School Management ERP">
+
+                    <img
+                        src="projects/erp.webp"
+                        alt="School Management ERP software"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        School Management ERP
+                    </h3>
+
+
+                    <p>
+                        School management system covering student
+                        and teacher records, admissions, ID cards,
+                        admit cards, fees, salaries, receipts,
+                        attendance and related school operations.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            ERP
+                        </span>
+
+                        <span class="project-tag">
+                            School Management
+                        </span>
+
+                        <span class="project-tag">
+                            Database
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://deverp00.github.io/eduerp/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 5
+            ================================================== -->
+
+            <article class="card project-card">
+
+
+                <a
+                    href="https://yadav150.github.io/ent-tem1/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Business and Enterprise Website Project">
+
+                    <img
+                        src="projects/bew.webp"
+                        alt="Business and Enterprise Website development project"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Business / Enterprise Websites
+                    </h3>
+
+
+                    <p>
+                        Custom websites developed for businesses,
+                        organizations and enterprises according to
+                        their brand, services, content and functional
+                        requirements.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            Business Website
+                        </span>
+
+                        <span class="project-tag">
+                            Enterprise
+                        </span>
+
+                        <span class="project-tag">
+                            Responsive
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://yadav150.github.io/ent-tem1/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 6
+            ================================================== -->
+
+            <article class="card project-card">
+
+
+                <a
+                    href="https://yadav150.github.io/y-p/index.html"
+                    class="project-image"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Personal Portfolio Website">
+
+                    <img
+                        src="projects/ppw.webp"
+                        alt="Professional personal portfolio website"
+                        loading="lazy">
+
+                </a>
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Personal Portfolio Website
+                    </h3>
+
+
+                    <p>
+                        Professional personal portfolio designed
+                        to present profile information, skills,
+                        projects, experience and contact details.
+                    </p>
+
+
+                    <div class="project-tags">
+
+                        <span class="project-tag">
+                            Portfolio
+                        </span>
+
+                        <span class="project-tag">
+                            Personal Website
+                        </span>
+
+                        <span class="project-tag">
+                            Responsive
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://yadav150.github.io/y-p/index.html"
+                        class="btn btn-secondary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
 
         </div>
 
-        <a
-            href="https://yadav150.github.io/authp/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            View Project
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-
-            </svg>
-
-        </a>
-
     </div>
 
-</article>
+</section>
 
 
 
 <!-- =====================================================
-     PROJECT 2
+     DEVELOPMENT APPROACH
 ===================================================== -->
 
-<article class="project-card">
+<section class="section section-soft">
 
-    <a
-        href="https://yadav150.github.io/dav/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/ywt.webp"
-            alt="Yadav Web Tools"
-            loading="lazy">
-
-    </a>
+    <div class="container">
 
 
-    <div class="project-content">
+        <div class="section-heading">
 
-        <h3>
-            Yadav Web Tools
-        </h3>
+            <div class="section-label">
+                Development Approach
+            </div>
 
-        <p>
-            A collection of browser-based utility
-            tools created to perform useful everyday
-            digital tasks directly from the web.
-        </p>
 
-        <div class="project-tags">
+            <h2>
+                Built according to the purpose of the project.
+            </h2>
 
-            <span class="project-tag">
-                Web Tools
-            </span>
 
-            <span class="project-tag">
-                JavaScript
-            </span>
-
-            <span class="project-tag">
-                Utilities
-            </span>
+            <p>
+                Different projects require different architectures,
+                features and workflows. Our approach adapts according
+                to the actual requirement.
+            </p>
 
         </div>
 
-        <a
-            href="https://yadav150.github.io/dav/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
 
-            View Project
+        <div class="grid">
 
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
 
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
+            <article class="card">
 
-            </svg>
+                <h3>
+                    Requirement Based
+                </h3>
 
-        </a>
+                <p>
+                    Features and workflows are planned around
+                    the purpose, users and actual requirements
+                    of the project.
+                </p>
 
-    </div>
+            </article>
 
-</article>
 
+            <article class="card">
 
+                <h3>
+                    Practical Functionality
+                </h3>
 
-<!-- =====================================================
-     PROJECT 3
-===================================================== -->
+                <p>
+                    Projects focus on useful features,
+                    understandable workflows and practical
+                    day-to-day operation.
+                </p>
 
-<article class="project-card">
+            </article>
 
-    <a
-        href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
 
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/org.webp"
-            alt="Organization Membership Management Software"
-            loading="lazy">
+            <article class="card">
 
-    </a>
+                <h3>
+                    Responsive Experience
+                </h3>
 
+                <p>
+                    Websites and applications are designed
+                    to remain usable across different screen
+                    sizes and devices.
+                </p>
 
-    <div class="project-content">
-
-        <h3>
-            Organization Membership Management Software
-        </h3>
-
-        <p>
-            Organization-focused software for
-            membership applications, member records
-            and application approval workflows.
-        </p>
-
-        <div class="project-tags">
-
-            <span class="project-tag">
-                Management System
-            </span>
-
-            <span class="project-tag">
-                Membership
-            </span>
-
-            <span class="project-tag">
-                Workflow
-            </span>
-
-        </div>
-
-        <a
-            href="https://host-limbu.github.io/assam-limbu-mahasabha/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            View Project
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-
-            </svg>
-
-        </a>
-
-    </div>
-
-</article>
-
-
-
-<!-- =====================================================
-     PROJECT 4
-===================================================== -->
-
-<article class="project-card">
-
-    <a
-        href="https://deverp00.github.io/eduerp/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/erp.webp"
-            alt="School Management ERP"
-            loading="lazy">
-
-    </a>
-
-
-    <div class="project-content">
-
-        <h3>
-            School Management ERP
-        </h3>
-
-        <p>
-            School management system covering
-            student and teacher records, admission,
-            ID cards, admit cards, fees, salaries,
-            receipts, attendance and related
-            school operations.
-        </p>
-
-        <div class="project-tags">
-
-            <span class="project-tag">
-                ERP
-            </span>
-
-            <span class="project-tag">
-                School Management
-            </span>
-
-            <span class="project-tag">
-                Database
-            </span>
-
-        </div>
-
-        <a
-            href="https://deverp00.github.io/eduerp/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            View Project
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-
-            </svg>
-
-        </a>
-
-    </div>
-
-</article>
-
-
-
-<!-- =====================================================
-     PROJECT 5
-===================================================== -->
-
-<article class="project-card">
-
-    <a
-        href="https://yadav150.github.io/ent-tem1/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/bew.webp"
-            alt="Business and Enterprise Websites"
-            loading="lazy">
-
-    </a>
-
-
-    <div class="project-content">
-
-        <h3>
-            Business / Enterprise Websites
-        </h3>
-
-        <p>
-            Custom websites developed for businesses,
-            organizations and enterprises according
-            to their brand, services, content and
-            functional requirements.
-        </p>
-
-        <div class="project-tags">
-
-            <span class="project-tag">
-                Business Website
-            </span>
-
-            <span class="project-tag">
-                Enterprise
-            </span>
-
-            <span class="project-tag">
-                Responsive
-            </span>
-
-        </div>
-
-        <a
-            href="https://yadav150.github.io/ent-tem1/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            View Project
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-
-            </svg>
-
-        </a>
-
-    </div>
-
-</article>
-
-
-
-<!-- =====================================================
-     PROJECT 6
-===================================================== -->
-
-<article class="project-card">
-
-    <a
-        href="https://yadav150.github.io/y-p/index.html"
-        class="project-image"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <img
-            src="https://yadav150.github.io/yadav-web-technologies/images/ppw.webp"
-            alt="Personal Portfolio Website"
-            loading="lazy">
-
-    </a>
-
-
-    <div class="project-content">
-
-        <h3>
-            Personal Portfolio Website
-        </h3>
-
-        <p>
-            Professional personal portfolio designed
-            to present profile information, skills,
-            projects, experience and contact details.
-        </p>
-
-        <div class="project-tags">
-
-            <span class="project-tag">
-                Portfolio
-            </span>
-
-            <span class="project-tag">
-                Personal Website
-            </span>
-
-            <span class="project-tag">
-                Responsive
-            </span>
-
-        </div>
-
-        <a
-            href="https://yadav150.github.io/y-p/index.html"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            View Project
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-
-            </svg>
-
-        </a>
-
-    </div>
-
-</article>
+            </article>
 
 
         </div>
@@ -868,21 +1105,26 @@
 
     <div class="container">
 
+
         <div class="cta-box">
+
 
             <div class="section-label">
                 Have a Requirement?
             </div>
 
+
             <h2>
                 Let's build your solution.
             </h2>
+
 
             <p>
                 Tell us what you want to build and we can
                 discuss the requirements, scope and suitable
                 development approach.
             </p>
+
 
             <a
                 href="appointment.html"
@@ -894,7 +1136,9 @@
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2">
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
                     <path d="M5 12h14"></path>
                     <path d="m13 6 6 6-6 6"></path>
@@ -922,6 +1166,7 @@
 
     <div class="container">
 
+
         <div class="footer-grid">
 
 
@@ -941,6 +1186,7 @@
 
                 </a>
 
+
                 <p>
                     Professional websites, web applications
                     and custom digital solutions based on
@@ -957,6 +1203,7 @@
                     Quick Links
                 </h4>
 
+
                 <div class="footer-links">
 
                     <a href="index.html">
@@ -971,8 +1218,12 @@
                         Services
                     </a>
 
-                    <a href="projects.html">
+                    <a
+                        href="projects.html"
+                        class="active">
+
                         Projects
+
                     </a>
 
                     <a href="pricing.html">
@@ -994,6 +1245,7 @@
                 <h4>
                     Information
                 </h4>
+
 
                 <div class="footer-links">
 
@@ -1057,7 +1309,7 @@
         stroke-linejoin="round">
 
         <path d="M12 19V5"></path>
-        <path d="m6 11 6-6 6 6"></path>
+        <path d="m6 11 6 6-6 6"></path>
 
     </svg>
 
@@ -1066,7 +1318,9 @@
 
 
 <script src="js/menu.js"></script>
+
 <script src="js/theme.js"></script>
+
 <script src="js/go-top.js"></script>
 
 

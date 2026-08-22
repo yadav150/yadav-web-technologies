@@ -33,7 +33,7 @@
 
         .admin-header {
             border-bottom: 1px solid #dfe3e8;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
         }
 
         .admin-nav {
@@ -70,16 +70,34 @@
 
         .admin-user {
             font-size: 13px;
-            opacity: .75;
+            opacity: .7;
         }
 
-        .admin-logout {
-            border: 1px solid #d4d9de;
+        .admin-logout,
+        .view-button,
+        .danger-button,
+        .share-button {
+            border: 1px solid #cfd5da;
             background: transparent;
             color: inherit;
             padding: 9px 13px;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .share-button svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .danger-button {
+            border-color: #c9bcbc;
         }
 
         .admin-main {
@@ -109,7 +127,7 @@
             padding: 20px;
             border: 1px solid #dfe3e8;
             border-radius: 6px;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
         }
 
         .stat-card span {
@@ -126,7 +144,7 @@
         .admin-panel {
             border: 1px solid #dfe3e8;
             border-radius: 6px;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
             overflow: hidden;
         }
 
@@ -201,15 +219,6 @@
             text-transform: capitalize;
         }
 
-        .view-button {
-            border: 1px solid #cfd5da;
-            background: transparent;
-            color: inherit;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
         .empty-state {
             padding: 50px 20px;
             text-align: center;
@@ -224,7 +233,7 @@
             margin-top: 30px;
             border: 1px solid #dfe3e8;
             border-radius: 6px;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
         }
 
         .detail-view.active {
@@ -238,6 +247,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .detail-head h2 {
@@ -296,15 +306,6 @@
             color: inherit;
         }
 
-        .danger-button {
-            border: 1px solid #c9bcbc;
-            background: transparent;
-            color: inherit;
-            padding: 9px 13px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
         .login-screen {
             min-height: 100vh;
             display: flex;
@@ -319,7 +320,7 @@
             padding: 32px;
             border: 1px solid #dfe3e8;
             border-radius: 6px;
-            background: var(--surface, #ffffff);
+            background: var(--surface, #fff);
         }
 
         .login-brand {
@@ -366,6 +367,83 @@
 
         #dashboard {
             display: none;
+        }
+
+        /* Share generation area */
+        .share-card-render {
+            position: fixed;
+            left: -100000px;
+            top: 0;
+            width: 1080px;
+            min-height: 1350px;
+            padding: 70px;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #16181b;
+            font-family: Arial, Helvetica, sans-serif;
+            z-index: -1;
+        }
+
+        .share-card-top {
+            border-bottom: 2px solid #dedede;
+            padding-bottom: 28px;
+            margin-bottom: 40px;
+        }
+
+        .share-card-brand {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .share-card-title {
+            font-size: 46px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .share-card-subtitle {
+            font-size: 22px;
+            color: #666;
+        }
+
+        .share-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .share-card-field {
+            border: 1px solid #dedede;
+            padding: 22px;
+            border-radius: 6px;
+        }
+
+        .share-card-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .share-card-label {
+            display: block;
+            font-size: 15px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 10px;
+        }
+
+        .share-card-value {
+            font-size: 23px;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .share-card-footer {
+            margin-top: 55px;
+            padding-top: 25px;
+            border-top: 2px solid #dedede;
+            font-size: 17px;
+            color: #666;
         }
 
         @media (max-width: 950px) {
@@ -417,10 +495,6 @@
 <body>
 
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
-
 <section
     class="login-screen"
     id="loginScreen">
@@ -442,7 +516,6 @@
                 </span>
 
             </a>
-
 
             <div class="section-label">
                 Administration
@@ -518,10 +591,6 @@
 
 
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
-
 <div id="dashboard">
 
 
@@ -530,7 +599,6 @@
     <div class="container">
 
         <div class="admin-nav">
-
 
             <a
                 href="../index.html"
@@ -597,83 +665,36 @@
 
 
 
-        <!-- =================================================
-             STATISTICS
-        ================================================== -->
-
         <div class="stats-grid">
 
             <div class="stat-card">
-
-                <span>
-                    Total
-                </span>
-
-                <strong id="totalCount">
-                    0
-                </strong>
-
+                <span>Total</span>
+                <strong id="totalCount">0</strong>
             </div>
 
-
             <div class="stat-card">
-
-                <span>
-                    New
-                </span>
-
-                <strong id="newCount">
-                    0
-                </strong>
-
+                <span>New</span>
+                <strong id="newCount">0</strong>
             </div>
 
-
             <div class="stat-card">
-
-                <span>
-                    Contacted
-                </span>
-
-                <strong id="contactedCount">
-                    0
-                </strong>
-
+                <span>Contacted</span>
+                <strong id="contactedCount">0</strong>
             </div>
 
-
             <div class="stat-card">
-
-                <span>
-                    Confirmed
-                </span>
-
-                <strong id="confirmedCount">
-                    0
-                </strong>
-
+                <span>Confirmed</span>
+                <strong id="confirmedCount">0</strong>
             </div>
 
-
             <div class="stat-card">
-
-                <span>
-                    Completed
-                </span>
-
-                <strong id="completedCount">
-                    0
-                </strong>
-
+                <span>Completed</span>
+                <strong id="completedCount">0</strong>
             </div>
 
         </div>
 
 
-
-        <!-- =================================================
-             APPOINTMENTS
-        ================================================== -->
 
         <section class="admin-panel">
 
@@ -727,16 +748,11 @@
             <div
                 class="appointments-list"
                 id="appointmentsList">
-
             </div>
 
         </section>
 
 
-
-        <!-- =================================================
-             DETAIL VIEW
-        ================================================== -->
 
         <section
             class="detail-view"
@@ -764,15 +780,53 @@
             <div
                 class="detail-body"
                 id="detailBody">
-
             </div>
 
         </section>
 
-
     </div>
 
 </main>
+
+</div>
+
+
+
+<!-- Hidden image-generation template -->
+
+<div
+    class="share-card-render"
+    id="shareCardRender">
+
+    <div class="share-card-top">
+
+        <div class="share-card-brand">
+            Yadav Web Technologies
+        </div>
+
+        <div class="share-card-title">
+            Appointment Details
+        </div>
+
+        <div
+            class="share-card-subtitle"
+            id="shareCardSubtitle">
+        </div>
+
+    </div>
+
+
+    <div
+        class="share-card-grid"
+        id="shareCardGrid">
+    </div>
+
+
+    <div class="share-card-footer">
+
+        Yadav Web Technologies · Appointment Management
+
+    </div>
 
 </div>
 

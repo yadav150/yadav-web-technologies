@@ -23,7 +23,7 @@ import {
 // =====================================================
 
 const ADMIN_UID =
-    "WnECxfnldyb76ajAYBjFbNFA7qz2";
+    "REPLACE_WITH_YOUR_ADMIN_UID";
 
 
 // =====================================================
@@ -106,6 +106,15 @@ const detailBody =
 const closeDetail =
     document.getElementById("closeDetail");
 
+const shareCardRender =
+    document.getElementById("shareCardRender");
+
+const shareCardSubtitle =
+    document.getElementById("shareCardSubtitle");
+
+const shareCardGrid =
+    document.getElementById("shareCardGrid");
+
 
 // =====================================================
 // STATE
@@ -117,7 +126,7 @@ let selectedAppointmentId = null;
 
 
 // =====================================================
-// AUTH STATE
+// AUTH
 // =====================================================
 
 onAuthStateChanged(
@@ -132,10 +141,6 @@ onAuthStateChanged(
 
         }
 
-
-        // ---------------------------------------------
-        // STRICT ADMIN UID CHECK
-        // ---------------------------------------------
 
         if (user.uid !== ADMIN_UID) {
 
@@ -172,14 +177,16 @@ if (loginForm) {
 
 
             const email =
-                document.getElementById(
-                    "loginEmail"
-                ).value.trim();
+                document
+                    .getElementById("loginEmail")
+                    .value
+                    .trim();
+
 
             const password =
-                document.getElementById(
-                    "loginPassword"
-                ).value;
+                document
+                    .getElementById("loginPassword")
+                    .value;
 
 
             clearLoginError();
@@ -211,7 +218,6 @@ if (loginForm) {
             } catch (error) {
 
                 console.error(
-                    "Login error:",
                     error
                 );
 
@@ -269,6 +275,7 @@ function loadAppointments() {
 
             updateStatistics();
 
+
             if (
                 selectedAppointmentId &&
                 appointments[
@@ -286,14 +293,20 @@ function loadAppointments() {
         (error) => {
 
             console.error(
-                "Database error:",
                 error
             );
 
             appointmentsList.innerHTML = `
                 <div class="empty-state">
-                    <h3>Unable to load appointments</h3>
-                    <p>Please check your Firebase database permissions.</p>
+
+                    <h3>
+                        Unable to load appointments
+                    </h3>
+
+                    <p>
+                        Please check your Firebase database permissions.
+                    </p>
+
                 </div>
             `;
 
@@ -324,7 +337,7 @@ function renderAppointments() {
             appointments
         )
         .filter(
-            ([id, item]) => {
+            ([, item]) => {
 
                 const searchable = [
 
@@ -335,8 +348,8 @@ function renderAppointments() {
                     item.message
 
                 ]
-                .join(" ")
-                .toLowerCase();
+                    .join(" ")
+                    .toLowerCase();
 
 
                 const matchesSearch =
@@ -396,105 +409,101 @@ function renderAppointments() {
     appointmentsList.innerHTML =
         entries
             .map(
-                ([id, item]) => {
+                ([id, item]) => `
 
-                    return `
+                    <article
+                        class="appointment-row">
 
-                        <article
-                            class="appointment-row">
+                        <div
+                            class="appointment-client">
 
-                            <div
-                                class="appointment-client">
+                            <strong>
+                                ${escapeHtml(
+                                    item.name ||
+                                    "Unknown Client"
+                                )}
+                            </strong>
 
-                                <strong>
-                                    ${escapeHtml(
-                                        item.name ||
-                                        "Unknown Client"
-                                    )}
-                                </strong>
+                            <span>
+                                ${escapeHtml(
+                                    item.email ||
+                                    ""
+                                )}
+                            </span>
 
-                                <span>
-                                    ${escapeHtml(
-                                        item.email ||
-                                        ""
-                                    )}
-                                </span>
-
-                            </div>
+                        </div>
 
 
-                            <div
-                                class="appointment-service">
+                        <div
+                            class="appointment-service">
 
-                                <strong>
-                                    ${escapeHtml(
-                                        item.service ||
-                                        "Not specified"
-                                    )}
-                                </strong>
+                            <strong>
+                                ${escapeHtml(
+                                    item.service ||
+                                    "Not specified"
+                                )}
+                            </strong>
 
-                                <span>
-                                    ${escapeHtml(
-                                        item.phone ||
-                                        ""
-                                    )}
-                                </span>
+                            <span>
+                                ${escapeHtml(
+                                    item.phone ||
+                                    ""
+                                )}
+                            </span>
 
-                            </div>
-
-
-                            <div
-                                class="appointment-date">
-
-                                <strong>
-                                    ${formatDate(
-                                        item.date
-                                    )}
-                                </strong>
-
-                                <span>
-                                    ${escapeHtml(
-                                        item.time ||
-                                        ""
-                                    )}
-                                </span>
-
-                            </div>
+                        </div>
 
 
-                            <div>
+                        <div
+                            class="appointment-date">
 
-                                <span
-                                    class="status-badge">
+                            <strong>
+                                ${formatDate(
+                                    item.date
+                                )}
+                            </strong>
 
-                                    ${escapeHtml(
-                                        item.status ||
-                                        "new"
-                                    )}
+                            <span>
+                                ${escapeHtml(
+                                    item.time ||
+                                    ""
+                                )}
+                            </span>
 
-                                </span>
-
-                            </div>
+                        </div>
 
 
-                            <div>
+                        <div>
 
-                                <button
-                                    type="button"
-                                    class="view-button"
-                                    data-view-id="${id}">
+                            <span
+                                class="status-badge">
 
-                                    View Project
+                                ${escapeHtml(
+                                    item.status ||
+                                    "new"
+                                )}
 
-                                </button>
+                            </span>
 
-                            </div>
+                        </div>
 
-                        </article>
 
-                    `;
+                        <div>
 
-                }
+                            <button
+                                type="button"
+                                class="view-button"
+                                data-view-id="${id}">
+
+                                View Project
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `
             )
             .join("");
 
@@ -524,7 +533,7 @@ function renderAppointments() {
 
 
 // =====================================================
-// APPOINTMENT DETAILS
+// DETAILS
 // =====================================================
 
 function showAppointmentDetails(id) {
@@ -698,33 +707,25 @@ function showAppointmentDetails(id) {
                 <option
                     value="new"
                     ${item.status === "new" ? "selected" : ""}>
-
                     New
-
                 </option>
 
                 <option
                     value="contacted"
                     ${item.status === "contacted" ? "selected" : ""}>
-
                     Contacted
-
                 </option>
 
                 <option
                     value="confirmed"
                     ${item.status === "confirmed" ? "selected" : ""}>
-
                     Confirmed
-
                 </option>
 
                 <option
                     value="completed"
                     ${item.status === "completed" ? "selected" : ""}>
-
                     Completed
-
                 </option>
 
             </select>
@@ -736,6 +737,48 @@ function showAppointmentDetails(id) {
                 id="saveStatus">
 
                 Update Status
+
+            </button>
+
+
+            <button
+                type="button"
+                class="share-button"
+                id="shareAppointment">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <circle
+                        cx="18"
+                        cy="5"
+                        r="3">
+                    </circle>
+
+                    <circle
+                        cx="6"
+                        cy="12"
+                        r="3">
+                    </circle>
+
+                    <circle
+                        cx="18"
+                        cy="19"
+                        r="3">
+                    </circle>
+
+                    <path d="m8.6 13.5 6.8 4"></path>
+
+                    <path d="m15.4 6.5-6.8 4"></path>
+
+                </svg>
+
+                Share
 
             </button>
 
@@ -780,6 +823,20 @@ function showAppointmentDetails(id) {
 
 
     document
+        .getElementById("shareAppointment")
+        .addEventListener(
+            "click",
+            () => {
+
+                shareAppointmentImage(
+                    item
+                );
+
+            }
+        );
+
+
+    document
         .getElementById("deleteAppointment")
         .addEventListener(
             "click",
@@ -796,10 +853,410 @@ function showAppointmentDetails(id) {
 
 
 // =====================================================
+// SHARE APPOINTMENT AS IMAGE
+// =====================================================
+
+async function shareAppointmentImage(
+    item
+) {
+
+    const button =
+        document.getElementById(
+            "shareAppointment"
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.dataset.originalText =
+            button.innerHTML;
+
+        button.textContent =
+            "Preparing...";
+
+    }
+
+
+    try {
+
+        buildShareCard(
+            item
+        );
+
+
+        const canvas =
+            await createCanvasFromCard();
+
+
+        const blob =
+            await canvasToBlob(
+                canvas
+            );
+
+
+        const file =
+            new File(
+                [blob],
+                "appointment-details.png",
+                {
+                    type: "image/png"
+                }
+            );
+
+
+        /*
+         * Native Android / mobile share sheet
+         */
+
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files: [file]
+            })
+        ) {
+
+            await navigator.share({
+
+                title:
+                    "Appointment Details",
+
+                text:
+                    "Yadav Web Technologies - Appointment Details",
+
+                files: [file]
+
+            });
+
+        }
+
+        /*
+         * Desktop / browsers without file sharing:
+         * download the generated image.
+         */
+
+        else {
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const anchor =
+                document.createElement(
+                    "a"
+                );
+
+
+            anchor.href =
+                url;
+
+            anchor.download =
+                "appointment-details.png";
+
+            document.body.appendChild(
+                anchor
+            );
+
+            anchor.click();
+
+            anchor.remove();
+
+
+            URL.revokeObjectURL(
+                url
+            );
+
+
+            alert(
+                "The appointment image has been generated and downloaded."
+            );
+
+        }
+
+    } catch (error) {
+
+        /*
+         * User closing the native share sheet
+         * is not an actual application error.
+         */
+
+        if (
+            error?.name !==
+            "AbortError"
+        ) {
+
+            console.error(
+                "Share error:",
+                error
+            );
+
+            alert(
+                "Unable to generate the appointment image."
+            );
+
+        }
+
+    } finally {
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerHTML =
+                button.dataset.originalText ||
+                "Share";
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// BUILD SHARE CARD
+// =====================================================
+
+function buildShareCard(item) {
+
+    if (
+        !shareCardRender ||
+        !shareCardGrid
+    ) {
+
+        throw new Error(
+            "Share card template not found."
+        );
+
+    }
+
+
+    shareCardSubtitle.textContent =
+        `${formatDate(item.date)} · ${item.time || "Time not specified"}`;
+
+
+    shareCardGrid.innerHTML = `
+
+        ${shareField(
+            "Client",
+            item.name ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Service",
+            item.service ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Email",
+            item.email ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Phone",
+            item.phone ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Appointment Date",
+            formatDate(item.date)
+        )}
+
+        ${shareField(
+            "Appointment Time",
+            item.time ||
+            "Not provided"
+        )}
+
+        ${shareField(
+            "Status",
+            item.status ||
+            "new"
+        )}
+
+        ${shareField(
+            "Submitted",
+            formatCreatedAt(
+                item.createdAt
+            )
+        )}
+
+        ${shareField(
+            "Project Requirement",
+            item.message ||
+            "No message provided.",
+            true
+        )}
+
+    `;
+
+}
+
+
+function shareField(
+    label,
+    value,
+    full = false
+) {
+
+    return `
+
+        <div
+            class="share-card-field ${full ? "full" : ""}">
+
+            <span
+                class="share-card-label">
+
+                ${escapeHtml(label)}
+
+            </span>
+
+            <div
+                class="share-card-value">
+
+                ${escapeHtml(value)}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+// =====================================================
+// HTML → CANVAS
+//
+// Uses html2canvas dynamically.
+// =====================================================
+
+async function createCanvasFromCard() {
+
+    if (
+        typeof window.html2canvas ===
+        "undefined"
+    ) {
+
+        await loadHtml2Canvas();
+
+    }
+
+
+    return await window.html2canvas(
+        shareCardRender,
+        {
+            backgroundColor:
+                "#ffffff",
+
+            scale: 2,
+
+            useCORS:
+                true,
+
+            logging:
+                false
+        }
+    );
+
+}
+
+
+// =====================================================
+// LOAD HTML2CANVAS
+// =====================================================
+
+function loadHtml2Canvas() {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const script =
+                document.createElement(
+                    "script"
+                );
+
+
+            script.src =
+                "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+
+
+            script.onload =
+                () => resolve();
+
+
+            script.onerror =
+                () => reject(
+                    new Error(
+                        "Unable to load image generation library."
+                    )
+                );
+
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// CANVAS → BLOB
+// =====================================================
+
+function canvasToBlob(canvas) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            canvas.toBlob(
+                (blob) => {
+
+                    if (blob) {
+
+                        resolve(
+                            blob
+                        );
+
+                    } else {
+
+                        reject(
+                            new Error(
+                                "Unable to create image."
+                            )
+                        );
+
+                    }
+
+                },
+                "image/png",
+                1
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
 // UPDATE STATUS
 // =====================================================
 
-async function updateAppointmentStatus(id) {
+async function updateAppointmentStatus(
+    id
+) {
 
     const statusElement =
         document.getElementById(
@@ -828,7 +1285,6 @@ async function updateAppointmentStatus(id) {
     } catch (error) {
 
         console.error(
-            "Status update error:",
             error
         );
 
@@ -842,10 +1298,12 @@ async function updateAppointmentStatus(id) {
 
 
 // =====================================================
-// DELETE APPOINTMENT
+// DELETE
 // =====================================================
 
-async function deleteAppointment(id) {
+async function deleteAppointment(
+    id
+) {
 
     const confirmed =
         window.confirm(
@@ -878,7 +1336,6 @@ async function deleteAppointment(id) {
     } catch (error) {
 
         console.error(
-            "Delete error:",
             error
         );
 
@@ -892,7 +1349,7 @@ async function deleteAppointment(id) {
 
 
 // =====================================================
-// CLOSE DETAIL
+// CLOSE DETAILS
 // =====================================================
 
 if (closeDetail) {
@@ -964,7 +1421,8 @@ function updateStatistics() {
     setCount(
         "newCount",
         values.filter(
-            item => item.status === "new"
+            item =>
+                item.status === "new"
         ).length
     );
 
@@ -972,7 +1430,8 @@ function updateStatistics() {
     setCount(
         "contactedCount",
         values.filter(
-            item => item.status === "contacted"
+            item =>
+                item.status === "contacted"
         ).length
     );
 
@@ -980,7 +1439,8 @@ function updateStatistics() {
     setCount(
         "confirmedCount",
         values.filter(
-            item => item.status === "confirmed"
+            item =>
+                item.status === "confirmed"
         ).length
     );
 
@@ -988,17 +1448,22 @@ function updateStatistics() {
     setCount(
         "completedCount",
         values.filter(
-            item => item.status === "completed"
+            item =>
+                item.status === "completed"
         ).length
     );
 
 }
 
 
-function setCount(id, value) {
+function setCount(
+    id,
+    value
+) {
 
     const element =
         document.getElementById(id);
+
 
     if (element) {
 
@@ -1011,7 +1476,7 @@ function setCount(id, value) {
 
 
 // =====================================================
-// LOGIN / DASHBOARD UI
+// LOGIN UI
 // =====================================================
 
 function showLogin() {
@@ -1025,7 +1490,9 @@ function showLogin() {
 }
 
 
-function showDashboard(user) {
+function showDashboard(
+    user
+) {
 
     loginScreen.style.display =
         "none";
@@ -1044,7 +1511,9 @@ function showDashboard(user) {
 }
 
 
-function showLoginError(message) {
+function showLoginError(
+    message
+) {
 
     if (loginError) {
 
@@ -1072,22 +1541,45 @@ function clearLoginError() {
 // HELPERS
 // =====================================================
 
-function escapeHtml(value) {
+function escapeHtml(
+    value
+) {
 
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    return String(
+        value ?? ""
+    )
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
 
-function formatDate(value) {
+function formatDate(
+    value
+) {
 
     if (!value) {
+
         return "Not specified";
+
     }
 
 
@@ -1122,15 +1614,21 @@ function formatDate(value) {
 }
 
 
-function formatCreatedAt(value) {
+function formatCreatedAt(
+    value
+) {
 
     if (!value) {
+
         return "Not available";
+
     }
 
 
     const date =
-        new Date(value);
+        new Date(
+            value
+        );
 
 
     if (

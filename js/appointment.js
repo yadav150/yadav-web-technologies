@@ -10,6 +10,10 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
 
+// =====================================================
+// FIREBASE CONFIG
+// =====================================================
+
 const firebaseConfig = {
 
     apiKey:
@@ -36,12 +40,21 @@ const firebaseConfig = {
 };
 
 
+// =====================================================
+// FIREBASE INITIALIZATION
+// =====================================================
+
 const app =
     initializeApp(firebaseConfig);
 
 const database =
     getDatabase(app);
 
+
+// =====================================================
+// EXISTING ELEMENTS / IDs
+// DO NOT CHANGE
+// =====================================================
 
 const appointmentForm =
     document.getElementById("appointmentForm");
@@ -56,10 +69,17 @@ const successClose =
     document.getElementById("successClose");
 
 
+// =====================================================
+// SUCCESS MESSAGE
+// =====================================================
+
 function showSuccessMessage() {
 
     if (successOverlay) {
-        successOverlay.hidden = false;
+
+        successOverlay.hidden =
+            false;
+
     }
 
 }
@@ -68,7 +88,10 @@ function showSuccessMessage() {
 function closeSuccessMessage() {
 
     if (successOverlay) {
-        successOverlay.hidden = true;
+
+        successOverlay.hidden =
+            true;
+
     }
 
 }
@@ -91,7 +114,8 @@ if (successOverlay) {
         (event) => {
 
             if (
-                event.target === successOverlay
+                event.target ===
+                successOverlay
             ) {
 
                 closeSuccessMessage();
@@ -122,6 +146,10 @@ document.addEventListener(
 );
 
 
+// =====================================================
+// FORM SUBMISSION
+// =====================================================
+
 if (appointmentForm) {
 
     appointmentForm.addEventListener(
@@ -131,8 +159,12 @@ if (appointmentForm) {
             event.preventDefault();
 
 
+            // Keep existing custom message handler.
             if (appointmentMessage) {
-                appointmentMessage.textContent = "";
+
+                appointmentMessage.textContent =
+                    "";
+
             }
 
 
@@ -144,10 +176,11 @@ if (appointmentForm) {
 
             if (submitButton) {
 
-                submitButton.disabled = true;
+                submitButton.disabled =
+                    true;
 
                 submitButton.dataset.originalText =
-                    submitButton.textContent.trim();
+                    submitButton.innerHTML;
 
                 submitButton.textContent =
                     "Submitting...";
@@ -155,34 +188,59 @@ if (appointmentForm) {
             }
 
 
+            // =================================================
+            // EXISTING FIELD IDs — UNCHANGED
+            // =================================================
+
             const name =
-                document.getElementById("name")
-                    ?.value.trim();
+                document
+                    .getElementById("name")
+                    ?.value
+                    .trim();
+
 
             const email =
-                document.getElementById("email")
-                    ?.value.trim();
+                document
+                    .getElementById("email")
+                    ?.value
+                    .trim();
+
 
             const phone =
-                document.getElementById("phone")
-                    ?.value.trim();
+                document
+                    .getElementById("phone")
+                    ?.value
+                    .trim();
+
 
             const service =
-                document.getElementById("service")
+                document
+                    .getElementById("service")
                     ?.value;
+
 
             const date =
-                document.getElementById("date")
+                document
+                    .getElementById("date")
                     ?.value;
+
 
             const time =
-                document.getElementById("time")
+                document
+                    .getElementById("time")
                     ?.value;
 
-            const message =
-                document.getElementById("message")
-                    ?.value.trim();
 
+            const message =
+                document
+                    .getElementById("message")
+                    ?.value
+                    .trim();
+
+
+            // =================================================
+            // VALIDATION
+            // =================================================
 
             if (
                 !name ||
@@ -198,14 +256,21 @@ if (appointmentForm) {
                     "Please complete all required fields."
                 );
 
+
                 restoreButton(
                     submitButton
                 );
+
 
                 return;
 
             }
 
+
+            // =================================================
+            // SAVE TO FIREBASE
+            // Same node: appointments
+            // =================================================
 
             try {
 
@@ -220,21 +285,29 @@ if (appointmentForm) {
 
                 const appointmentData = {
 
-                    name: name,
+                    name:
+                        name,
 
-                    email: email,
+                    email:
+                        email,
 
-                    phone: phone,
+                    phone:
+                        phone,
 
-                    service: service,
+                    service:
+                        service,
 
-                    date: date,
+                    date:
+                        date,
 
-                    time: time,
+                    time:
+                        time,
 
-                    message: message,
+                    message:
+                        message,
 
-                    status: "new",
+                    status:
+                        "new",
 
                     createdAt:
                         new Date().toISOString()
@@ -248,8 +321,11 @@ if (appointmentForm) {
                 );
 
 
-                appointmentForm.reset();
+                // =================================================
+                // SUCCESS
+                // =================================================
 
+                appointmentForm.reset();
 
                 showSuccessMessage();
 
@@ -280,7 +356,13 @@ if (appointmentForm) {
 }
 
 
-function showError(message) {
+// =====================================================
+// EXISTING CUSTOM ERROR HANDLER
+// =====================================================
+
+function showError(
+    message
+) {
 
     if (appointmentMessage) {
 
@@ -292,16 +374,37 @@ function showError(message) {
 }
 
 
-function restoreButton(button) {
+// =====================================================
+// RESTORE SUBMIT BUTTON
+// =====================================================
+
+function restoreButton(
+    button
+) {
 
     if (!button) {
+
         return;
+
     }
 
-    button.disabled = false;
 
-    button.textContent =
-        button.dataset.originalText ||
-        "Submit Appointment Request";
+    button.disabled =
+        false;
+
+
+    if (
+        button.dataset.originalText
+    ) {
+
+        button.innerHTML =
+            button.dataset.originalText;
+
+    } else {
+
+        button.textContent =
+            "Submit Appointment Request";
+
+    }
 
 }

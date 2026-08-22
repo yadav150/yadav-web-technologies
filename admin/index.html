@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="robots"
+        content="noindex, nofollow">
+
+    <title>
+        Admin Dashboard | Yadav Web Technologies
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section
+    class="admin-login"
+    id="loginSection">
+
+    <div class="login-box">
+
+        <div class="admin-brand">
+
+            <span class="brand-mark">
+                Y
+            </span>
+
+            <div>
+
+                <strong>
+                    Yadav Web Technologies
+                </strong>
+
+                <span>
+                    Admin Dashboard
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="login-heading">
+
+            <h1>
+                Admin Login
+            </h1>
+
+            <p>
+                Sign in to manage appointments and enquiries.
+            </p>
+
+        </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label for="adminEmail">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="adminPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    autocomplete="current-password"
+                    required>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="admin-btn">
+
+                Sign In
+
+            </button>
+
+
+            <p
+                class="form-message"
+                id="loginMessage">
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    class="dashboard"
+    id="dashboardSection"
+    hidden>
+
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <span class="dashboard-label">
+                Yadav Web Technologies
+            </span>
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="logout-btn"
+            id="logoutBtn">
+
+            Logout
+
+        </button>
+
+    </header>
+
+
+
+    <main class="dashboard-main">
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <article class="stat-card">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalCount">
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span>
+                    New
+                </span>
+
+                <strong id="newCount">
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span>
+                    Contacted
+                </span>
+
+                <strong id="contactedCount">
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span>
+                    Confirmed
+                </span>
+
+                <strong id="confirmedCount">
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span>
+                    Completed
+                </span>
+
+                <strong id="completedCount">
+                    0
+                </strong>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             APPOINTMENTS
+        ================================================== -->
+
+        <section class="appointments-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        Client Requests
+                    </span>
+
+                    <h2>
+                        Appointments
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="refresh-btn"
+                    id="refreshBtn">
+
+                    Refresh
+
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Client
+                            </th>
+
+                            <th>
+                                Service
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Time
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="appointmentsBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="empty-state"
+                id="emptyState"
+                hidden>
+
+                No appointments found.
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</section>
+
+
+
+<!-- =====================================================
+     APPOINTMENT MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="appointmentModal"
+    hidden>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Appointment Details
+            </h2>
+
+            <button
+                type="button"
+                class="close-btn"
+                id="closeModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="appointment-details"
+            id="appointmentDetails">
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="delete-btn"
+                id="deleteAppointment">
+
+                Delete Appointment
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="admin.js">
+</script>
+
+</body>
+
+</html>

@@ -12,6 +12,7 @@ import {
 
 // =====================================================
 // FIREBASE CONFIG
+// UNCHANGED
 // =====================================================
 
 const firebaseConfig = {
@@ -42,6 +43,7 @@ const firebaseConfig = {
 
 // =====================================================
 // FIREBASE INITIALIZATION
+// UNCHANGED
 // =====================================================
 
 const app =
@@ -53,7 +55,7 @@ const database =
 
 // =====================================================
 // EXISTING ELEMENTS / IDs
-// DO NOT CHANGE
+// UNCHANGED
 // =====================================================
 
 const appointmentForm =
@@ -159,7 +161,11 @@ if (appointmentForm) {
             event.preventDefault();
 
 
-            // Keep existing custom message handler.
+            // =================================================
+            // EXISTING CUSTOM MESSAGE HANDLER
+            // UNCHANGED
+            // =================================================
+
             if (appointmentMessage) {
 
                 appointmentMessage.textContent =
@@ -189,7 +195,8 @@ if (appointmentForm) {
 
 
             // =================================================
-            // EXISTING FIELD IDs — UNCHANGED
+            // EXISTING FIELD IDs
+            // UNCHANGED
             // =================================================
 
             const name =
@@ -240,6 +247,7 @@ if (appointmentForm) {
 
             // =================================================
             // VALIDATION
+            // UNCHANGED
             // =================================================
 
             if (
@@ -269,7 +277,8 @@ if (appointmentForm) {
 
             // =================================================
             // SAVE TO FIREBASE
-            // Same node: appointments
+            // NODE: appointments
+            // UNCHANGED
             // =================================================
 
             try {
@@ -358,6 +367,7 @@ if (appointmentForm) {
 
 // =====================================================
 // EXISTING CUSTOM ERROR HANDLER
+// UNCHANGED
 // =====================================================
 
 function showError(
@@ -408,3 +418,4 @@ function restoreButton(
     }
 
 }
+```

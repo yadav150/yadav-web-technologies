@@ -12,7 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
 // =====================================================
-// FIREBASE CONFIG (unchanged)
+// FIREBASE CONFIG
 // =====================================================
 const firebaseConfig = {
     apiKey: "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",

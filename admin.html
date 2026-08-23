@@ -6,10 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Admin Dashboard | Yadav Web Technologies</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        /* Page loader – full screen spinner */
+        #pageLoader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--admin-bg);
+            z-index: 9999;
+        }
+        #pageLoader .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e2e8f0;
+            border-top: 5px solid var(--admin-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Hide login/dashboard until auth decides */
+        #loginScreen, #dashboard {
+            display: none !important;
+        }
+        #loginScreen.visible, #dashboard.visible {
+            display: flex !important;
+        }
+        #dashboard.visible {
+            display: grid !important;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- PAGE LOADER (visible until auth check) -->
+    <div id="pageLoader"><div class="spinner"></div></div>
 
     <!-- ===== LOGIN ===== -->
     <section id="loginScreen">
@@ -36,8 +73,7 @@
     </section>
 
     <!-- ===== DASHBOARD ===== -->
-    <section id="dashboard" style="display:none;">
-
+    <section id="dashboard">
         <!-- SIDEBAR -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="admin-logo">
@@ -110,9 +146,8 @@
                         <option value="completed">Completed</option>
                     </select>
                 </div>
-                <!-- Appointment list container – fixed height with spinner -->
+                <!-- Appointment list container -->
                 <div id="appointmentsList">
-                    <!-- Spinner – visible until data loads -->
                     <div class="loading-spinner" id="listSpinner">
                         <div class="spinner"></div>
                     </div>
@@ -129,5 +164,4 @@
 
     <script type="module" src="js/admin.js"></script>
 </body>
-
 </html>

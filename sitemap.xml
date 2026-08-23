@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Homepage -->
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <!-- Main Pages -->
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/appointment.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/services.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/projects.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/pricing.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/about.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.70</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/contact.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.70</priority>
+    </url>
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/terms.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.40</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/client-terms.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.40</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/privacy.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.40</priority>
+    </url>
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/disclaimer.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.40</priority>
+    </url>
+    <!-- Admin (noindex but still included for crawling) -->
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/admin.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.30</priority>
+    </url>
+    <!-- Sitemap itself (optional but good) -->
+    <url>
+        <loc>https://yadav150.github.io/yadav-web-technologies/sitemap.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <priority>0.50</priority>
+    </url>
+</urlset>

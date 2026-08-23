@@ -28,7 +28,7 @@ const successOverlay = document.getElementById("successOverlay");
 const successClose = document.getElementById("successClose");
 const appointmentNumberDisplay = document.getElementById("appointmentNumber");
 
-// ----- Success overlay handlers (unchanged) -----
+// ----- Success overlay handlers -----
 function showSuccessMessage() { if (successOverlay) successOverlay.hidden = false; }
 function closeSuccessMessage() { if (successOverlay) successOverlay.hidden = true; }
 if (successClose) successClose.addEventListener("click", closeSuccessMessage);

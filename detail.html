@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Appointment Detail | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Reuse admin styles */
+        :root { --admin-primary: #2563eb; --admin-primary-dark: #1d4ed8; --admin-success: #16803c; --admin-warning: #b77900; --admin-danger: #c62828; --admin-bg: #f4f7fb; --admin-card: #ffffff; --admin-border: #e2e8f0; --admin-text: #172033; --admin-muted: #667085; }
+        * { box-sizing: border-box; }
+        body { margin:0; background:var(--admin-bg); color:var(--admin-text); font-family: system-ui, -apple-system, sans-serif; }
+        .detail-page { max-width:900px; margin:30px auto; padding:0 20px; }
+        .detail-card { background:#fff; border:1px solid var(--admin-border); border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.05); }
+        .detail-header { display:flex; justify-content:space-between; align-items:center; padding:20px 24px; border-bottom:1px solid var(--admin-border); }
+        .detail-header h1 { margin:0; font-size:24px; }
+        .detail-header .back-link { color:var(--admin-primary); text-decoration:none; font-weight:600; }
+        .detail-body { padding:24px; }
+        .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .detail-item { padding:14px 16px; border:1px solid var(--admin-border); border-radius:8px; background:#fafcff; }
+        .detail-item label { display:block; font-size:12px; font-weight:600; color:var(--admin-muted); margin-bottom:4px; }
+        .detail-item p { margin:0; line-height:1.5; }
+        .detail-item.full { grid-column:1 / -1; }
+        .detail-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; }
+        .btn { padding:10px 20px; border-radius:7px; border:1px solid var(--admin-border); background:#fff; cursor:pointer; font-weight:600; }
+        .btn-primary { background:var(--admin-primary); color:#fff; border-color:var(--admin-primary); }
+        .btn-primary:hover { background:var(--admin-primary-dark); }
+        .btn-danger { color:var(--admin-danger); border-color:var(--admin-danger); }
+        .btn-danger:hover { background:#fff5f5; }
+        .btn-share { background:#000; color:#fff; border-color:#000; }
+        .btn-share:hover { background:#333; }
+        .status-select { padding:6px 12px; border-radius:7px; border:1px solid var(--admin-border); }
+        .status-badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:600; }
+        .status-new { background:#eaf2ff; color:#175cd3; }
+        .status-contacted { background:#fff5db; color:#9a6700; }
+        .status-confirmed { background:#e9f8ef; color:#16723b; }
+        .status-completed { background:#e9eef5; color:#344054; }
+        @media (max-width:600px) { .detail-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="detail-page">
+    <div class="detail-card">
+        <div class="detail-header">
+            <h1 id="detailTitle">Appointment Details</h1>
+            <a href="admin.html" class="back-link">← Back to Dashboard</a>
+        </div>
+        <div class="detail-body" id="detailBody">
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden share card (copied from admin) -->
+<div id="shareCardRender" style="position:fixed; left:-100000px; top:0; width:900px; padding:48px; background:#fff; color:#172033; font-family:Arial,Helvetica,sans-serif;">
+    <div style="display:flex; align-items:center; gap:13px; padding-bottom:22px; border-bottom:2px solid #e8edf4;">
+        <div style="width:46px; height:46px; display:grid; place-items:center; border-radius:8px; background:#2563eb; color:#fff; font-size:22px; font-weight:700;">Y</div>
+        <div>
+            <strong style="display:block; font-size:22px;">Yadav Web Technologies</strong>
+            <span style="display:block; margin-top:3px; color:#667085; font-size:13px;">Appointment Details</span>
+        </div>
+    </div>
+    <div id="shareCardSubtitle" style="margin:24px 0 20px; color:#475467;"></div>
+    <div id="shareCardGrid" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;"></div>
+</div>
+
+<script type="module" src="js/detail.js"></script>
+</body>
+</html>

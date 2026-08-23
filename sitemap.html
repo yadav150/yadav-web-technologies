@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Sitemap of Yadav Web Technologies - Browse all pages of our website including services, projects, pricing, and more.">
+    <meta name="description" content="Sitemap of Yadav Web Technologies - Browse all pages of our website.">
     <meta name="author" content="Yadav Web Technologies">
     <title>Sitemap | Yadav Web Technologies</title>
 
-    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" href="https://yadav150.github.io/yadav-web-technologies/favicon.ico">
 
@@ -101,15 +100,23 @@
             border: 1px solid var(--border);
         }
 
+        /* ===== TABLE WRAPPER WITH HORIZONTAL SCROLL ===== */
         .table-wrap {
             overflow-x: auto;
-            position: relative;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -4px;
+            padding: 0 4px;
+            /* Prevent content from breaking out */
+            max-width: 100%;
         }
 
         table.sitemap-table {
             width: 100%;
+            min-width: 600px; /* Ensures horizontal scroll on small screens */
             border-collapse: collapse;
             font-size: 15px;
+            table-layout: fixed; /* Forces columns to respect widths */
         }
 
         table.sitemap-table thead th {
@@ -127,10 +134,20 @@
             padding: 12px 16px;
             border-bottom: 1px solid var(--border-light);
             vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
-        table.sitemap-table tbody tr:hover {
-            background: var(--surface-alt);
+        /* Column widths */
+        table.sitemap-table .col-page {
+            width: 30%;
+        }
+        table.sitemap-table .col-url {
+            width: 50%;
+        }
+        table.sitemap-table .col-date {
+            width: 20%;
         }
 
         table.sitemap-table .page-icon {
@@ -145,21 +162,37 @@
             font-weight: 700;
             font-size: 14px;
             margin-right: 10px;
+            flex-shrink: 0;
         }
 
         table.sitemap-table .page-name {
             font-weight: 600;
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
         }
 
         table.sitemap-table .page-url {
             color: var(--text-muted);
             font-size: 13px;
-            word-break: break-all;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         table.sitemap-table .page-url a {
             color: var(--primary);
             text-decoration: none;
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
         }
 
         table.sitemap-table .page-url a:hover {
@@ -172,6 +205,14 @@
             white-space: nowrap;
         }
 
+        /* Table row hover */
+        table.sitemap-table tbody tr:hover {
+            background: var(--surface-alt);
+        }
+
+        /* =================================================
+           PAGINATION
+        ================================================= */
         .sitemap-pagination {
             display: flex;
             align-items: center;
@@ -192,6 +233,7 @@
             display: flex;
             gap: 8px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .sitemap-pagination .controls button {
@@ -224,6 +266,9 @@
             border-color: var(--primary);
         }
 
+        /* =================================================
+           EMPTY STATE
+        ================================================= */
         .sitemap-empty {
             text-align: center;
             padding: 60px 20px;
@@ -261,16 +306,41 @@
         @media (max-width: 760px) {
             .sitemap-section { padding: 50px 0; }
             .sitemap-container { padding: 20px; }
-            table.sitemap-table thead th { padding: 10px 12px; font-size: 11px; }
-            table.sitemap-table tbody td { padding: 10px 12px; font-size: 14px; }
-            .sitemap-pagination { flex-direction: column; align-items: stretch; text-align: center; }
-            .sitemap-pagination .controls { justify-content: center; flex-wrap: wrap; }
+            table.sitemap-table {
+                font-size: 14px;
+                min-width: 500px;
+            }
+            table.sitemap-table thead th {
+                padding: 10px 12px;
+                font-size: 11px;
+            }
+            table.sitemap-table tbody td {
+                padding: 10px 12px;
+            }
+            .sitemap-pagination {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .sitemap-pagination .controls {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 520px) {
             .sitemap-header h2 { font-size: 20px; }
-            table.sitemap-table .page-icon { display: none; }
-            table.sitemap-table .page-date { display: none; }
+            table.sitemap-table {
+                min-width: 400px;
+            }
+            table.sitemap-table .page-icon {
+                display: none;
+            }
+            table.sitemap-table .col-date {
+                width: 25%;
+            }
+            table.sitemap-table .page-date {
+                font-size: 12px;
+            }
         }
     </style>
 
@@ -358,18 +428,18 @@
                         <span class="count-badge" id="totalCount">0 pages</span>
                     </div>
 
-                    <!-- ===== TABLE ===== -->
+                    <!-- ===== TABLE WRAPPER (horizontal scroll) ===== -->
                     <div class="table-wrap">
                         <table class="sitemap-table">
                             <thead>
                                 <tr>
-                                    <th style="width:40%;">Page</th>
-                                    <th style="width:40%;">URL</th>
-                                    <th style="width:20%;">Last Updated</th>
+                                    <th class="col-page">Page</th>
+                                    <th class="col-url">URL</th>
+                                    <th class="col-date">Last Updated</th>
                                 </tr>
                             </thead>
                             <tbody id="sitemapBody">
-                                <!-- JavaScript will populate this -->
+                                <!-- JavaScript populates -->
                             </tbody>
                         </table>
                     </div>
@@ -378,7 +448,7 @@
                     <div class="sitemap-pagination" id="paginationControls">
                         <span class="info" id="pageInfo">Showing 1–5 of 0 pages</span>
                         <div class="controls" id="paginationButtons">
-                            <!-- JavaScript will populate this -->
+                            <!-- JavaScript populates -->
                         </div>
                     </div>
 
@@ -412,6 +482,7 @@
                         <a href="projects.html">Projects</a>
                         <a href="pricing.html">Pricing</a>
                         <a href="appointment.html" class="active">Appointment</a>
+                        <a href="sitemap.html">Sitemap</a>
                     </div>
                 </div>
 
@@ -440,88 +511,29 @@
     <script src="js/go-top.js"></script>
 
     <script>
-        /**
-         * SITEMAP DATA
-         * ============
-         * All pages of the website.
-         * You can add/remove pages here as needed.
-         * The page will also attempt to fetch /sitemap.xml if available.
-         */
-        const PAGES = [{
-            name: "Home",
-            url: "index.html",
-            lastmod: "2026-08-23",
-            priority: "1.00"
-        }, {
-            name: "Appointment",
-            url: "appointment.html",
-            lastmod: "2026-08-23",
-            priority: "0.90"
-        }, {
-            name: "Services",
-            url: "services.html",
-            lastmod: "2026-08-23",
-            priority: "0.80"
-        }, {
-            name: "Projects",
-            url: "projects.html",
-            lastmod: "2026-08-23",
-            priority: "0.80"
-        }, {
-            name: "Pricing",
-            url: "pricing.html",
-            lastmod: "2026-08-23",
-            priority: "0.80"
-        }, {
-            name: "About",
-            url: "about.html",
-            lastmod: "2026-08-23",
-            priority: "0.70"
-        }, {
-            name: "Contact",
-            url: "contact.html",
-            lastmod: "2026-08-23",
-            priority: "0.70"
-        }, {
-            name: "Sitemap",
-            url: "sitemap.html",
-            lastmod: "2026-08-23",
-            priority: "0.50"
-        }, {
-            name: "Terms & Conditions",
-            url: "terms.html",
-            lastmod: "2026-08-23",
-            priority: "0.40"
-        }, {
-            name: "Client Terms",
-            url: "client-terms.html",
-            lastmod: "2026-08-23",
-            priority: "0.40"
-        }, {
-            name: "Privacy Policy",
-            url: "privacy.html",
-            lastmod: "2026-08-23",
-            priority: "0.40"
-        }, {
-            name: "Disclaimer",
-            url: "disclaimer.html",
-            lastmod: "2026-08-23",
-            priority: "0.40"
-        }, {
-            name: "Admin Panel",
-            url: "admin.html",
-            lastmod: "2026-08-23",
-            priority: "0.30"
-        }];
+        // =================================================
+        // PAGE DATA (hardcoded fallback + fetch sitemap.xml)
+        // =================================================
+        const HARDCODED_PAGES = [
+            { name: "Home", url: "index.html", lastmod: "2026-08-23" },
+            { name: "Appointment", url: "appointment.html", lastmod: "2026-08-23" },
+            { name: "Services", url: "services.html", lastmod: "2026-08-23" },
+            { name: "Projects", url: "projects.html", lastmod: "2026-08-23" },
+            { name: "Pricing", url: "pricing.html", lastmod: "2026-08-23" },
+            { name: "About", url: "about.html", lastmod: "2026-08-23" },
+            { name: "Contact", url: "contact.html", lastmod: "2026-08-23" },
+            { name: "Sitemap", url: "sitemap.html", lastmod: "2026-08-23" },
+            { name: "Terms & Conditions", url: "terms.html", lastmod: "2026-08-23" },
+            { name: "Client Terms", url: "client-terms.html", lastmod: "2026-08-23" },
+            { name: "Privacy Policy", url: "privacy.html", lastmod: "2026-08-23" },
+            { name: "Disclaimer", url: "disclaimer.html", lastmod: "2026-08-23" },
+            { name: "Admin Panel", url: "admin.html", lastmod: "2026-08-23" }
+        ];
 
-        // =====================================================
-        // STATE
-        // =====================================================
         let allPages = [];
         let currentPage = 1;
         const PER_PAGE = 5;
 
-        // DOM Elements
         const container = document.getElementById('sitemapContainer');
         const spinner = document.getElementById('sitemapSpinner');
         const tbody = document.getElementById('sitemapBody');
@@ -529,55 +541,47 @@
         const pageInfoEl = document.getElementById('pageInfo');
         const paginationButtons = document.getElementById('paginationButtons');
 
-        // =====================================================
-        // LOAD DATA
-        // =====================================================
-        async function loadSitemapData() {
+        // =================================================
+        // LOAD DATA (try sitemap.xml, fallback to hardcoded)
+        // =================================================
+        async function loadData() {
             try {
-                // Try to fetch sitemap.xml from the server
-                const response = await fetch('/sitemap.xml');
-                if (response.ok) {
-                    const xmlText = await response.text();
+                const resp = await fetch('/sitemap.xml');
+                if (resp.ok) {
+                    const text = await resp.text();
                     const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-                    const urls = xmlDoc.querySelectorAll('url');
-
+                    const xml = parser.parseFromString(text, 'text/xml');
+                    const urls = xml.querySelectorAll('url');
                     if (urls.length > 0) {
-                        const fetchedPages = [];
+                        const pages = [];
                         urls.forEach(url => {
                             const loc = url.querySelector('loc')?.textContent || '';
                             const lastmod = url.querySelector('lastmod')?.textContent || '';
-                            // Extract page name from URL
-                            const name = loc.split('/').pop() || 'Unknown';
-                            const pageName = name === '' ? 'Home' : name.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                            fetchedPages.push({
-                                name: pageName,
-                                url: loc,
-                                lastmod: lastmod || '2026-08-23',
-                                priority: url.querySelector('priority')?.textContent || '0.50'
-                            });
+                            // extract name from URL
+                            let name = loc.split('/').pop() || 'Home';
+                            name = name === '' ? 'Home' : name.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            pages.push({ name, url: loc, lastmod });
                         });
-                        allPages = fetchedPages;
+                        allPages = pages;
                         return;
                     }
                 }
             } catch (e) {
-                console.log('Sitemap.xml not found or error fetching, using hardcoded list.');
+                console.log('sitemap.xml not found, using hardcoded list.');
             }
-
-            // Fallback to hardcoded list
-            allPages = PAGES.map(p => ({
+            // fallback
+            allPages = HARDCODED_PAGES.map(p => ({
                 ...p,
                 url: p.url.startsWith('http') ? p.url : `/${p.url}`
             }));
         }
 
-        // =====================================================
+        // =================================================
         // RENDER TABLE
-        // =====================================================
+        // =================================================
         function renderTable() {
             const start = (currentPage - 1) * PER_PAGE;
-            const end = start + PER_PAGE;
+            const end = Math.min(start + PER_PAGE, allPages.length);
             const pageItems = allPages.slice(start, end);
 
             if (pageItems.length === 0) {
@@ -597,57 +601,52 @@
                         </td>
                     </tr>
                 `;
+                updatePagination();
                 return;
             }
 
             let html = '';
-            pageItems.forEach((page, index) => {
+            pageItems.forEach(page => {
                 const icon = page.name.charAt(0).toUpperCase();
-                const displayName = page.name;
                 const displayUrl = page.url;
-                const lastmod = page.lastmod || '2026-08-23';
-
                 html += `
                     <tr>
-                        <td>
+                        <td class="col-page">
                             <span class="page-icon">${icon}</span>
-                            <span class="page-name">${escapeHTML(displayName)}</span>
+                            <span class="page-name">${escapeHTML(page.name)}</span>
                         </td>
-                        <td>
+                        <td class="col-url">
                             <span class="page-url">
                                 <a href="${escapeHTML(displayUrl)}" target="_blank" rel="noopener">${escapeHTML(displayUrl)}</a>
                             </span>
                         </td>
-                        <td class="page-date">${escapeHTML(lastmod)}</td>
+                        <td class="col-date">
+                            <span class="page-date">${escapeHTML(page.lastmod || '2026-08-23')}</span>
+                        </td>
                     </tr>
                 `;
             });
             tbody.innerHTML = html;
 
-            // Update total count
             totalCountEl.textContent = `${allPages.length} pages`;
             updatePagination();
         }
 
-        // =====================================================
+        // =================================================
         // PAGINATION
-        // =====================================================
+        // =================================================
         function updatePagination() {
             const total = allPages.length;
             const totalPages = Math.ceil(total / PER_PAGE) || 1;
-
-            // Update info
             const start = (currentPage - 1) * PER_PAGE + 1;
             const end = Math.min(currentPage * PER_PAGE, total);
+
             pageInfoEl.textContent = total > 0 ? `Showing ${start}–${end} of ${total} pages` : 'No pages available';
 
-            // Build buttons
             let html = '';
-
-            // Previous
             html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹</button>`;
 
-            // Page numbers
+            // show limited page numbers
             const maxButtons = 5;
             let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
             let endPage = Math.min(totalPages, startPage + maxButtons - 1);
@@ -669,27 +668,21 @@
                 html += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
             }
 
-            // Next
             html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>›</button>`;
-
             paginationButtons.innerHTML = html;
         }
 
-        // =====================================================
-        // NAVIGATION
-        // =====================================================
         window.goToPage = function(page) {
             const totalPages = Math.ceil(allPages.length / PER_PAGE) || 1;
             if (page < 1 || page > totalPages) return;
             currentPage = page;
             renderTable();
-            // Scroll to top of table
             document.querySelector('.table-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
         };
 
-        // =====================================================
-        // UTILITY
-        // =====================================================
+        // =================================================
+        // UTILITIES
+        // =================================================
         function escapeHTML(value) {
             return String(value ?? '')
                 .replace(/&/g, '&amp;')
@@ -699,26 +692,21 @@
                 .replace(/'/g, '&#039;');
         }
 
-        // =====================================================
+        // =================================================
         // INIT
-        // =====================================================
+        // =================================================
         async function init() {
-            // Show spinner + blur
             container.classList.add('blurred');
             spinner.classList.add('visible');
 
-            // Load data
-            await loadSitemapData();
+            await loadData();
 
-            // Hide spinner + blur
             spinner.classList.remove('visible');
             container.classList.remove('blurred');
 
-            // Render
             renderTable();
         }
 
-        // Start
         init();
     </script>
 

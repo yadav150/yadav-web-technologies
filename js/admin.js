@@ -33,13 +33,14 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 // =====================================================
-// ADMIN UID (unchanged)
+// ADMIN UID
 // =====================================================
 const ADMIN_UID = "WnECxfnldyb76ajAYBjFbNFA7qz2";
 
 // =====================================================
-// ELEMENTS
+// DOM ELEMENTS
 // =====================================================
+const pageLoader = document.getElementById("pageLoader");
 const loginScreen = document.getElementById("loginScreen");
 const dashboard = document.getElementById("dashboard");
 const loginForm = document.getElementById("loginForm");
@@ -75,28 +76,26 @@ let toastTimer = null;
 // SPINNER CONTROL
 // =====================================================
 function hideSpinner() {
-    if (listSpinner) {
-        listSpinner.classList.add("hidden-spinner");
-    }
+    if (listSpinner) listSpinner.classList.add("hidden-spinner");
 }
-
 function showSpinner() {
-    if (listSpinner) {
-        listSpinner.classList.remove("hidden-spinner");
-    }
+    if (listSpinner) listSpinner.classList.remove("hidden-spinner");
 }
 
 // =====================================================
-// SECURITY CHECK (unchanged)
+// SECURITY CHECK
 // =====================================================
 function isAdmin(user) {
     return Boolean(user && user.uid === ADMIN_UID);
 }
 
 // =====================================================
-// AUTH STATE
+// AUTH STATE – MAIN ENTRY POINT
 // =====================================================
 onAuthStateChanged(auth, (user) => {
+    // Hide page loader
+    if (pageLoader) pageLoader.style.display = "none";
+
     if (!user) {
         showLogin();
         stopAppointmentsListener();
@@ -109,13 +108,14 @@ onAuthStateChanged(auth, (user) => {
         showLoginError("This account is not authorized to access the admin panel.");
         return;
     }
+    // Authorized admin
     showDashboard();
     adminUser.textContent = user.email || "Administrator";
     startAppointmentsListener();
 });
 
 // =====================================================
-// LOGIN (unchanged)
+// LOGIN
 // =====================================================
 if (loginForm) {
     loginForm.addEventListener("submit", async (event) => {
@@ -147,7 +147,7 @@ if (loginForm) {
 }
 
 // =====================================================
-// LOGOUT (unchanged)
+// LOGOUT
 // =====================================================
 if (logoutButton) {
     logoutButton.addEventListener("click", async () => {
@@ -161,19 +161,19 @@ if (logoutButton) {
 }
 
 // =====================================================
-// SHOW / HIDE (unchanged)
+// SHOW / HIDE (with class to avoid flash)
 // =====================================================
 function showLogin() {
-    loginScreen.style.display = "flex";
-    dashboard.style.display = "none";
+    loginScreen.classList.add("visible");
+    dashboard.classList.remove("visible");
 }
 function showDashboard() {
-    loginScreen.style.display = "none";
-    dashboard.style.display = "grid";
+    loginScreen.classList.remove("visible");
+    dashboard.classList.add("visible");
 }
 
 // =====================================================
-// LOGIN ERROR (unchanged)
+// LOGIN ERROR
 // =====================================================
 function showLoginError(message) {
     if (loginError) loginError.textContent = message;
@@ -194,16 +194,16 @@ function getLoginErrorMessage(error) {
 // =====================================================
 function startAppointmentsListener() {
     stopAppointmentsListener();
-    showSpinner(); // Ensure spinner is visible while loading
+    showSpinner();
     const appointmentsRef = ref(database, "appointments");
     unsubscribeAppointments = onValue(appointmentsRef, (snapshot) => {
         appointments = snapshot.val() || {};
         renderDashboard();
-        hideSpinner(); // Data loaded – hide spinner
+        hideSpinner();
     }, (error) => {
         console.error("Database read error:", error);
         showToast("Database Error", "Unable to load appointments.", "error");
-        hideSpinner(); // Error – hide spinner anyway
+        hideSpinner();
     });
 }
 function stopAppointmentsListener() {
@@ -214,7 +214,7 @@ function stopAppointmentsListener() {
 }
 
 // =====================================================
-// REFRESH (unchanged)
+// REFRESH
 // =====================================================
 if (refreshButton) {
     refreshButton.addEventListener("click", () => {
@@ -224,13 +224,13 @@ if (refreshButton) {
 }
 
 // =====================================================
-// SEARCH & FILTER (unchanged)
+// SEARCH & FILTER
 // =====================================================
 if (searchInput) searchInput.addEventListener("input", renderAppointments);
 if (statusFilter) statusFilter.addEventListener("change", renderAppointments);
 
 // =====================================================
-// DASHBOARD RENDER (unchanged)
+// DASHBOARD RENDER
 // =====================================================
 function renderDashboard() {
     updateStatistics();
@@ -238,7 +238,7 @@ function renderDashboard() {
 }
 
 // =====================================================
-// STATISTICS (unchanged)
+// STATISTICS
 // =====================================================
 function updateStatistics() {
     const list = Object.values(appointments);
@@ -250,14 +250,14 @@ function updateStatistics() {
 }
 
 // =====================================================
-// STATUS (unchanged)
+// STATUS
 // =====================================================
 function getStatus(item) {
     return (item?.status || "new").toLowerCase();
 }
 
 // =====================================================
-// FILTER + SORT (unchanged)
+// FILTER + SORT
 // =====================================================
 function getFilteredAppointments() {
     const search = searchInput?.value.trim().toLowerCase() || "";
@@ -281,7 +281,7 @@ function getFilteredAppointments() {
 }
 
 // =====================================================
-// APPOINTMENT LIST (updated with spinner hide)
+// APPOINTMENT LIST
 // =====================================================
 function renderAppointments() {
     if (!appointmentsList) return;
@@ -299,17 +299,15 @@ function renderAppointments() {
                 <p>Try changing your search or status filter.</p>
             </div>
         `;
-        // Spinner already hidden by listener; but ensure it's hidden
         hideSpinner();
         return;
     }
     appointmentsList.innerHTML = filtered.map(([id, item]) => createAppointmentRow(id, item)).join("");
-    // Re‑attach view button listeners (they are links now, no need)
-    hideSpinner(); // Just in case
+    hideSpinner();
 }
 
 // =====================================================
-// APPOINTMENT ROW (unchanged)
+// APPOINTMENT ROW
 // =====================================================
 function createAppointmentRow(id, item) {
     const status = getStatus(item);
@@ -349,7 +347,7 @@ function createAppointmentRow(id, item) {
 }
 
 // =====================================================
-// MOBILE SIDEBAR (unchanged)
+// MOBILE SIDEBAR
 // =====================================================
 if (mobileMenuButton) {
     mobileMenuButton.addEventListener("click", () => {
@@ -358,7 +356,7 @@ if (mobileMenuButton) {
 }
 
 // =====================================================
-// SIDEBAR NAV (unchanged)
+// SIDEBAR NAV
 // =====================================================
 const dashboardNav = document.getElementById("dashboardNav");
 const appointmentsNav = document.getElementById("appointmentsNav");
@@ -388,7 +386,7 @@ function closeMobileSidebar() {
 }
 
 // =====================================================
-// TOAST (unchanged)
+// TOAST
 // =====================================================
 function showToast(title, message, type = "success") {
     if (!adminToast || !toastTitle || !toastMessage) return;
@@ -402,7 +400,7 @@ function showToast(title, message, type = "success") {
 }
 
 // =====================================================
-// HTML ESCAPE (unchanged)
+// HTML ESCAPE
 // =====================================================
 function escapeHTML(value) {
     return String(value ?? "")
@@ -412,8 +410,3 @@ function escapeHTML(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-
-// =====================================================
-// INITIAL STATE (unchanged)
-// =====================================================
-showLogin();

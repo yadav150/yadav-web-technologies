@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +22,11 @@
         name="author"
         content="Yadav Web Technologies">
 
-    <title>
-        Appointment | Yadav Web Technologies
-    </title>
+    <title>Appointment | Yadav Web Technologies</title>
 
     <link
         rel="stylesheet"
         href="css/style.css">
-
 
     <style>
 
@@ -40,7 +38,6 @@
             padding: 70px 0;
         }
 
-
         .appointment-layout {
             display: grid;
             grid-template-columns:
@@ -50,7 +47,6 @@
             align-items: start;
         }
 
-
         .appointment-info,
         .appointment-form-box {
             border: 1px solid var(--border);
@@ -59,41 +55,31 @@
             box-shadow: var(--shadow-sm);
         }
 
-
-        .appointment-info {
-            padding: 30px;
-        }
-
-
+        .appointment-info,
         .appointment-form-box {
             padding: 30px;
         }
-
 
         .appointment-info h2,
         .appointment-form-box h2 {
             margin: 0 0 10px;
         }
 
-
         .appointment-info > p,
         .appointment-form-box > p {
             margin: 0 0 24px;
         }
-
 
         .appointment-points {
             display: grid;
             gap: 16px;
         }
 
-
         .appointment-point {
             display: flex;
             gap: 13px;
             align-items: flex-start;
         }
-
 
         .appointment-point-icon {
             width: 39px;
@@ -107,18 +93,15 @@
             color: var(--primary);
         }
 
-
         .appointment-point-icon svg {
             width: 19px;
             height: 19px;
         }
 
-
         .appointment-point strong {
             display: block;
             margin-bottom: 3px;
         }
-
 
         .appointment-point span {
             display: block;
@@ -127,13 +110,11 @@
             line-height: 1.55;
         }
 
-
         .appointment-form {
             display: grid;
             gap: 18px;
             margin-top: 25px;
         }
-
 
         .appointment-form label {
             display: block;
@@ -141,7 +122,6 @@
             font-size: 14px;
             font-weight: 600;
         }
-
 
         .appointment-form input,
         .appointment-form select,
@@ -154,14 +134,13 @@
             background: transparent;
             color: var(--text);
             outline: none;
+            font: inherit;
         }
-
 
         .appointment-form textarea {
             min-height: 145px;
             resize: vertical;
         }
-
 
         .appointment-form input:focus,
         .appointment-form select:focus,
@@ -171,13 +150,11 @@
                 0 0 0 3px rgba(31, 94, 216, .08);
         }
 
-
         .appointment-form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 18px;
         }
-
 
         .appointment-message {
             min-height: 20px;
@@ -186,7 +163,6 @@
             font-size: 13px;
         }
 
-
         .appointment-note {
             margin-top: 18px;
             color: var(--text-muted);
@@ -194,10 +170,8 @@
             line-height: 1.6;
         }
 
-
         /* =================================================
-           SUCCESS MESSAGE
-           Existing IDs preserved for appointment.js
+           SUCCESS
         ================================================= */
 
         .success-overlay {
@@ -211,11 +185,9 @@
             background: rgba(0, 0, 0, .45);
         }
 
-
         .success-overlay[hidden] {
             display: none;
         }
-
 
         .success-box {
             width: 100%;
@@ -229,7 +201,6 @@
             box-shadow: var(--shadow-lg);
         }
 
-
         .success-icon {
             width: 54px;
             height: 54px;
@@ -242,22 +213,18 @@
             color: var(--primary);
         }
 
-
         .success-icon svg {
             width: 27px;
             height: 27px;
         }
 
-
         .success-box h3 {
             margin: 0 0 10px;
         }
 
-
         .success-box p {
             margin: 0 0 24px;
         }
-
 
         @media (max-width: 850px) {
 
@@ -266,7 +233,6 @@
             }
 
         }
-
 
         @media (max-width: 560px) {
 
@@ -297,14 +263,9 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header>
 
     <nav class="nav container">
-
 
         <a
             href="index.html"
@@ -325,29 +286,17 @@
             class="nav-links"
             id="navLinks">
 
-            <a href="index.html">
-                Home
-            </a>
+            <a href="index.html">Home</a>
 
-            <a href="services.html">
-                Services
-            </a>
+            <a href="services.html">Services</a>
 
-            <a href="projects.html">
-                Projects
-            </a>
+            <a href="projects.html">Projects</a>
 
-            <a href="pricing.html">
-                Pricing
-            </a>
+            <a href="pricing.html">Pricing</a>
 
-            <a href="about.html">
-                About
-            </a>
+            <a href="about.html">About</a>
 
-            <a href="contact.html">
-                Contact
-            </a>
+            <a href="contact.html">Contact</a>
 
             <a
                 href="appointment.html"
@@ -361,7 +310,6 @@
 
 
         <div class="mobile-actions">
-
 
             <button
                 type="button"
@@ -386,13 +334,10 @@
 
                     <path d="M12 2v2"></path>
                     <path d="M12 20v2"></path>
-
                     <path d="m4.93 4.93 1.41 1.41"></path>
                     <path d="m17.66 17.66 1.41 1.41"></path>
-
                     <path d="M2 12h2"></path>
                     <path d="M20 12h2"></path>
-
                     <path d="m6.34 17.66-1.41 1.41"></path>
                     <path d="m19.07 4.93-1.41 1.41"></path>
 
@@ -430,11 +375,6 @@
 </header>
 
 
-
-<!-- =====================================================
-     PAGE HERO
-===================================================== -->
-
 <section class="page-hero">
 
     <div class="container">
@@ -447,11 +387,9 @@
 
         </div>
 
-
         <h1>
             Book an Appointment
         </h1>
-
 
         <p>
             Share your project requirements and choose a
@@ -463,37 +401,24 @@
 </section>
 
 
-
-<!-- =====================================================
-     APPOINTMENT
-===================================================== -->
-
 <main>
 
 <section class="appointment-section">
 
     <div class="container">
 
-
         <div class="appointment-layout">
 
 
-            <!-- =================================================
-                 INFORMATION
-            ================================================= -->
-
             <div class="appointment-info">
-
 
                 <div class="section-label">
                     Project Discussion
                 </div>
 
-
                 <h2>
                     Let's understand your requirement.
                 </h2>
-
 
                 <p>
                     Provide the basic project information below.
@@ -505,8 +430,6 @@
                 <div class="appointment-points">
 
 
-                    <!-- REQUIREMENT -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -516,8 +439,7 @@
                                 fill="none"
                                 stroke="currentColor"
                                 stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-linecap="round">
 
                                 <path d="M4 5h16"></path>
                                 <path d="M4 12h16"></path>
@@ -526,7 +448,6 @@
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -544,9 +465,6 @@
                     </div>
 
 
-
-                    <!-- SCOPE -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -555,9 +473,7 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <rect
                                     x="4"
@@ -575,11 +491,10 @@
 
                         </div>
 
-
                         <div>
 
                             <strong>
-                                Scope & Features
+                                Scope &amp; Features
                             </strong>
 
                             <span>
@@ -593,9 +508,6 @@
                     </div>
 
 
-
-                    <!-- PRICING -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -604,9 +516,7 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <path d="M12 3v18"></path>
 
@@ -615,7 +525,6 @@
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -633,9 +542,6 @@
                     </div>
 
 
-
-                    <!-- PROCESS -->
-
                     <div class="appointment-point">
 
                         <div class="appointment-point-icon">
@@ -644,9 +550,7 @@
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.8">
 
                                 <circle
                                     cx="12"
@@ -659,7 +563,6 @@
                             </svg>
 
                         </div>
-
 
                         <div>
 
@@ -676,30 +579,20 @@
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
-                 FORM
-                 EXISTING IDs PRESERVED
-            ================================================= -->
-
             <div class="appointment-form-box">
-
 
                 <div class="section-label">
                     Appointment Request
                 </div>
 
-
                 <h2>
                     Submit your details.
                 </h2>
-
 
                 <p>
                     The information submitted here is used for
@@ -711,8 +604,6 @@
                     class="appointment-form"
                     id="appointmentForm">
 
-
-                    <!-- NAME -->
 
                     <div>
 
@@ -730,11 +621,7 @@
                     </div>
 
 
-
-                    <!-- EMAIL / PHONE -->
-
                     <div class="appointment-form-row">
-
 
                         <div>
 
@@ -767,12 +654,8 @@
 
                         </div>
 
-
                     </div>
 
-
-
-                    <!-- SERVICE -->
 
                     <div>
 
@@ -835,11 +718,7 @@
                     </div>
 
 
-
-                    <!-- DATE / TIME -->
-
                     <div class="appointment-form-row">
-
 
                         <div>
 
@@ -870,12 +749,8 @@
 
                         </div>
 
-
                     </div>
 
-
-
-                    <!-- MESSAGE -->
 
                     <div>
 
@@ -892,9 +767,6 @@
                     </div>
 
 
-
-                    <!-- SUBMIT -->
-
                     <button
                         type="submit"
                         class="btn btn-primary">
@@ -905,12 +777,9 @@
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
+                            stroke-width="2">
 
                             <path d="M5 12h14"></path>
-
                             <path d="m13 6 6 6-6 6"></path>
 
                         </svg>
@@ -918,14 +787,11 @@
                     </button>
 
 
-                    <!-- EXISTING CUSTOM ERROR HANDLER TARGET -->
-
                     <p
                         class="appointment-message"
                         id="appointmentMessage"
                         aria-live="polite">
                     </p>
-
 
                 </form>
 
@@ -946,33 +812,24 @@
 </section>
 
 
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
 <section class="section">
 
     <div class="container">
 
         <div class="cta-box">
 
-
             <div class="section-label">
                 Need More Information?
             </div>
-
 
             <h2>
                 Review our services and pricing.
             </h2>
 
-
             <p>
                 Explore the available service categories and
                 pricing before submitting your appointment request.
             </p>
-
 
             <a
                 href="services.html"
@@ -981,7 +838,6 @@
                 View Services
 
             </a>
-
 
             <a
                 href="pricing.html"
@@ -997,14 +853,8 @@
 
 </section>
 
-
 </main>
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
 <footer>
 
@@ -1029,7 +879,6 @@
 
                 </a>
 
-
                 <p>
                     Professional websites, web applications
                     and custom digital solutions based on
@@ -1039,35 +888,19 @@
             </div>
 
 
-
             <div>
 
                 <h4>
                     Quick Links
                 </h4>
 
-
                 <div class="footer-links">
 
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="services.html">
-                        Services
-                    </a>
-
-                    <a href="projects.html">
-                        Projects
-                    </a>
-
-                    <a href="pricing.html">
-                        Pricing
-                    </a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="pricing.html">Pricing</a>
 
                     <a
                         href="appointment.html"
@@ -1082,13 +915,11 @@
             </div>
 
 
-
             <div>
 
                 <h4>
                     Information
                 </h4>
-
 
                 <div class="footer-links">
 
@@ -1120,7 +951,6 @@
 
             </div>
 
-
         </div>
 
 
@@ -1135,12 +965,6 @@
 
 </footer>
 
-
-
-<!-- =====================================================
-     SUCCESS MESSAGE
-     Existing IDs preserved for appointment.js
-===================================================== -->
 
 <div
     class="success-overlay"
@@ -1203,11 +1027,6 @@
 </div>
 
 
-
-<!-- =====================================================
-     GO TO TOP
-===================================================== -->
-
 <button
     class="go-top"
     id="goTop"
@@ -1223,18 +1042,12 @@
         stroke-linejoin="round">
 
         <path d="M12 19V5"></path>
-
         <path d="m6 11 6-6 6 6"></path>
 
     </svg>
 
 </button>
 
-
-
-<!-- =====================================================
-     EXISTING JAVASCRIPT — UNCHANGED
-===================================================== -->
 
 <script src="js/menu.js"></script>
 <script src="js/theme.js"></script>
@@ -1244,7 +1057,6 @@
     type="module"
     src="js/appointment.js">
 </script>
-
 
 </body>
 

@@ -62,6 +62,7 @@ const adminSidebar = document.getElementById("adminSidebar");
 const adminToast = document.getElementById("adminToast");
 const toastTitle = document.getElementById("toastTitle");
 const toastMessage = document.getElementById("toastMessage");
+const listSpinner = document.getElementById("listSpinner");
 
 // =====================================================
 // STATE
@@ -71,6 +72,21 @@ let unsubscribeAppointments = null;
 let toastTimer = null;
 
 // =====================================================
+// SPINNER CONTROL
+// =====================================================
+function hideSpinner() {
+    if (listSpinner) {
+        listSpinner.classList.add("hidden-spinner");
+    }
+}
+
+function showSpinner() {
+    if (listSpinner) {
+        listSpinner.classList.remove("hidden-spinner");
+    }
+}
+
+// =====================================================
 // SECURITY CHECK (unchanged)
 // =====================================================
 function isAdmin(user) {
@@ -78,7 +94,7 @@ function isAdmin(user) {
 }
 
 // =====================================================
-// AUTH STATE (unchanged)
+// AUTH STATE
 // =====================================================
 onAuthStateChanged(auth, (user) => {
     if (!user) {
@@ -174,17 +190,20 @@ function getLoginErrorMessage(error) {
 }
 
 // =====================================================
-// DATABASE LISTENER (unchanged)
+// DATABASE LISTENER
 // =====================================================
 function startAppointmentsListener() {
     stopAppointmentsListener();
+    showSpinner(); // Ensure spinner is visible while loading
     const appointmentsRef = ref(database, "appointments");
     unsubscribeAppointments = onValue(appointmentsRef, (snapshot) => {
         appointments = snapshot.val() || {};
         renderDashboard();
+        hideSpinner(); // Data loaded – hide spinner
     }, (error) => {
         console.error("Database read error:", error);
         showToast("Database Error", "Unable to load appointments.", "error");
+        hideSpinner(); // Error – hide spinner anyway
     });
 }
 function stopAppointmentsListener() {
@@ -262,7 +281,7 @@ function getFilteredAppointments() {
 }
 
 // =====================================================
-// APPOINTMENT LIST (updated)
+// APPOINTMENT LIST (updated with spinner hide)
 // =====================================================
 function renderAppointments() {
     if (!appointmentsList) return;
@@ -280,13 +299,17 @@ function renderAppointments() {
                 <p>Try changing your search or status filter.</p>
             </div>
         `;
+        // Spinner already hidden by listener; but ensure it's hidden
+        hideSpinner();
         return;
     }
     appointmentsList.innerHTML = filtered.map(([id, item]) => createAppointmentRow(id, item)).join("");
+    // Re‑attach view button listeners (they are links now, no need)
+    hideSpinner(); // Just in case
 }
 
 // =====================================================
-// APPOINTMENT ROW (with number column and view link)
+// APPOINTMENT ROW (unchanged)
 // =====================================================
 function createAppointmentRow(id, item) {
     const status = getStatus(item);

@@ -1,0 +1,155 @@
+/* =================================================
+   FOLLOW US POPUP
+================================================= */
+
+.follow-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    pointer-events: none;
+}
+
+.follow-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.follow-popup {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    padding: 22px 22px 20px;
+    background: var(--surface, #ffffff);
+    color: var(--text, #172033);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius, 12px);
+    box-shadow: var(--shadow-lg, 0 20px 50px rgba(0, 0, 0, 0.15));
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.follow-popup.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* ===== Close Button ===== */
+.follow-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted, #667085);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.follow-popup-close:hover {
+    background: var(--surface-alt, #f1f5f9);
+    color: var(--text, #172033);
+    transform: rotate(90deg);
+}
+
+.follow-popup-close svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ===== Icon ===== */
+.follow-popup-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: #1877F2;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(24, 119, 242, 0.35);
+    animation: pop-bounce 0.6s ease;
+}
+
+.follow-popup-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+@keyframes pop-bounce {
+    0%   { transform: scale(0.5); opacity: 0; }
+    60%  { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* ===== Text ===== */
+.follow-popup h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text, #172033);
+}
+
+.follow-popup p {
+    margin: 0 0 16px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-muted, #667085);
+}
+
+/* ===== Follow Button ===== */
+.follow-popup-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 18px;
+    background: #1877F2;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.follow-popup-link:hover {
+    background: #0d5bc4;
+    transform: translateY(-1px);
+}
+
+.follow-popup-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 520px) {
+    .follow-popup {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        width: auto;
+        padding: 20px 18px 18px;
+    }
+    .follow-popup h3 { font-size: 16px; }
+    .follow-popup p  { font-size: 13px; }
+}

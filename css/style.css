@@ -243,62 +243,56 @@ header {
 
 }
 
-
 /* =====================================================
    BRAND
 ===================================================== */
 
 .brand {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
-
-   font-size: 21px;
-
-    font-weight: 700;
-
-    color: var(--text);
-
+    text-decoration: none;
     white-space: nowrap;
-
 }
 
+.brand-text {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
 
 .brand-mark {
-
-    width: 36px;
-
-    height: 36px;
-
+    width: 38px;
+    height: 38px;
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 5px;
-
     background: var(--text);
-
     color: var(--surface);
-
-    font-size: 17px;
-
+    font-size: 18px;
     font-weight: 700;
-
+    flex-shrink: 0;
 }
-
 
 .dark .brand-mark,
 html.dark .brand-mark {
-
     background: #f1f3f5;
-
     color: #16191d;
+}
 
+/* Mobile */
+@media (max-width: 560px) {
+    .brand-text {
+        font-size: 17px;
+    }
+    .brand-mark {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
 }
 
 

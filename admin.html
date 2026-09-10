@@ -30,15 +30,24 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
         /* Hide login/dashboard until auth decides */
-        #loginScreen, #dashboard {
-            display: none !important;
+        #loginScreen,
+        #dashboard {
+            display: none;
         }
-        #loginScreen.visible, #dashboard.visible {
-            display: flex !important;
+        #loginScreen.visible {
+            display: flex;
         }
         #dashboard.visible {
-            display: grid !important;
+            display: grid;
+        }
+
+        /* ===== MOBILE FIX ===== */
+        @media (max-width: 800px) {
+            #dashboard.visible {
+                display: block;
+            }
         }
     </style>
 </head>

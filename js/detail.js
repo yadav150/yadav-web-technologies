@@ -16,7 +16,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
 // =====================================================
-// FIREBASE CONFIG (replace with your own)
+// FIREBASE CONFIG
 // =====================================================
 const firebaseConfig = {
     apiKey: "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",
@@ -33,7 +33,7 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 // =====================================================
-// ADMIN UID (same as in admin.js)
+// ADMIN UID
 // =====================================================
 const ADMIN_UID = "WnECxfnldyb76ajAYBjFbNFA7qz2";
 
@@ -44,7 +44,6 @@ const detailBody = document.getElementById("detailBody");
 const detailTitle = document.getElementById("detailTitle");
 const detailSpinner = document.getElementById("detailSpinner");
 
-// Share card elements (hidden until used)
 const shareCardRender = document.getElementById("shareCardRender");
 const shareCardSubtitle = document.getElementById("shareCardSubtitle");
 const shareCardGrid = document.getElementById("shareCardGrid");
@@ -53,26 +52,19 @@ const shareCardGrid = document.getElementById("shareCardGrid");
 // SPINNER CONTROL
 // =====================================================
 function hideSpinner() {
-    if (detailSpinner) {
-        detailSpinner.classList.add("hidden-spinner");
-    }
+    if (detailSpinner) detailSpinner.classList.add("hidden-spinner");
 }
-
 function showSpinner() {
-    if (detailSpinner) {
-        detailSpinner.classList.remove("hidden-spinner");
-    }
+    if (detailSpinner) detailSpinner.classList.remove("hidden-spinner");
 }
 
 // =====================================================
-// AUTH GUARD – redirect if not admin
+// AUTH GUARD
 // =====================================================
 onAuthStateChanged(auth, (user) => {
     if (!user || user.uid !== ADMIN_UID) {
-        // Not logged in or not admin – redirect to admin login
         window.location.href = "admin.html";
     } else {
-        // Authorized – load the appointment
         loadAppointment();
     }
 });
@@ -86,7 +78,7 @@ function getAppointmentId() {
 }
 
 // =====================================================
-// LOAD APPOINTMENT FROM FIREBASE
+// LOAD APPOINTMENT
 // =====================================================
 async function loadAppointment() {
     const id = getAppointmentId();
@@ -113,13 +105,12 @@ async function loadAppointment() {
 }
 
 // =====================================================
-// RENDER DETAIL VIEW
+// RENDER DETAIL
 // =====================================================
 function renderDetail(data, id) {
     const status = (data.status || "new").toLowerCase();
     detailTitle.textContent = `Appointment ${data.appointmentNumber || "N/A"}`;
 
-    // Build fields
     const fields = [
         { label: "Appointment Number", value: data.appointmentNumber, full: false },
         { label: "Name", value: data.name, full: false },
@@ -142,7 +133,7 @@ function renderDetail(data, id) {
     });
     html += `</div>`;
 
-    // Status dropdown + save button
+    // Status dropdown + save
     html += `
         <div style="margin-top:20px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; border-top:1px solid var(--admin-border); padding-top:20px;">
             <label style="font-weight:600;">Status:</label>
@@ -157,18 +148,42 @@ function renderDetail(data, id) {
         </div>
     `;
 
-    // Action buttons
+    // =====================================================
+    // ACTION BUTTONS – SVG icons, no emoji
+    // =====================================================
     html += `
         <div class="detail-actions">
-            <button id="shareBtn" class="btn btn-share">📤 Share</button>
-            <button id="deleteBtn" class="btn btn-danger">🗑️ Delete</button>
+            <button id="shareBtn" class="btn btn-share">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <path d="m8.6 13.5 6.8 3.9"></path>
+                    <path d="m15.4 6.6-6.8 3.9"></path>
+                </svg>
+                Share
+            </button>
+
+            <button id="deleteBtn" class="btn btn-danger">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7h16"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M6 7l1 13h10l1-13"></path>
+                    <path d="M9 7V4h6v3"></path>
+                </svg>
+                Delete
+            </button>
+
             <a href="admin.html" class="btn">← Back</a>
         </div>
     `;
 
     detailBody.innerHTML = html;
 
-    // ---- Attach event listeners ----
+    // =====================================================
+    // EVENT LISTENERS
+    // =====================================================
 
     // Save status
     const saveBtn = document.getElementById("saveStatusBtn");
@@ -179,17 +194,15 @@ function renderDetail(data, id) {
             const newStatus = statusSelect.value;
             try {
                 await update(ref(database, `appointments/${id}`), { status: newStatus });
-                statusMsg.textContent = "✅ Status updated!";
-                // Update the badge if present (optional)
-                const badge = document.querySelector(".status-badge");
-                if (badge) {
-                    badge.className = `status-badge status-${newStatus}`;
-                    badge.textContent = newStatus;
-                }
-                setTimeout(() => { statusMsg.textContent = ""; }, 3000);
+                statusMsg.textContent = "Status updated!";
+                statusMsg.style.color = "var(--admin-success)";
+                setTimeout(() => {
+                    statusMsg.textContent = "";
+                }, 3000);
             } catch (error) {
                 console.error("Status update error:", error);
-                statusMsg.textContent = "❌ Update failed.";
+                statusMsg.textContent = "Update failed.";
+                statusMsg.style.color = "var(--admin-danger)";
             }
         });
     }
@@ -225,10 +238,9 @@ async function shareAppointment(item) {
     if (!button) return;
     const originalText = button.innerHTML;
     button.disabled = true;
-    button.textContent = "Generating...";
+    button.innerHTML = "Generating...";
 
     try {
-        // Build the share card content
         shareCardSubtitle.textContent = `Appointment request for ${item?.name || "Customer"}`;
         shareCardGrid.innerHTML = `
             ${shareField("Name", item?.name)}
@@ -241,12 +253,10 @@ async function shareAppointment(item) {
             ${shareField("Message", item?.message, true)}
         `;
 
-        // Ensure html2canvas is loaded
         if (typeof window.html2canvas !== "function") {
             await loadHtml2Canvas();
         }
 
-        // Capture the share card
         const canvas = await window.html2canvas(shareCardRender, {
             backgroundColor: "#ffffff",
             scale: 2,
@@ -259,16 +269,13 @@ async function shareAppointment(item) {
 
         const file = new File([blob], "appointment-details.png", { type: "image/png" });
 
-        // Try native share
         if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
                 title: "Appointment Details",
                 text: "Appointment details from Yadav Web Technologies.",
                 files: [file]
             });
-            showToast("Shared", "Image shared successfully.", "success");
         } else {
-            // Fallback: download
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
             link.download = "appointment-details.png";
@@ -276,7 +283,7 @@ async function shareAppointment(item) {
             link.click();
             link.remove();
             setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-            showToast("Image Generated", "Image downloaded successfully.", "success");
+            alert("Sharing not supported. Image downloaded.");
         }
     } catch (error) {
         if (error?.name !== "AbortError") {
@@ -302,7 +309,7 @@ function shareField(label, value, full = false) {
 }
 
 // =====================================================
-// LOAD HTML2CANVAS DYNAMICALLY
+// LOAD HTML2CANVAS
 // =====================================================
 function loadHtml2Canvas() {
     return new Promise((resolve, reject) => {
@@ -313,15 +320,6 @@ function loadHtml2Canvas() {
         script.onerror = () => reject(new Error("Unable to load image generator."));
         document.head.appendChild(script);
     });
-}
-
-// =====================================================
-// TOAST (fallback – uses alert if toast element not present)
-// =====================================================
-function showToast(title, message, type = "success") {
-    // If you have a toast element on this page, you can implement it.
-    // For simplicity, we use alert, but you can integrate your existing toast.
-    alert(`${title}: ${message}`);
 }
 
 // =====================================================

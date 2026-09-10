@@ -181,12 +181,21 @@ function showLoginError(message) {
 function clearLoginError() {
     if (loginError) loginError.textContent = "";
 }
+
+// =====================================================
+// CUSTOM LOGIN ERROR MESSAGE
+// Shows a single user-friendly message for all
+// authentication failures. Detailed Firebase error
+// is only logged to the console for debugging.
+// =====================================================
 function getLoginErrorMessage(error) {
-    if (error.code === "auth/invalid-credential") return "Invalid email or password.";
-    if (error.code === "auth/user-not-found") return "No account was found with this email.";
-    if (error.code === "auth/wrong-password") return "Incorrect password.";
-    if (error.code === "auth/too-many-requests") return "Too many attempts. Please try again later.";
-    return "Unable to sign in. Please try again.";
+    // Keep the "too many attempts" hint – it's helpful for users
+    if (error.code === "auth/too-many-requests") {
+        return "Too many attempts. Please try again later.";
+    }
+
+    // For all other auth failures, show a generic custom message
+    return "Invalid User ID or Password.";
 }
 
 // =====================================================

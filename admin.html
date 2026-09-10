@@ -8,48 +8,6 @@
     <title>Admin Dashboard | Yadav Web Technologies</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin.css">
-    <style>
-        /* Page loader – full screen spinner */
-        #pageLoader {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--admin-bg);
-            z-index: 9999;
-        }
-        #pageLoader .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e2e8f0;
-            border-top: 5px solid var(--admin-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Hide login/dashboard until auth decides */
-        #loginScreen,
-        #dashboard {
-            display: none;
-        }
-        #loginScreen.visible {
-            display: flex;
-        }
-        #dashboard.visible {
-            display: grid;
-        }
-
-        /* ===== MOBILE FIX ===== */
-        @media (max-width: 800px) {
-            #dashboard.visible {
-                display: block;
-            }
-        }
-    </style>
 </head>
 
 <body>

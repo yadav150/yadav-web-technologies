@@ -242,63 +242,45 @@ header {
     gap: 25px;
 
 }
-
-
 /* =====================================================
    BRAND
 ===================================================== */
 
 .brand {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
-
-    font-size: 21px;
-
+    font-size: 18px;
     font-weight: 700;
-
     color: var(--text);
-
     white-space: nowrap;
-
 }
 
+/* ✅ Text wala span – direct target */
+.brand > span:not(.brand-mark) {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
 
 .brand-mark {
-
     width: 36px;
-
     height: 36px;
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 5px;
-
     background: var(--text);
-
     color: var(--surface);
-
-    font-size: 21px;
-
+    font-size: 17px;
     font-weight: 700;
-
 }
-
 
 .dark .brand-mark,
 html.dark .brand-mark {
-
     background: #f1f3f5;
-
     color: #16191d;
-
 }
 /* =====================================================
    MOBILE NAVIGATION

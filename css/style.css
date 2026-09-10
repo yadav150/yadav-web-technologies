@@ -16,8 +16,8 @@
     --primary-color: #1f5ed8;
 
     --text: #20252b;
-    --text-main: #20252b;
-    --text-muted: #68717b;
+--text-main: #20252b;
+--text-muted: #20252b;
 
     --surface: #ffffff;
     --card-bg: #ffffff;
@@ -29,8 +29,8 @@
     --surface-soft: #f6f8fa;
     --bg-soft: #f6f8fa;
 
-    --border: #4b5563;
---border-color: #4b5563;
+    --border: #94a3b8;
+--border-color: #94a3b8;
 
     --shadow-sm:
         0 2px 8px rgba(20, 30, 40, 0.05);

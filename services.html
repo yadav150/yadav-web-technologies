@@ -90,102 +90,7 @@
         rel="stylesheet"
         href="css/style.css">
 
-    <style>
-
-        /* =================================================
-           SERVICES PAGE
-        ================================================= */
-
-        .services-main-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .service-card {
-            padding: 28px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .service-card-icon {
-            width: 46px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--primary);
-        }
-
-        .service-card-icon svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .service-card h3 {
-            margin: 0 0 10px;
-        }
-
-        .service-card > p {
-            margin: 0 0 18px;
-        }
-
-        .service-details {
-            margin: 0 0 22px;
-            padding-left: 20px;
-        }
-
-        .service-details li {
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        .service-details li:last-child {
-            margin-bottom: 0;
-        }
-
-        .service-card .btn {
-            margin-top: auto;
-        }
-
-        .service-note {
-            margin-top: 30px;
-            padding: 24px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--section-soft);
-        }
-
-        .service-note h3 {
-            margin: 0 0 9px;
-        }
-
-        .service-note p {
-            margin: 0;
-        }
-
-        @media (max-width: 850px) {
-
-            .services-main-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-        @media (max-width: 520px) {
-
-            .service-card {
-                padding: 22px;
-            }
-
-        }
-
-    </style>
+    <!-- Services page styles now live in css/style.css -->
 
 </head>
 
@@ -197,7 +102,7 @@
      HEADER
 ===================================================== -->
 
-<header>
+<header class="site-header">
 
     <nav class="nav container">
 
@@ -1258,6 +1163,8 @@
 
         <div class="cta-box">
 
+            <span class="cta-glow" aria-hidden="true"></span>
+
             <div class="section-label">
                 Start a Project
             </div>
@@ -1478,4 +1385,3 @@
 </body>
 
 </html>
-```

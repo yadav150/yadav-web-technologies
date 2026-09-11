@@ -118,367 +118,7 @@
         href="css/style.css">
     <link rel="stylesheet" href="css/follow-popup.css">
 
-    <style>
-
-        /* =================================================
-           HOME PAGE
-        ================================================= */
-
-        .hero-section {
-            padding: 95px 0 85px;
-            border-bottom: 1px solid var(--border);
-            background:
-                linear-gradient(
-                    180deg,
-                    var(--surface),
-                    var(--section-soft)
-                );
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-            gap: 55px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            margin: 0 0 20px;
-            max-width: 780px;
-            font-size: clamp(38px, 5.4vw, 62px);
-            line-height: 1.05;
-            letter-spacing: -1.8px;
-        }
-
-        .hero-content h1 span {
-            color: var(--primary);
-        }
-
-        .hero-content > p {
-            max-width: 700px;
-            margin: 0 0 28px;
-            font-size: 17px;
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .hero-meta {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 32px;
-            max-width: 720px;
-        }
-
-        .hero-meta-item {
-            padding: 15px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            background: var(--surface);
-        }
-
-        .hero-meta-item strong {
-            display: block;
-            margin-bottom: 3px;
-            font-size: 16px;
-        }
-
-        .hero-meta-item span {
-            display: block;
-            color: var(--text-muted);
-            font-size: 12px;
-        }
-
-        .hero-visual {
-            padding: 26px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            box-shadow: var(--shadow-md);
-        }
-
-        .hero-visual-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 22px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero-visual-title {
-            font-weight: 700;
-        }
-
-        .hero-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .hero-status span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .hero-feature-list {
-            display: grid;
-            gap: 13px;
-        }
-
-        .hero-feature {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            padding: 13px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-        }
-
-        .hero-feature-icon {
-            width: 36px;
-            height: 36px;
-            flex: 0 0 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--primary);
-        }
-
-        .hero-feature-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .hero-feature strong {
-            display: block;
-            margin-bottom: 2px;
-            font-size: 14px;
-        }
-
-        .hero-feature span {
-            display: block;
-            color: var(--text-muted);
-            font-size: 12px;
-            line-height: 1.45;
-        }
-
-        /* =================================================
-           SERVICES PREVIEW
-        ================================================= */
-
-        .services-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .service-preview-card {
-            padding: 24px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .service-preview-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--primary);
-        }
-
-        .service-preview-icon svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .service-preview-card h3 {
-            margin: 0 0 9px;
-        }
-
-        .service-preview-card p {
-            margin: 0 0 18px;
-        }
-
-        /* =================================================
-           PROCESS
-        ================================================= */
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .process-card {
-            position: relative;
-            padding: 23px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-        }
-
-        .process-number {
-            margin-bottom: 17px;
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .06em;
-        }
-
-        .process-card h3 {
-            margin: 0 0 8px;
-        }
-
-        .process-card p {
-            margin: 0;
-        }
-
-        /* =================================================
-           FEATURED PROJECTS
-        ================================================= */
-
-        .featured-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .featured-project-card {
-            overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .featured-project-image {
-            width: 100%;
-            height: 210px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
-        .featured-project-image img {
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            object-fit: contain;
-        }
-
-        .featured-project-content {
-            padding: 22px;
-        }
-
-        .featured-project-content h3 {
-            margin: 0 0 9px;
-        }
-
-        .featured-project-content p {
-            margin: 0 0 16px;
-        }
-
-        /* =================================================
-           CTA
-        ================================================= */
-
-        .home-cta {
-            padding-bottom: 90px;
-        }
-
-        /* =================================================
-           RESPONSIVE
-        ================================================= */
-
-        @media (max-width: 1050px) {
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .hero-visual {
-                max-width: 760px;
-            }
-
-            .services-preview-grid,
-            .featured-projects-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .process-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-        }
-
-        @media (max-width: 760px) {
-
-            .hero-section {
-                padding: 65px 0 55px;
-            }
-
-            .hero-meta {
-                grid-template-columns: 1fr;
-            }
-
-            .services-preview-grid,
-            .featured-projects-grid,
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                padding: 21px;
-            }
-
-            .featured-project-image {
-                height: 190px;
-            }
-
-        }
-
-        @media (max-width: 520px) {
-
-            .hero-content h1 {
-                letter-spacing: -1px;
-            }
-
-            .hero-actions {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .hero-actions .btn {
-                width: 100%;
-            }
-
-        }
-
-    </style>
+    <!-- Home page styles now live in css/style.css -->
 
 </head>
 
@@ -490,7 +130,7 @@
      HEADER
 ===================================================== -->
 
-<header>
+<header class="site-header">
 
     <nav class="nav container">
 
@@ -621,6 +261,9 @@
 
 <section class="hero-section">
 
+    <span class="hero-glow hero-glow-a" aria-hidden="true"></span>
+    <span class="hero-glow hero-glow-b" aria-hidden="true"></span>
+
     <div class="container">
 
         <div class="hero-grid">
@@ -633,7 +276,7 @@
 
                     <span></span>
 
-                    Web Development & Digital Solutions
+                    Web Development &amp; Digital Solutions
 
                 </div>
 
@@ -702,7 +345,7 @@
                         </strong>
 
                         <span>
-                            Business & enterprise solutions
+                            Business &amp; enterprise solutions
                         </span>
 
                     </div>
@@ -715,7 +358,7 @@
                         </strong>
 
                         <span>
-                            Custom workflows & systems
+                            Custom workflows &amp; systems
                         </span>
 
                     </div>
@@ -1132,7 +775,7 @@
 
 
                 <h3>
-                    ERP & Management Systems
+                    ERP &amp; Management Systems
                 </h3>
 
 
@@ -1169,7 +812,7 @@
 
 
         <div
-            style="margin-top:25px;">
+            class="section-cta-row">
 
             <a
                 href="services.html"
@@ -1498,7 +1141,7 @@
 
 
         <div
-            style="margin-top:25px;">
+            class="section-cta-row">
 
             <a
                 href="projects.html"
@@ -1661,7 +1304,7 @@
 
 
         <div
-            style="margin-top:25px;">
+            class="section-cta-row">
 
             <a
                 href="pricing.html"
@@ -1689,6 +1332,7 @@
 
         <div class="cta-box">
 
+            <span class="cta-glow" aria-hidden="true"></span>
 
             <div class="section-label">
                 Start Your Project
@@ -1924,7 +1568,6 @@
   const BLUE = "#0a3d91";
 
   // --- Kill switches for common ways to remove overlays ---
-  // Prevent devtools from easily finding/removing the node
   const originalRemove = Element.prototype.remove;
   const originalRemoveChild = Node.prototype.removeChild;
   const originalReplaceChild = Node.prototype.replaceChild;
@@ -1970,7 +1613,6 @@
   }
 
   function ensureOverlay() {
-    // If our overlay is missing OR anything else has overridden it, restore it.
     let existing = document.getElementById(overlayId);
     if (!existing || existing.parentNode !== document.documentElement) {
       if (existing && existing.parentNode) {
@@ -1978,7 +1620,6 @@
       }
       document.documentElement.appendChild(createOverlay());
     }
-    // Also make sure body/html can't scroll behind it
     if (document.documentElement) {
       document.documentElement.style.setProperty("overflow", "hidden", "important");
     }
@@ -1988,10 +1629,9 @@
     }
   }
 
-  // --- Block removal attempts ---
   Element.prototype.remove = function () {
     if (this.id === overlayId || this.getAttribute("data-maintenance") === "true") {
-      return; // silently block
+      return;
     }
     return originalRemove.apply(this, arguments);
   };
@@ -2010,21 +1650,19 @@
     return originalReplaceChild.apply(this, arguments);
   };
 
-  // Block innerHTML wiping on <html> and <body>
   if (originalInnerHTML && originalInnerHTML.set) {
     Object.defineProperty(Element.prototype, "innerHTML", {
       configurable: false,
       get: originalInnerHTML.get,
       set: function (value) {
         if (this === document.documentElement || this === document.body) {
-          return; // ignore
+          return;
         }
         return originalInnerHTML.set.call(this, value);
       },
     });
   }
 
-  // --- Observe DOM for tampering ---
   const observer = new MutationObserver(() => {
     ensureOverlay();
   });
@@ -2035,8 +1673,6 @@
     attributeFilter: ["style", "class", "id"],
   });
 
-  // --- Disable common escape hatches ---
-  // Block key combos that might reveal it (F12, Ctrl+Shift+I/J/C, Ctrl+U)
   document.addEventListener(
     "keydown",
     (e) => {
@@ -2053,14 +1689,11 @@
     true
   );
 
-  // Block right-click context menu
   document.addEventListener("contextmenu", (e) => e.preventDefault(), true);
 
-  // Block scroll
   document.addEventListener("wheel", (e) => e.preventDefault(), { passive: false, capture: true });
   document.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false, capture: true });
 
-  // --- Initial mount + safety interval ---
   const mount = () => {
     if (!document.documentElement) return;
     ensureOverlay();
@@ -2072,7 +1705,6 @@
     mount();
   }
 
-  // Reinforce every 500ms in case something sneaky happens
   setInterval(ensureOverlay, 500);
 })();
     </script>

@@ -549,3 +549,197 @@
     }
 
 }
+
+
+
+
+/* =================================================
+   ABOUT PAGE — PREMIUM UPGRADE
+   ================================================= */
+
+/* ---------- Intro (2-col) ---------- */
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 36px;
+    align-items: start;
+}
+
+.about-intro-content h2 {
+    margin: 0 0 16px;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.about-intro-content p {
+    margin: 0 0 16px;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+/* ---------- Highlight glass card ---------- */
+
+.about-highlight {
+    position: relative;
+    padding: 30px;
+    border: 1px solid var(--glass-border, var(--border));
+    border-radius: var(--radius-lg, 22px);
+    background:
+        radial-gradient(400px 200px at 100% 0%, rgba(31,94,216,.08), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.6));
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    box-shadow:
+        0 1px 0 rgba(255,255,255,.9) inset,
+        0 24px 50px -32px rgba(15,23,42,.4);
+    overflow: hidden;
+}
+.about-highlight::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0) 55%);
+    pointer-events: none;
+    opacity: .55;
+}
+.about-highlight h3 {
+    position: relative;
+    margin: 0 0 10px;
+    font-size: 20px;
+    letter-spacing: -.3px;
+}
+.about-highlight p {
+    position: relative;
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ---------- Values grid ---------- */
+
+.about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.about-value-card {
+    position: relative;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 22px);
+    background: #fff;
+    box-shadow:
+        0 1px 0 rgba(255,255,255,.9) inset,
+        0 10px 30px -22px rgba(15,23,42,.35);
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    overflow: hidden;
+}
+.about-value-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #7a5aff);
+    opacity: 0;
+    transition: opacity .28s ease;
+}
+.about-value-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(31,94,216,.22);
+    box-shadow: 0 22px 50px -28px rgba(15,23,42,.45);
+}
+.about-value-card:hover::before {
+    opacity: 1;
+}
+
+.about-value-card h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    letter-spacing: -.2px;
+}
+.about-value-card p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ---------- Services list (2-col) ---------- */
+
+.about-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.about-service-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 22px);
+    background: #fff;
+    box-shadow: 0 10px 30px -24px rgba(15,23,42,.3);
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.about-service-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(31,94,216,.22);
+    box-shadow: 0 20px 44px -28px rgba(15,23,42,.45);
+}
+
+.about-service-icon {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--primary);
+    background: linear-gradient(180deg, #fff, #eef3fb);
+}
+
+.about-service-icon svg {
+    width: 19px;
+    height: 19px;
+}
+
+.about-service-item h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    letter-spacing: -.2px;
+}
+.about-service-item p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 950px) {
+
+    .about-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .about-values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .about-values-grid,
+    .about-service-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

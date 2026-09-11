@@ -1,63 +1,37 @@
-const menuBtn =
-    document.getElementById("menuBtn");
+(function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.querySelector('.nav-drawer');
+  const header = document.querySelector('.site-header');
+  if (!toggle || !drawer) return;
 
-const navLinks =
-    document.getElementById("navLinks");
+  toggle.addEventListener('click', () => {
+    const open = drawer.classList.toggle('is-open');
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
 
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (!drawer.classList.contains('is-open')) return;
+    if (header.contains(e.target)) return;
+    drawer.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
 
-if (menuBtn && navLinks) {
-
-    /* Open / close menu */
-
-    menuBtn.addEventListener("click", () => {
-
-        navLinks.classList.toggle("active");
-
+  // close on link click
+  drawer.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('is-open');
+      toggle.classList.remove('is-open');
     });
+  });
 
-
-    /* Close menu after selecting a link */
-
-    const navItems =
-        navLinks.querySelectorAll("a");
-
-    navItems.forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("active");
-
-        });
-
-    });
-
-
-    /* Close menu when clicking outside */
-
-    document.addEventListener("click", (event) => {
-
-        if (
-            !navLinks.contains(event.target) &&
-            !menuBtn.contains(event.target)
-        ) {
-
-            navLinks.classList.remove("active");
-
-        }
-
-    });
-
-
-    /* Reset menu on desktop */
-
-    window.addEventListener("resize", () => {
-
-        if (window.innerWidth > 850) {
-
-            navLinks.classList.remove("active");
-
-        }
-
-    });
-
-}
+  // header scrolled state
+  const onScroll = () => {
+    if (window.scrollY > 20) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();

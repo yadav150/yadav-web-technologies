@@ -365,11 +365,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: calc(100% - 28px);
     height: 210px;
     overflow: hidden;
     margin: 14px 14px 0;          /* inset look */
-    border-radius: 12px;          /* required */
+    box-sizing: border-box;
+    border-radius: 12px;          /* image placeholder */
     background:
         radial-gradient(120% 120% at 20% 0%, rgba(31,94,216,.08), transparent 60%),
         #f5f7fb;
@@ -1102,4 +1103,21 @@
         padding: 18px 10px 8px;
     }
 
+}
+
+/* =================================================
+   IMAGE PLACEHOLDER FRAMES
+   ================================================= */
+
+.featured-project-image,
+.project-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.featured-project-image img,
+.project-image img {
+    border-radius: 12px;
+    overflow: hidden;
 }

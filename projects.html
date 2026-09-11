@@ -90,171 +90,7 @@
         rel="stylesheet"
         href="css/style.css">
 
-    <style>
-
-        /* =================================================
-           PROJECT PAGE
-        ================================================= */
-
-        .projects-page-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 24px;
-
-            margin-top: 35px;
-
-        }
-
-
-        .project-card {
-
-            display: flex;
-
-            flex-direction: column;
-
-            height: 100%;
-
-            overflow: hidden;
-
-        }
-
-
-        .project-content {
-
-            display: flex;
-
-            flex-direction: column;
-
-            flex: 1;
-
-        }
-
-
-        .project-content p {
-
-            margin-bottom: 18px;
-
-        }
-
-
-        .project-tags {
-
-            margin-bottom: 18px;
-
-        }
-
-
-        .project-content .btn {
-
-            margin-top: auto;
-
-            align-self: flex-start;
-
-        }
-
-
-        /* =================================================
-           FIXED PROJECT IMAGE FRAME
-        ================================================= */
-
-        .project-image {
-
-            width: 100%;
-
-            height: 230px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            background: #f5f5f5;
-
-            line-height: 0;
-
-        }
-
-
-        .project-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            max-width: 100%;
-
-            max-height: 100%;
-
-            display: block;
-
-            object-fit: contain;
-
-            object-position: center;
-
-        }
-
-
-        /* =================================================
-           TABLET
-        ================================================= */
-
-        @media (max-width: 1000px) {
-
-            .project-image {
-
-                height: 210px;
-
-            }
-
-        }
-
-
-        /* =================================================
-           MOBILE
-        ================================================= */
-
-        @media (max-width: 760px) {
-
-            .projects-page-grid {
-
-                grid-template-columns: 1fr;
-
-                gap: 20px;
-
-            }
-
-
-            .project-image {
-
-                height: 190px;
-
-            }
-
-        }
-
-
-        /* =================================================
-           SMALL MOBILE
-        ================================================= */
-
-        @media (max-width: 420px) {
-
-            .project-image {
-
-                height: 165px;
-
-            }
-
-        }
-
-    </style>
+    <!-- Projects page styles now live in css/style.css -->
 
 </head>
 
@@ -266,7 +102,7 @@
      HEADER
 ===================================================== -->
 
-<header>
+<header class="site-header">
 
     <nav class="nav container">
 
@@ -1165,6 +1001,7 @@
 
         <div class="cta-box">
 
+            <span class="cta-glow" aria-hidden="true"></span>
 
             <div class="section-label">
                 Have a Requirement?
@@ -1373,7 +1210,7 @@
 
         <path d="M12 19V5"></path>
 
-        <path d="m6 11 6-6-6 6"></path>
+        <path d="m6 11 6-6 6 6"></path>
 
     </svg>
 
@@ -1389,4 +1226,3 @@
 </body>
 
 </html>
-```

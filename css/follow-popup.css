@@ -1,155 +1,115 @@
-/* =================================================
-   FOLLOW US POPUP
-================================================= */
-
-.follow-popup-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
-    background: rgba(0, 0, 0, 0.35);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
-    pointer-events: none;
-}
-
-.follow-popup-overlay.show {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+/* =============================================================
+   FOLLOW POPUP — specialized only. Does NOT redefine global system.
+   Reuses tokens from style.css (--radius, --shadow, --blue, etc.)
+   ============================================================= */
 
 .follow-popup {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 9999;
-    width: 340px;
-    max-width: calc(100vw - 32px);
-    padding: 22px 22px 20px;
-    background: var(--surface, #ffffff);
-    color: var(--text, #172033);
-    border: 1px solid var(--border, #e2e8f0);
-    border-radius: var(--radius, 12px);
-    box-shadow: var(--shadow-lg, 0 20px 50px rgba(0, 0, 0, 0.15));
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    pointer-events: none;
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(14px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t), transform var(--t);
+}
+.follow-popup.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
-.follow-popup.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+.follow-popup__text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  max-width: 190px;
+}
+.follow-popup__text small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 2px;
 }
 
-/* ===== Close Button ===== */
-.follow-popup-close {
-    position: absolute;
-    top: 12px;
+.follow-popup__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.follow-popup__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--t-fast);
+  background: transparent;
+  color: var(--muted);
+  line-height: 1;
+}
+.follow-popup__btn:hover { color: var(--text); background: var(--soft); }
+
+.follow-popup__btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, #2166e8, #5c82ff);
+  box-shadow: 0 8px 20px rgba(33, 102, 232, .25);
+}
+.follow-popup__btn--primary:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #1f5dd6, #4a72f0);
+  transform: translateY(-1px);
+}
+
+.follow-popup__btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.follow-popup__close {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--subtle);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: var(--t-fast);
+}
+.follow-popup__close:hover { color: var(--text); background: var(--soft); }
+.follow-popup__close svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; stroke-width: 2; fill: none;
+}
+
+@media (max-width: 600px) {
+  .follow-popup {
+    left: 12px;
     right: 12px;
-    width: 30px;
-    height: 30px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--border, #e2e8f0);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text-muted, #667085);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.follow-popup-close:hover {
-    background: var(--surface-alt, #f1f5f9);
-    color: var(--text, #172033);
-    transform: rotate(90deg);
-}
-
-.follow-popup-close svg {
-    width: 14px;
-    height: 14px;
-}
-
-/* ===== Icon ===== */
-.follow-popup-icon {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 14px;
-    border-radius: 12px;
-    background: #1877F2;
-    color: #fff;
-    box-shadow: 0 6px 18px rgba(24, 119, 242, 0.35);
-    animation: pop-bounce 0.6s ease;
-}
-
-.follow-popup-icon svg {
-    width: 26px;
-    height: 26px;
-}
-
-@keyframes pop-bounce {
-    0%   { transform: scale(0.5); opacity: 0; }
-    60%  { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); }
-}
-
-/* ===== Text ===== */
-.follow-popup h3 {
-    margin: 0 0 6px;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text, #172033);
-}
-
-.follow-popup p {
-    margin: 0 0 16px;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--text-muted, #667085);
-}
-
-/* ===== Follow Button ===== */
-.follow-popup-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 18px;
-    background: #1877F2;
-    color: #fff !important;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.follow-popup-link:hover {
-    background: #0d5bc4;
-    transform: translateY(-1px);
-}
-
-.follow-popup-link svg {
-    width: 16px;
-    height: 16px;
-}
-
-/* ===== Mobile ===== */
-@media (max-width: 520px) {
-    .follow-popup {
-        right: 12px;
-        left: 12px;
-        bottom: 12px;
-        width: auto;
-        padding: 20px 18px 18px;
-    }
-    .follow-popup h3 { font-size: 16px; }
-    .follow-popup p  { font-size: 13px; }
+    bottom: 12px;
+    padding: 10px 12px;
+  }
+  .follow-popup__text { max-width: none; flex: 1; }
 }

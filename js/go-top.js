@@ -1,27 +1,15 @@
-const goTop = document.getElementById("goTop");
+(function () {
+  const btn = document.querySelector('.go-top');
+  if (!btn) return;
 
-if (goTop) {
+  const onScroll = () => {
+    if (window.scrollY > 500) btn.classList.add('is-visible');
+    else btn.classList.remove('is-visible');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-    function updateGoTop() {
-
-        if (window.scrollY > 250) {
-            goTop.classList.add("show");
-        } else {
-            goTop.classList.remove("show");
-        }
-
-    }
-
-    window.addEventListener("scroll", updateGoTop);
-
-    goTop.addEventListener("click", function () {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-    updateGoTop();
-}
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();

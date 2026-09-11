@@ -1,82 +1,24 @@
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
+(function () {
+  // reveal-on-scroll micro-interaction (subtle, professional only)
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
 
+  if (!('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
 
-function updateThemeIcon() {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+  );
 
-    if (!themeIcon) return;
-
-    const isDark =
-        document.body.classList.contains("dark");
-
-    if (isDark) {
-
-        themeIcon.innerHTML = `
-            <path
-                d="M21 12.8A8.5 8.5 0 1 1
-                11.2 3a6.7 6.7 0 0 0
-                9.8 9.8Z">
-            </path>
-        `;
-
-    } else {
-
-        themeIcon.innerHTML = `
-            <circle cx="12" cy="12" r="4"></circle>
-
-            <path d="M12 2v2"></path>
-            <path d="M12 20v2"></path>
-
-            <path d="m4.93 4.93 1.41 1.41"></path>
-            <path d="m17.66 17.66 1.41 1.41"></path>
-
-            <path d="M2 12h2"></path>
-            <path d="M20 12h2"></path>
-
-            <path d="m6.34 17.66-1.41 1.41"></path>
-            <path d="m19.07 4.93-1.41 1.41"></path>
-        `;
-
-    }
-}
-
-
-/* Load saved theme */
-
-const savedTheme =
-    localStorage.getItem("ywt-theme");
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-} else {
-
-    document.body.classList.remove("dark");
-
-}
-
-updateThemeIcon();
-
-
-/* Toggle theme */
-
-if (themeToggle) {
-
-    themeToggle.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark");
-
-        const isDark =
-            document.body.classList.contains("dark");
-
-        localStorage.setItem(
-            "ywt-theme",
-            isDark ? "dark" : "light"
-        );
-
-        updateThemeIcon();
-
-    });
-
-}
+  els.forEach((el) => io.observe(el));
+})();

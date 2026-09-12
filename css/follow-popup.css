@@ -1,115 +1,131 @@
-/* =============================================================
-   FOLLOW POPUP — specialized only. Does NOT redefine global system.
-   Reuses tokens from style.css (--radius, --shadow, --blue, etc.)
-   ============================================================= */
+/* ============================================================
+   FOLLOW POPUP — Yadav Web Technologies
+   ============================================================ */
 
 .follow-popup {
-  position: fixed;
-  left: 22px;
-  bottom: 22px;
-  z-index: 55;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, .82);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(14px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--t), transform var(--t);
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    max-width: 340px;
+    width: calc(100% - 40px);
+    padding: 16px 18px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 950;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity var(--t-base), visibility var(--t-base), transform var(--t-base);
 }
 .follow-popup.is-visible {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.follow-popup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--grad-brand);
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .follow-popup__text {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.3;
-  max-width: 190px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 .follow-popup__text small {
-  display: block;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  margin-top: 2px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.4;
 }
 
 .follow-popup__actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
 }
 
 .follow-popup__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 12px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: var(--t-fast);
-  background: transparent;
-  color: var(--muted);
-  line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--grad-brand);
+    text-decoration: none;
+    transition: transform var(--t-fast), box-shadow var(--t-fast);
+    box-shadow: var(--shadow-glow);
 }
-.follow-popup__btn:hover { color: var(--text); background: var(--soft); }
-
-.follow-popup__btn--primary {
-  color: #fff;
-  background: linear-gradient(135deg, #2166e8, #5c82ff);
-  box-shadow: 0 8px 20px rgba(33, 102, 232, .25);
+.follow-popup__btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    color: #fff;
+    text-decoration: none;
 }
-.follow-popup__btn--primary:hover {
-  color: #fff;
-  background: linear-gradient(135deg, #1f5dd6, #4a72f0);
-  transform: translateY(-1px);
-}
-
 .follow-popup__btn svg {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
 }
 
 .follow-popup__close {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-  background: transparent;
-  color: var(--subtle);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  transition: var(--t-fast);
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: var(--bg-subtle);
+    color: var(--text-muted);
+    border: none;
+    cursor: pointer;
+    transition: background var(--t-fast), color var(--t-fast);
+    flex-shrink: 0;
 }
-.follow-popup__close:hover { color: var(--text); background: var(--soft); }
+.follow-popup__close:hover {
+    background: var(--bg-muted);
+    color: var(--text-primary);
+}
 .follow-popup__close svg {
-  width: 14px; height: 14px;
-  stroke: currentColor; stroke-width: 2; fill: none;
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
 }
 
-@media (max-width: 600px) {
-  .follow-popup {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    padding: 10px 12px;
-  }
-  .follow-popup__text { max-width: none; flex: 1; }
+/* Mobile */
+@media (max-width: 640px) {
+    .follow-popup {
+        bottom: 62px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+        max-width: none;
+        padding: 14px 16px;
+    }
+    .follow-popup__text { font-size: 0.82rem; }
+    .follow-popup__text small { font-size: 0.72rem; }
+    .follow-popup__btn { padding: 6px 12px; font-size: 0.74rem; }
 }

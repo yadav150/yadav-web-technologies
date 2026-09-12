@@ -76,6 +76,10 @@
                             ERP, or automation requirements. We'll understand your needs
                             and recommend the right approach.
                         </p>
+                        <p style="font-size:0.95rem; margin-top:8px;">
+                            Your next appointment number:
+                            <strong id="appointmentNumber" style="color:var(--brand-accent); font-weight:700;">APT-...</strong>
+                        </p>
                     </div>
                     <div class="hero-visual reveal reveal-delay-2">
                         <div class="hero-visual-card">
@@ -184,7 +188,7 @@
                     </aside>
 
                     <!-- FORM -->
-                    <form class="form-card reveal reveal-delay-1" id="appointment-form" novalidate>
+                    <form class="form-card reveal reveal-delay-1" id="appointmentForm" novalidate>
                         <div class="form-card-head">
                             <h3>Appointment Details</h3>
                             <p>All fields marked <span class="required" style="color:#ef4444;">*</span> are required.</p>
@@ -214,7 +218,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="apt-type">Project Type <span class="required">*</span></label>
-                                <select id="apt-type" name="project_type" required>
+                                <select id="apt-type" name="service" required>
                                     <option value="" disabled selected>Select a category</option>
                                     <option value="business-website">Business Website</option>
                                     <option value="personal-website">Personal / Professional Website</option>
@@ -246,12 +250,12 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="apt-date">Preferred Date <span class="optional">(optional)</span></label>
-                                <input type="date" id="apt-date" name="preferred_date" />
+                                <label for="apt-date">Preferred Date <span class="required">*</span></label>
+                                <input type="date" id="apt-date" name="date" required />
                             </div>
                             <div class="form-group">
-                                <label for="apt-time">Preferred Time <span class="optional">(optional)</span></label>
-                                <input type="time" id="apt-time" name="preferred_time" />
+                                <label for="apt-time">Preferred Time <span class="required">*</span></label>
+                                <input type="time" id="apt-time" name="time" required />
                             </div>
                         </div>
 
@@ -260,6 +264,9 @@
                             <textarea id="apt-message" name="message" placeholder="Briefly describe what you want to build, your requirements, timeline, or any specific features you need..." required></textarea>
                         </div>
 
+                        <!-- Inline error message -->
+                        <p id="appointmentMessage" class="form-error" role="alert" aria-live="polite"></p>
+
                         <button type="submit" class="btn btn-primary form-submit">
                             <span class="btn-spinner" aria-hidden="true"></span>
                             <span class="btn-label">Book Appointment</span>
@@ -267,11 +274,6 @@
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </button>
-
-                        <div class="form-success" id="appointment-success" role="status" aria-live="polite">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                            Thank you! Your appointment request has been received. We'll confirm shortly.
-                        </div>
                     </form>
 
                 </div>
@@ -342,6 +344,26 @@
 
     </main>
 
+    <!-- ===== SUCCESS OVERLAY ===== -->
+    <div id="successOverlay" class="success-overlay" hidden>
+        <div class="success-modal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+            <div class="success-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <h2 id="successTitle" class="success-title">Appointment Request Received</h2>
+            <p class="success-text">
+                Thank you! Your appointment request has been submitted successfully.
+                We will review your requirements and confirm your appointment within 24 hours.
+            </p>
+            <p class="success-note">
+                Please keep your phone and email available — we will reach out soon.
+            </p>
+            <button id="successClose" class="btn btn-primary success-close">Close</button>
+        </div>
+    </div>
+
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <div class="container">
@@ -402,50 +424,12 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </button>
 
+    <!-- Global scripts -->
     <script src="js/menu.js"></script>
     <script src="js/go-top.js"></script>
     <script src="js/script.js"></script>
-    <script>
-    /* ============================================================
-       APPOINTMENT FORM — demo submission handler
-       ============================================================ */
-    (function () {
-        'use strict';
-        const form = document.getElementById('appointment-form');
-        if (!form) return;
 
-        const submitBtn = form.querySelector('.form-submit');
-        const successMsg = document.getElementById('appointment-success');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Basic HTML5 validation check
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            submitBtn.classList.add('is-loading');
-            submitBtn.disabled = true;
-
-            // Simulate submission (replace with real backend call later)
-            setTimeout(function () {
-                submitBtn.classList.remove('is-loading');
-                submitBtn.classList.add('is-success');
-                submitBtn.querySelector('.btn-label').textContent = 'Booked';
-                successMsg.classList.add('is-visible');
-                form.reset();
-
-                setTimeout(function () {
-                    submitBtn.classList.remove('is-success');
-                    submitBtn.querySelector('.btn-label').textContent = 'Book Appointment';
-                    submitBtn.disabled = false;
-                    successMsg.classList.remove('is-visible');
-                }, 5000);
-            }, 1500);
-        });
-    })();
-    </script>
+    <!-- Firebase appointment module -->
+    <script type="module" src="js/appointment.js"></script>
 </body>
 </html>

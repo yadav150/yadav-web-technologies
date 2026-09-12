@@ -1,0 +1,103 @@
+/* ============================================================
+   LEGAL PAGES — Terms, Privacy, Disclaimer
+   Yadav Web Technologies
+   ============================================================ */
+
+.legal-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(24px, 3vw, 40px) clamp(20px, 2.4vw, 32px);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.legal-content h2 {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 32px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-base);
+    text-align: left;
+    scroll-margin-top: calc(var(--header-h) + 20px);
+}
+.legal-content h2:first-child {
+    margin-top: 0;
+}
+
+.legal-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0 0 16px;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+.legal-content p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-content a {
+    color: var(--brand-accent);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t-fast);
+}
+.legal-content a:hover {
+    border-bottom-color: var(--brand-accent);
+    text-decoration: none;
+}
+
+.legal-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Lists */
+.legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: grid;
+    gap: 8px;
+}
+.legal-list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    text-align: left;
+}
+.legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .legal-content {
+        padding: 20px 18px;
+    }
+    .legal-content h2 {
+        font-size: 1rem;
+        margin: 24px 0 10px;
+    }
+    .legal-content p,
+    .legal-list li {
+        font-size: 0.9rem;
+    }
+}

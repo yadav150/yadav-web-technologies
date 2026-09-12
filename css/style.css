@@ -935,3 +935,79 @@ html.dark-mode .card-icon { background: rgba(37, 99, 235, 0.15); }
     -webkit-hyphens: auto;
     color: var(--text-muted);
 }
+/* ============================================================
+   SVG ICON SAFETY SYSTEM
+   Prevents any icon SVG from stretching to full width
+   ============================================================ */
+
+/* Base — every SVG is flex-shrink-safe */
+svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Small UI icons (buttons, links, tags, lists) */
+.btn svg,
+.read-more svg,
+.hero-cta svg,
+.eyebrow svg,
+.section-head .eyebrow svg,
+.trust-row svg,
+.footer-col svg {
+    width: 14px;
+    height: 14px;
+    max-width: 14px;
+    max-height: 14px;
+}
+
+/* Medium icons (feature list checks, info items, project links) */
+.price-features li svg,
+.project-features li svg,
+.legal-list li svg,
+.project-link svg,
+.info-list-block .info-item .info-icon svg {
+    width: 16px;
+    height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+}
+
+/* Card icons */
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    max-width: 24px;
+    max-height: 24px;
+}
+
+/* Portfolio thumbnail icons */
+.portfolio-thumb svg {
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+}
+
+/* Logo — fixed size */
+.logo svg {
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+}
+
+/* Header action buttons */
+.icon-btn svg {
+    width: 18px;
+    height: 18px;
+    max-width: 18px;
+    max-height: 18px;
+}
+
+/* Hero visuals — allowed to be large */
+.hero-visual-card svg,
+.hero-visual-card .placeholder-art svg,
+.hero-visual svg {
+    max-width: 100%;
+    max-height: 100%;
+}

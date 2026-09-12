@@ -1,6 +1,9 @@
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+/* ============================================================
+   APPOINTMENT — Firebase integration
+   Yadav Web Technologies
+   ============================================================ */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 import {
     getDatabase,
     ref,
@@ -9,6 +12,7 @@ import {
     push
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
+/* ===== FIREBASE CONFIG ===== */
 const firebaseConfig = {
     apiKey: "AIzaSyDFnxF_v-fXGiZeL_OEMzmKrPdR1PE3KfU",
     authDomain: "auth-project-by-yadav.firebaseapp.com",
@@ -22,15 +26,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+/* ===== DOM REFS ===== */
 const appointmentForm = document.getElementById("appointmentForm");
 const appointmentMessage = document.getElementById("appointmentMessage");
 const successOverlay = document.getElementById("successOverlay");
 const successClose = document.getElementById("successClose");
 const appointmentNumberDisplay = document.getElementById("appointmentNumber");
 
-// ----- Success overlay handlers -----
-function showSuccessMessage() { if (successOverlay) successOverlay.hidden = false; }
-function closeSuccessMessage() { if (successOverlay) successOverlay.hidden = true; }
+/* ===== SUCCESS OVERLAY HANDLERS ===== */
+function showSuccessMessage() {
+    if (successOverlay) {
+        successOverlay.hidden = false;
+        document.body.style.overflow = "hidden";
+        if (successClose) successClose.focus();
+    }
+}
+function closeSuccessMessage() {
+    if (successOverlay) {
+        successOverlay.hidden = true;
+        document.body.style.overflow = "";
+    }
+}
 if (successClose) successClose.addEventListener("click", closeSuccessMessage);
 if (successOverlay) {
     successOverlay.addEventListener("click", (e) => {
@@ -38,10 +54,12 @@ if (successOverlay) {
     });
 }
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && successOverlay && !successOverlay.hidden) closeSuccessMessage();
+    if (e.key === "Escape" && successOverlay && !successOverlay.hidden) {
+        closeSuccessMessage();
+    }
 });
 
-// ----- Generate next number using get+set with retry (no transaction) -----
+/* ===== APPOINTMENT NUMBER GENERATOR (with retry) ===== */
 async function getNextAppointmentNumber() {
     const counterRef = ref(database, "appointmentCounter/current");
     let attempts = 0;
@@ -49,66 +67,76 @@ async function getNextAppointmentNumber() {
         try {
             const snapshot = await get(counterRef);
             let current = snapshot.exists() ? snapshot.val() : 1000;
-            if (typeof current !== 'number') current = 1000; // fallback
+            if (typeof current !== "number") current = 1000;
             const next = current + 1;
             await set(counterRef, next);
             return next;
         } catch (error) {
             attempts++;
             console.warn(`Counter update attempt ${attempts} failed:`, error.message);
-            if (attempts >= 5) throw new Error("Unable to generate number. Please try again.");
-            await new Promise(resolve => setTimeout(resolve, 300)); // wait before retry
+            if (attempts >= 5) {
+                throw new Error("Unable to generate number. Please try again.");
+            }
+            await new Promise((resolve) => setTimeout(resolve, 300));
         }
     }
 }
 
-// ----- Display next number on page load -----
+/* ===== DISPLAY NEXT NUMBER ON LOAD ===== */
 async function displayNextNumber() {
+    if (!appointmentNumberDisplay) return;
     try {
         const counterRef = ref(database, "appointmentCounter/current");
         const snapshot = await get(counterRef);
         let current = snapshot.exists() ? snapshot.val() : 1000;
-        if (typeof current !== 'number') current = 1000;
+        if (typeof current !== "number") current = 1000;
         const next = current + 1;
-        if (appointmentNumberDisplay) {
-            appointmentNumberDisplay.textContent = "APT-" + next;
-            appointmentNumberDisplay.dataset.nextNumber = next;
-        }
+        appointmentNumberDisplay.textContent = "APT-" + next;
+        appointmentNumberDisplay.dataset.nextNumber = next;
     } catch (error) {
         console.error("Error fetching counter:", error);
-        if (appointmentNumberDisplay) {
-            appointmentNumberDisplay.textContent = "APT-1001";
-            appointmentNumberDisplay.dataset.nextNumber = 1001;
-        }
+        appointmentNumberDisplay.textContent = "APT-1001";
+        appointmentNumberDisplay.dataset.nextNumber = 1001;
     }
 }
 displayNextNumber();
 
-// ----- Form submission -----
+/* ===== FORM SUBMISSION ===== */
 if (appointmentForm) {
     appointmentForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (appointmentMessage) appointmentMessage.textContent = "";
 
+        // Reset message
+        if (appointmentMessage) {
+            appointmentMessage.textContent = "";
+            appointmentMessage.classList.remove("is-visible");
+        }
+
+        // Disable submit button
         const submitButton = appointmentForm.querySelector('button[type="submit"]');
+        const labelEl = submitButton ? submitButton.querySelector(".btn-label") : null;
+        const originalLabel = labelEl ? labelEl.textContent : "Book Appointment";
         if (submitButton) {
             submitButton.disabled = true;
-            submitButton.dataset.originalText = submitButton.innerHTML;
-            submitButton.textContent = "Submitting...";
+            submitButton.classList.add("is-loading");
+            if (labelEl) labelEl.textContent = "Submitting...";
         }
 
         // Gather fields
-        const name = document.getElementById("name")?.value.trim();
-        const email = document.getElementById("email")?.value.trim();
-        const phone = document.getElementById("phone")?.value.trim();
-        const service = document.getElementById("service")?.value;
-        const date = document.getElementById("date")?.value;
-        const time = document.getElementById("time")?.value;
-        const message = document.getElementById("message")?.value.trim();
+        const name = document.getElementById("apt-name")?.value.trim();
+        const email = document.getElementById("apt-email")?.value.trim();
+        const phone = document.getElementById("apt-phone")?.value.trim();
+        const organization = document.getElementById("apt-org")?.value.trim() || "";
+        const service = document.getElementById("apt-type")?.value;
+        const budget = document.getElementById("apt-budget")?.value || "";
+        const date = document.getElementById("apt-date")?.value;
+        const time = document.getElementById("apt-time")?.value;
+        const message = document.getElementById("apt-message")?.value.trim();
 
+        // Validation
         if (!name || !email || !phone || !service || !date || !time || !message) {
             showError("Please complete all required fields.");
-            restoreButton(submitButton);
+            restoreButton(submitButton, labelEl, originalLabel);
             return;
         }
 
@@ -121,7 +149,9 @@ if (appointmentForm) {
                 name,
                 email,
                 phone,
+                organization,
                 service,
+                budget,
                 date,
                 time,
                 message,
@@ -135,21 +165,29 @@ if (appointmentForm) {
             appointmentForm.reset();
             showSuccessMessage();
             displayNextNumber(); // refresh displayed number
-
         } catch (error) {
             console.error("Submission error:", error);
-            showError(error.message || "Unable to submit your appointment right now. Please try again.");
+            showError(
+                error.message ||
+                "Unable to submit your appointment right now. Please try again."
+            );
         } finally {
-            restoreButton(submitButton);
+            restoreButton(submitButton, labelEl, originalLabel);
         }
     });
 }
 
+/* ===== HELPERS ===== */
 function showError(msg) {
-    if (appointmentMessage) appointmentMessage.textContent = msg;
+    if (appointmentMessage) {
+        appointmentMessage.textContent = msg;
+        appointmentMessage.classList.add("is-visible");
+    }
 }
-function restoreButton(btn) {
+
+function restoreButton(btn, labelEl, originalLabel) {
     if (!btn) return;
     btn.disabled = false;
-    btn.innerHTML = btn.dataset.originalText || "Submit Appointment Request";
+    btn.classList.remove("is-loading");
+    if (labelEl) labelEl.textContent = originalLabel || "Book Appointment";
 }

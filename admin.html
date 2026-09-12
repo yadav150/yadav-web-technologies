@@ -105,6 +105,7 @@
     <!-- ===== DASHBOARD ===== -->
     <div id="dashboard" class="dashboard">
 
+        <!-- Sidebar -->
         <aside id="adminSidebar" class="admin-sidebar">
             <div class="sidebar-brand">
                 <span class="logo-mark">
@@ -136,7 +137,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <a href="../index.html">
+                <a href="index.html">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M3 12h18M12 3l9 9-9 9"/>
                     </svg>
@@ -145,9 +146,13 @@
             </div>
         </aside>
 
+        <!-- Sidebar overlay (mobile) -->
         <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
+        <!-- Main content -->
         <div class="admin-content">
+
+            <!-- Top bar -->
             <header class="admin-topbar">
                 <div class="admin-topbar-inner">
                     <button type="button" id="mobileMenuButton" class="admin-menu-btn" aria-label="Toggle menu">
@@ -172,6 +177,7 @@
 
             <main class="admin-main">
 
+                <!-- Stats -->
                 <section class="admin-section">
                     <div class="admin-stats">
                         <div class="admin-stat">
@@ -239,6 +245,7 @@
                     </div>
                 </section>
 
+                <!-- Appointments panel -->
                 <section class="admin-section" id="appointmentsPanel">
                     <div class="admin-toolbar">
                         <div class="admin-toolbar-search">
@@ -275,36 +282,13 @@
         </div>
     </div>
 
+    <!-- ===== TOAST ===== -->
     <div id="adminToast" class="admin-toast" role="status" aria-live="polite">
         <strong id="toastTitle"></strong>
         <span id="toastMessage"></span>
     </div>
 
     <!-- Firebase admin module -->
-    <script type="module" src="../js/admin.js"></script>
-
-    <!-- SAFETY NET: if the module never boots, show login + a helpful error -->
-    <script>
-        (function () {
-            window.__adminBooted = false;
-            setTimeout(function () {
-                if (window.__adminBooted) return;
-
-                var loader = document.getElementById("pageLoader");
-                if (loader) loader.style.display = "none";
-
-                var login = document.getElementById("loginScreen");
-                if (login) login.classList.add("visible");
-
-                var err = document.getElementById("loginError");
-                if (err && !err.textContent.trim()) {
-                    var isFile = location.protocol === "file:";
-                    err.textContent = isFile
-                        ? "This page must be opened through a web server (http:// or https://). Double-clicking the file will not work."
-                        : "Unable to initialize admin panel. Please check your connection and reload the page.";
-                }
-            }, 3500);
-        })();
-    </script>
+    <script type="module" src="js/admin.js"></script>
 </body>
 </html>

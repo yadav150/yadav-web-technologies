@@ -7,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
-    sendPasswordResetEmail            // ← NEW
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 import {
@@ -15,6 +15,11 @@ import {
     ref,
     onValue,
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+
+// =====================================================
+// MARK MODULE AS BOOTED (for the HTML safety net)
+// =====================================================
+window.__adminBooted = true;
 
 // =====================================================
 // FIREBASE CONFIG
@@ -66,7 +71,7 @@ const toastTitle = document.getElementById("toastTitle");
 const toastMessage = document.getElementById("toastMessage");
 const listSpinner = document.getElementById("listSpinner");
 
-// ← NEW — Forgot password elements
+// Forgot password elements
 const forgotScreen = document.getElementById("forgotScreen");
 const forgotForm = document.getElementById("forgotForm");
 const forgotEmail = document.getElementById("forgotEmail");
@@ -104,7 +109,7 @@ function isAdmin(user) {
 // AUTH STATE – MAIN ENTRY POINT
 // =====================================================
 onAuthStateChanged(auth, (user) => {
-    // Hide page loader
+    // Hide page loader as soon as auth initializes (user OR no user)
     if (pageLoader) pageLoader.style.display = "none";
 
     if (!user) {
@@ -172,20 +177,18 @@ if (logoutButton) {
 }
 
 // =====================================================
-// SHOW / HIDE (with class to avoid flash)
+// SHOW / HIDE SCREENS
 // =====================================================
 function showLogin() {
     loginScreen.classList.add("visible");
     dashboard.classList.remove("visible");
-    if (forgotScreen) forgotScreen.classList.remove("visible");  // ← NEW
+    if (forgotScreen) forgotScreen.classList.remove("visible");
 }
 function showDashboard() {
     loginScreen.classList.remove("visible");
     dashboard.classList.add("visible");
-    if (forgotScreen) forgotScreen.classList.remove("visible");  // ← NEW
+    if (forgotScreen) forgotScreen.classList.remove("visible");
 }
-
-// ← NEW — Show forgot password screen
 function showForgotScreen() {
     loginScreen.classList.remove("visible");
     dashboard.classList.remove("visible");
@@ -205,7 +208,6 @@ function showForgotScreen() {
 // =====================================================
 if (forgotLink) {
     forgotLink.addEventListener("click", () => {
-        // Prefill with whatever was typed in login email, if any
         const typedEmail = loginEmail?.value.trim() || "";
         showForgotScreen();
         if (typedEmail && forgotEmail) forgotEmail.value = typedEmail;
@@ -239,21 +241,17 @@ if (forgotForm) {
 
         try {
             await sendPasswordResetEmail(auth, email);
-            // Generic success message — do not reveal whether email exists
             showForgotSuccess(
                 "If that email is registered, a password reset link has been sent. Check your inbox and spam folder."
             );
             forgotForm.reset();
         } catch (error) {
             console.error("Password reset error:", error);
-            // Still show generic message for most errors (prevents email enumeration)
-            // but surface rate-limiting and invalid format
             if (error.code === "auth/too-many-requests") {
                 showForgotError("Too many attempts. Please try again later.");
             } else if (error.code === "auth/invalid-email") {
                 showForgotError("Please enter a valid email address.");
             } else {
-                // For auth/user-not-found or any other error, keep generic for security
                 showForgotSuccess(
                     "If that email is registered, a password reset link has been sent. Check your inbox and spam folder."
                 );
@@ -293,10 +291,6 @@ function showLoginError(message) {
 function clearLoginError() {
     if (loginError) loginError.textContent = "";
 }
-
-// =====================================================
-// CUSTOM LOGIN ERROR MESSAGE
-// =====================================================
 function getLoginErrorMessage(error) {
     if (error.code === "auth/too-many-requests") {
         return "Too many attempts. Please try again later.";
@@ -357,11 +351,11 @@ function renderDashboard() {
 // =====================================================
 function updateStatistics() {
     const list = Object.values(appointments);
-    totalCount.textContent = list.length;
-    newCount.textContent = list.filter(item => getStatus(item) === "new").length;
-    contactedCount.textContent = list.filter(item => getStatus(item) === "contacted").length;
-    confirmedCount.textContent = list.filter(item => getStatus(item) === "confirmed").length;
-    completedCount.textContent = list.filter(item => getStatus(item) === "completed").length;
+    if (totalCount) totalCount.textContent = list.length;
+    if (newCount) newCount.textContent = list.filter(item => getStatus(item) === "new").length;
+    if (contactedCount) contactedCount.textContent = list.filter(item => getStatus(item) === "contacted").length;
+    if (confirmedCount) confirmedCount.textContent = list.filter(item => getStatus(item) === "confirmed").length;
+    if (completedCount) completedCount.textContent = list.filter(item => getStatus(item) === "completed").length;
 }
 
 // =====================================================

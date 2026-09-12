@@ -1,371 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About — Yadav Web Technologies</title>
-<meta name="description" content="Learn about Yadav Web Technologies — a modern web development studio building digital products around real requirements.">
+<meta name="description" content="Learn about Yadav Web Technologies — founded in 2026 by Yadav Subba, providing modern digital solutions from Assam, India." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/follow-popup.css">
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+<!-- Ambient background orbs -->
+<div class="ambient-orb ambient-orb--1"></div>
+<div class="ambient-orb ambient-orb--2"></div>
+<div class="ambient-orb ambient-orb--3"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress"></div>
+
+<!-- ===== HEADER ===== -->
 <header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">Y</span>
-      Yadav Web Technologies
-    </a>
-    <div class="nav-links">
-      <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html" class="is-active">About</a>
-      <a href="contact.html">Contact</a>
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-mark">
+                <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 4l6 8 6-8M12 12v8"/>
+                </svg>
+            </span>
+            <span>Yadav<span class="accent">Web</span></span>
+        </a>
+
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" aria-current="page">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Switch to dark mode">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+            </button>
+            <button class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+                <span class="hamburger-inner">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
     </div>
-    <a class="nav-cta" href="appointment.html">Start a Project</a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-  </nav>
-  <div class="nav-drawer">
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="appointment.html">Start a Project</a>
-  </div>
 </header>
 
 <main>
 
-<!-- ABOUT HERO -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow"><span></span> About the Studio</div>
-      <h1>
-        Built by developers.
-        <span>Focused on outcomes.</span>
-      </h1>
-      <p>
-        Yadav Web Technologies is a modern web studio designing and
-        building websites, applications and digital systems — with a
-        strong emphasis on clarity, structure and long-term usability.
-      </p>
-      <div class="actions">
-        <a class="button primary" href="appointment.html">Start a Project</a>
-        <a class="button secondary" href="projects.html">See Our Work</a>
-      </div>
-    </div>
-
-    <div class="visual">
-      <div class="dashboard">
-        <div class="dashboard-top">
-          <strong>Studio Snapshot</strong>
-          <small>Active</small>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content reveal">
+                    <span class="hero-eyebrow">
+                        <span class="hero-eyebrow-dot"></span>
+                        Founded 2026
+                    </span>
+                    <h1>About <span class="gradient">Yadav Web Technologies</span></h1>
+                    <p class="lead">
+                        A web-building software and technology company providing modern,
+                        affordable, and reliable digital solutions for businesses,
+                        organizations, NGOs, educational institutions, and individuals.
+                    </p>
+                </div>
+                <div class="hero-visual reveal reveal-delay-2">
+                    <div class="hero-visual-card">
+                        <img src="assets/hero/logo.jpg" alt="Yadav Web Technologies" />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="dashboard-body">
-          <div class="mock-card mock-wide">
-            Delivered Projects
-            <strong>60+</strong>
-            <div class="progress"><span style="width:88%"></span></div>
-          </div>
-          <div class="mock-card">
-            Domains
-            <strong>12</strong>
-          </div>
-          <div class="mock-card">
-            Clients
-            <strong>40+</strong>
-          </div>
-        </div>
-      </div>
-      <div class="float-card float-one">Full-Stack Studio</div>
-      <div class="float-card float-two">
-        <strong>6+ yrs</strong><br>
-        Building for the web
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- TRUST -->
-<section class="trust">
-  <div class="container trust-row">
-    <span>BUSINESS</span>
-    <span>ORGANIZATIONS</span>
-    <span>EDUCATION</span>
-    <span>ENTERPRISE</span>
-    <span>PROFESSIONALS</span>
-  </div>
-</section>
+    <!-- ===== FOUNDER & VISION ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Founder</span>
+                <h2>Ownership &amp; Vision</h2>
+                <p>The person and purpose behind Yadav Web Technologies.</p>
+            </div>
 
-<!-- INTRO -->
-<section class="section">
-  <div class="container grid-2" style="gap:60px; align-items:center">
-    <div>
-      <div class="section-label">Who We Are</div>
-      <h2>
-        A small team.
-        <span>Serious about craft.</span>
-      </h2>
-      <p class="mt-4">
-        We work closely with each client — understanding the actual
-        requirement before writing a single line of code. Every project
-        starts with structure: scope, workflow and outcome.
-      </p>
-      <p class="mt-2">
-        The result is digital products that feel considered — not
-        assembled from templates.
-      </p>
-    </div>
+            <div class="grid grid-2">
+                <article class="card reveal" style="text-align:center;">
+                    <img src="assets/hero/logo.jpg" alt="Yadav Subba"
+                         style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 20px;border:3px solid transparent;background:var(--grad-primary);padding:3px;" />
+                    <h3>Yadav Subba</h3>
+                    <p style="color:var(--accent-primary);font-weight:600;margin-bottom:12px;">Founder &amp; Lead Developer</p>
+                    <p>
+                        Founded, owned, and operated by Yadav Subba, based in Hailour,
+                        West Karbi Anglong, Assam, India. Bringing a blend of web
+                        development, mathematics, and teaching experience to every
+                        project.
+                    </p>
+                </article>
 
-    <div class="card" style="padding:36px">
-      <div class="grid-2" style="gap:24px">
-        <div>
-          <strong style="display:block;font-size:32px;letter-spacing:-.04em">01</strong>
-          <p class="mt-2" style="font-size:14px">Understand first, build second.</p>
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/>
+                        </svg>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        Modern technology should be powerful, affordable, accessible,
+                        and easy to use. We help businesses, organizations,
+                        institutions, and individuals turn ideas into practical
+                        digital solutions — easily, affordably, and from anywhere.
+                    </p>
+                </article>
+            </div>
         </div>
-        <div>
-          <strong style="display:block;font-size:32px;letter-spacing:-.04em">02</strong>
-          <p class="mt-2" style="font-size:14px">Clean, maintainable foundations.</p>
-        </div>
-        <div>
-          <strong style="display:block;font-size:32px;letter-spacing:-.04em">03</strong>
-          <p class="mt-2" style="font-size:14px">Design tied to function.</p>
-        </div>
-        <div>
-          <strong style="display:block;font-size:32px;letter-spacing:-.04em">04</strong>
-          <p class="mt-2" style="font-size:14px">Delivered with clarity.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CAPABILITIES -->
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="heading">
-      <div class="section-label">Capabilities</div>
-      <h2>
-        What we're good at.
-        <span>End to end.</span>
-      </h2>
-      <p>
-        Frontend, backend and everything between — delivered as one
-        coherent system.
-      </p>
-    </div>
+    <!-- ===== WHAT WE BUILD ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">What We Build</span>
+                <h2>Web, Software &amp; Automation</h2>
+                <p>
+                    From responsive websites to complete ERP systems and
+                    communication automation — we cover the full digital stack.
+                </p>
+            </div>
 
-    <div class="services">
-      <article class="service">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M8 6l-5 6 5 6"/>
-            <path d="M16 6l5 6-5 6"/>
-          </svg>
+            <div class="grid">
+                <article class="card reveal">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+                        </svg>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Responsive, modern websites for businesses, organizations, and institutions.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Authentication &amp; Security</h3>
+                    <p>Role-based access control, secure login, and backend integration.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-2">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 3v18h18M7 14l4-4 3 3 5-5"/>
+                        </svg>
+                    </div>
+                    <h3>Management Systems</h3>
+                    <p>School ERP, membership management, digital certificates, and QR verification.</p>
+                </article>
+            </div>
         </div>
-        <h3>Frontend Engineering</h3>
-        <p>Responsive, accessible interfaces with clean markup and modern styling.</p>
-      </article>
+    </section>
 
-      <article class="service">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <ellipse cx="12" cy="6" rx="8" ry="3"/>
-            <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/>
-            <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
-          </svg>
+    <!-- ===== FLAGSHIP PRODUCTS ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Flagship Products</span>
+                <h2>Purpose-built automation suites</h2>
+                <p>
+                    Two dedicated platforms that automate the operations most
+                    organizations struggle with.
+                </p>
+            </div>
+
+            <div class="grid grid-2">
+                <article class="card reveal">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z"/>
+                            <path d="M12 22V12M21 6.5L12 12 3 6.5"/>
+                        </svg>
+                    </div>
+                    <h3>EduFlow</h3>
+                    <p style="color:var(--accent-primary);font-weight:600;margin-bottom:10px;">School Automation Suite</p>
+                    <p>
+                        A complete school ERP — attendance, student records, fee
+                        collection, salary management, ID/admit card generation, and
+                        administrative control from one secure system.
+                    </p>
+                </article>
+
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/>
+                            <path d="M8 10h8M8 14h5"/>
+                        </svg>
+                    </div>
+                    <h3>WAFlow</h3>
+                    <p style="color:var(--accent-primary);font-weight:600;margin-bottom:10px;">WhatsApp Automation Suite</p>
+                    <p>
+                        Automate customer communication — auto-reply bots, broadcast
+                        messaging, smart notifications, and chat analytics — all on
+                        WhatsApp Business.
+                    </p>
+                </article>
+            </div>
         </div>
-        <h3>Backend &amp; APIs</h3>
-        <p>Structured data, secure endpoints and reliable server-side logic.</p>
-      </article>
+    </section>
 
-      <article class="service">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <rect x="3" y="3" width="18" height="18" rx="3"/>
-            <path d="M9 9h6v6H9z"/>
-          </svg>
+    <!-- ===== VALUES ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">What Drives Us</span>
+                <h2>Our Core Values</h2>
+                <p>The principles behind every project we build.</p>
+            </div>
+
+            <div class="grid">
+                <article class="card reveal">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Embracing modern technologies to build better solutions for every client.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Affordability</h3>
+                    <p>Quality digital solutions that fit every budget, without compromise.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-2">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+                        </svg>
+                    </div>
+                    <h3>Accessibility</h3>
+                    <p>Solutions that work everywhere, on every device, for every user.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-3">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Simplicity</h3>
+                    <p>User-friendly designs that are easy to use, understand, and maintain.</p>
+                </article>
+            </div>
         </div>
-        <h3>UI / UX Design</h3>
-        <p>Interfaces designed around real workflows — not decoration.</p>
-      </article>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- APPROACH -->
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="heading">
-      <div class="section-label">Our Approach</div>
-      <h2>
-        A process.
-        <span>Not a promise.</span>
-      </h2>
-    </div>
+    <!-- ===== JOURNEY ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Our Journey</span>
+                <h2>Milestones</h2>
+                <p>Key moments that shaped Yadav Web Technologies.</p>
+            </div>
 
-    <div class="process">
-      <div class="process-card">
-        <b>01</b>
-        <h3>Discover</h3>
-        <p>Understand goals, users and constraints.</p>
-      </div>
-      <div class="process-card">
-        <b>02</b>
-        <h3>Structure</h3>
-        <p>Define architecture, scope and milestones.</p>
-      </div>
-      <div class="process-card">
-        <b>03</b>
-        <h3>Craft</h3>
-        <p>Design and develop with attention to detail.</p>
-      </div>
-      <div class="process-card">
-        <b>04</b>
-        <h3>Deliver</h3>
-        <p>Test, refine, launch and hand over.</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="grid grid-2">
+                <article class="card reveal">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/>
+                        </svg>
+                    </div>
+                    <h3>Founded in 2026</h3>
+                    <p>Yadav Web Technologies is founded by Yadav Subba in Hailour, Assam.</p>
+                </article>
 
-<!-- VALUES SHOWCASE -->
-<section class="showcase">
-  <div class="container">
-    <div class="showcase-box">
-      <div>
-        <div class="section-label">What We Stand For</div>
-        <h2>
-          Principles over
-          <span>shortcuts.</span>
-        </h2>
-        <p>
-          Every decision — from layout to logic — is made with the
-          long-term life of the product in mind.
-        </p>
-      </div>
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="16" rx="2"/>
+                            <path d="M3 10h18M8 4v6M16 4v6"/>
+                        </svg>
+                    </div>
+                    <h3>Portfolio &amp; Tools</h3>
+                    <p>Launched the first portfolio website and a collection of web tools.</p>
+                </article>
 
-      <div class="stats">
-        <div class="stat">
-          <strong>Clarity</strong>
-          <span>Clear scope. Clear communication.</span>
+                <article class="card reveal reveal-delay-2">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Auth Software</h3>
+                    <p>Developed authentication software and an enterprise website template.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-3">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Org &amp; Membership</h3>
+                    <p>Built an organizational website with membership management software.</p>
+                </article>
+            </div>
         </div>
-        <div class="stat">
-          <strong>Craft</strong>
-          <span>Considered detail in every layer.</span>
-        </div>
-        <div class="stat">
-          <strong>Consistency</strong>
-          <span>One system across every page.</span>
-        </div>
-        <div class="stat">
-          <strong>Care</strong>
-          <span>Built to last, not just to ship.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="container">
-    <div class="cta-box">
-      <div class="section-label">Work With Us</div>
-      <h2>
-        Let's build something
-        <span>worth keeping.</span>
-      </h2>
-      <p>
-        Share your idea and requirements — we'll take it from there.
-      </p>
-      <a class="button primary" href="appointment.html">Start a Project</a>
-    </div>
-  </div>
-</section>
+    <!-- ===== CTA ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Let's build together</h2>
+                <p>Have a project in mind? We'd love to hear from you.</p>
+                <div style="margin-top:24px;">
+                    <a href="contact.html" class="btn btn-primary">
+                        Get in Touch
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <span class="logo-mark">Y</span>
-          Yadav Web Technologies
-        </a>
-        <p>Premium websites, web applications and custom digital systems built around real requirements.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Get Started</h5>
-        <ul>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="appointment.html">Appointment</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="sitemap.html">Sitemap</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="terms.html">Terms</a></li>
-          <li><a href="client-terms.html">Client Terms</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="refund.html">Refund</a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark">
+                        <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M6 4l6 8 6-8M12 12v8"/>
+                        </svg>
+                    </span>
+                    <span>Yadav<span class="accent">Web</span></span>
+                </a>
+                <p>Modern, affordable, and reliable digital solutions for businesses, organizations, and institutions.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="mailto:yadavsubba2003@gmail.com">Email Us</a></li>
+                    <li><a href="https://github.com/yadav150" target="_blank" rel="noopener">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Yadav Web Technologies. All rights reserved.</span>
+            <span>Hailour, West Karbi Anglong, Assam, India</span>
+        </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span class="year"></span> Yadav Web Technologies. All rights reserved.</span>
-      <span>Built with care — one system, every page.</span>
-    </div>
-  </div>
 </footer>
 
-<div class="follow-popup" role="dialog" aria-label="Follow Yadav Web Technologies">
-  <div class="follow-popup__text">
-    Enjoying the site?
-    <small>Follow us for updates &amp; new work.</small>
-  </div>
-  <div class="follow-popup__actions">
-    <a class="follow-popup__btn follow-popup__btn--primary" href="contact.html" data-popup-action>
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Follow
-    </a>
-    <button class="follow-popup__close" aria-label="Close" data-popup-close>
-      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-</div>
-
-<button class="go-top" aria-label="Go to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
-  </svg>
+<!-- Back to top -->
+<button class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/menu.js"></script>
-<script src="js/go-top.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/follow-popup.js"></script>
-<script>document.querySelectorAll('.year').forEach(e => e.textContent = new Date().getFullYear());</script>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -1,1144 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Client Service Terms for websites, web applications, software, ERP systems, custom tools and maintenance services provided by Yadav Web Technologies.">
-
-    <meta
-        name="keywords"
-        content="Yadav Web Technologies client terms, website service terms, web development terms, software project terms, maintenance terms">
-
-    <meta
-        name="author"
-        content="Yadav Web Technologies">
-
-    <title>
-        Client Service Terms | Yadav Web Technologies
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="css/style.css">
-
-
-    <style>
-
-        /* =================================================
-           CLIENT TERMS PAGE
-        ================================================= */
-
-        .client-terms-container {
-            max-width: 920px;
-            margin: 0 auto;
-        }
-
-
-        .client-terms-intro {
-            margin-bottom: 30px;
-        }
-
-
-        .client-terms-content {
-            padding: 34px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            box-shadow: var(--shadow-sm);
-        }
-
-
-        .client-terms-section {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border);
-        }
-
-
-        .client-terms-section:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-
-        .client-terms-section h3 {
-            margin: 0 0 10px;
-        }
-
-
-        .client-terms-section p {
-            margin: 0 0 11px;
-        }
-
-
-        .client-terms-section p:last-child {
-            margin-bottom: 0;
-        }
-
-
-        .client-terms-list {
-            margin: 12px 0 0;
-            padding-left: 21px;
-        }
-
-
-        .client-terms-list li {
-            margin-bottom: 9px;
-            color: var(--text-muted);
-        }
-
-
-        .client-terms-list li:last-child {
-            margin-bottom: 0;
-        }
-
-
-        .client-terms-note {
-            margin-top: 30px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--section-soft);
-        }
-
-
-        .client-terms-note h3 {
-            margin: 0 0 9px;
-        }
-
-
-        .client-terms-note p {
-            margin: 0;
-        }
-
-
-        @media (max-width: 600px) {
-
-            .client-terms-content {
-                padding: 24px 19px;
-            }
-
-            .client-terms-note {
-                padding: 22px 18px;
-            }
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Service Terms — Website, Software &amp; Maintenance | Yadav Web Technologies</title>
+    <meta name="description" content="Client Service Terms for websites, web applications, software, ERP systems, custom tools and maintenance services provided by Yadav Web Technologies." />
+    <meta name="keywords" content="Yadav Web Technologies client terms, website service terms, web development terms, software project terms, maintenance terms" />
+    <meta name="author" content="Yadav Web Technologies" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/legal.css" />
 </head>
-
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header>
-
-    <nav class="nav container">
-
-
-        <a
-            href="index.html"
-            class="brand">
-
-            <span class="brand-mark">
-                Y
-            </span>
-
-            <span>
-                Yadav Web Technologies
-            </span>
-
-        </a>
-
-
-        <div
-            class="nav-links"
-            id="navLinks">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="services.html">
-                Services
-            </a>
-
-            <a href="projects.html">
-                Projects
-            </a>
-
-            <a href="pricing.html">
-                Pricing
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-            <a
-                href="appointment.html"
-                class="nav-cta">
-
-                Appointment
-
-            </a>
-
-        </div>
-
-
-        <div class="mobile-actions">
-
-
-            <button
-                type="button"
-                class="theme-toggle"
-                id="themeToggle"
-                aria-label="Toggle dark mode">
-
-                <svg
-                    id="themeIcon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8">
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="4">
-                    </circle>
-
-                    <path d="M12 2v2"></path>
-                    <path d="M12 20v2"></path>
-
-                    <path d="m4.93 4.93 1.41 1.41"></path>
-                    <path d="m17.66 17.66 1.41 1.41"></path>
-
-                    <path d="M2 12h2"></path>
-                    <path d="M20 12h2"></path>
-
-                    <path d="m6.34 17.66-1.41 1.41"></path>
-                    <path d="m19.07 4.93-1.41 1.41"></path>
-
-                </svg>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Open navigation menu"
-                aria-expanded="false">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8">
-
-                    <path d="M4 6h16"></path>
-                    <path d="M4 12h16"></path>
-                    <path d="M4 18h16"></path>
-
-                </svg>
-
-            </button>
-
-        </div>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =====================================================
-     PAGE HERO
-===================================================== -->
-
-<section class="page-hero">
-
-    <div class="container">
-
-        <div class="eyebrow">
-
-            <span></span>
-
-            Client Services
-
-        </div>
-
-
-        <h1>
-            Client Service Terms
-        </h1>
-
-
-        <p>
-            These terms explain how website, application,
-            software, ERP, custom tool and maintenance
-            projects are handled by Yadav Web Technologies.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CLIENT TERMS
-===================================================== -->
-
-<main>
-
-<section class="section">
-
-    <div class="container client-terms-container">
-
-
-        <div class="client-terms-intro">
-
-            <p>
-                These terms are intended to keep project
-                requirements, pricing, communication, delivery
-                and ongoing support clear for both sides.
-            </p>
-
-        </div>
-
-
-        <div class="client-terms-content">
-
-
-            <!-- =================================================
-                 1
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    1. Project Requirements
-                </h3>
-
-                <p>
-                    Work is carried out according to the
-                    requirements discussed and accepted for
-                    the project.
-                </p>
-
-                <p>
-                    Features, pages, modules, workflows,
-                    integrations and other requirements should
-                    be communicated as clearly as possible
-                    before development begins.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 2
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    2. Project Scope
-                </h3>
-
-                <p>
-                    The quoted price applies to the agreed
-                    project scope.
-                </p>
-
-                <p>
-                    Requests for additional pages, features,
-                    modules, workflows, integrations or major
-                    changes may require additional work and
-                    additional charges.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 3
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    3. Pricing
-                </h3>
-
-                <p>
-                    Prices shown on the website are category-based
-                    starting prices unless a specific quotation
-                    has been provided.
-                </p>
-
-                <p>
-                    The final project price depends on the actual
-                    scope, complexity, features and technical
-                    requirements.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 4
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    4. Payment
-                </h3>
-
-                <p>
-                    Payment arrangements will be communicated
-                    before the project is started.
-                </p>
-
-                <p>
-                    Depending on the project, development may
-                    begin after an agreed initial payment or
-                    confirmation.
-                </p>
-
-                <p>
-                    Any remaining payment arrangement will be
-                    discussed according to the project scope
-                    and delivery plan.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 5
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    5. Client-Provided Information
-                </h3>
-
-                <p>
-                    The client is responsible for providing the
-                    content, information, images, logos, documents
-                    and other materials required for the project
-                    when applicable.
-                </p>
-
-                <p>
-                    Delays in providing required material may
-                    affect the project schedule.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 6
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    6. Development and Changes
-                </h3>
-
-                <p>
-                    Development is carried out according to the
-                    agreed scope.
-                </p>
-
-                <p>
-                    Major changes after development has started
-                    may affect delivery time and project cost.
-                </p>
-
-                <p>
-                    Small corrections related to the agreed
-                    requirement may be handled as part of the
-                    normal project review.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 7
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    7. Delivery
-                </h3>
-
-                <p>
-                    The project is delivered after the agreed
-                    work has been completed and reviewed.
-                </p>
-
-                <p>
-                    Actual delivery time depends on the project
-                    size, feedback, content availability and
-                    technical requirements.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 8
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    8. Review and Corrections
-                </h3>
-
-                <p>
-                    The client should review the delivered work
-                    and communicate any corrections related to
-                    the agreed requirements.
-                </p>
-
-                <p>
-                    Requests that introduce new functionality
-                    or a significantly different direction may
-                    be treated as additional work.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 9
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    9. Domain and Hosting
-                </h3>
-
-                <p>
-                    Domain registration, hosting, third-party
-                    subscriptions and other external services
-                    are separate unless specifically included
-                    in the project quotation.
-                </p>
-
-                <p>
-                    Recurring charges for such services are
-                    normally the client's responsibility.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 10
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    10. Third-Party Services
-                </h3>
-
-                <p>
-                    Projects may use services such as Firebase,
-                    hosting providers, APIs, payment services,
-                    analytics platforms or other third-party
-                    tools when required.
-                </p>
-
-                <p>
-                    Availability, limitations, pricing or
-                    changes made by third-party providers may
-                    affect the project independently of the
-                    development work.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 11
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    11. Backend and Database
-                </h3>
-
-                <p>
-                    When a project includes backend or database
-                    functionality, the final setup depends on
-                    the selected technology, project scope and
-                    agreed implementation.
-                </p>
-
-                <p>
-                    Database hosting, usage limits and third-party
-                    service charges may apply separately where
-                    applicable.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 12
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    12. Maintenance
-                </h3>
-
-                <p>
-                    Maintenance refers to updates or corrections
-                    within the agreed maintenance scope.
-                </p>
-
-                <p>
-                    New pages, new functionality, major redesigns
-                    or additional modules are not automatically
-                    included in maintenance work.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 13
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    13. Bug Fixes
-                </h3>
-
-                <p>
-                    Bugs related to the agreed development scope
-                    can be reviewed and corrected according to
-                    the project conditions.
-                </p>
-
-                <p>
-                    Problems caused by unrelated third-party
-                    changes, external services or client-side
-                    modifications may require separate work.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 14
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    14. Project Cancellation
-                </h3>
-
-                <p>
-                    If a project is cancelled after development
-                    work has started, the amount already spent
-                    on completed work, resources or agreed project
-                    activities may not be reversible.
-                </p>
-
-                <p>
-                    Any cancellation-related arrangement will be
-                    discussed according to the stage and actual
-                    work completed.
-                </p>
-
-            </div>
-
-
-
-           <!-- =================================================
-     REFUND
-================================================= -->
-
-<div class="client-terms-section">
-
-    <h3>
-        15. No Refund Policy
-    </h3>
-
-    <p>
-        Payments made for accepted services, development work,
-        maintenance, bug fixing, customisation or other
-        project-related work are non-refundable.
-    </p>
-
-    <p>
-        This applies after payment has been made, including
-        where the client later decides not to continue with
-        the project.
-    </p>
-
-</div>
-
-
-
-<!-- =================================================
-     DEVELOPER FIXES
-================================================= -->
-
-<div class="client-terms-section">
-
-    <h3>
-        16. Developer Fixes and Corrections
-    </h3>
-
-    <p>
-        The no-refund policy does not prevent the developer
-        from correcting valid issues related to the agreed
-        project scope.
-    </p>
-
-    <p>
-        If the delivered website, application or software
-        contains a genuine bug or implementation issue
-        within the agreed requirements, the developer will
-        review and fix the issue according to the applicable
-        project conditions.
-    </p>
-
-    <p>
-        A new feature, additional page, redesign, new module,
-        new workflow or functionality outside the agreed scope
-        is not considered a bug fix and may require an
-        additional charge.
-    </p>
-
-</div>
-
-
-
-<!-- =================================================
-     CLIENT-SIDE MODIFICATIONS
-================================================= -->
-
-<div class="client-terms-section">
-
-    <h3>
-        17. Client or Third-Party Modifications
-    </h3>
-
-    <p>
-        Issues caused by modifications made by the client or
-        another developer after delivery may be assessed
-        separately.
-    </p>
-
-    <p>
-        Any additional correction required because of such
-        changes may be treated as a separate service.
-    </p>
-
-</div>
-
-
-
-            <!-- =================================================
-                 18
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    18. Communication
-                </h3>
-
-                <p>
-                    Project communication should remain clear and
-                    focused on the agreed requirements.
-                </p>
-
-                <p>
-                    Important scope, price or feature changes
-                    should be confirmed before implementation.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 19
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    19. Project Examples
-                </h3>
-
-                <p>
-                    Completed projects may be shown in the Yadav
-                    Web Technologies project portfolio unless
-                    the project arrangement specifically requires
-                    otherwise.
-                </p>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 20
-            ================================================= -->
-
-            <div class="client-terms-section">
-
-                <h3>
-                    20. Final Project Understanding
-                </h3>
-
-                <p>
-                    The exact deliverables, pricing, features,
-                    timeline, maintenance scope and handover
-                    details should be confirmed before development
-                    begins.
-                </p>
-
-                <p>
-                    These terms provide the general service
-                    structure. Project-specific discussions or
-                    quotations may contain additional details
-                    relevant to a particular project.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="client-terms-note">
-
-            <div class="section-label">
-                Before Starting a Project
-            </div>
-
-
-            <h3>
-                Discuss the complete requirement first.
-            </h3>
-
-
-            <p>
-                For a clear quotation and project scope, submit
-                an appointment request with the required features,
-                pages, modules, workflow and other relevant
-                information.
-            </p>
-
-
-            <div style="margin-top:20px;">
-
-                <a
-                    href="appointment.html"
-                    class="btn btn-primary">
-
-                    Book an Appointment
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-
+    <div class="ambient-orb ambient-orb--1"></div>
+    <div class="ambient-orb ambient-orb--2"></div>
+    <div class="scroll-progress"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">
+                    <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M6 4l6 8 6-8M12 12v8"/>
                     </svg>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="cta-box">
-
-            <div class="section-label">
-                Client Service
-            </div>
-
-
-            <h2>
-                Have a project requirement?
-            </h2>
-
-
-            <p>
-                Review the pricing categories and submit
-                your project details for discussion.
-            </p>
-
-
-            <a
-                href="pricing.html"
-                class="btn btn-secondary">
-
-                View Pricing
-
+                </span>
+                <span>Yadav<span class="accent">Web</span></span>
             </a>
 
+            <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="appointment.html">Appointment</a></li>
+                </ul>
+            </nav>
 
-            <a
-                href="appointment.html"
-                class="btn btn-primary">
-
-                Book an Appointment
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-
-            <div class="footer-brand">
-
-                <a
-                    href="index.html"
-                    class="brand">
-
-                    <span class="brand-mark">
-                        Y
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Switch to dark mode">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                </button>
+                <button class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+                    <span class="hamburger-inner">
+                        <span></span><span></span><span></span>
                     </span>
-
-                    <span>
-                        Yadav Web Technologies
-                    </span>
-
-                </a>
-
-
-                <p>
-                    Professional websites, web applications
-                    and custom digital solutions based on
-                    real project requirements.
-                </p>
-
+                </button>
             </div>
+        </div>
+    </header>
 
+    <main>
 
-            <div>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content reveal">
+                        <span class="hero-eyebrow">
+                            <span class="hero-eyebrow-dot"></span>
+                            Client Services
+                        </span>
+                        <h1>Client <span class="gradient">Service Terms</span></h1>
+                        <p class="lead">
+                            These terms explain how website, application, software,
+                            ERP, custom tool and maintenance projects are handled by
+                            Yadav Web Technologies.
+                        </p>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:12px;">
+                            Last updated: 2026
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <h4>
-                    Quick Links
-                </h4>
+        <!-- ===== LEGAL CONTENT ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="legal-content reveal">
 
+                    <p class="legal-intro">
+                        These terms are intended to keep project requirements,
+                        pricing, communication, delivery and ongoing support
+                        clear for both sides.
+                    </p>
 
-                <div class="footer-links">
+                    <h2>1. Project Requirements</h2>
+                    <p>
+                        Work is carried out according to the requirements discussed
+                        and accepted for the project.
+                    </p>
+                    <p>
+                        Features, pages, modules, workflows, integrations and other
+                        requirements should be communicated as clearly as possible
+                        before development begins.
+                    </p>
 
-                    <a href="index.html">
-                        Home
-                    </a>
+                    <h2>2. Project Scope</h2>
+                    <p>
+                        The quoted price applies to the agreed project scope.
+                    </p>
+                    <p>
+                        Requests for additional pages, features, modules, workflows,
+                        integrations or major changes may require additional work
+                        and additional charges.
+                    </p>
 
-                    <a href="about.html">
-                        About
-                    </a>
+                    <h2>3. Pricing</h2>
+                    <p>
+                        Prices shown on the website are category-based starting
+                        prices unless a specific quotation has been provided.
+                    </p>
+                    <p>
+                        The final project price depends on the actual scope,
+                        complexity, features and technical requirements.
+                    </p>
 
-                    <a href="services.html">
-                        Services
-                    </a>
+                    <h2>4. Payment</h2>
+                    <p>
+                        Payment arrangements will be communicated before the
+                        project is started.
+                    </p>
+                    <p>
+                        Depending on the project, development may begin after an
+                        agreed initial payment or confirmation.
+                    </p>
+                    <p>
+                        Any remaining payment arrangement will be discussed
+                        according to the project scope and delivery plan.
+                    </p>
 
-                    <a href="projects.html">
-                        Projects
-                    </a>
+                    <h2>5. Client-Provided Information</h2>
+                    <p>
+                        The client is responsible for providing the content,
+                        information, images, logos, documents and other materials
+                        required for the project when applicable.
+                    </p>
+                    <p>
+                        Delays in providing required material may affect the
+                        project schedule.
+                    </p>
 
-                    <a href="pricing.html">
-                        Pricing
-                    </a>
+                    <h2>6. Development and Changes</h2>
+                    <p>
+                        Development is carried out according to the agreed scope.
+                    </p>
+                    <p>
+                        Major changes after development has started may affect
+                        delivery time and project cost.
+                    </p>
+                    <p>
+                        Small corrections related to the agreed requirement may
+                        be handled as part of the normal project review.
+                    </p>
 
-                    <a href="appointment.html">
-                        Appointment
-                    </a>
+                    <h2>7. Delivery</h2>
+                    <p>
+                        The project is delivered after the agreed work has been
+                        completed and reviewed.
+                    </p>
+                    <p>
+                        Actual delivery time depends on the project size, feedback,
+                        content availability and technical requirements.
+                    </p>
+
+                    <h2>8. Review and Corrections</h2>
+                    <p>
+                        The client should review the delivered work and communicate
+                        any corrections related to the agreed requirements.
+                    </p>
+                    <p>
+                        Requests that introduce new functionality or a significantly
+                        different direction may be treated as additional work.
+                    </p>
+
+                    <h2>9. Domain and Hosting</h2>
+                    <p>
+                        Domain registration, hosting, third-party subscriptions and
+                        other external services are separate unless specifically
+                        included in the project quotation.
+                    </p>
+                    <p>
+                        Recurring charges for such services are normally the
+                        client's responsibility.
+                    </p>
+
+                    <h2>10. Third-Party Services</h2>
+                    <p>
+                        Projects may use services such as Firebase, hosting providers,
+                        APIs, payment services, analytics platforms or other
+                        third-party tools when required.
+                    </p>
+                    <p>
+                        Availability, limitations, pricing or changes made by
+                        third-party providers may affect the project independently
+                        of the development work.
+                    </p>
+
+                    <h2>11. Backend and Database</h2>
+                    <p>
+                        When a project includes backend or database functionality,
+                        the final setup depends on the selected technology, project
+                        scope and agreed implementation.
+                    </p>
+                    <p>
+                        Database hosting, usage limits and third-party service
+                        charges may apply separately where applicable.
+                    </p>
+
+                    <h2>12. Maintenance</h2>
+                    <p>
+                        Maintenance refers to updates or corrections within the
+                        agreed maintenance scope.
+                    </p>
+                    <p>
+                        New pages, new functionality, major redesigns or additional
+                        modules are not automatically included in maintenance work.
+                    </p>
+
+                    <h2>13. Bug Fixes</h2>
+                    <p>
+                        Bugs related to the agreed development scope can be reviewed
+                        and corrected according to the project conditions.
+                    </p>
+                    <p>
+                        Problems caused by unrelated third-party changes, external
+                        services or client-side modifications may require separate
+                        work.
+                    </p>
+
+                    <h2>14. Project Cancellation</h2>
+                    <p>
+                        If a project is cancelled after development work has started,
+                        the amount already spent on completed work, resources or
+                        agreed project activities may not be reversible.
+                    </p>
+                    <p>
+                        Any cancellation-related arrangement will be discussed
+                        according to the stage and actual work completed.
+                    </p>
+
+                    <h2>15. No Refund Policy</h2>
+                    <p>
+                        Payments made for accepted services, development work,
+                        maintenance, bug fixing, customisation or other
+                        project-related work are non-refundable.
+                    </p>
+                    <p>
+                        This applies after payment has been made, including where
+                        the client later decides not to continue with the project.
+                    </p>
+
+                    <h2>16. Developer Fixes and Corrections</h2>
+                    <p>
+                        The no-refund policy does not prevent the developer from
+                        correcting valid issues related to the agreed project scope.
+                    </p>
+                    <p>
+                        If the delivered website, application or software contains
+                        a genuine bug or implementation issue within the agreed
+                        requirements, the developer will review and fix the issue
+                        according to the applicable project conditions.
+                    </p>
+                    <p>
+                        A new feature, additional page, redesign, new module, new
+                        workflow or functionality outside the agreed scope is not
+                        considered a bug fix and may require an additional charge.
+                    </p>
+
+                    <h2>17. Client or Third-Party Modifications</h2>
+                    <p>
+                        Issues caused by modifications made by the client or another
+                        developer after delivery may be assessed separately.
+                    </p>
+                    <p>
+                        Any additional correction required because of such changes
+                        may be treated as a separate service.
+                    </p>
+
+                    <h2>18. Communication</h2>
+                    <p>
+                        Project communication should remain clear and focused on
+                        the agreed requirements.
+                    </p>
+                    <p>
+                        Important scope, price or feature changes should be
+                        confirmed before implementation.
+                    </p>
+
+                    <h2>19. Project Examples</h2>
+                    <p>
+                        Completed projects may be shown in the Yadav Web Technologies
+                        project portfolio unless the project arrangement specifically
+                        requires otherwise.
+                    </p>
+
+                    <h2>20. Final Project Understanding</h2>
+                    <p>
+                        The exact deliverables, pricing, features, timeline,
+                        maintenance scope and handover details should be confirmed
+                        before development begins.
+                    </p>
+                    <p>
+                        These terms provide the general service structure.
+                        Project-specific discussions or quotations may contain
+                        additional details relevant to a particular project.
+                    </p>
+
+                    <!-- NOTE -->
+                    <div class="legal-note">
+                        <div class="legal-note-label">Before Starting a Project</div>
+                        <h3>Discuss the complete requirement first.</h3>
+                        <p>
+                            For a clear quotation and project scope, submit an
+                            appointment request with the required features, pages,
+                            modules, workflow and other relevant information.
+                        </p>
+                        <div class="legal-note-actions">
+                            <a href="appointment.html" class="btn btn-primary">
+                                Book an Appointment
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
-
             </div>
+        </section>
 
-
-            <div>
-
-                <h4>
-                    Information
-                </h4>
-
-
-                <div class="footer-links">
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                    <a href="terms.html">
-                        Terms &amp; Conditions
-                    </a>
-
-                    <a
-                        href="client-terms.html"
-                        class="active">
-
-                        Client Terms
-
-                    </a>
-
-                    <a href="privacy.html">
-                        Privacy Policy
-                    </a>
-
-                    <a href="disclaimer.html">
-                        Disclaimer
-                    </a>
-
-                    <a href="admin/index.html">
-                        Admin Panel
-                    </a>
-
+        <!-- ===== CTA ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Client Service</span>
+                    <h2>Have a project requirement?</h2>
+                    <p>Review the pricing categories and submit your project details for discussion.</p>
+                    <div style="margin-top:22px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+                        <a href="appointment.html" class="btn btn-primary">
+                            Book an Appointment
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
-
             </div>
+        </section>
 
+    </main>
 
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-mark">
+                            <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 4l6 8 6-8M12 12v8"/>
+                            </svg>
+                        </span>
+                        <span>Yadav<span class="accent">Web</span></span>
+                    </a>
+                    <p>Professional websites, web applications, and custom digital solutions based on real project requirements.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="appointment.html">Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="client-terms.html">Client Terms</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms</a></li>
+                        <li><a href="client-terms.html">Client Terms</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="refund.html">Refund</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span class="year">2026</span> Yadav Web Technologies. All rights reserved.</span>
+                <span>Hawaipur, West Karbi Anglong, Assam, India</span>
+            </div>
         </div>
+    </footer>
 
+    <button class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
 
-        <div class="copyright">
-
-            © 2026 Yadav Web Technologies.
-            All rights reserved.
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =====================================================
-     GO TO TOP
-===================================================== -->
-
-<button
-    class="go-top"
-    id="goTop"
-    type="button"
-    aria-label="Go to top">
-
-    <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2">
-
-        <path d="M12 19V5"></path>
-        <path d="m6 11 6-6 6 6"></path>
-
-    </svg>
-
-</button>
-
-
-
-<script src="js/menu.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/go-top.js"></script>
-
-
+    <script src="js/menu.js"></script>
+    <script src="js/go-top.js"></script>
+    <script src="js/script.js"></script>
+    <script>document.querySelectorAll('.year').forEach(e => e.textContent = new Date().getFullYear());</script>
 </body>
-
 </html>
-```

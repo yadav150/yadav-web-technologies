@@ -280,6 +280,31 @@
         <span id="toastMessage"></span>
     </div>
 
+    <!-- Firebase admin module -->
     <script type="module" src="../js/admin.js"></script>
+
+    <!-- SAFETY NET: if the module never boots, show login + a helpful error -->
+    <script>
+        (function () {
+            window.__adminBooted = false;
+            setTimeout(function () {
+                if (window.__adminBooted) return;
+
+                var loader = document.getElementById("pageLoader");
+                if (loader) loader.style.display = "none";
+
+                var login = document.getElementById("loginScreen");
+                if (login) login.classList.add("visible");
+
+                var err = document.getElementById("loginError");
+                if (err && !err.textContent.trim()) {
+                    var isFile = location.protocol === "file:";
+                    err.textContent = isFile
+                        ? "This page must be opened through a web server (http:// or https://). Double-clicking the file will not work."
+                        : "Unable to initialize admin panel. Please check your connection and reload the page.";
+                }
+            }, 3500);
+        })();
+    </script>
 </body>
 </html>

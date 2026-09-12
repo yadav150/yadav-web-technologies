@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#2563EB" />
+    <title>Appointment Detail | Admin | Yadav Web Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+
+    <style>
+        /* ===== DETAIL PAGE SPECIFIC ===== */
+        .detail-page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .detail-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-base);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--grad-brand);
+            z-index: 2;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-base);
+            gap: 16px;
+            flex-wrap: wrap;
+            background: var(--bg-subtle);
+        }
+        .detail-header h1 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+        .detail-header .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--brand-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: gap var(--t-fast), color var(--t-fast);
+        }
+        .detail-header .back-link:hover {
+            gap: 10px;
+            color: var(--brand-accent-hover);
+            text-decoration: none;
+        }
+
+        .detail-body {
+            padding: 24px;
+            position: relative;
+            min-height: 300px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .detail-item {
+            padding: 14px 16px;
+            border: 1px solid var(--border-base);
+            border-radius: var(--radius-sm);
+            background: var(--bg-base);
+            transition: border-color var(--t-fast), background var(--t-fast);
+        }
+        .detail-item:hover {
+            border-color: var(--border-accent);
+        }
+        .detail-item label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .detail-item p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            word-break: break-word;
+            text-align: left;
+        }
+        .detail-item p a {
+            color: var(--brand-accent);
+            text-decoration: none;
+        }
+        .detail-item p a:hover { text-decoration: underline; }
+
+        .detail-item.full { grid-column: 1 / -1; }
+        .detail-item.message p {
+            white-space: pre-wrap;
+            text-align: justify;
+            text-justify: inter-word;
+            line-height: 1.7;
+        }
+
+        /* ===== Action Buttons ===== */
+        .detail-actions {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-base);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .detail-actions .btn {
+            padding: 10px 18px;
+            font-size: 0.85rem;
+        }
+        .detail-actions .btn svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .btn-share {
+            background: #0A0A0A;
+            color: #fff;
+            border-color: #0A0A0A;
+        }
+        .btn-share:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: transparent;
+            color: #DC2626;
+            border: 1px solid rgba(220, 38, 38, 0.4);
+        }
+        .btn-danger:hover {
+            background: #DC2626;
+            color: #fff;
+            border-color: #DC2626;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        .status-new { background: rgba(37, 99, 235, 0.12); color: #2563EB; }
+        .status-contacted { background: rgba(234, 179, 8, 0.15); color: #CA8A04; }
+        .status-confirmed { background: rgba(34, 197, 94, 0.15); color: #16A34A; }
+        .status-completed { background: var(--bg-subtle); color: var(--text-muted); }
+        html.dark-mode .status-new { background: rgba(37, 99, 235, 0.22); color: #60A5FA; }
+        html.dark-mode .status-contacted { background: rgba(234, 179, 8, 0.22); color: #FACC15; }
+        html.dark-mode .status-confirmed { background: rgba(34, 197, 94, 0.22); color: #4ADE80; }
+
+        /* Spinner */
+        #detailSpinner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(250, 251, 252, 0.85);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 10;
+            border-radius: var(--radius-sm);
+        }
+        html.dark-mode #detailSpinner {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        #detailSpinner .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-base);
+            border-top-color: var(--brand-accent);
+            border-radius: 50%;
+            animation: detailSpin 0.8s linear infinite;
+        }
+        @keyframes detailSpin { to { transform: rotate(360deg); } }
+        .hidden-spinner { display: none !important; }
+
+        /* Error state */
+        .detail-error {
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .detail-error svg {
+            margin: 0 auto 14px;
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+        .detail-error h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 6px;
+            text-align: center;
+        }
+        .detail-error p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .detail-grid { grid-template-columns: 1fr; }
+            .detail-body { padding: 18px; }
+            .detail-header { padding: 16px 18px; }
+            .detail-header h1 { font-size: 1rem; }
+        }
+
+        /* Hidden share card render target */
+        #shareCardRender {
+            position: fixed;
+            left: -100000px;
+            top: 0;
+            width: 900px;
+            padding: 48px;
+            background: #ffffff;
+            color: #172033;
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PAGE LOADER ===== -->
+    <div id="pageLoader" class="page-loader">
+        <div class="page-loader-spinner" aria-hidden="true"></div>
+    </div>
+
+    <!-- ===== DASHBOARD SHELL ===== -->
+    <div id="dashboard" class="dashboard visible">
+
+        <!-- Sidebar -->
+        <aside id="adminSidebar" class="admin-sidebar">
+            <div class="sidebar-brand">
+                <span class="logo-mark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M6 4l6 8 6-8M12 12v8"/>
+                    </svg>
+                </span>
+                <span>Admin Panel</span>
+            </div>
+
+            <nav class="admin-nav" aria-label="Admin navigation">
+                <button type="button" id="dashboardNav">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="9"/>
+                        <rect x="14" y="3" width="7" height="5"/>
+                        <rect x="14" y="12" width="7" height="9"/>
+                        <rect x="3" y="16" width="7" height="5"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+
+                <button type="button" id="appointmentsNav" class="active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"/>
+                    </svg>
+                    <span>Appointments</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 12h18M12 3l9 9-9 9"/>
+                    </svg>
+                    <span>Back to Site</span>
+                </a>
+            </div>
+        </aside>
+
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <header class="admin-topbar">
+                <div class="admin-topbar-inner">
+                    <button type="button" id="mobileMenuButton" class="admin-menu-btn" aria-label="Toggle menu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+
+                    <h2 class="admin-topbar-title">Appointment Detail</h2>
+
+                    <div class="admin-topbar-user">
+                        <span id="adminUser" class="admin-user-email">—</span>
+                        <button type="button" id="logoutButton" class="admin-logout-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+                            </svg>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="admin-main">
+                <div class="detail-page">
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <h1 id="detailTitle">Appointment Details</h1>
+                            <a href="index.html" class="back-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                </svg>
+                                Back to Dashboard
+                            </a>
+                        </div>
+
+                        <div class="detail-body" id="detailBody">
+                            <div id="detailSpinner"><div class="spinner"></div></div>
+                            <!-- content will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ===== HIDDEN SHARE CARD (for image generation) ===== -->
+    <div id="shareCardRender">
+        <div style="display:flex; align-items:center; gap:14px; padding-bottom:22px; border-bottom:2px solid #e8edf4;">
+            <div style="width:52px; height:52px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,#000 0%,#2563EB 100%); color:#fff; font-size:24px; font-weight:800;">Y</div>
+            <div>
+                <strong style="display:block; font-size:22px; letter-spacing:-0.01em;">Yadav Web Technologies</strong>
+                <span style="display:block; margin-top:4px; color:#667085; font-size:13px; font-weight:500;">Appointment Details</span>
+            </div>
+        </div>
+        <div id="shareCardSubtitle" style="margin:24px 0 20px; color:#475467; font-size:15px; line-height:1.6;"></div>
+        <div id="shareCardGrid" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;"></div>
+        <div style="margin-top:32px; padding-top:18px; border-top:1px solid #e8edf4; color:#98a2b3; font-size:12px; text-align:center;">
+            Generated from Yadav Web Technologies Admin Panel
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="adminToast" class="admin-toast" role="status" aria-live="polite">
+        <strong id="toastTitle"></strong>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- html2canvas for share image generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- Firebase-powered detail module -->
+    <script type="module" src="../js/detail.js"></script>
+</body>
+</html>

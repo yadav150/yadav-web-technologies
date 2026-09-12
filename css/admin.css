@@ -815,3 +815,53 @@ html.dark-mode .status-confirmed { background: rgba(34, 197, 94, 0.22); color: #
     .admin-stat-icon { width: 36px; height: 36px; }
     .admin-stat-value { font-size: 1.25rem; }
 }
+/* ===== LOGIN LINKS (Forgot password + Back) ===== */
+.login-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+    padding-top: 4px;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    color: var(--brand-accent);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background var(--t-fast), color var(--t-fast);
+}
+.link-btn:hover {
+    background: var(--brand-accent-soft);
+    color: var(--brand-accent-hover);
+}
+html.dark-mode .link-btn:hover {
+    background: rgba(37, 99, 235, 0.15);
+}
+.link-btn:focus-visible {
+    outline: 2px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+/* ===== LOGIN SUCCESS MESSAGE ===== */
+.login-success {
+    display: none;
+    margin: 0;
+    padding: 12px 14px;
+    background: rgba(34, 197, 94, 0.1);
+    border-left: 3px solid #16A34A;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    color: #16A34A;
+    line-height: 1.55;
+    text-align: left;
+}
+.login-success:not(:empty) { display: block; }
+html.dark-mode .login-success {
+    color: #4ADE80;
+    background: rgba(34, 197, 94, 0.15);
+}

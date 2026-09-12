@@ -830,3 +830,108 @@ html.dark-mode .card-icon { background: rgba(37, 99, 235, 0.15); }
     .reveal { opacity: 1; transform: none; }
     body { opacity: 1; animation: none; }
 }
+/* ===== TRUST BAR (Contact page) ===== */
+.trust-bar {
+    padding: 8px 0 4px;
+    position: relative;
+    z-index: 2;
+}
+.trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 20px;
+    padding: 12px 20px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-full);
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+}
+.trust-row span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.trust-row span::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+@media (max-width: 640px) {
+    .trust-row {
+        border-radius: var(--radius);
+        padding: 10px 14px;
+        gap: 6px 14px;
+    }
+    .trust-row span {
+        font-size: 0.68rem;
+    }
+}
+
+/* ===== LOCATION CARD ===== */
+.location-card {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+.location-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-md);
+}
+.location-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--grad-brand);
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+}
+.location-icon svg {
+    width: 30px;
+    height: 30px;
+}
+.location-card h3 {
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+    text-align: center;
+}
+.location-card > p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 4px;
+    text-align: center;
+}
+.location-note {
+    margin-top: 16px !important;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-base);
+    font-size: 0.88rem !important;
+    line-height: 1.7;
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    color: var(--text-muted);
+}

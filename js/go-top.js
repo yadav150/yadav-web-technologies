@@ -1,15 +1,24 @@
+/* ============================================================
+   BACK TO TOP BUTTON
+   ============================================================ */
 (function () {
-  const btn = document.querySelector('.go-top');
-  if (!btn) return;
+    'use strict';
 
-  const onScroll = () => {
-    if (window.scrollY > 500) btn.classList.add('is-visible');
-    else btn.classList.remove('is-visible');
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const backToTop = document.querySelector('.back-to-top');
+    if (!backToTop) return;
 
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    const toggleBTT = () => {
+        backToTop.classList.toggle('is-visible', window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', toggleBTT, { passive: true });
+    toggleBTT();
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: prefersReduced ? 'auto' : 'smooth'
+        });
+    });
 })();

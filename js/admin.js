@@ -6,7 +6,8 @@ import {
     getAuth,
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut
+    signOut,
+    sendPasswordResetEmail            // ← NEW
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 import {
@@ -64,6 +65,16 @@ const adminToast = document.getElementById("adminToast");
 const toastTitle = document.getElementById("toastTitle");
 const toastMessage = document.getElementById("toastMessage");
 const listSpinner = document.getElementById("listSpinner");
+
+// ← NEW — Forgot password elements
+const forgotScreen = document.getElementById("forgotScreen");
+const forgotForm = document.getElementById("forgotForm");
+const forgotEmail = document.getElementById("forgotEmail");
+const forgotError = document.getElementById("forgotError");
+const forgotSuccess = document.getElementById("forgotSuccess");
+const forgotLink = document.getElementById("forgotLink");
+const forgotBackBtn = document.getElementById("forgotBackBtn");
+const forgotSubmit = document.getElementById("forgotSubmit");
 
 // =====================================================
 // STATE
@@ -166,10 +177,111 @@ if (logoutButton) {
 function showLogin() {
     loginScreen.classList.add("visible");
     dashboard.classList.remove("visible");
+    if (forgotScreen) forgotScreen.classList.remove("visible");  // ← NEW
 }
 function showDashboard() {
     loginScreen.classList.remove("visible");
     dashboard.classList.add("visible");
+    if (forgotScreen) forgotScreen.classList.remove("visible");  // ← NEW
+}
+
+// ← NEW — Show forgot password screen
+function showForgotScreen() {
+    loginScreen.classList.remove("visible");
+    dashboard.classList.remove("visible");
+    if (forgotScreen) forgotScreen.classList.add("visible");
+    clearForgotError();
+    clearForgotSuccess();
+    if (forgotEmail) forgotEmail.value = "";
+    if (forgotSubmit) {
+        forgotSubmit.disabled = false;
+        const label = forgotSubmit.querySelector(".login-btn-label");
+        if (label) label.textContent = "Send Reset Link";
+    }
+}
+
+// =====================================================
+// FORGOT PASSWORD
+// =====================================================
+if (forgotLink) {
+    forgotLink.addEventListener("click", () => {
+        // Prefill with whatever was typed in login email, if any
+        const typedEmail = loginEmail?.value.trim() || "";
+        showForgotScreen();
+        if (typedEmail && forgotEmail) forgotEmail.value = typedEmail;
+        forgotEmail?.focus();
+    });
+}
+
+if (forgotBackBtn) {
+    forgotBackBtn.addEventListener("click", () => {
+        showLogin();
+    });
+}
+
+if (forgotForm) {
+    forgotForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        clearForgotError();
+        clearForgotSuccess();
+
+        const email = forgotEmail.value.trim();
+        if (!email) {
+            showForgotError("Please enter your email address.");
+            return;
+        }
+
+        if (forgotSubmit) {
+            forgotSubmit.disabled = true;
+            const label = forgotSubmit.querySelector(".login-btn-label");
+            if (label) label.textContent = "Sending...";
+        }
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            // Generic success message — do not reveal whether email exists
+            showForgotSuccess(
+                "If that email is registered, a password reset link has been sent. Check your inbox and spam folder."
+            );
+            forgotForm.reset();
+        } catch (error) {
+            console.error("Password reset error:", error);
+            // Still show generic message for most errors (prevents email enumeration)
+            // but surface rate-limiting and invalid format
+            if (error.code === "auth/too-many-requests") {
+                showForgotError("Too many attempts. Please try again later.");
+            } else if (error.code === "auth/invalid-email") {
+                showForgotError("Please enter a valid email address.");
+            } else {
+                // For auth/user-not-found or any other error, keep generic for security
+                showForgotSuccess(
+                    "If that email is registered, a password reset link has been sent. Check your inbox and spam folder."
+                );
+                forgotForm.reset();
+            }
+        } finally {
+            if (forgotSubmit) {
+                forgotSubmit.disabled = false;
+                const label = forgotSubmit.querySelector(".login-btn-label");
+                if (label) label.textContent = "Send Reset Link";
+            }
+        }
+    });
+}
+
+function showForgotError(message) {
+    if (forgotError) forgotError.textContent = message;
+    if (forgotSuccess) forgotSuccess.textContent = "";
+}
+function clearForgotError() {
+    if (forgotError) forgotError.textContent = "";
+}
+function showForgotSuccess(message) {
+    if (forgotSuccess) forgotSuccess.textContent = message;
+    if (forgotError) forgotError.textContent = "";
+}
+function clearForgotSuccess() {
+    if (forgotSuccess) forgotSuccess.textContent = "";
 }
 
 // =====================================================
@@ -184,17 +296,11 @@ function clearLoginError() {
 
 // =====================================================
 // CUSTOM LOGIN ERROR MESSAGE
-// Shows a single user-friendly message for all
-// authentication failures. Detailed Firebase error
-// is only logged to the console for debugging.
 // =====================================================
 function getLoginErrorMessage(error) {
-    // Keep the "too many attempts" hint – it's helpful for users
     if (error.code === "auth/too-many-requests") {
         return "Too many attempts. Please try again later.";
     }
-
-    // For all other auth failures, show a generic custom message
     return "Invalid User ID or Password.";
 }
 
